@@ -5,22 +5,31 @@
 //  Created by JK on 2021/07/24.
 //
 
-import UIKit
 import RxFlow
+import UIKit
+
+// MARK: - HomeFlow
 
 final class HomeFlow: Flow {
-  var root: Presentable { self.rootViewController }
-  private let rootViewController = UITabBarController()
+
+  // MARK: Internal
+
+  var root: Presentable { rootViewController }
 
   func navigate(to step: Step) -> FlowContributors {
     guard let step = step as? AppSteps else { return .none }
     switch step {
-      case .homeIsRequired:
-        return navigateToHome()
-      default:
-        return .none
+    case .homeIsRequired:
+      return navigateToHome()
+    default:
+      return .none
     }
   }
+
+  // MARK: Private
+
+  private let rootViewController = UITabBarController()
+
 }
 
 // MARK: -  Navigating
@@ -31,10 +40,9 @@ extension HomeFlow {
     let timelineFlow = TimelineFlow()
     let userInfoFlow = UserInfoFlow()
 
-
     Flows.use(timelineFlow, mapFlow, userInfoFlow, when: .created) { [unowned self] timelineRoot, mapRoot, userInfoRoot in
       let timelineItem = UITabBarItem(
-      title: "Timeline", image: UIImage(systemName: "newspaper"), selectedImage: UIImage(systemName: "newspaper.fill"))
+        title: "Timeline", image: UIImage(systemName: "newspaper"), selectedImage: UIImage(systemName: "newspaper.fill"))
       let mapItem = UITabBarItem(
         title: "Map", image: UIImage(systemName: "map"), selectedImage: UIImage(systemName: "map.fill"))
       let userInfoItem = UITabBarItem(
@@ -43,7 +51,6 @@ extension HomeFlow {
       timelineRoot.tabBarItem = timelineItem
       mapRoot.tabBarItem = mapItem
       userInfoRoot.tabBarItem = userInfoItem
-
 
       self.rootViewController.setViewControllers([timelineRoot, mapRoot, userInfoRoot], animated: false)
     }
@@ -57,7 +64,7 @@ extension HomeFlow {
         withNextStepper: OneStepper(withSingleStep: AppSteps.mapScreenIsRequired)),
       .contribute(
         withNextPresentable: userInfoFlow,
-        withNextStepper: OneStepper(withSingleStep: AppSteps.userInfoIsRequired))
+        withNextStepper: OneStepper(withSingleStep: AppSteps.userInfoIsRequired)),
     ])
   }
 }

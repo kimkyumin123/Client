@@ -20,9 +20,8 @@ class ViewController: UIViewController {
     NSLayoutConstraint.activate([
       text.centerYAnchor.constraint(equalTo: view.centerYAnchor),
       text.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      text.widthAnchor.constraint(greaterThanOrEqualToConstant: 30)
+      text.widthAnchor.constraint(greaterThanOrEqualToConstant: 30),
     ])
   }
 
 }
-

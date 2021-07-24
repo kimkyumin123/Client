@@ -5,24 +5,27 @@
 //  Created by JK on 2021/07/24.
 //
 
-import UIKit
 import RxFlow
+import UIKit
+
+// MARK: - MapFlow
 
 final class MapFlow: Flow {
 
   lazy var rootViewController = UINavigationController()
-  var root: Presentable { self.rootViewController }
+
+  var root: Presentable { rootViewController }
+
   func navigate(to step: Step) -> FlowContributors {
     guard let step = step as? AppSteps else { return .none }
     switch step {
-      case .mapScreenIsRequired:
-        return navigateToMap()
-      default:
-        return .none
+    case .mapScreenIsRequired:
+      return navigateToMap()
+    default:
+      return .none
     }
   }
 }
-
 
 // MARK: - Navigating
 extension MapFlow {

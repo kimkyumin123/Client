@@ -196,6 +196,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 48F33B3626AC2BBD00A704C7 /* Build configuration list for PBXNativeTarget "Travelog" */;
 			buildPhases = (
+				489FB9E926AC40BF00641F21 /* Lint & Formatting */,
 				48F33B1E26AC2BBC00A704C7 /* Sources */,
 				48F33B1F26AC2BBC00A704C7 /* Frameworks */,
 				48F33B2026AC2BBC00A704C7 /* Resources */,
@@ -289,6 +290,29 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		489FB9E926AC40BF00641F21 /* Lint & Formatting */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/.swiftformat",
+				"$(SRCROOT)/.swiftlint.yml",
+			);
+			name = "Lint & Formatting";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftformat >/dev/null; then\n   swiftformat --swiftversion 5.4 .\nelse\n  echo \"warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\"\nfi\n\nif which swiftlint >/dev/null; then\n  swiftlint --fix\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		48F33B1E26AC2BBC00A704C7 /* Sources */ = {

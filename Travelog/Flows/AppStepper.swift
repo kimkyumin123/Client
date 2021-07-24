@@ -16,7 +16,7 @@ final class AppStepper: Stepper {
   var isLogined = false
 
   var initialStep: Step {
-    return isLogined ? AppSteps.homeIsRequired : AppSteps.loginIsRequierd
+    isLogined ? AppSteps.homeIsRequired : AppSteps.loginIsRequierd
   }
 
 }
