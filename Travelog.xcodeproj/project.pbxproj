@@ -54,6 +54,7 @@
 		48F65C6226AC71F6009B15BE /* NSLayoutConstraint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F65C6026AC71F6009B15BE /* NSLayoutConstraint+Extension.swift */; };
 		48F65C6326AC71F6009B15BE /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F65C6126AC71F6009B15BE /* UIColor+Extension.swift */; };
 		48F65C6626AC747D009B15BE /* LoginFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F65C6526AC747D009B15BE /* LoginFlow.swift */; };
+		48F65C6826AC783D009B15BE /* ReviewPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F65C6726AC783D009B15BE /* ReviewPostCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +84,7 @@
 		48F65C6026AC71F6009B15BE /* NSLayoutConstraint+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Extension.swift"; sourceTree = "<group>"; };
 		48F65C6126AC71F6009B15BE /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		48F65C6526AC747D009B15BE /* LoginFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFlow.swift; sourceTree = "<group>"; };
+		48F65C6726AC783D009B15BE /* ReviewPostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPostCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				489FB9DD26AC3C0200641F21 /* FeedViewController.swift */,
+				48F65C6726AC783D009B15BE /* ReviewPostCell.swift */,
 				489FB9DF26AC3C1500641F21 /* TimelineViewModel.swift */,
 			);
 			path = TimelineScene;
@@ -375,6 +378,7 @@
 				4898971D26AC3527000499AC /* AppStepper.swift in Sources */,
 				489FB9D226AC397A00641F21 /* MapFlow.swift in Sources */,
 				489FB9E326AC3D0000641F21 /* UserInfoViewController.swift in Sources */,
+				48F65C6826AC783D009B15BE /* ReviewPostCell.swift in Sources */,
 				489FB9EB26AC428000641F21 /* LoginViewController.swift in Sources */,
 				489FB9DE26AC3C0200641F21 /* FeedViewController.swift in Sources */,
 				489FB9EF26AC42B000641F21 /* LoginView.swift in Sources */,

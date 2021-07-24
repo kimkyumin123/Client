@@ -65,8 +65,8 @@ final class LoginView: UIView {
 
   // MARK: Private
 
-  private var container = UIView()
-  private lazy var title = UILabel().then {
+  private let container = UIView()
+  private let title = UILabel().then {
     $0.text = "TraveLog"
     $0.font = .preferredFont(forTextStyle: .largeTitle)
     $0.numberOfLines = 1
