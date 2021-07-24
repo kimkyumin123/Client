@@ -1,0 +1,511 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		48F33B2626AC2BBC00A704C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F33B2526AC2BBC00A704C7 /* AppDelegate.swift */; };
+		48F33B2826AC2BBC00A704C7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F33B2726AC2BBC00A704C7 /* SceneDelegate.swift */; };
+		48F33B2A26AC2BBC00A704C7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F33B2926AC2BBC00A704C7 /* ViewController.swift */; };
+		48F33B2F26AC2BBD00A704C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48F33B2E26AC2BBD00A704C7 /* Assets.xcassets */; };
+		48F33B3226AC2BBD00A704C7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48F33B3026AC2BBD00A704C7 /* LaunchScreen.storyboard */; };
+		48F33B3B26AC2D8F00A704C7 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 48F33B3A26AC2D8F00A704C7 /* RxSwift */; };
+		48F33B3D26AC2D8F00A704C7 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 48F33B3C26AC2D8F00A704C7 /* RxCocoa */; };
+		48F33B3F26AC2D8F00A704C7 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 48F33B3E26AC2D8F00A704C7 /* RxRelay */; };
+		48F33B4226AC2DE200A704C7 /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = 48F33B4126AC2DE200A704C7 /* RxGesture */; };
+		48F33B4526AC2E0000A704C7 /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 48F33B4426AC2E0000A704C7 /* KakaoSDKUser */; };
+		48F33B4726AC2E0000A704C7 /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 48F33B4626AC2E0000A704C7 /* KakaoSDKAuth */; };
+		48F33B4926AC2E0000A704C7 /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 48F33B4826AC2E0000A704C7 /* KakaoSDKCommon */; };
+		48F33B4C26AC2E1100A704C7 /* RxKakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 48F33B4B26AC2E1100A704C7 /* RxKakaoSDKUser */; };
+		48F33B4E26AC2E1100A704C7 /* RxKakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 48F33B4D26AC2E1100A704C7 /* RxKakaoSDKCommon */; };
+		48F33B5026AC2E1100A704C7 /* RxKakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 48F33B4F26AC2E1100A704C7 /* RxKakaoSDKAuth */; };
+		48F33B5326AC2E1F00A704C7 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 48F33B5226AC2E1F00A704C7 /* Then */; };
+		48F33B5626AC2E2B00A704C7 /* RxFlow in Frameworks */ = {isa = PBXBuildFile; productRef = 48F33B5526AC2E2B00A704C7 /* RxFlow */; };
+		48F33B5926AC2E3D00A704C7 /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = 48F33B5826AC2E3D00A704C7 /* ReactorKit */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		48F33B2226AC2BBC00A704C7 /* Travelog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Travelog.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		48F33B2526AC2BBC00A704C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		48F33B2726AC2BBC00A704C7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		48F33B2926AC2BBC00A704C7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		48F33B2E26AC2BBD00A704C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		48F33B3126AC2BBD00A704C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		48F33B3326AC2BBD00A704C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		48F33B1F26AC2BBC00A704C7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48F33B5626AC2E2B00A704C7 /* RxFlow in Frameworks */,
+				48F33B4C26AC2E1100A704C7 /* RxKakaoSDKUser in Frameworks */,
+				48F33B3F26AC2D8F00A704C7 /* RxRelay in Frameworks */,
+				48F33B5326AC2E1F00A704C7 /* Then in Frameworks */,
+				48F33B4926AC2E0000A704C7 /* KakaoSDKCommon in Frameworks */,
+				48F33B5926AC2E3D00A704C7 /* ReactorKit in Frameworks */,
+				48F33B5026AC2E1100A704C7 /* RxKakaoSDKAuth in Frameworks */,
+				48F33B4E26AC2E1100A704C7 /* RxKakaoSDKCommon in Frameworks */,
+				48F33B3D26AC2D8F00A704C7 /* RxCocoa in Frameworks */,
+				48F33B4226AC2DE200A704C7 /* RxGesture in Frameworks */,
+				48F33B4526AC2E0000A704C7 /* KakaoSDKUser in Frameworks */,
+				48F33B3B26AC2D8F00A704C7 /* RxSwift in Frameworks */,
+				48F33B4726AC2E0000A704C7 /* KakaoSDKAuth in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		48F33B1926AC2BBC00A704C7 = {
+			isa = PBXGroup;
+			children = (
+				48F33B2426AC2BBC00A704C7 /* Travelog */,
+				48F33B2326AC2BBC00A704C7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		48F33B2326AC2BBC00A704C7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				48F33B2226AC2BBC00A704C7 /* Travelog.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		48F33B2426AC2BBC00A704C7 /* Travelog */ = {
+			isa = PBXGroup;
+			children = (
+				48F33B2526AC2BBC00A704C7 /* AppDelegate.swift */,
+				48F33B2726AC2BBC00A704C7 /* SceneDelegate.swift */,
+				48F33B2926AC2BBC00A704C7 /* ViewController.swift */,
+				48F33B2E26AC2BBD00A704C7 /* Assets.xcassets */,
+				48F33B3026AC2BBD00A704C7 /* LaunchScreen.storyboard */,
+				48F33B3326AC2BBD00A704C7 /* Info.plist */,
+			);
+			path = Travelog;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		48F33B2126AC2BBC00A704C7 /* Travelog */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 48F33B3626AC2BBD00A704C7 /* Build configuration list for PBXNativeTarget "Travelog" */;
+			buildPhases = (
+				48F33B1E26AC2BBC00A704C7 /* Sources */,
+				48F33B1F26AC2BBC00A704C7 /* Frameworks */,
+				48F33B2026AC2BBC00A704C7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Travelog;
+			packageProductDependencies = (
+				48F33B3A26AC2D8F00A704C7 /* RxSwift */,
+				48F33B3C26AC2D8F00A704C7 /* RxCocoa */,
+				48F33B3E26AC2D8F00A704C7 /* RxRelay */,
+				48F33B4126AC2DE200A704C7 /* RxGesture */,
+				48F33B4426AC2E0000A704C7 /* KakaoSDKUser */,
+				48F33B4626AC2E0000A704C7 /* KakaoSDKAuth */,
+				48F33B4826AC2E0000A704C7 /* KakaoSDKCommon */,
+				48F33B4B26AC2E1100A704C7 /* RxKakaoSDKUser */,
+				48F33B4D26AC2E1100A704C7 /* RxKakaoSDKCommon */,
+				48F33B4F26AC2E1100A704C7 /* RxKakaoSDKAuth */,
+				48F33B5226AC2E1F00A704C7 /* Then */,
+				48F33B5526AC2E2B00A704C7 /* RxFlow */,
+				48F33B5826AC2E3D00A704C7 /* ReactorKit */,
+			);
+			productName = Travelog;
+			productReference = 48F33B2226AC2BBC00A704C7 /* Travelog.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		48F33B1A26AC2BBC00A704C7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1250;
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					48F33B2126AC2BBC00A704C7 = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
+				};
+			};
+			buildConfigurationList = 48F33B1D26AC2BBC00A704C7 /* Build configuration list for PBXProject "Travelog" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 48F33B1926AC2BBC00A704C7;
+			packageReferences = (
+				48F33B3926AC2D8F00A704C7 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				48F33B4026AC2DE200A704C7 /* XCRemoteSwiftPackageReference "RxGesture" */,
+				48F33B4326AC2E0000A704C7 /* XCRemoteSwiftPackageReference "KakaoSDK" */,
+				48F33B4A26AC2E1100A704C7 /* XCRemoteSwiftPackageReference "RxKakaoSDK" */,
+				48F33B5126AC2E1F00A704C7 /* XCRemoteSwiftPackageReference "Then" */,
+				48F33B5426AC2E2B00A704C7 /* XCRemoteSwiftPackageReference "RxFlow" */,
+				48F33B5726AC2E3D00A704C7 /* XCRemoteSwiftPackageReference "ReactorKit" */,
+			);
+			productRefGroup = 48F33B2326AC2BBC00A704C7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				48F33B2126AC2BBC00A704C7 /* Travelog */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		48F33B2026AC2BBC00A704C7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48F33B3226AC2BBD00A704C7 /* LaunchScreen.storyboard in Resources */,
+				48F33B2F26AC2BBD00A704C7 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		48F33B1E26AC2BBC00A704C7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48F33B2A26AC2BBC00A704C7 /* ViewController.swift in Sources */,
+				48F33B2626AC2BBC00A704C7 /* AppDelegate.swift in Sources */,
+				48F33B2826AC2BBC00A704C7 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		48F33B3026AC2BBD00A704C7 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				48F33B3126AC2BBD00A704C7 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		48F33B3426AC2BBD00A704C7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		48F33B3526AC2BBD00A704C7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		48F33B3726AC2BBD00A704C7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 78X32W2D44;
+				INFOPLIST_FILE = Travelog/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = dev.sonjk.Travelog;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		48F33B3826AC2BBD00A704C7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 78X32W2D44;
+				INFOPLIST_FILE = Travelog/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = dev.sonjk.Travelog;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		48F33B1D26AC2BBC00A704C7 /* Build configuration list for PBXProject "Travelog" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				48F33B3426AC2BBD00A704C7 /* Debug */,
+				48F33B3526AC2BBD00A704C7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		48F33B3626AC2BBD00A704C7 /* Build configuration list for PBXNativeTarget "Travelog" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				48F33B3726AC2BBD00A704C7 /* Debug */,
+				48F33B3826AC2BBD00A704C7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		48F33B3926AC2D8F00A704C7 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.2.0;
+			};
+		};
+		48F33B4026AC2DE200A704C7 /* XCRemoteSwiftPackageReference "RxGesture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxGesture";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.2;
+			};
+		};
+		48F33B4326AC2E0000A704C7 /* XCRemoteSwiftPackageReference "KakaoSDK" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/elppaaa/KakaoSDK";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		48F33B4A26AC2E1100A704C7 /* XCRemoteSwiftPackageReference "RxKakaoSDK" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/elppaaa/RxKakaoSDK";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		48F33B5126AC2E1F00A704C7 /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.7.0;
+			};
+		};
+		48F33B5426AC2E2B00A704C7 /* XCRemoteSwiftPackageReference "RxFlow" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxFlow";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.12.2;
+			};
+		};
+		48F33B5726AC2E3D00A704C7 /* XCRemoteSwiftPackageReference "ReactorKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactorKit/ReactorKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		48F33B3A26AC2D8F00A704C7 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48F33B3926AC2D8F00A704C7 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		48F33B3C26AC2D8F00A704C7 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48F33B3926AC2D8F00A704C7 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		48F33B3E26AC2D8F00A704C7 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48F33B3926AC2D8F00A704C7 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		48F33B4126AC2DE200A704C7 /* RxGesture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48F33B4026AC2DE200A704C7 /* XCRemoteSwiftPackageReference "RxGesture" */;
+			productName = RxGesture;
+		};
+		48F33B4426AC2E0000A704C7 /* KakaoSDKUser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48F33B4326AC2E0000A704C7 /* XCRemoteSwiftPackageReference "KakaoSDK" */;
+			productName = KakaoSDKUser;
+		};
+		48F33B4626AC2E0000A704C7 /* KakaoSDKAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48F33B4326AC2E0000A704C7 /* XCRemoteSwiftPackageReference "KakaoSDK" */;
+			productName = KakaoSDKAuth;
+		};
+		48F33B4826AC2E0000A704C7 /* KakaoSDKCommon */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48F33B4326AC2E0000A704C7 /* XCRemoteSwiftPackageReference "KakaoSDK" */;
+			productName = KakaoSDKCommon;
+		};
+		48F33B4B26AC2E1100A704C7 /* RxKakaoSDKUser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48F33B4A26AC2E1100A704C7 /* XCRemoteSwiftPackageReference "RxKakaoSDK" */;
+			productName = RxKakaoSDKUser;
+		};
+		48F33B4D26AC2E1100A704C7 /* RxKakaoSDKCommon */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48F33B4A26AC2E1100A704C7 /* XCRemoteSwiftPackageReference "RxKakaoSDK" */;
+			productName = RxKakaoSDKCommon;
+		};
+		48F33B4F26AC2E1100A704C7 /* RxKakaoSDKAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48F33B4A26AC2E1100A704C7 /* XCRemoteSwiftPackageReference "RxKakaoSDK" */;
+			productName = RxKakaoSDKAuth;
+		};
+		48F33B5226AC2E1F00A704C7 /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48F33B5126AC2E1F00A704C7 /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+		48F33B5526AC2E2B00A704C7 /* RxFlow */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48F33B5426AC2E2B00A704C7 /* XCRemoteSwiftPackageReference "RxFlow" */;
+			productName = RxFlow;
+		};
+		48F33B5826AC2E3D00A704C7 /* ReactorKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48F33B5726AC2E3D00A704C7 /* XCRemoteSwiftPackageReference "ReactorKit" */;
+			productName = ReactorKit;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 48F33B1A26AC2BBC00A704C7 /* Project object */;
+}
