@@ -17,6 +17,15 @@
 		4898971F26AC353F000499AC /* AppSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4898971E26AC353F000499AC /* AppSteps.swift */; };
 		4898972126AC356F000499AC /* AppFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4898972026AC356F000499AC /* AppFlow.swift */; };
 		4898972526AC36DC000499AC /* HomeFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4898972426AC36DC000499AC /* HomeFlow.swift */; };
+		489FB9D226AC397A00641F21 /* MapFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489FB9D126AC397A00641F21 /* MapFlow.swift */; };
+		489FB9D426AC3A4400641F21 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489FB9D326AC3A4400641F21 /* MapViewController.swift */; };
+		489FB9D626AC3A4B00641F21 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489FB9D526AC3A4B00641F21 /* MapViewModel.swift */; };
+		489FB9DA26AC3BD400641F21 /* TimelineFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489FB9D926AC3BD400641F21 /* TimelineFlow.swift */; };
+		489FB9DE26AC3C0200641F21 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489FB9DD26AC3C0200641F21 /* FeedViewController.swift */; };
+		489FB9E026AC3C1500641F21 /* TimelineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489FB9DF26AC3C1500641F21 /* TimelineViewModel.swift */; };
+		489FB9E326AC3D0000641F21 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489FB9E226AC3D0000641F21 /* UserInfoViewController.swift */; };
+		489FB9E526AC3D0600641F21 /* UserInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489FB9E426AC3D0600641F21 /* UserInfoViewModel.swift */; };
+		489FB9E826AC3DA500641F21 /* UserInfoFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489FB9E726AC3DA500641F21 /* UserInfoFlow.swift */; };
 		48F33B2626AC2BBC00A704C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F33B2526AC2BBC00A704C7 /* AppDelegate.swift */; };
 		48F33B2826AC2BBC00A704C7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F33B2726AC2BBC00A704C7 /* SceneDelegate.swift */; };
 		48F33B2A26AC2BBC00A704C7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F33B2926AC2BBC00A704C7 /* ViewController.swift */; };
@@ -46,6 +55,15 @@
 		4898971E26AC353F000499AC /* AppSteps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSteps.swift; sourceTree = "<group>"; };
 		4898972026AC356F000499AC /* AppFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlow.swift; sourceTree = "<group>"; };
 		4898972426AC36DC000499AC /* HomeFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFlow.swift; sourceTree = "<group>"; };
+		489FB9D126AC397A00641F21 /* MapFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapFlow.swift; sourceTree = "<group>"; };
+		489FB9D326AC3A4400641F21 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		489FB9D526AC3A4B00641F21 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		489FB9D926AC3BD400641F21 /* TimelineFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineFlow.swift; sourceTree = "<group>"; };
+		489FB9DD26AC3C0200641F21 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		489FB9DF26AC3C1500641F21 /* TimelineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewModel.swift; sourceTree = "<group>"; };
+		489FB9E226AC3D0000641F21 /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
+		489FB9E426AC3D0600641F21 /* UserInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewModel.swift; sourceTree = "<group>"; };
+		489FB9E726AC3DA500641F21 /* UserInfoFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoFlow.swift; sourceTree = "<group>"; };
 		48F33B2226AC2BBC00A704C7 /* Travelog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Travelog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48F33B2526AC2BBC00A704C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48F33B2726AC2BBC00A704C7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +107,57 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		489FB9D026AC394D00641F21 /* Flows */ = {
+			isa = PBXGroup;
+			children = (
+				4898971E26AC353F000499AC /* AppSteps.swift */,
+				4898971C26AC3527000499AC /* AppStepper.swift */,
+				4898972026AC356F000499AC /* AppFlow.swift */,
+				4898972426AC36DC000499AC /* HomeFlow.swift */,
+				489FB9D926AC3BD400641F21 /* TimelineFlow.swift */,
+				489FB9D126AC397A00641F21 /* MapFlow.swift */,
+				489FB9E726AC3DA500641F21 /* UserInfoFlow.swift */,
+			);
+			path = Flows;
+			sourceTree = "<group>";
+		};
+		489FB9D726AC3AB100641F21 /* MapScene */ = {
+			isa = PBXGroup;
+			children = (
+				489FB9D326AC3A4400641F21 /* MapViewController.swift */,
+				489FB9D526AC3A4B00641F21 /* MapViewModel.swift */,
+			);
+			path = MapScene;
+			sourceTree = "<group>";
+		};
+		489FB9D826AC3AB600641F21 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				489FB9E626AC3D0900641F21 /* UserInfoScene */,
+				489FB9E126AC3C4E00641F21 /* TimelineScene */,
+				489FB9D726AC3AB100641F21 /* MapScene */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		489FB9E126AC3C4E00641F21 /* TimelineScene */ = {
+			isa = PBXGroup;
+			children = (
+				489FB9DD26AC3C0200641F21 /* FeedViewController.swift */,
+				489FB9DF26AC3C1500641F21 /* TimelineViewModel.swift */,
+			);
+			path = TimelineScene;
+			sourceTree = "<group>";
+		};
+		489FB9E626AC3D0900641F21 /* UserInfoScene */ = {
+			isa = PBXGroup;
+			children = (
+				489FB9E226AC3D0000641F21 /* UserInfoViewController.swift */,
+				489FB9E426AC3D0600641F21 /* UserInfoViewModel.swift */,
+			);
+			path = UserInfoScene;
+			sourceTree = "<group>";
+		};
 		48F33B1926AC2BBC00A704C7 = {
 			isa = PBXGroup;
 			children = (
@@ -110,10 +179,8 @@
 			children = (
 				48F33B2526AC2BBC00A704C7 /* AppDelegate.swift */,
 				48F33B2726AC2BBC00A704C7 /* SceneDelegate.swift */,
-				4898971C26AC3527000499AC /* AppStepper.swift */,
-				4898972026AC356F000499AC /* AppFlow.swift */,
-				4898971E26AC353F000499AC /* AppSteps.swift */,
-				4898972426AC36DC000499AC /* HomeFlow.swift */,
+				489FB9D826AC3AB600641F21 /* Scenes */,
+				489FB9D026AC394D00641F21 /* Flows */,
 				48F33B2926AC2BBC00A704C7 /* ViewController.swift */,
 				48F33B2E26AC2BBD00A704C7 /* Assets.xcassets */,
 				48F33B3026AC2BBD00A704C7 /* LaunchScreen.storyboard */,
@@ -228,13 +295,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				489FB9E826AC3DA500641F21 /* UserInfoFlow.swift in Sources */,
 				48F33B2A26AC2BBC00A704C7 /* ViewController.swift in Sources */,
+				489FB9D626AC3A4B00641F21 /* MapViewModel.swift in Sources */,
 				4898972126AC356F000499AC /* AppFlow.swift in Sources */,
 				4898972526AC36DC000499AC /* HomeFlow.swift in Sources */,
 				48F33B2626AC2BBC00A704C7 /* AppDelegate.swift in Sources */,
+				489FB9E526AC3D0600641F21 /* UserInfoViewModel.swift in Sources */,
+				489FB9D426AC3A4400641F21 /* MapViewController.swift in Sources */,
 				48F33B2826AC2BBC00A704C7 /* SceneDelegate.swift in Sources */,
+				489FB9DA26AC3BD400641F21 /* TimelineFlow.swift in Sources */,
 				4898971D26AC3527000499AC /* AppStepper.swift in Sources */,
+				489FB9D226AC397A00641F21 /* MapFlow.swift in Sources */,
+				489FB9E326AC3D0000641F21 /* UserInfoViewController.swift in Sources */,
+				489FB9DE26AC3C0200641F21 /* FeedViewController.swift in Sources */,
 				4898971F26AC353F000499AC /* AppSteps.swift in Sources */,
+				489FB9E026AC3C1500641F21 /* TimelineViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

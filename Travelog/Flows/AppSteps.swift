@@ -19,9 +19,9 @@ enum AppSteps: Step {
   case homeIsRequired
 
   // Screens
-  case feedIsRequired
+  case timelineIsRequired
   case mapScreenIsRequired
-  case infoIsRequired
+  case userInfoIsRequired
 
   case filterOptionRequired
   case filterSelected
