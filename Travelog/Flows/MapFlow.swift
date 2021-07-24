@@ -11,7 +11,6 @@ import UIKit
 // MARK: - MapFlow
 
 final class MapFlow: Flow {
-
   lazy var rootViewController = UINavigationController()
 
   var root: Presentable { rootViewController }
@@ -28,6 +27,7 @@ final class MapFlow: Flow {
 }
 
 // MARK: - Navigating
+
 extension MapFlow {
   private func navigateToMap() -> FlowContributors {
     let vc = MapViewController()

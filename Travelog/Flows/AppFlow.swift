@@ -28,7 +28,7 @@ final class AppFlow: Flow {
     case .homeIsRequired:
       return navigateToMain()
     case .loginIsRequierd:
-      return navigateToMain()
+      return navigateToLogin()
     default:
       return .none
     }
@@ -55,8 +55,15 @@ extension AppFlow {
   }
 
   private func navigateToLogin() -> FlowContributors {
-    // TODO: Login Scene 구현 시 추가
-    navigateToMain()
-  }
+    let flow = LoginFlow()
 
+    Flows.use(flow, when: .created) { root in
+      self.window.rootViewController = root
+    }
+
+    return .one(flowContributor: .contribute(
+      withNextPresentable: flow,
+      withNextStepper: OneStepper(withSingleStep: AppSteps.loginIsRequierd))
+    )
+  }
 }

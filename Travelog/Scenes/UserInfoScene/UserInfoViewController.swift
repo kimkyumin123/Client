@@ -7,4 +7,4 @@
 
 import UIKit
 
-final class UserInfoViewController: UIViewController { }
+final class UserInfoViewController: UIViewController {}

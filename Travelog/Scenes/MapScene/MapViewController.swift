@@ -7,4 +7,4 @@
 
 import UIKit
 
-final class MapViewController: UIViewController { }
+final class MapViewController: UIViewController {}

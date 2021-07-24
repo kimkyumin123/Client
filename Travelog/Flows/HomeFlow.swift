@@ -29,10 +29,9 @@ final class HomeFlow: Flow {
   // MARK: Private
 
   private let rootViewController = UITabBarController()
-
 }
 
-// MARK: -  Navigating
+// MARK: - Navigating
 
 extension HomeFlow {
   private func navigateToHome() -> FlowContributors {

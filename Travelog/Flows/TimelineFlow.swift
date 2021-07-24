@@ -11,7 +11,6 @@ import UIKit
 // MARK: - TimelineFlow
 
 final class TimelineFlow: Flow {
-
   lazy var rootViewController = UINavigationController()
 
   var root: Presentable { rootViewController }
@@ -28,6 +27,7 @@ final class TimelineFlow: Flow {
 }
 
 // MARK: - Navigating
+
 extension TimelineFlow {
   private func navigateToTimeline() -> FlowContributors {
     let vc = TimelineViewController()

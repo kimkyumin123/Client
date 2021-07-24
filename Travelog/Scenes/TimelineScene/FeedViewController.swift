@@ -7,4 +7,4 @@
 
 import UIKit
 
-final class TimelineViewController: UIViewController { }
+final class TimelineViewController: UIViewController {}

@@ -1,25 +1,27 @@
 //
-//  UserInfoFlow.swift
+//  LoginFlow.swift
 //  Travelog
 //
-//  Created by JK on 2021/07/24.
+//  Created by JK on 2021/07/25.
 //
 
 import RxFlow
 import UIKit
 
-// MARK: - UserInfoFlow
+// MARK: - LoginFlow
 
-final class UserInfoFlow: Flow {
-  lazy var rootViewController = UINavigationController()
+final class LoginFlow: Flow {
+  lazy var rootViewController = UINavigationController().then {
+    $0.navigationBar.isHidden = true
+  }
 
   var root: Presentable { rootViewController }
 
   func navigate(to step: Step) -> FlowContributors {
     guard let step = step as? AppSteps else { return .none }
     switch step {
-    case .userInfoIsRequired:
-      return navigateTouserInfo()
+    case .loginIsRequierd:
+      return navigateToLogin()
     default:
       return .none
     }
@@ -28,10 +30,10 @@ final class UserInfoFlow: Flow {
 
 // MARK: - Navigating
 
-extension UserInfoFlow {
-  private func navigateTouserInfo() -> FlowContributors {
-    let vc = UserInfoViewController()
-    let vm = UserInfoViewModel()
+extension LoginFlow {
+  private func navigateToLogin() -> FlowContributors {
+    let vc = LoginViewController()
+    let vm = LoginViewModel()
     rootViewController.setViewControllers([vc], animated: false)
     return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: vm))
   }

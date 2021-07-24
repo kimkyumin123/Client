@@ -18,5 +18,4 @@ final class AppStepper: Stepper {
   var initialStep: Step {
     isLogined ? AppSteps.homeIsRequired : AppSteps.loginIsRequierd
   }
-
 }
