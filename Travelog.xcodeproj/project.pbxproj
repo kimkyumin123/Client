@@ -7,24 +7,34 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4898971026AC31EA000499AC /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 4898970F26AC31EA000499AC /* KakaoSDKUser */; };
+		4898971226AC31EA000499AC /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 4898971126AC31EA000499AC /* KakaoSDKAuth */; };
+		4898971426AC31EA000499AC /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 4898971326AC31EA000499AC /* KakaoSDKCommon */; };
+		4898971726AC3495000499AC /* RxKakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 4898971626AC3495000499AC /* RxKakaoSDKUser */; };
+		4898971926AC3495000499AC /* RxKakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 4898971826AC3495000499AC /* RxKakaoSDKCommon */; };
+		4898971B26AC3495000499AC /* RxKakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 4898971A26AC3495000499AC /* RxKakaoSDKAuth */; };
 		48F33B2626AC2BBC00A704C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F33B2526AC2BBC00A704C7 /* AppDelegate.swift */; };
 		48F33B2826AC2BBC00A704C7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F33B2726AC2BBC00A704C7 /* SceneDelegate.swift */; };
 		48F33B2A26AC2BBC00A704C7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F33B2926AC2BBC00A704C7 /* ViewController.swift */; };
 		48F33B2F26AC2BBD00A704C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48F33B2E26AC2BBD00A704C7 /* Assets.xcassets */; };
 		48F33B3226AC2BBD00A704C7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48F33B3026AC2BBD00A704C7 /* LaunchScreen.storyboard */; };
-		48F33B3B26AC2D8F00A704C7 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 48F33B3A26AC2D8F00A704C7 /* RxSwift */; };
-		48F33B3D26AC2D8F00A704C7 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 48F33B3C26AC2D8F00A704C7 /* RxCocoa */; };
-		48F33B3F26AC2D8F00A704C7 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 48F33B3E26AC2D8F00A704C7 /* RxRelay */; };
 		48F33B4226AC2DE200A704C7 /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = 48F33B4126AC2DE200A704C7 /* RxGesture */; };
-		48F33B4526AC2E0000A704C7 /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 48F33B4426AC2E0000A704C7 /* KakaoSDKUser */; };
-		48F33B4726AC2E0000A704C7 /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 48F33B4626AC2E0000A704C7 /* KakaoSDKAuth */; };
-		48F33B4926AC2E0000A704C7 /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 48F33B4826AC2E0000A704C7 /* KakaoSDKCommon */; };
-		48F33B4C26AC2E1100A704C7 /* RxKakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 48F33B4B26AC2E1100A704C7 /* RxKakaoSDKUser */; };
-		48F33B4E26AC2E1100A704C7 /* RxKakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 48F33B4D26AC2E1100A704C7 /* RxKakaoSDKCommon */; };
-		48F33B5026AC2E1100A704C7 /* RxKakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 48F33B4F26AC2E1100A704C7 /* RxKakaoSDKAuth */; };
 		48F33B5326AC2E1F00A704C7 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 48F33B5226AC2E1F00A704C7 /* Then */; };
 		48F33B5626AC2E2B00A704C7 /* RxFlow in Frameworks */ = {isa = PBXBuildFile; productRef = 48F33B5526AC2E2B00A704C7 /* RxFlow */; };
 		48F33B5926AC2E3D00A704C7 /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = 48F33B5826AC2E3D00A704C7 /* ReactorKit */; };
+		48F33B5C26AC2F5300A704C7 /* ApolloCodegenLib in Frameworks */ = {isa = PBXBuildFile; productRef = 48F33B5B26AC2F5300A704C7 /* ApolloCodegenLib */; };
+		48F33B5E26AC2F5300A704C7 /* ApolloSQLite in Frameworks */ = {isa = PBXBuildFile; productRef = 48F33B5D26AC2F5300A704C7 /* ApolloSQLite */; };
+		48F33B6026AC2F5300A704C7 /* ApolloUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 48F33B5F26AC2F5300A704C7 /* ApolloUtils */; };
+		48F33B6226AC2F5300A704C7 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = 48F33B6126AC2F5300A704C7 /* Apollo */; };
+		48F33B6426AC2F5300A704C7 /* ApolloWebSocket in Frameworks */ = {isa = PBXBuildFile; productRef = 48F33B6326AC2F5300A704C7 /* ApolloWebSocket */; };
+		48F33B6626AC2F5300A704C7 /* ApolloAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 48F33B6526AC2F5300A704C7 /* ApolloAPI */; };
+		48F33B6926AC2F7C00A704C7 /* FlexLayoutYogaKit in Frameworks */ = {isa = PBXBuildFile; productRef = 48F33B6826AC2F7C00A704C7 /* FlexLayoutYogaKit */; };
+		48F33B6B26AC2F7C00A704C7 /* FlexLayoutYoga in Frameworks */ = {isa = PBXBuildFile; productRef = 48F33B6A26AC2F7C00A704C7 /* FlexLayoutYoga */; };
+		48F33B6D26AC2F7C00A704C7 /* FlexLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 48F33B6C26AC2F7C00A704C7 /* FlexLayout */; };
+		48F33B7026AC2F8A00A704C7 /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 48F33B6F26AC2F8A00A704C7 /* PinLayout */; };
+		48F33B7A26AC30A300A704C7 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 48F33B7926AC30A300A704C7 /* RxSwift */; };
+		48F33B7C26AC30A300A704C7 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 48F33B7B26AC30A300A704C7 /* RxCocoa */; };
+		48F33B7E26AC30A300A704C7 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 48F33B7D26AC30A300A704C7 /* RxRelay */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,18 +53,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				48F33B5626AC2E2B00A704C7 /* RxFlow in Frameworks */,
-				48F33B4C26AC2E1100A704C7 /* RxKakaoSDKUser in Frameworks */,
-				48F33B3F26AC2D8F00A704C7 /* RxRelay in Frameworks */,
+				48F33B5E26AC2F5300A704C7 /* ApolloSQLite in Frameworks */,
+				48F33B7E26AC30A300A704C7 /* RxRelay in Frameworks */,
+				48F33B7C26AC30A300A704C7 /* RxCocoa in Frameworks */,
+				48F33B6626AC2F5300A704C7 /* ApolloAPI in Frameworks */,
+				48F33B7026AC2F8A00A704C7 /* PinLayout in Frameworks */,
+				4898971B26AC3495000499AC /* RxKakaoSDKAuth in Frameworks */,
+				4898971926AC3495000499AC /* RxKakaoSDKCommon in Frameworks */,
+				4898971226AC31EA000499AC /* KakaoSDKAuth in Frameworks */,
+				48F33B6026AC2F5300A704C7 /* ApolloUtils in Frameworks */,
+				4898971426AC31EA000499AC /* KakaoSDKCommon in Frameworks */,
+				48F33B7A26AC30A300A704C7 /* RxSwift in Frameworks */,
+				4898971026AC31EA000499AC /* KakaoSDKUser in Frameworks */,
+				48F33B6926AC2F7C00A704C7 /* FlexLayoutYogaKit in Frameworks */,
+				4898971726AC3495000499AC /* RxKakaoSDKUser in Frameworks */,
 				48F33B5326AC2E1F00A704C7 /* Then in Frameworks */,
-				48F33B4926AC2E0000A704C7 /* KakaoSDKCommon in Frameworks */,
+				48F33B6B26AC2F7C00A704C7 /* FlexLayoutYoga in Frameworks */,
+				48F33B6D26AC2F7C00A704C7 /* FlexLayout in Frameworks */,
+				48F33B6426AC2F5300A704C7 /* ApolloWebSocket in Frameworks */,
 				48F33B5926AC2E3D00A704C7 /* ReactorKit in Frameworks */,
-				48F33B5026AC2E1100A704C7 /* RxKakaoSDKAuth in Frameworks */,
-				48F33B4E26AC2E1100A704C7 /* RxKakaoSDKCommon in Frameworks */,
-				48F33B3D26AC2D8F00A704C7 /* RxCocoa in Frameworks */,
+				48F33B6226AC2F5300A704C7 /* Apollo in Frameworks */,
+				48F33B5C26AC2F5300A704C7 /* ApolloCodegenLib in Frameworks */,
 				48F33B4226AC2DE200A704C7 /* RxGesture in Frameworks */,
-				48F33B4526AC2E0000A704C7 /* KakaoSDKUser in Frameworks */,
-				48F33B3B26AC2D8F00A704C7 /* RxSwift in Frameworks */,
-				48F33B4726AC2E0000A704C7 /* KakaoSDKAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,19 +127,29 @@
 			);
 			name = Travelog;
 			packageProductDependencies = (
-				48F33B3A26AC2D8F00A704C7 /* RxSwift */,
-				48F33B3C26AC2D8F00A704C7 /* RxCocoa */,
-				48F33B3E26AC2D8F00A704C7 /* RxRelay */,
 				48F33B4126AC2DE200A704C7 /* RxGesture */,
-				48F33B4426AC2E0000A704C7 /* KakaoSDKUser */,
-				48F33B4626AC2E0000A704C7 /* KakaoSDKAuth */,
-				48F33B4826AC2E0000A704C7 /* KakaoSDKCommon */,
-				48F33B4B26AC2E1100A704C7 /* RxKakaoSDKUser */,
-				48F33B4D26AC2E1100A704C7 /* RxKakaoSDKCommon */,
-				48F33B4F26AC2E1100A704C7 /* RxKakaoSDKAuth */,
 				48F33B5226AC2E1F00A704C7 /* Then */,
 				48F33B5526AC2E2B00A704C7 /* RxFlow */,
 				48F33B5826AC2E3D00A704C7 /* ReactorKit */,
+				48F33B5B26AC2F5300A704C7 /* ApolloCodegenLib */,
+				48F33B5D26AC2F5300A704C7 /* ApolloSQLite */,
+				48F33B5F26AC2F5300A704C7 /* ApolloUtils */,
+				48F33B6126AC2F5300A704C7 /* Apollo */,
+				48F33B6326AC2F5300A704C7 /* ApolloWebSocket */,
+				48F33B6526AC2F5300A704C7 /* ApolloAPI */,
+				48F33B6826AC2F7C00A704C7 /* FlexLayoutYogaKit */,
+				48F33B6A26AC2F7C00A704C7 /* FlexLayoutYoga */,
+				48F33B6C26AC2F7C00A704C7 /* FlexLayout */,
+				48F33B6F26AC2F8A00A704C7 /* PinLayout */,
+				48F33B7926AC30A300A704C7 /* RxSwift */,
+				48F33B7B26AC30A300A704C7 /* RxCocoa */,
+				48F33B7D26AC30A300A704C7 /* RxRelay */,
+				4898970F26AC31EA000499AC /* KakaoSDKUser */,
+				4898971126AC31EA000499AC /* KakaoSDKAuth */,
+				4898971326AC31EA000499AC /* KakaoSDKCommon */,
+				4898971626AC3495000499AC /* RxKakaoSDKUser */,
+				4898971826AC3495000499AC /* RxKakaoSDKCommon */,
+				4898971A26AC3495000499AC /* RxKakaoSDKAuth */,
 			);
 			productName = Travelog;
 			productReference = 48F33B2226AC2BBC00A704C7 /* Travelog.app */;
@@ -149,13 +179,16 @@
 			);
 			mainGroup = 48F33B1926AC2BBC00A704C7;
 			packageReferences = (
-				48F33B3926AC2D8F00A704C7 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				48F33B4026AC2DE200A704C7 /* XCRemoteSwiftPackageReference "RxGesture" */,
-				48F33B4326AC2E0000A704C7 /* XCRemoteSwiftPackageReference "KakaoSDK" */,
-				48F33B4A26AC2E1100A704C7 /* XCRemoteSwiftPackageReference "RxKakaoSDK" */,
 				48F33B5126AC2E1F00A704C7 /* XCRemoteSwiftPackageReference "Then" */,
 				48F33B5426AC2E2B00A704C7 /* XCRemoteSwiftPackageReference "RxFlow" */,
 				48F33B5726AC2E3D00A704C7 /* XCRemoteSwiftPackageReference "ReactorKit" */,
+				48F33B5A26AC2F5300A704C7 /* XCRemoteSwiftPackageReference "apollo-ios" */,
+				48F33B6726AC2F7C00A704C7 /* XCRemoteSwiftPackageReference "FlexLayout" */,
+				48F33B6E26AC2F8900A704C7 /* XCRemoteSwiftPackageReference "PinLayout" */,
+				48F33B7826AC30A300A704C7 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				4898970E26AC31EA000499AC /* XCRemoteSwiftPackageReference "KakaoSDK" */,
+				4898971526AC3495000499AC /* XCRemoteSwiftPackageReference "RxKakaoSDK" */,
 			);
 			productRefGroup = 48F33B2326AC2BBC00A704C7 /* Products */;
 			projectDirPath = "";
@@ -326,11 +359,17 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 78X32W2D44;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					"FLEXLAYOUT_SWIFT_PACKAGE=1",
+				);
 				INFOPLIST_FILE = Travelog/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.sonjk.Travelog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -345,11 +384,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 78X32W2D44;
+				GCC_PREPROCESSOR_DEFINITIONS = "FLEXLAYOUT_SWIFT_PACKAGE=1";
 				INFOPLIST_FILE = Travelog/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.sonjk.Travelog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -381,12 +422,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		48F33B3926AC2D8F00A704C7 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+		4898970E26AC31EA000499AC /* XCRemoteSwiftPackageReference "KakaoSDK" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			repositoryURL = "https://github.com/elppaaa/KakaoSDK.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 6.2.0;
+				minimumVersion = 2.6.0;
+			};
+		};
+		4898971526AC3495000499AC /* XCRemoteSwiftPackageReference "RxKakaoSDK" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/elppaaa/RxKakaoSDK.git";
+			requirement = {
+				branch = main;
+				kind = branch;
 			};
 		};
 		48F33B4026AC2DE200A704C7 /* XCRemoteSwiftPackageReference "RxGesture" */ = {
@@ -395,22 +444,6 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 4.0.2;
-			};
-		};
-		48F33B4326AC2E0000A704C7 /* XCRemoteSwiftPackageReference "KakaoSDK" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/elppaaa/KakaoSDK";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-		48F33B4A26AC2E1100A704C7 /* XCRemoteSwiftPackageReference "RxKakaoSDK" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/elppaaa/RxKakaoSDK";
-			requirement = {
-				branch = main;
-				kind = branch;
 			};
 		};
 		48F33B5126AC2E1F00A704C7 /* XCRemoteSwiftPackageReference "Then" */ = {
@@ -437,58 +470,75 @@
 				minimumVersion = 3.0.0;
 			};
 		};
+		48F33B5A26AC2F5300A704C7 /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apollographql/apollo-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.45.0;
+			};
+		};
+		48F33B6726AC2F7C00A704C7 /* XCRemoteSwiftPackageReference "FlexLayout" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/layoutBox/FlexLayout";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.3.21;
+			};
+		};
+		48F33B6E26AC2F8900A704C7 /* XCRemoteSwiftPackageReference "PinLayout" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/layoutBox/PinLayout";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.10.0;
+			};
+		};
+		48F33B7826AC30A300A704C7 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.2.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		48F33B3A26AC2D8F00A704C7 /* RxSwift */ = {
+		4898970F26AC31EA000499AC /* KakaoSDKUser */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 48F33B3926AC2D8F00A704C7 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxSwift;
+			package = 4898970E26AC31EA000499AC /* XCRemoteSwiftPackageReference "KakaoSDK" */;
+			productName = KakaoSDKUser;
 		};
-		48F33B3C26AC2D8F00A704C7 /* RxCocoa */ = {
+		4898971126AC31EA000499AC /* KakaoSDKAuth */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 48F33B3926AC2D8F00A704C7 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxCocoa;
+			package = 4898970E26AC31EA000499AC /* XCRemoteSwiftPackageReference "KakaoSDK" */;
+			productName = KakaoSDKAuth;
 		};
-		48F33B3E26AC2D8F00A704C7 /* RxRelay */ = {
+		4898971326AC31EA000499AC /* KakaoSDKCommon */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 48F33B3926AC2D8F00A704C7 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxRelay;
+			package = 4898970E26AC31EA000499AC /* XCRemoteSwiftPackageReference "KakaoSDK" */;
+			productName = KakaoSDKCommon;
+		};
+		4898971626AC3495000499AC /* RxKakaoSDKUser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4898971526AC3495000499AC /* XCRemoteSwiftPackageReference "RxKakaoSDK" */;
+			productName = RxKakaoSDKUser;
+		};
+		4898971826AC3495000499AC /* RxKakaoSDKCommon */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4898971526AC3495000499AC /* XCRemoteSwiftPackageReference "RxKakaoSDK" */;
+			productName = RxKakaoSDKCommon;
+		};
+		4898971A26AC3495000499AC /* RxKakaoSDKAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4898971526AC3495000499AC /* XCRemoteSwiftPackageReference "RxKakaoSDK" */;
+			productName = RxKakaoSDKAuth;
 		};
 		48F33B4126AC2DE200A704C7 /* RxGesture */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 48F33B4026AC2DE200A704C7 /* XCRemoteSwiftPackageReference "RxGesture" */;
 			productName = RxGesture;
-		};
-		48F33B4426AC2E0000A704C7 /* KakaoSDKUser */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 48F33B4326AC2E0000A704C7 /* XCRemoteSwiftPackageReference "KakaoSDK" */;
-			productName = KakaoSDKUser;
-		};
-		48F33B4626AC2E0000A704C7 /* KakaoSDKAuth */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 48F33B4326AC2E0000A704C7 /* XCRemoteSwiftPackageReference "KakaoSDK" */;
-			productName = KakaoSDKAuth;
-		};
-		48F33B4826AC2E0000A704C7 /* KakaoSDKCommon */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 48F33B4326AC2E0000A704C7 /* XCRemoteSwiftPackageReference "KakaoSDK" */;
-			productName = KakaoSDKCommon;
-		};
-		48F33B4B26AC2E1100A704C7 /* RxKakaoSDKUser */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 48F33B4A26AC2E1100A704C7 /* XCRemoteSwiftPackageReference "RxKakaoSDK" */;
-			productName = RxKakaoSDKUser;
-		};
-		48F33B4D26AC2E1100A704C7 /* RxKakaoSDKCommon */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 48F33B4A26AC2E1100A704C7 /* XCRemoteSwiftPackageReference "RxKakaoSDK" */;
-			productName = RxKakaoSDKCommon;
-		};
-		48F33B4F26AC2E1100A704C7 /* RxKakaoSDKAuth */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 48F33B4A26AC2E1100A704C7 /* XCRemoteSwiftPackageReference "RxKakaoSDK" */;
-			productName = RxKakaoSDKAuth;
 		};
 		48F33B5226AC2E1F00A704C7 /* Then */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -504,6 +554,71 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 48F33B5726AC2E3D00A704C7 /* XCRemoteSwiftPackageReference "ReactorKit" */;
 			productName = ReactorKit;
+		};
+		48F33B5B26AC2F5300A704C7 /* ApolloCodegenLib */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48F33B5A26AC2F5300A704C7 /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = ApolloCodegenLib;
+		};
+		48F33B5D26AC2F5300A704C7 /* ApolloSQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48F33B5A26AC2F5300A704C7 /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = ApolloSQLite;
+		};
+		48F33B5F26AC2F5300A704C7 /* ApolloUtils */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48F33B5A26AC2F5300A704C7 /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = ApolloUtils;
+		};
+		48F33B6126AC2F5300A704C7 /* Apollo */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48F33B5A26AC2F5300A704C7 /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = Apollo;
+		};
+		48F33B6326AC2F5300A704C7 /* ApolloWebSocket */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48F33B5A26AC2F5300A704C7 /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = ApolloWebSocket;
+		};
+		48F33B6526AC2F5300A704C7 /* ApolloAPI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48F33B5A26AC2F5300A704C7 /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = ApolloAPI;
+		};
+		48F33B6826AC2F7C00A704C7 /* FlexLayoutYogaKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48F33B6726AC2F7C00A704C7 /* XCRemoteSwiftPackageReference "FlexLayout" */;
+			productName = FlexLayoutYogaKit;
+		};
+		48F33B6A26AC2F7C00A704C7 /* FlexLayoutYoga */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48F33B6726AC2F7C00A704C7 /* XCRemoteSwiftPackageReference "FlexLayout" */;
+			productName = FlexLayoutYoga;
+		};
+		48F33B6C26AC2F7C00A704C7 /* FlexLayout */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48F33B6726AC2F7C00A704C7 /* XCRemoteSwiftPackageReference "FlexLayout" */;
+			productName = FlexLayout;
+		};
+		48F33B6F26AC2F8A00A704C7 /* PinLayout */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48F33B6E26AC2F8900A704C7 /* XCRemoteSwiftPackageReference "PinLayout" */;
+			productName = PinLayout;
+		};
+		48F33B7926AC30A300A704C7 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48F33B7826AC30A300A704C7 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		48F33B7B26AC30A300A704C7 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48F33B7826AC30A300A704C7 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		48F33B7D26AC30A300A704C7 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48F33B7826AC30A300A704C7 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
