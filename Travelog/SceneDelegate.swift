@@ -6,16 +6,19 @@
 //
 
 import UIKit
+import RxFlow
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
   var window: UIWindow?
+  let coordinator = FlowCoordinator()
 
   func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
     guard let windowScene = (scene as? UIWindowScene) else { return }
-    window = UIWindow(windowScene: windowScene)
-    window?.rootViewController = ViewController()
-    window?.makeKeyAndVisible()
+    let window = UIWindow(windowScene: windowScene)
+    self.window = window
+    coordinator.coordinate(flow: AppFlow(window: window), with: AppStepper())
+    window.makeKeyAndVisible()
   }
 
   func sceneDidDisconnect(_ scene: UIScene) {

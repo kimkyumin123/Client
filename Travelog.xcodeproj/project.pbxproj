@@ -13,6 +13,10 @@
 		4898971726AC3495000499AC /* RxKakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 4898971626AC3495000499AC /* RxKakaoSDKUser */; };
 		4898971926AC3495000499AC /* RxKakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 4898971826AC3495000499AC /* RxKakaoSDKCommon */; };
 		4898971B26AC3495000499AC /* RxKakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 4898971A26AC3495000499AC /* RxKakaoSDKAuth */; };
+		4898971D26AC3527000499AC /* AppStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4898971C26AC3527000499AC /* AppStepper.swift */; };
+		4898971F26AC353F000499AC /* AppSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4898971E26AC353F000499AC /* AppSteps.swift */; };
+		4898972126AC356F000499AC /* AppFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4898972026AC356F000499AC /* AppFlow.swift */; };
+		4898972526AC36DC000499AC /* HomeFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4898972426AC36DC000499AC /* HomeFlow.swift */; };
 		48F33B2626AC2BBC00A704C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F33B2526AC2BBC00A704C7 /* AppDelegate.swift */; };
 		48F33B2826AC2BBC00A704C7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F33B2726AC2BBC00A704C7 /* SceneDelegate.swift */; };
 		48F33B2A26AC2BBC00A704C7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F33B2926AC2BBC00A704C7 /* ViewController.swift */; };
@@ -38,6 +42,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4898971C26AC3527000499AC /* AppStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStepper.swift; sourceTree = "<group>"; };
+		4898971E26AC353F000499AC /* AppSteps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSteps.swift; sourceTree = "<group>"; };
+		4898972026AC356F000499AC /* AppFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlow.swift; sourceTree = "<group>"; };
+		4898972426AC36DC000499AC /* HomeFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFlow.swift; sourceTree = "<group>"; };
 		48F33B2226AC2BBC00A704C7 /* Travelog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Travelog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48F33B2526AC2BBC00A704C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48F33B2726AC2BBC00A704C7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -102,6 +110,10 @@
 			children = (
 				48F33B2526AC2BBC00A704C7 /* AppDelegate.swift */,
 				48F33B2726AC2BBC00A704C7 /* SceneDelegate.swift */,
+				4898971C26AC3527000499AC /* AppStepper.swift */,
+				4898972026AC356F000499AC /* AppFlow.swift */,
+				4898971E26AC353F000499AC /* AppSteps.swift */,
+				4898972426AC36DC000499AC /* HomeFlow.swift */,
 				48F33B2926AC2BBC00A704C7 /* ViewController.swift */,
 				48F33B2E26AC2BBD00A704C7 /* Assets.xcassets */,
 				48F33B3026AC2BBD00A704C7 /* LaunchScreen.storyboard */,
@@ -217,8 +229,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				48F33B2A26AC2BBC00A704C7 /* ViewController.swift in Sources */,
+				4898972126AC356F000499AC /* AppFlow.swift in Sources */,
+				4898972526AC36DC000499AC /* HomeFlow.swift in Sources */,
 				48F33B2626AC2BBC00A704C7 /* AppDelegate.swift in Sources */,
 				48F33B2826AC2BBC00A704C7 /* SceneDelegate.swift in Sources */,
+				4898971D26AC3527000499AC /* AppStepper.swift in Sources */,
+				4898971F26AC353F000499AC /* AppSteps.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
