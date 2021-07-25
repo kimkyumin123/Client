@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		482A6FC526AD71F9001BF0BD /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482A6FC426AD71F9001BF0BD /* NSObject+Extension.swift */; };
+		482A6FC726AD7267001BF0BD /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482A6FC626AD7267001BF0BD /* CommentCell.swift */; };
 		4898971026AC31EA000499AC /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 4898970F26AC31EA000499AC /* KakaoSDKUser */; };
 		4898971226AC31EA000499AC /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 4898971126AC31EA000499AC /* KakaoSDKAuth */; };
 		4898971426AC31EA000499AC /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 4898971326AC31EA000499AC /* KakaoSDKCommon */; };
@@ -59,6 +61,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		482A6FC426AD71F9001BF0BD /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
+		482A6FC626AD7267001BF0BD /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		4898971C26AC3527000499AC /* AppStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStepper.swift; sourceTree = "<group>"; };
 		4898971E26AC353F000499AC /* AppSteps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSteps.swift; sourceTree = "<group>"; };
 		4898972026AC356F000499AC /* AppFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlow.swift; sourceTree = "<group>"; };
@@ -224,6 +228,7 @@
 			children = (
 				48F65C5C26AC719C009B15BE /* AppleLoginButton.swift */,
 				48F65C6926AC8D5A009B15BE /* ImageScrollView.swift */,
+				482A6FC626AD7267001BF0BD /* CommentCell.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -232,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				48F65C6026AC71F6009B15BE /* NSLayoutConstraint+Extension.swift */,
+				482A6FC426AD71F9001BF0BD /* NSObject+Extension.swift */,
 				48F65C6126AC71F6009B15BE /* UIColor+Extension.swift */,
 			);
 			path = Utils;
@@ -375,8 +381,10 @@
 				48F33B2626AC2BBC00A704C7 /* AppDelegate.swift in Sources */,
 				489FB9E526AC3D0600641F21 /* UserInfoViewModel.swift in Sources */,
 				489FB9D426AC3A4400641F21 /* MapViewController.swift in Sources */,
+				482A6FC526AD71F9001BF0BD /* NSObject+Extension.swift in Sources */,
 				489FB9ED26AC42AC00641F21 /* LoginViewModel.swift in Sources */,
 				48F33B2826AC2BBC00A704C7 /* SceneDelegate.swift in Sources */,
+				482A6FC726AD7267001BF0BD /* CommentCell.swift in Sources */,
 				489FB9DA26AC3BD400641F21 /* TimelineFlow.swift in Sources */,
 				4898971D26AC3527000499AC /* AppStepper.swift in Sources */,
 				489FB9D226AC397A00641F21 /* MapFlow.swift in Sources */,
