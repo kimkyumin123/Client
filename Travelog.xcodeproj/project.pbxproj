@@ -21,7 +21,7 @@
 		489FB9D426AC3A4400641F21 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489FB9D326AC3A4400641F21 /* MapViewController.swift */; };
 		489FB9D626AC3A4B00641F21 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489FB9D526AC3A4B00641F21 /* MapViewModel.swift */; };
 		489FB9DA26AC3BD400641F21 /* TimelineFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489FB9D926AC3BD400641F21 /* TimelineFlow.swift */; };
-		489FB9DE26AC3C0200641F21 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489FB9DD26AC3C0200641F21 /* FeedViewController.swift */; };
+		489FB9DE26AC3C0200641F21 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489FB9DD26AC3C0200641F21 /* TimelineViewController.swift */; };
 		489FB9E026AC3C1500641F21 /* TimelineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489FB9DF26AC3C1500641F21 /* TimelineViewModel.swift */; };
 		489FB9E326AC3D0000641F21 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489FB9E226AC3D0000641F21 /* UserInfoViewController.swift */; };
 		489FB9E526AC3D0600641F21 /* UserInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489FB9E426AC3D0600641F21 /* UserInfoViewModel.swift */; };
@@ -55,6 +55,7 @@
 		48F65C6326AC71F6009B15BE /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F65C6126AC71F6009B15BE /* UIColor+Extension.swift */; };
 		48F65C6626AC747D009B15BE /* LoginFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F65C6526AC747D009B15BE /* LoginFlow.swift */; };
 		48F65C6826AC783D009B15BE /* ReviewPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F65C6726AC783D009B15BE /* ReviewPostCell.swift */; };
+		48F65C6A26AC8D5A009B15BE /* ImageScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F65C6926AC8D5A009B15BE /* ImageScrollView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,7 +67,7 @@
 		489FB9D326AC3A4400641F21 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		489FB9D526AC3A4B00641F21 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		489FB9D926AC3BD400641F21 /* TimelineFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineFlow.swift; sourceTree = "<group>"; };
-		489FB9DD26AC3C0200641F21 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		489FB9DD26AC3C0200641F21 /* TimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		489FB9DF26AC3C1500641F21 /* TimelineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewModel.swift; sourceTree = "<group>"; };
 		489FB9E226AC3D0000641F21 /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 		489FB9E426AC3D0600641F21 /* UserInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewModel.swift; sourceTree = "<group>"; };
@@ -85,6 +86,7 @@
 		48F65C6126AC71F6009B15BE /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		48F65C6526AC747D009B15BE /* LoginFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFlow.swift; sourceTree = "<group>"; };
 		48F65C6726AC783D009B15BE /* ReviewPostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPostCell.swift; sourceTree = "<group>"; };
+		48F65C6926AC8D5A009B15BE /* ImageScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageScrollView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,7 +161,7 @@
 		489FB9E126AC3C4E00641F21 /* TimelineScene */ = {
 			isa = PBXGroup;
 			children = (
-				489FB9DD26AC3C0200641F21 /* FeedViewController.swift */,
+				489FB9DD26AC3C0200641F21 /* TimelineViewController.swift */,
 				48F65C6726AC783D009B15BE /* ReviewPostCell.swift */,
 				489FB9DF26AC3C1500641F21 /* TimelineViewModel.swift */,
 			);
@@ -221,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				48F65C5C26AC719C009B15BE /* AppleLoginButton.swift */,
+				48F65C6926AC8D5A009B15BE /* ImageScrollView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -380,9 +383,10 @@
 				489FB9E326AC3D0000641F21 /* UserInfoViewController.swift in Sources */,
 				48F65C6826AC783D009B15BE /* ReviewPostCell.swift in Sources */,
 				489FB9EB26AC428000641F21 /* LoginViewController.swift in Sources */,
-				489FB9DE26AC3C0200641F21 /* FeedViewController.swift in Sources */,
+				489FB9DE26AC3C0200641F21 /* TimelineViewController.swift in Sources */,
 				489FB9EF26AC42B000641F21 /* LoginView.swift in Sources */,
 				4898971F26AC353F000499AC /* AppSteps.swift in Sources */,
+				48F65C6A26AC8D5A009B15BE /* ImageScrollView.swift in Sources */,
 				48F65C5D26AC719C009B15BE /* AppleLoginButton.swift in Sources */,
 				489FB9E026AC3C1500641F21 /* TimelineViewModel.swift in Sources */,
 			);

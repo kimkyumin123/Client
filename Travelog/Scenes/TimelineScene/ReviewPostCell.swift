@@ -43,18 +43,13 @@ final class ReviewPostCell: UIView {
 
   private(set) lazy var profileImage = UIImageView().then {
     $0.layer.cornerRadius = 20
+    $0.clipsToBounds = true
     $0.backgroundColor = .systemGray2
   }
 
-  var numberOfImage = 5
-
-  private(set) lazy var photoScrollView = UIView().then {
-    $0.backgroundColor = .systemGray3
-  }
+  private(set) lazy var imageScrollView = ImageScrollView()
 
   // MARK: Private
-
-  private lazy var scrollIndicator = UIPageControl()
 
   private let container = UIView()
 }
@@ -89,21 +84,17 @@ extension ReviewPostCell {
 
           $0.addItem(date)
         }
-        .marginBottom(30)
+        .marginBottom(25)
 
         // border
         $0.addItem().height(1).backgroundColor(.systemGray)
           .marginBottom(30)
 
         // image scrollView
-        $0.addItem(photoScrollView).width(100%).aspectRatio(1.0)
+        $0.addItem(imageScrollView).width(100%).aspectRatio(1.0)
           .marginBottom(10)
-
-        $0.addItem(scrollIndicator).alignSelf(.center)
-
       }
     }
   }
 
 }
-
