@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		48123D7B26B1A8EE0058CEDF /* SwiftUIPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48123D7A26B1A8EE0058CEDF /* SwiftUIPreview.swift */; };
+		48123D7D26B1A9070058CEDF /* PlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48123D7C26B1A9070058CEDF /* PlaceCell.swift */; };
 		482A6FC526AD71F9001BF0BD /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482A6FC426AD71F9001BF0BD /* NSObject+Extension.swift */; };
 		482A6FC726AD7267001BF0BD /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482A6FC626AD7267001BF0BD /* CommentCell.swift */; };
 		4898971026AC31EA000499AC /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 4898970F26AC31EA000499AC /* KakaoSDKUser */; };
@@ -64,6 +66,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		48123D7A26B1A8EE0058CEDF /* SwiftUIPreview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftUIPreview.swift; sourceTree = "<group>"; };
+		48123D7C26B1A9070058CEDF /* PlaceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceCell.swift; sourceTree = "<group>"; };
 		482A6FC426AD71F9001BF0BD /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
 		482A6FC626AD7267001BF0BD /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		4898971C26AC3527000499AC /* AppStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStepper.swift; sourceTree = "<group>"; };
@@ -235,6 +239,7 @@
 			children = (
 				48F65C5C26AC719C009B15BE /* AppleLoginButton.swift */,
 				48F65C6926AC8D5A009B15BE /* ImageScrollView.swift */,
+				48123D7C26B1A9070058CEDF /* PlaceCell.swift */,
 				48FB5FC626AD90FD008A33DE /* LoadingAlert.swift */,
 				482A6FC626AD7267001BF0BD /* CommentCell.swift */,
 			);
@@ -245,6 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				48F65C6026AC71F6009B15BE /* NSLayoutConstraint+Extension.swift */,
+				48123D7A26B1A8EE0058CEDF /* SwiftUIPreview.swift */,
 				482A6FC426AD71F9001BF0BD /* NSObject+Extension.swift */,
 				48F65C6126AC71F6009B15BE /* UIColor+Extension.swift */,
 			);
@@ -382,7 +388,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48123D7B26B1A8EE0058CEDF /* SwiftUIPreview.swift in Sources */,
 				48F65C6326AC71F6009B15BE /* UIColor+Extension.swift in Sources */,
+				48123D7D26B1A9070058CEDF /* PlaceCell.swift in Sources */,
 				489FB9E826AC3DA500641F21 /* UserInfoFlow.swift in Sources */,
 				48F65C6226AC71F6009B15BE /* NSLayoutConstraint+Extension.swift in Sources */,
 				489FB9D626AC3A4B00641F21 /* MapViewModel.swift in Sources */,
