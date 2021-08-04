@@ -26,6 +26,8 @@ only_rules:
 excluded:
   - Carthage
   - Pods
+  - iOSCodegenTemplate
+  - frameworks
 
 colon:
   apply_to_dictionaries: false
