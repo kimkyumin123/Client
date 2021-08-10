@@ -31,7 +31,8 @@
 		489FB9EB26AC428000641F21 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489FB9EA26AC427F00641F21 /* LoginViewController.swift */; };
 		489FB9ED26AC42AC00641F21 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489FB9EC26AC42AC00641F21 /* LoginViewModel.swift */; };
 		489FB9EF26AC42B000641F21 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489FB9EE26AC42B000641F21 /* LoginView.swift */; };
-		48D9106E26BABC2500F6601C /* NaverThirdPartyLogin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48D9106D26BABC2500F6601C /* NaverThirdPartyLogin.framework */; };
+		48C2DB1226BD8A9600877AB5 /* NaverThirdPartyLogin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48C2DB0E26BD8A7400877AB5 /* NaverThirdPartyLogin.framework */; };
+		48C2DB1326BD8A9600877AB5 /* NaverThirdPartyLogin.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48C2DB0E26BD8A7400877AB5 /* NaverThirdPartyLogin.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		48F33B2626AC2BBC00A704C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F33B2526AC2BBC00A704C7 /* AppDelegate.swift */; };
 		48F33B2826AC2BBC00A704C7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F33B2726AC2BBC00A704C7 /* SceneDelegate.swift */; };
 		48F33B2F26AC2BBD00A704C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48F33B2E26AC2BBD00A704C7 /* Assets.xcassets */; };
@@ -61,6 +62,20 @@
 		48F65C6A26AC8D5A009B15BE /* ImageScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F65C6926AC8D5A009B15BE /* ImageScrollView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		48C2DB1426BD8A9700877AB5 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				48C2DB1326BD8A9600877AB5 /* NaverThirdPartyLogin.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		482A6FC426AD71F9001BF0BD /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
 		482A6FC626AD7267001BF0BD /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
@@ -80,8 +95,8 @@
 		489FB9EA26AC427F00641F21 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		489FB9EC26AC42AC00641F21 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		489FB9EE26AC42B000641F21 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		48C2DB0E26BD8A7400877AB5 /* NaverThirdPartyLogin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NaverThirdPartyLogin.framework; path = frameworks/NaverThirdPartyLogin.framework; sourceTree = "<group>"; };
 		48D9106A26BABC1B00F6601C /* Travelog.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Travelog.xcodeproj; sourceTree = "<group>"; };
-		48D9106D26BABC2500F6601C /* NaverThirdPartyLogin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NaverThirdPartyLogin.framework; path = "frameworks/naveridlogin-sdk-ios/NaverThirdPartyLogin.framework"; sourceTree = "<group>"; };
 		48F33B2226AC2BBC00A704C7 /* Travelog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Travelog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48F33B2526AC2BBC00A704C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48F33B2726AC2BBC00A704C7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -105,7 +120,6 @@
 				48F33B5E26AC2F5300A704C7 /* ApolloSQLite in Frameworks */,
 				48F33B7E26AC30A300A704C7 /* RxRelay in Frameworks */,
 				48F33B7C26AC30A300A704C7 /* RxCocoa in Frameworks */,
-				48D9106E26BABC2500F6601C /* NaverThirdPartyLogin.framework in Frameworks */,
 				48F33B6626AC2F5300A704C7 /* ApolloAPI in Frameworks */,
 				48F33B7026AC2F8A00A704C7 /* PinLayout in Frameworks */,
 				4898971B26AC3495000499AC /* RxKakaoSDKAuth in Frameworks */,
@@ -120,6 +134,7 @@
 				48F33B5326AC2E1F00A704C7 /* Then in Frameworks */,
 				48F33B6B26AC2F7C00A704C7 /* FlexLayoutYoga in Frameworks */,
 				48F33B6D26AC2F7C00A704C7 /* FlexLayout in Frameworks */,
+				48C2DB1226BD8A9600877AB5 /* NaverThirdPartyLogin.framework in Frameworks */,
 				48F33B6426AC2F5300A704C7 /* ApolloWebSocket in Frameworks */,
 				48F33B5926AC2E3D00A704C7 /* ReactorKit in Frameworks */,
 				48F33B6226AC2F5300A704C7 /* Apollo in Frameworks */,
@@ -198,7 +213,7 @@
 		48D9106926BABC1B00F6601C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				48D9106D26BABC2500F6601C /* NaverThirdPartyLogin.framework */,
+				48C2DB0E26BD8A7400877AB5 /* NaverThirdPartyLogin.framework */,
 				48D9106A26BABC1B00F6601C /* Travelog.xcodeproj */,
 			);
 			name = Frameworks;
@@ -273,6 +288,7 @@
 				48F33B1E26AC2BBC00A704C7 /* Sources */,
 				48F33B1F26AC2BBC00A704C7 /* Frameworks */,
 				48F33B2026AC2BBC00A704C7 /* Resources */,
+				48C2DB1426BD8A9700877AB5 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -565,6 +581,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/frameworks/naveridlogin-sdk-ios",
+					"$(PROJECT_DIR)/frameworks",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -577,10 +594,11 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = dev.sonjk.Travelog;
+				PRODUCT_BUNDLE_IDENTIFIER = org.kimkyumin123.TraveLog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+				VALIDATE_WORKSPACE = YES;
 			};
 			name = Debug;
 		};
@@ -594,6 +612,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/frameworks/naveridlogin-sdk-ios",
+					"$(PROJECT_DIR)/frameworks",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = "FLEXLAYOUT_SWIFT_PACKAGE=1";
 				INFOPLIST_FILE = Travelog/Info.plist;
@@ -602,10 +621,11 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = dev.sonjk.Travelog;
+				PRODUCT_BUNDLE_IDENTIFIER = org.kimkyumin123.TraveLog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+				VALIDATE_WORKSPACE = YES;
 			};
 			name = Release;
 		};

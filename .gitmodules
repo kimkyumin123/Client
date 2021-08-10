@@ -1,6 +1,3 @@
-[submodule "frameworks/naveridlogin-sdk-ios"]
-	path = frameworks/naveridlogin-sdk-ios
-	url = https://github.com/naver/naveridlogin-sdk-ios.git
 [submodule "iOSCodegenTemplate"]
 	path = iOSCodegenTemplate
 	url = https://github.com/kimkyumin123/iOSCodegenTemplate.git

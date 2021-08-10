@@ -5,6 +5,7 @@
 //  Created by JK on 2021/07/24.
 //
 
+import NaverThirdPartyLogin
 import RxFlow
 import UIKit
 
@@ -19,6 +20,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     self.window = window
     coordinator.coordinate(flow: AppFlow(window: window), with: AppStepper())
     window.makeKeyAndVisible()
+  }
+
+  func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+    /**
+     naver id 로 로그인 처리
+     NaverThirdPartyLoginConnection
+     .getSharedInstance()
+     .receiveAccessToken(URLContexts.first?.url)
+     */
   }
 
   func sceneDidDisconnect(_: UIScene) {

@@ -5,13 +5,26 @@
 //  Created by JK on 2021/07/24.
 //
 
+import NaverThirdPartyLogin
 import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
-    true
+
+    // naver id login
+    let instance = NaverThirdPartyLoginConnection.getSharedInstance()
+    instance?.isNaverAppOauthEnable = true
+    instance?.isInAppOauthEnable = true
+    instance?.isOnlyPortraitSupportedInIphone()
+
+    instance?.serviceUrlScheme = kServiceAppUrlScheme
+    instance?.consumerKey = kConsumerKey
+    instance?.consumerSecret = kConsumerSecret
+    instance?.appName = kServiceAppName
+
+    return true
   }
 
   // MARK: UISceneSession Lifecycle

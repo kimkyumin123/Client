@@ -5,7 +5,11 @@
 //  Created by JK on 2021/07/24.
 //
 
+import NaverThirdPartyLogin
+import RxSwift
 import UIKit
+
+// MARK: - LoginViewController
 
 final class LoginViewController: UIViewController {
 
@@ -16,7 +20,20 @@ final class LoginViewController: UIViewController {
     view = contentView
   }
 
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    /// naver login
+    contentView.naverLogin
+      .rx.tap
+      .subscribe(onNext: {
+        NaverThirdPartyLoginConnection.getSharedInstance().requestThirdPartyLogin()
+      })
+      .disposed(by: disposeBag)
+  }
+
   // MARK: Private
 
   private let contentView = LoginView()
+  private let disposeBag = DisposeBag()
+
 }
