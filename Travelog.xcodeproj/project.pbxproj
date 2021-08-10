@@ -62,6 +62,16 @@
 		48F65C6A26AC8D5A009B15BE /* ImageScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F65C6926AC8D5A009B15BE /* ImageScrollView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		483C566326C2BDC8000B8E8C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 48F33B1A26AC2BBC00A704C7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 48F33B2126AC2BBC00A704C7;
+			remoteInfo = Travelog;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		48C2DB1426BD8A9700877AB5 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -79,6 +89,8 @@
 /* Begin PBXFileReference section */
 		482A6FC426AD71F9001BF0BD /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
 		482A6FC626AD7267001BF0BD /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
+		483C565E26C2BDC8000B8E8C /* TravelogUnitTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TravelogUnitTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		483C566226C2BDC8000B8E8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4898971C26AC3527000499AC /* AppStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStepper.swift; sourceTree = "<group>"; };
 		4898971E26AC353F000499AC /* AppSteps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSteps.swift; sourceTree = "<group>"; };
 		4898972026AC356F000499AC /* AppFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlow.swift; sourceTree = "<group>"; };
@@ -112,6 +124,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		483C565B26C2BDC8000B8E8C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		48F33B1F26AC2BBC00A704C7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -146,6 +165,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		483C565F26C2BDC8000B8E8C /* TravelogUnitTest */ = {
+			isa = PBXGroup;
+			children = (
+				483C566226C2BDC8000B8E8C /* Info.plist */,
+			);
+			path = TravelogUnitTest;
+			sourceTree = "<group>";
+		};
 		489FB9D026AC394D00641F21 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
@@ -228,6 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				48F33B2426AC2BBC00A704C7 /* Travelog */,
+				483C565F26C2BDC8000B8E8C /* TravelogUnitTest */,
 				48F33B2326AC2BBC00A704C7 /* Products */,
 				48D9106926BABC1B00F6601C /* Frameworks */,
 			);
@@ -237,6 +265,7 @@
 			isa = PBXGroup;
 			children = (
 				48F33B2226AC2BBC00A704C7 /* Travelog.app */,
+				483C565E26C2BDC8000B8E8C /* TravelogUnitTest.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -280,6 +309,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		483C565D26C2BDC8000B8E8C /* TravelogUnitTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 483C566726C2BDC8000B8E8C /* Build configuration list for PBXNativeTarget "TravelogUnitTest" */;
+			buildPhases = (
+				483C565A26C2BDC8000B8E8C /* Sources */,
+				483C565B26C2BDC8000B8E8C /* Frameworks */,
+				483C565C26C2BDC8000B8E8C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				483C566426C2BDC8000B8E8C /* PBXTargetDependency */,
+			);
+			name = TravelogUnitTest;
+			productName = TravelogUnitTest;
+			productReference = 483C565E26C2BDC8000B8E8C /* TravelogUnitTest.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		48F33B2126AC2BBC00A704C7 /* Travelog */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 48F33B3626AC2BBD00A704C7 /* Build configuration list for PBXNativeTarget "Travelog" */;
@@ -333,6 +380,10 @@
 				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
+					483C565D26C2BDC8000B8E8C = {
+						CreatedOnToolsVersion = 12.5.1;
+						TestTargetID = 48F33B2126AC2BBC00A704C7;
+					};
 					48F33B2126AC2BBC00A704C7 = {
 						CreatedOnToolsVersion = 12.5.1;
 					};
@@ -370,11 +421,19 @@
 			projectRoot = "";
 			targets = (
 				48F33B2126AC2BBC00A704C7 /* Travelog */,
+				483C565D26C2BDC8000B8E8C /* TravelogUnitTest */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		483C565C26C2BDC8000B8E8C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		48F33B2026AC2BBC00A704C7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -408,6 +467,13 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		483C565A26C2BDC8000B8E8C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		48F33B1E26AC2BBC00A704C7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -443,6 +509,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		483C566426C2BDC8000B8E8C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 48F33B2126AC2BBC00A704C7 /* Travelog */;
+			targetProxy = 483C566326C2BDC8000B8E8C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		48F33B3026AC2BBD00A704C7 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -455,6 +529,48 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		483C566526C2BDC8000B8E8C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 78X32W2D44;
+				INFOPLIST_FILE = TravelogUnitTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = test.org.kimkyumin123.TravelogUnitTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Travelog.app/Travelog";
+			};
+			name = Debug;
+		};
+		483C566626C2BDC8000B8E8C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 78X32W2D44;
+				INFOPLIST_FILE = TravelogUnitTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = test.org.kimkyumin123.TravelogUnitTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Travelog.app/Travelog";
+			};
+			name = Release;
+		};
 		48F33B3426AC2BBD00A704C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -632,6 +748,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		483C566726C2BDC8000B8E8C /* Build configuration list for PBXNativeTarget "TravelogUnitTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				483C566526C2BDC8000B8E8C /* Debug */,
+				483C566626C2BDC8000B8E8C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		48F33B1D26AC2BBC00A704C7 /* Build configuration list for PBXProject "Travelog" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
