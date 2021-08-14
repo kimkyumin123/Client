@@ -1,0 +1,6 @@
+query nicknameCheck($payload: String!) {
+  nicknameCheck(payload: $payload) {
+    ok
+    error
+  }
+}

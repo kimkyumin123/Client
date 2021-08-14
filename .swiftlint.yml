@@ -28,6 +28,7 @@ excluded:
   - Pods
   - iOSCodegenTemplate
   - frameworks
+  - GraphQL
 
 colon:
   apply_to_dictionaries: false

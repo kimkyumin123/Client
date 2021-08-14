@@ -1,0 +1,10 @@
+mutation authVaildation {
+  authVaildation {
+    ok
+    error
+    profile_image_url
+    nickname
+    gender
+    age_range
+  }
+}

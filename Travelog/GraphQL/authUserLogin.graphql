@@ -1,0 +1,10 @@
+mutation authUserLogin($email: String!) {
+  authUserLogin(email: $email) {
+    ok
+    error
+    token {
+      accessToken
+      refreshToken
+    }
+  }
+}

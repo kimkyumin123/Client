@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		482A6FC526AD71F9001BF0BD /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482A6FC426AD71F9001BF0BD /* NSObject+Extension.swift */; };
 		482A6FC726AD7267001BF0BD /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482A6FC626AD7267001BF0BD /* CommentCell.swift */; };
+		4869D02526C8017E0076C570 /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4869D02426C8017E0076C570 /* Constraints.swift */; };
+		4869D02726C803480076C570 /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 4869D02626C803480076C570 /* Debug.xcconfig */; };
 		4898971D26AC3527000499AC /* AppStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4898971C26AC3527000499AC /* AppStepper.swift */; };
 		4898971F26AC353F000499AC /* AppSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4898971E26AC353F000499AC /* AppSteps.swift */; };
 		4898972126AC356F000499AC /* AppFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4898972026AC356F000499AC /* AppFlow.swift */; };
@@ -33,6 +35,8 @@
 		48E3D2AB26C418E3007D08ED /* RxKakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 48E3D2AA26C418E3007D08ED /* RxKakaoSDKCommon */; };
 		48E3D2AD26C418E3007D08ED /* RxKakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 48E3D2AC26C418E3007D08ED /* RxKakaoSDKAuth */; };
 		48E3D2AF26C41C23007D08ED /* OSLog+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E3D2AE26C41C23007D08ED /* OSLog+Extension.swift */; };
+		48E3D2B126C43F6F007D08ED /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E3D2B026C43F6F007D08ED /* Network.swift */; };
+		48E3D2B326C440CD007D08ED /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E3D2B226C440CD007D08ED /* API.swift */; };
 		48F33B2626AC2BBC00A704C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F33B2526AC2BBC00A704C7 /* AppDelegate.swift */; };
 		48F33B2826AC2BBC00A704C7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F33B2726AC2BBC00A704C7 /* SceneDelegate.swift */; };
 		48F33B2F26AC2BBD00A704C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48F33B2E26AC2BBD00A704C7 /* Assets.xcassets */; };
@@ -88,6 +92,8 @@
 		482A6FC626AD7267001BF0BD /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		483C565E26C2BDC8000B8E8C /* TravelogUnitTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TravelogUnitTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		483C566226C2BDC8000B8E8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4869D02426C8017E0076C570 /* Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
+		4869D02626C803480076C570 /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = SOURCE_ROOT; };
 		4898971C26AC3527000499AC /* AppStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStepper.swift; sourceTree = "<group>"; };
 		4898971E26AC353F000499AC /* AppSteps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSteps.swift; sourceTree = "<group>"; };
 		4898972026AC356F000499AC /* AppFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlow.swift; sourceTree = "<group>"; };
@@ -109,6 +115,8 @@
 		48E3D28426C3FF21007D08ED /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		48E3D28626C3FF2A007D08ED /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		48E3D2AE26C41C23007D08ED /* OSLog+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSLog+Extension.swift"; sourceTree = "<group>"; };
+		48E3D2B026C43F6F007D08ED /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		48E3D2B226C440CD007D08ED /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = API.swift; path = Travelog/GraphQL/API.swift; sourceTree = SOURCE_ROOT; };
 		48F33B2226AC2BBC00A704C7 /* Travelog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Travelog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48F33B2526AC2BBC00A704C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48F33B2726AC2BBC00A704C7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -273,6 +281,7 @@
 				48F65C5B26AC716B009B15BE /* Common */,
 				48F33B2526AC2BBC00A704C7 /* AppDelegate.swift */,
 				48F33B2726AC2BBC00A704C7 /* SceneDelegate.swift */,
+				4869D02626C803480076C570 /* Debug.xcconfig */,
 				48F33B2E26AC2BBD00A704C7 /* Assets.xcassets */,
 				48F33B3026AC2BBD00A704C7 /* LaunchScreen.storyboard */,
 				48F33B3326AC2BBD00A704C7 /* Info.plist */,
@@ -296,9 +305,12 @@
 				48F65C6026AC71F6009B15BE /* NSLayoutConstraint+Extension.swift */,
 				48E3D28426C3FF21007D08ED /* UserManager.swift */,
 				48E3D28626C3FF2A007D08ED /* KeychainManager.swift */,
+				48E3D2B226C440CD007D08ED /* API.swift */,
+				48E3D2B026C43F6F007D08ED /* Network.swift */,
 				482A6FC426AD71F9001BF0BD /* NSObject+Extension.swift */,
 				48E3D2AE26C41C23007D08ED /* OSLog+Extension.swift */,
 				48F65C6126AC71F6009B15BE /* UIColor+Extension.swift */,
+				4869D02426C8017E0076C570 /* Constraints.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -429,6 +441,7 @@
 			files = (
 				48F33B3226AC2BBD00A704C7 /* LaunchScreen.storyboard in Resources */,
 				48F33B2F26AC2BBD00A704C7 /* Assets.xcassets in Resources */,
+				4869D02726C803480076C570 /* Debug.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,6 +484,7 @@
 				489FB9E826AC3DA500641F21 /* UserInfoFlow.swift in Sources */,
 				48F65C6226AC71F6009B15BE /* NSLayoutConstraint+Extension.swift in Sources */,
 				489FB9D626AC3A4B00641F21 /* MapViewModel.swift in Sources */,
+				4869D02526C8017E0076C570 /* Constraints.swift in Sources */,
 				4898972126AC356F000499AC /* AppFlow.swift in Sources */,
 				48F65C6626AC747D009B15BE /* LoginFlow.swift in Sources */,
 				4898972526AC36DC000499AC /* HomeFlow.swift in Sources */,
@@ -487,8 +501,10 @@
 				489FB9D226AC397A00641F21 /* MapFlow.swift in Sources */,
 				489FB9E326AC3D0000641F21 /* UserInfoViewController.swift in Sources */,
 				48E3D28526C3FF21007D08ED /* UserManager.swift in Sources */,
+				48E3D2B126C43F6F007D08ED /* Network.swift in Sources */,
 				48F65C6826AC783D009B15BE /* ReviewPostCell.swift in Sources */,
 				489FB9EB26AC428000641F21 /* LoginViewController.swift in Sources */,
+				48E3D2B326C440CD007D08ED /* API.swift in Sources */,
 				489FB9DE26AC3C0200641F21 /* TimelineViewController.swift in Sources */,
 				489FB9EF26AC42B000641F21 /* LoginView.swift in Sources */,
 				48E3D28726C3FF2A007D08ED /* KeychainManager.swift in Sources */,

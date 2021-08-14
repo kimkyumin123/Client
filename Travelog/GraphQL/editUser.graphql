@@ -1,0 +1,20 @@
+mutation editUser(
+  $nickName: String
+  $bio: String
+  $avatar: Upload
+  $password: String
+  $gender: String
+  $ageRange: String
+) {
+  editUser(
+    nickName: $nickName
+    bio: $bio
+    avatar: $avatar
+    password: $password
+    gender: $gender
+    ageRange: $ageRange
+  ) {
+    ok
+    error
+  }
+}

@@ -95,7 +95,6 @@ final class KeychainManager {
     let status = SecItemUpdate(query as CFDictionary, attr as CFDictionary)
     os_log(.debug, log: .keychain, "Update item")
 
-
     guard status != errSecItemNotFound else { throw KeyChainError.itemNotFound }
     guard status == errSecSuccess else { throw KeyChainError.cannotSave }
   }
