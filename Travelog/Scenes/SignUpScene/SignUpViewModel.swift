@@ -37,7 +37,7 @@ final class SignUpViewModel: Reactor {
     case signUpSuccess(Bool)
     case updateLoading(Bool)
 
-    case setError(Error)
+    case setError(SignUpError)
   }
 
   struct State {
@@ -48,7 +48,7 @@ final class SignUpViewModel: Reactor {
     var isLoading: Bool = false
     var isSignUpSucceed: Bool = false
 
-    var error: Error?
+    var error: SignUpError?
   }
 
   struct SignUpFields {
@@ -95,7 +95,7 @@ final class SignUpViewModel: Reactor {
         .just(.updateLoading(true)),
         signUp(fields: fields)
           .map { Mutation.signUpSuccess($0) }
-          .catch { .just(Mutation.setError($0)) },
+          .catch { .just(Mutation.setError(try $0.cast(to: SignUpError.self))) },
         .just(.updateLoading(false)
         ))
     }
