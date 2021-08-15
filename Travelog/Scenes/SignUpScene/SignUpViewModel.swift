@@ -36,6 +36,8 @@ final class SignUpViewModel: Reactor {
 
     case signUpSuccess(Bool)
     case updateLoading(Bool)
+
+    case setError(Error)
   }
 
   struct State {
@@ -45,6 +47,8 @@ final class SignUpViewModel: Reactor {
 
     var isLoading: Bool = false
     var isSignUpSucceed: Bool = false
+
+    var error: Error?
   }
 
   struct SignUpFields {
@@ -75,6 +79,8 @@ final class SignUpViewModel: Reactor {
       newState.isValidPassword = validation
     case .updateLoading(let bool):
       newState.isLoading = bool
+    case .setError(let err):
+      newState.error = err
     }
 
     return newState
@@ -88,7 +94,8 @@ final class SignUpViewModel: Reactor {
       return Observable.concat(
         .just(.updateLoading(true)),
         signUp(fields: fields)
-          .map { Mutation.signUpSuccess($0) },
+          .map { Mutation.signUpSuccess($0) }
+          .catch { .just(Mutation.setError($0)) },
         .just(.updateLoading(false)
         ))
     }
