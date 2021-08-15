@@ -1,10 +1,6 @@
-mutation authUserLogin($email: String!) {
-  authUserLogin(email: $email) {
+mutation authUserLogin($platform_type: String!, $accesstoken: String!) {
+  authUserLogin(platform_type: $platform_type, accesstoken: $accesstoken) {
     ok
     error
-    token {
-      accessToken
-      refreshToken
-    }
   }
 }

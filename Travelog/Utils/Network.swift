@@ -9,5 +9,7 @@ import Apollo
 import Foundation
 
 final class Network {
-  static let apollo = ApolloClient(url: URL(string: Constraints.gqlAddr)!)
+  static let shared = Network()
+
+  private(set) lazy var apollo = ApolloClient(url: URL(string: Constraints.gqlAddr)!)
 }

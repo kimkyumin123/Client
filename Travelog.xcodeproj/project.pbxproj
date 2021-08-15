@@ -11,6 +11,15 @@
 		482A6FC726AD7267001BF0BD /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482A6FC626AD7267001BF0BD /* CommentCell.swift */; };
 		4869D02526C8017E0076C570 /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4869D02426C8017E0076C570 /* Constraints.swift */; };
 		4869D02726C803480076C570 /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 4869D02626C803480076C570 /* Debug.xcconfig */; };
+		4869D02C26C8064D0076C570 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4869D02926C8064D0076C570 /* SignUpViewController.swift */; };
+		4869D02D26C8064D0076C570 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4869D02A26C8064D0076C570 /* SignUpView.swift */; };
+		4869D02E26C8064D0076C570 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4869D02B26C8064D0076C570 /* SignUpViewModel.swift */; };
+		4869D03026C808330076C570 /* SignUpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4869D02F26C808330076C570 /* SignUpTests.swift */; };
+		4869D03326C828B40076C570 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4869D03226C828B40076C570 /* RxSwift */; };
+		4869D03526C828B40076C570 /* RxTest in Frameworks */ = {isa = PBXBuildFile; productRef = 4869D03426C828B40076C570 /* RxTest */; };
+		4869D03726C828B40076C570 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 4869D03626C828B40076C570 /* RxRelay */; };
+		4869D03926C828B40076C570 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 4869D03826C828B40076C570 /* RxCocoa */; };
+		4869D03B26C828B40076C570 /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = 4869D03A26C828B40076C570 /* RxBlocking */; };
 		4898971D26AC3527000499AC /* AppStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4898971C26AC3527000499AC /* AppStepper.swift */; };
 		4898971F26AC353F000499AC /* AppSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4898971E26AC353F000499AC /* AppSteps.swift */; };
 		4898972126AC356F000499AC /* AppFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4898972026AC356F000499AC /* AppFlow.swift */; };
@@ -61,6 +70,7 @@
 		48F65C6626AC747D009B15BE /* LoginFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F65C6526AC747D009B15BE /* LoginFlow.swift */; };
 		48F65C6826AC783D009B15BE /* ReviewPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F65C6726AC783D009B15BE /* ReviewPostCell.swift */; };
 		48F65C6A26AC8D5A009B15BE /* ImageScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F65C6926AC8D5A009B15BE /* ImageScrollView.swift */; };
+		48FF382126C85EB40068B8B3 /* RxApolloClient in Frameworks */ = {isa = PBXBuildFile; productRef = 48FF382026C85EB40068B8B3 /* RxApolloClient */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +104,10 @@
 		483C566226C2BDC8000B8E8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4869D02426C8017E0076C570 /* Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
 		4869D02626C803480076C570 /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = SOURCE_ROOT; };
+		4869D02926C8064D0076C570 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		4869D02A26C8064D0076C570 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		4869D02B26C8064D0076C570 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		4869D02F26C808330076C570 /* SignUpTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTests.swift; sourceTree = "<group>"; };
 		4898971C26AC3527000499AC /* AppStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStepper.swift; sourceTree = "<group>"; };
 		4898971E26AC353F000499AC /* AppSteps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSteps.swift; sourceTree = "<group>"; };
 		4898972026AC356F000499AC /* AppFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlow.swift; sourceTree = "<group>"; };
@@ -136,6 +150,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4869D03526C828B40076C570 /* RxTest in Frameworks */,
+				4869D03B26C828B40076C570 /* RxBlocking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,12 +162,16 @@
 				48E3D2A926C418E3007D08ED /* RxKakaoSDKUser in Frameworks */,
 				48F33B5626AC2E2B00A704C7 /* RxFlow in Frameworks */,
 				48F33B5E26AC2F5300A704C7 /* ApolloSQLite in Frameworks */,
+				4869D03926C828B40076C570 /* RxCocoa in Frameworks */,
+				4869D03326C828B40076C570 /* RxSwift in Frameworks */,
 				48F33B6626AC2F5300A704C7 /* ApolloAPI in Frameworks */,
 				48F33B7026AC2F8A00A704C7 /* PinLayout in Frameworks */,
 				48F33B6026AC2F5300A704C7 /* ApolloUtils in Frameworks */,
 				48F33B6926AC2F7C00A704C7 /* FlexLayoutYogaKit in Frameworks */,
 				48F33B5326AC2E1F00A704C7 /* Then in Frameworks */,
+				48FF382126C85EB40068B8B3 /* RxApolloClient in Frameworks */,
 				48F33B6B26AC2F7C00A704C7 /* FlexLayoutYoga in Frameworks */,
+				4869D03726C828B40076C570 /* RxRelay in Frameworks */,
 				48E3D2AB26C418E3007D08ED /* RxKakaoSDKCommon in Frameworks */,
 				48F33B6D26AC2F7C00A704C7 /* FlexLayout in Frameworks */,
 				48C2DB1226BD8A9600877AB5 /* NaverThirdPartyLogin.framework in Frameworks */,
@@ -171,8 +191,19 @@
 			isa = PBXGroup;
 			children = (
 				483C566226C2BDC8000B8E8C /* Info.plist */,
+				4869D02F26C808330076C570 /* SignUpTests.swift */,
 			);
 			path = TravelogUnitTest;
+			sourceTree = "<group>";
+		};
+		4869D02826C806410076C570 /* SignUpScene */ = {
+			isa = PBXGroup;
+			children = (
+				4869D02926C8064D0076C570 /* SignUpViewController.swift */,
+				4869D02A26C8064D0076C570 /* SignUpView.swift */,
+				4869D02B26C8064D0076C570 /* SignUpViewModel.swift */,
+			);
+			path = SignUpScene;
 			sourceTree = "<group>";
 		};
 		489FB9D026AC394D00641F21 /* Flows */ = {
@@ -202,6 +233,7 @@
 		489FB9D826AC3AB600641F21 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				4869D02826C806410076C570 /* SignUpScene */,
 				489FB9E626AC3D0900641F21 /* UserInfoScene */,
 				489FB9E126AC3C4E00641F21 /* TimelineScene */,
 				489FB9D726AC3AB100641F21 /* MapScene */,
@@ -332,6 +364,10 @@
 				483C566426C2BDC8000B8E8C /* PBXTargetDependency */,
 			);
 			name = TravelogUnitTest;
+			packageProductDependencies = (
+				4869D03426C828B40076C570 /* RxTest */,
+				4869D03A26C828B40076C570 /* RxBlocking */,
+			);
 			productName = TravelogUnitTest;
 			productReference = 483C565E26C2BDC8000B8E8C /* TravelogUnitTest.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -369,6 +405,10 @@
 				48E3D2A826C418E3007D08ED /* RxKakaoSDKUser */,
 				48E3D2AA26C418E3007D08ED /* RxKakaoSDKCommon */,
 				48E3D2AC26C418E3007D08ED /* RxKakaoSDKAuth */,
+				4869D03226C828B40076C570 /* RxSwift */,
+				4869D03626C828B40076C570 /* RxRelay */,
+				4869D03826C828B40076C570 /* RxCocoa */,
+				48FF382026C85EB40068B8B3 /* RxApolloClient */,
 			);
 			productName = Travelog;
 			productReference = 48F33B2226AC2BBC00A704C7 /* Travelog.app */;
@@ -385,6 +425,7 @@
 				TargetAttributes = {
 					483C565D26C2BDC8000B8E8C = {
 						CreatedOnToolsVersion = 12.5.1;
+						LastSwiftMigration = 1250;
 						TestTargetID = 48F33B2126AC2BBC00A704C7;
 					};
 					48F33B2126AC2BBC00A704C7 = {
@@ -410,6 +451,8 @@
 				48F33B6726AC2F7C00A704C7 /* XCRemoteSwiftPackageReference "FlexLayout" */,
 				48F33B6E26AC2F8900A704C7 /* XCRemoteSwiftPackageReference "PinLayout" */,
 				48E3D2A726C418E3007D08ED /* XCRemoteSwiftPackageReference "RxKakaoSDK" */,
+				4869D03126C828B40076C570 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				48FF381F26C85EB30068B8B3 /* XCRemoteSwiftPackageReference "RxApolloClient" */,
 			);
 			productRefGroup = 48F33B2326AC2BBC00A704C7 /* Products */;
 			projectDirPath = "";
@@ -473,6 +516,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4869D03026C808330076C570 /* SignUpTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,6 +524,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4869D02C26C8064D0076C570 /* SignUpViewController.swift in Sources */,
 				48F65C6326AC71F6009B15BE /* UIColor+Extension.swift in Sources */,
 				489FB9E826AC3DA500641F21 /* UserInfoFlow.swift in Sources */,
 				48F65C6226AC71F6009B15BE /* NSLayoutConstraint+Extension.swift in Sources */,
@@ -491,6 +536,7 @@
 				48F33B2626AC2BBC00A704C7 /* AppDelegate.swift in Sources */,
 				489FB9E526AC3D0600641F21 /* UserInfoViewModel.swift in Sources */,
 				489FB9D426AC3A4400641F21 /* MapViewController.swift in Sources */,
+				4869D02D26C8064D0076C570 /* SignUpView.swift in Sources */,
 				482A6FC526AD71F9001BF0BD /* NSObject+Extension.swift in Sources */,
 				48E3D2AF26C41C23007D08ED /* OSLog+Extension.swift in Sources */,
 				489FB9ED26AC42AC00641F21 /* LoginViewModel.swift in Sources */,
@@ -505,6 +551,7 @@
 				48F65C6826AC783D009B15BE /* ReviewPostCell.swift in Sources */,
 				489FB9EB26AC428000641F21 /* LoginViewController.swift in Sources */,
 				48E3D2B326C440CD007D08ED /* API.swift in Sources */,
+				4869D02E26C8064D0076C570 /* SignUpViewModel.swift in Sources */,
 				489FB9DE26AC3C0200641F21 /* TimelineViewController.swift in Sources */,
 				489FB9EF26AC42B000641F21 /* LoginView.swift in Sources */,
 				48E3D28726C3FF2A007D08ED /* KeychainManager.swift in Sources */,
@@ -541,8 +588,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 78X32W2D44;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					"FLEXLAYOUT_SWIFT_PACKAGE=1",
+				);
 				INFOPLIST_FILE = TravelogUnitTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -552,6 +605,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = test.org.kimkyumin123.TravelogUnitTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Travelog.app/Travelog";
@@ -562,6 +616,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 78X32W2D44;
 				INFOPLIST_FILE = TravelogUnitTest/Info.plist;
@@ -786,6 +841,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		4869D03126C828B40076C570 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.2.0;
+			};
+		};
 		48E3D2A726C418E3007D08ED /* XCRemoteSwiftPackageReference "RxKakaoSDK" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/elppaaa/RxKakaoSDK.git";
@@ -850,9 +913,42 @@
 				minimumVersion = 1.10.0;
 			};
 		};
+		48FF381F26C85EB30068B8B3 /* XCRemoteSwiftPackageReference "RxApolloClient" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/OhKanghoon/RxApolloClient.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		4869D03226C828B40076C570 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4869D03126C828B40076C570 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		4869D03426C828B40076C570 /* RxTest */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4869D03126C828B40076C570 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxTest;
+		};
+		4869D03626C828B40076C570 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4869D03126C828B40076C570 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		4869D03826C828B40076C570 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4869D03126C828B40076C570 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		4869D03A26C828B40076C570 /* RxBlocking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4869D03126C828B40076C570 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxBlocking;
+		};
 		48E3D2A826C418E3007D08ED /* RxKakaoSDKUser */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 48E3D2A726C418E3007D08ED /* XCRemoteSwiftPackageReference "RxKakaoSDK" */;
@@ -937,6 +1033,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 48F33B6E26AC2F8900A704C7 /* XCRemoteSwiftPackageReference "PinLayout" */;
 			productName = PinLayout;
+		};
+		48FF382026C85EB40068B8B3 /* RxApolloClient */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48FF381F26C85EB30068B8B3 /* XCRemoteSwiftPackageReference "RxApolloClient" */;
+			productName = RxApolloClient;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

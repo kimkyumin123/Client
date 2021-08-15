@@ -1,7 +1,7 @@
 {
-  "b3dec90b3c94b76fa67e7570fbe25875e6ed744f70e5303de270a0ee8e535902": {
+  "3e566c168b6046e8c4acd2094397d627bd93212f4180898d55c52fc9d4d69faf": {
     "name": "authUserLogin",
-    "source": "mutation authUserLogin($email: String!) {\n  authUserLogin(email: $email) {\n    __typename\n    ok\n    error\n    token {\n      __typename\n      accessToken\n      refreshToken\n    }\n  }\n}"
+    "source": "mutation authUserLogin($platform_type: String!, $accesstoken: String!) {\n  authUserLogin(platform_type: $platform_type, accesstoken: $accesstoken) {\n    __typename\n    ok\n    error\n  }\n}"
   },
   "614a2148de949726d32d46e5af1a452ae182c71ddc44163f99c8d03b4429286c": {
     "name": "authVaildation",
@@ -11,9 +11,9 @@
     "name": "createAuthUser",
     "source": "mutation createAuthUser($nickName: String!, $avatar: String, $bio: String, $platformType: String!, $email: String!) {\n  createAuthUser(\n    nickName: $nickName\n    avatar: $avatar\n    bio: $bio\n    platformType: $platformType\n    email: $email\n  ) {\n    __typename\n    ok\n    error\n  }\n}"
   },
-  "c1c85e1b61b7fc85fea2fdf9406facab1befba52c7508fdb8d9f3261529d5be3": {
+  "a00f2b37f66b1ebe864fac757a5194545886228b7e78204128314ba74ca7ab9c": {
     "name": "createUser",
-    "source": "mutation createUser($bio: String, $userName: String, $gender: String, $ageRange: String, $email: String!, $nickName: String!, $avatar: String, $password: String) {\n  createUser(\n    bio: $bio\n    userName: $userName\n    gender: $gender\n    ageRange: $ageRange\n    email: $email\n    nickName: $nickName\n    avatar: $avatar\n    password: $password\n  ) {\n    __typename\n    ok\n    error\n  }\n}"
+    "source": "mutation createUser($bio: String, $userName: String!, $gender: String, $ageRange: String, $email: String!, $nickName: String!, $avatar: String, $password: String!) {\n  createUser(\n    bio: $bio\n    userName: $userName\n    gender: $gender\n    ageRange: $ageRange\n    email: $email\n    nickName: $nickName\n    avatar: $avatar\n    password: $password\n  ) {\n    __typename\n    ok\n    error\n  }\n}"
   },
   "5248bdf77c6381f260c810366e602f8ca2709fd34bf4a7f73e00afcf0bf5fb99": {
     "name": "deleteUser",
@@ -23,20 +23,16 @@
     "name": "editUser",
     "source": "mutation editUser($nickName: String, $bio: String, $avatar: Upload, $password: String, $gender: String, $ageRange: String) {\n  editUser(\n    nickName: $nickName\n    bio: $bio\n    avatar: $avatar\n    password: $password\n    gender: $gender\n    ageRange: $ageRange\n  ) {\n    __typename\n    ok\n    error\n  }\n}"
   },
-  "66a8ce8913a377ae6c2aa74a64a317512b28119c58101cb51e65f6e218aa3ab7": {
-    "name": "nicknameCheck",
-    "source": "query nicknameCheck($payload: String!) {\n  nicknameCheck(payload: $payload) {\n    __typename\n    ok\n    error\n  }\n}"
-  },
-  "0c6eb9b363e2c347d789d030a1657c2d2f772afed11c836079ee9f1d0eb8ae11": {
-    "name": "passwordCheck",
-    "source": "mutation passwordCheck($payload: String!) {\n  passwordCheck(payload: $payload) {\n    __typename\n    ok\n    error\n  }\n}"
-  },
-  "8ac9464e51d9aeafaf716e9a7afd6ab7e800d5311b09e1fdd7656d1db91b4776": {
+  "82fedfbfbf51c5b207939d62c9cc80766e7d08d6ab52521b7f2c975166424550": {
     "name": "seeProfile",
-    "source": "query seeProfile($userName: String!) {\n  seeProfile(userName: $userName) {\n    __typename\n    id\n    userName\n    nickName\n    email\n    avatar\n    bio\n    gender\n    ageRanger\n    createdAt\n    updatedAt\n    reviews {\n      __typename\n      id\n      createdAt\n      updatedAt\n      title\n      content\n      upload\n      userId\n      comments {\n        __typename\n        id\n        createdAt\n        updatedAt\n        payload\n        reviewId\n      }\n      suggestions {\n        __typename\n        id\n        like\n        unLike\n        reviewId\n        userId\n      }\n      placeId\n      hashtags {\n        __typename\n        id\n        hashTag\n        createdAt\n        updatedAt\n      }\n    }\n    places {\n      __typename\n      id\n      createdAt\n      updatedAt\n      title\n      address\n      zipCode\n      x\n      y\n      category\n      userId\n      reviews {\n        __typename\n        id\n        createdAt\n        updatedAt\n        title\n        content\n        upload\n        userId\n        placeId\n      }\n    }\n    platformType\n    suggestions {\n      __typename\n      id\n      like\n      unLike\n      reviewId\n      userId\n    }\n  }\n}"
+    "source": "query seeProfile($userName: String!) {\n  seeProfile(userName: $userName) {\n    __typename\n    id\n    userName\n    nickName\n    email\n    avatar\n    bio\n    gender\n    ageRanger\n    createdAt\n    updatedAt\n    platformType\n  }\n}"
   },
-  "1fa4022c4e9f33fe32bf6dc4a31977de56dd8e00c50136d25162e29d1e1aa2ec": {
+  "b27e056a4ce53bb787da13139db8b4089d969aa657efc5a7858be277d676e1c3": {
+    "name": "userCheck",
+    "source": "query userCheck($email: String, $nickName: String) {\n  userCheck(email: $email, nickName: $nickName) {\n    __typename\n    ok\n    error\n  }\n}"
+  },
+  "bd3372723f087952d607758f23f40f7a4afd43e62a82a371f87a8fa685e1f53b": {
     "name": "userLogin",
-    "source": "mutation userLogin($userName: String!, $password: String!) {\n  userLogin(userName: $userName, password: $password) {\n    __typename\n    ok\n    error\n    token {\n      __typename\n      accessToken\n      refreshToken\n    }\n  }\n}"
+    "source": "mutation userLogin($userName: String!, $password: String!) {\n  userLogin(userName: $userName, password: $password) {\n    __typename\n    ok\n    error\n  }\n}"
   }
 }

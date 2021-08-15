@@ -1,0 +1,6 @@
+query userCheck($email: String, $nickName: String) {
+  userCheck(email: $email, nickName: $nickName) {
+    ok
+    error
+  }
+}

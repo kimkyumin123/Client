@@ -1,6 +1,6 @@
 mutation deleteUser {
-  deleteUser {
-    ok
-    error
-  }
+    deleteUser {
+        ok
+        error
+    }
 }
