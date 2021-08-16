@@ -28,7 +28,7 @@ final class SignUpViewModel: Reactor {
     case signUpSuccess(Bool)
     case updateLoading(Bool)
 
-    case setError(UserManagerError)
+    case setError(UserServiceError)
   }
 
   struct State {
@@ -39,7 +39,7 @@ final class SignUpViewModel: Reactor {
     var isLoading: Bool = false
     var isSignUpSucceed: Bool = false
 
-    var error: UserManagerError?
+    var error: UserServiceError?
   }
 
   var initialState = State()
@@ -75,7 +75,7 @@ final class SignUpViewModel: Reactor {
         .just(.updateLoading(true)),
         signUp(fields: fields)
           .map { Mutation.signUpSuccess($0) }
-          .catch { .just(Mutation.setError(try $0.cast(to: UserManagerError.self))) },
+          .catch { .just(Mutation.setError(try $0.cast(to: UserServiceError.self))) },
         .just(.updateLoading(false)
         ))
     }
@@ -123,7 +123,7 @@ extension SignUpViewModel {
       currentState.isValidPassword == .valid,
       currentState.isValidNickname == .valid else
     {
-      return Observable.error(UserManagerError.invalidForm)
+      return Observable.error(UserServiceError.invalidForm)
     }
 
     return UserService.createUser(fields: fields)

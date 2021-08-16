@@ -1226,11 +1226,65 @@ public final class UserLoginMutation: GraphQLMutation {
         resultMap = unsafeResultMap
       }
 
-      public init(ok: Bool? = nil, error: String? = nil) {
-        self.init(unsafeResultMap: ["__typename": "loginResponse", "ok": ok, "error": error])
+      public init(ok: Bool? = nil, error: String? = nil, token: Token? = nil) {
+        self.init(unsafeResultMap: ["__typename": "loginResponse", "ok": ok, "error": error, "token": token.flatMap { (value: Token) -> ResultMap in value.resultMap }])
       }
 
       // MARK: Public
+
+      public struct Token: GraphQLSelectionSet {
+
+        // MARK: Lifecycle
+
+        public init(unsafeResultMap: ResultMap) {
+          resultMap = unsafeResultMap
+        }
+
+        public init(accessToken: String, refreshToken: String) {
+          self.init(unsafeResultMap: ["__typename": "Token", "accessToken": accessToken, "refreshToken": refreshToken])
+        }
+
+        // MARK: Public
+
+        public static let possibleTypes: [String] = ["Token"]
+
+        public static var selections: [GraphQLSelection] {
+          [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("accessToken", type: .nonNull(.scalar(String.self))),
+            GraphQLField("refreshToken", type: .nonNull(.scalar(String.self))),
+          ]
+        }
+
+        public private(set) var resultMap: ResultMap
+
+        public var __typename: String {
+          get {
+            resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var accessToken: String {
+          get {
+            resultMap["accessToken"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "accessToken")
+          }
+        }
+
+        public var refreshToken: String {
+          get {
+            resultMap["refreshToken"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "refreshToken")
+          }
+        }
+      }
 
       public static let possibleTypes: [String] = ["loginResponse"]
 
@@ -1239,6 +1293,7 @@ public final class UserLoginMutation: GraphQLMutation {
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("ok", type: .scalar(Bool.self)),
           GraphQLField("error", type: .scalar(String.self)),
+          GraphQLField("token", type: .object(Token.selections)),
         ]
       }
 
@@ -1270,6 +1325,16 @@ public final class UserLoginMutation: GraphQLMutation {
           resultMap.updateValue(newValue, forKey: "error")
         }
       }
+
+      public var token: Token? {
+        get {
+          (resultMap["token"] as? ResultMap).flatMap { Token(unsafeResultMap: $0) }
+        }
+        set {
+          resultMap.updateValue(newValue?.resultMap, forKey: "token")
+        }
+      }
+
     }
 
     public static let possibleTypes: [String] = ["Mutation"]
@@ -1301,13 +1366,18 @@ public final class UserLoginMutation: GraphQLMutation {
         __typename
         ok
         error
+        token {
+          __typename
+          accessToken
+          refreshToken
+        }
       }
     }
     """
 
   public let operationName: String = "userLogin"
 
-  public let operationIdentifier: String? = "bd3372723f087952d607758f23f40f7a4afd43e62a82a371f87a8fa685e1f53b"
+  public let operationIdentifier: String? = "1fa4022c4e9f33fe32bf6dc4a31977de56dd8e00c50136d25162e29d1e1aa2ec"
 
   public var userName: String
   public var password: String

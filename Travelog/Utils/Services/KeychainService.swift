@@ -9,7 +9,7 @@ import CryptoKit
 import Foundation
 import os.log
 
-// MARK: - KeychainManager
+// MARK: - KeychainService
 
 final class KeychainService {
 

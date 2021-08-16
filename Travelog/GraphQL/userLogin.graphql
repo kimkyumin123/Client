@@ -2,5 +2,9 @@ mutation userLogin($userName: String!, $password: String!) {
   userLogin(userName: $userName, password: $password) {
     ok
     error
+    token {
+      accessToken
+      refreshToken
+    }
   }
 }

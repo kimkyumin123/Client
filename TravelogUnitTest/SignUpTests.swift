@@ -12,6 +12,8 @@ import RxTest
 import XCTest
 @testable import Travelog
 
+// MARK: - SignUpTests
+
 class SignUpTests: XCTestCase {
   typealias Reactor = SignUpViewModel
 
@@ -45,7 +47,7 @@ class SignUpTests: XCTestCase {
 
     // then
     let result = sut.state.map(\.isValidPassword).toBlocking(timeout: 2.0)
-    XCTAssertEqual(try? result.first(), Reactor.ValidType.passwordNotSame)
+    XCTAssertEqual(try? result.first(), UserService.ValidType.passwordNotSame)
   }
   /// 성공
   func testConfirmPassword() {
@@ -214,7 +216,7 @@ class SignUpTests: XCTestCase {
     let testNick = "testNickname"
     let testPW = "password!1234"
 
-    let textForm = Reactor.SignUpFields(
+    let textForm = UserAccount.SignUpFields(
       userName: testName,
       bio: nil,
       gender: nil,
@@ -241,4 +243,5 @@ class SignUpTests: XCTestCase {
     let result = sut.state.map(\.isSignUpSucceed).take(2).toBlocking(timeout: 5.0)
     XCTAssertEqual(try result.last(), true)
   }
+
 }

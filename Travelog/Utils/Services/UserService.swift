@@ -1,5 +1,5 @@
 //
-//  UserManager.swift
+//  UserService.swift
 //  Travelog
 //
 //  Created by JK on 2021/08/11.
@@ -8,9 +8,10 @@
 import Foundation
 import RxSwift
 
-// MARK: - UserManager
+// MARK: - UserService
 
 final class UserService {
+
   enum ValidType {
     case valid
     case invalid
@@ -18,6 +19,21 @@ final class UserService {
     case tooShort
     case needSpecialCharNumber
     case passwordNotSame
+  }
+
+  /// 사용자의 Access Token
+  static var token: JWTToken? {
+    get {
+      guard let value = try? KeychainService.read(key: .accessToken) else {
+        return nil
+      }
+      return JWTToken(value: value)
+    }
+    set {
+      if let tokenString = newValue?.value {
+        try? KeychainService.write(key: .accessToken, value: tokenString)
+      }
+    }
   }
 
   static func createUser(fields: UserAccount.SignUpFields) -> Observable<Bool> {
@@ -32,20 +48,20 @@ final class UserService {
         avatar: fields.avatar,
         password: fields.password)) {
           guard let data = try? $0.get().data else {
-            subscriber.onError(UserManagerError.signUpFailed)
+            subscriber.onError(UserServiceError.signUpFailed)
             return
           }
 
           if data.createUser?.ok == true {
             subscriber.onNext(true)
           } else if data.createUser?.error == -100 {
-            subscriber.onError(UserManagerError.emailExists)
+            subscriber.onError(UserServiceError.emailExists)
           } else if data.createUser?.error == -101 {
-            subscriber.onError(UserManagerError.userExists)
+            subscriber.onError(UserServiceError.userExists)
           } else if data.createUser?.error == -102 {
-            subscriber.onError(UserManagerError.nicknameExists)
+            subscriber.onError(UserServiceError.nicknameExists)
           } else {
-            subscriber.onError(UserManagerError.unknown)
+            subscriber.onError(UserServiceError.unknown)
           }
       }
 
@@ -152,18 +168,51 @@ final class UserService {
 
   static func deleteUser() { }
 
-  static func login() { }
+  /// login 후 토큰 생성
+  static func login(id: String, pw: String) -> Observable<(accessToken: JWTToken, refreshToken: JWTToken)> {
+    .create { subscriber in
+      Network.shared.apollo.perform(mutation: UserLoginMutation(userName: id, password: pw)) {
+        guard let _data = try? $0.get().data, let data = _data.userLogin, data.ok == true else {
+          subscriber.onError(UserServiceError.signUpFailed)
+          return
+        }
+
+        // token string 획득
+        guard
+          let accessTokenString = data.token?.accessToken,
+          let refreshTokenString = data.token?.refreshToken else
+        {
+          subscriber.onError(UserServiceError.signUpFailed)
+          return
+        }
+
+        // token object 생성
+        guard
+          let accessToken = JWTToken(value: accessTokenString),
+          let refreshToken = JWTToken(value: refreshTokenString) else
+        {
+          subscriber.onError(UserServiceError.signUpFailed)
+          return
+        }
+
+        subscriber.onNext((accessToken, refreshToken))
+      }
+
+      return Disposables.create()
+    }
+  }
 
   static func oAuthLogin() { }
 
   static func logout() {}
 }
 
-// MARK: - UserManagerError
+// MARK: - UserServiceError
 
-enum UserManagerError: Error {
+enum UserServiceError: Error {
   case invalidForm
   case unknown
+  case noUserLoggedIn
 
   case emailExists
   case userExists
