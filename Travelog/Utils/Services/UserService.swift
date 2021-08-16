@@ -10,7 +10,7 @@ import RxSwift
 
 // MARK: - UserManager
 
-final class UserManager {
+final class UserService {
   enum ValidType {
     case valid
     case invalid

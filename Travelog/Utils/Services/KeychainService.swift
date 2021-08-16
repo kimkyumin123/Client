@@ -11,7 +11,7 @@ import os.log
 
 // MARK: - KeychainManager
 
-final class KeychainManager {
+final class KeychainService {
 
   // MARK: Lifecycle
 

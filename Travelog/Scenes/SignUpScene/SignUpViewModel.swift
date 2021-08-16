@@ -21,9 +21,9 @@ final class SignUpViewModel: Reactor {
   }
 
   enum Mutation {
-    case updatePasswordValid(UserManager.ValidType)
-    case updateNicknameValid(UserManager.ValidType)
-    case updateEmailValid(UserManager.ValidType)
+    case updatePasswordValid(UserService.ValidType)
+    case updateNicknameValid(UserService.ValidType)
+    case updateEmailValid(UserService.ValidType)
 
     case signUpSuccess(Bool)
     case updateLoading(Bool)
@@ -32,9 +32,9 @@ final class SignUpViewModel: Reactor {
   }
 
   struct State {
-    var isValidPassword: UserManager.ValidType? = nil
-    var isValidNickname: UserManager.ValidType? = nil
-    var isValidEmail: UserManager.ValidType? = nil
+    var isValidPassword: UserService.ValidType? = nil
+    var isValidNickname: UserService.ValidType? = nil
+    var isValidEmail: UserService.ValidType? = nil
 
     var isLoading: Bool = false
     var isSignUpSucceed: Bool = false
@@ -101,20 +101,20 @@ extension SignUpViewModel {
     }
   }
 
-  private func passwordValidCheck(pw: String, pwConfirm: String) -> Observable<UserManager.ValidType> {
-    UserManager.checkValidate(pw: pw, pwConfirm: pwConfirm)
+  private func passwordValidCheck(pw: String, pwConfirm: String) -> Observable<UserService.ValidType> {
+    UserService.checkValidate(pw: pw, pwConfirm: pwConfirm)
   }
 
-  private func emailValidCheck(_ mail: String) -> Observable<UserManager.ValidType> {
-    UserManager.checkValidate(email: mail)
+  private func emailValidCheck(_ mail: String) -> Observable<UserService.ValidType> {
+    UserService.checkValidate(email: mail)
   }
 
-  private func nickNameValidCheck(_ nick: String) -> Observable<UserManager.ValidType> {
+  private func nickNameValidCheck(_ nick: String) -> Observable<UserService.ValidType> {
     guard nick.count >= 2 else {
       return Observable.just(.tooShort)
     }
 
-    return UserManager.checkValidate(nickname: nick)
+    return UserService.checkValidate(nickname: nick)
   }
 
   private func signUp(fields: UserAccount.SignUpFields) -> Observable<Bool> {
@@ -126,6 +126,6 @@ extension SignUpViewModel {
       return Observable.error(UserManagerError.invalidForm)
     }
 
-    return UserManager.createUser(fields: fields)
+    return UserService.createUser(fields: fields)
   }
 }

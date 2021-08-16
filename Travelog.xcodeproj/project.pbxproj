@@ -40,8 +40,8 @@
 		489FB9EF26AC42B000641F21 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489FB9EE26AC42B000641F21 /* LoginView.swift */; };
 		48C2DB1226BD8A9600877AB5 /* NaverThirdPartyLogin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48C2DB0E26BD8A7400877AB5 /* NaverThirdPartyLogin.framework */; };
 		48C2DB1326BD8A9600877AB5 /* NaverThirdPartyLogin.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48C2DB0E26BD8A7400877AB5 /* NaverThirdPartyLogin.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		48E3D28526C3FF21007D08ED /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E3D28426C3FF21007D08ED /* UserManager.swift */; };
-		48E3D28726C3FF2A007D08ED /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E3D28626C3FF2A007D08ED /* KeychainManager.swift */; };
+		48E3D28526C3FF21007D08ED /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E3D28426C3FF21007D08ED /* UserService.swift */; };
+		48E3D28726C3FF2A007D08ED /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E3D28626C3FF2A007D08ED /* KeychainService.swift */; };
 		48E3D2A926C418E3007D08ED /* RxKakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 48E3D2A826C418E3007D08ED /* RxKakaoSDKUser */; };
 		48E3D2AB26C418E3007D08ED /* RxKakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 48E3D2AA26C418E3007D08ED /* RxKakaoSDKCommon */; };
 		48E3D2AD26C418E3007D08ED /* RxKakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 48E3D2AC26C418E3007D08ED /* RxKakaoSDKAuth */; };
@@ -130,8 +130,8 @@
 		489FB9EE26AC42B000641F21 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		48C2DB0E26BD8A7400877AB5 /* NaverThirdPartyLogin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NaverThirdPartyLogin.framework; path = frameworks/NaverThirdPartyLogin.framework; sourceTree = "<group>"; };
 		48D9106A26BABC1B00F6601C /* Travelog.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Travelog.xcodeproj; sourceTree = "<group>"; };
-		48E3D28426C3FF21007D08ED /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
-		48E3D28626C3FF2A007D08ED /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
+		48E3D28426C3FF21007D08ED /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		48E3D28626C3FF2A007D08ED /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		48E3D2AE26C41C23007D08ED /* OSLog+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSLog+Extension.swift"; sourceTree = "<group>"; };
 		48E3D2B026C43F6F007D08ED /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		48E3D2B226C440CD007D08ED /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = API.swift; path = Travelog/GraphQL/API.swift; sourceTree = SOURCE_ROOT; };
@@ -206,6 +206,27 @@
 				484DB8AF26CA097F004D5EB6 /* UserAccount.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		484DB8B226CA0F07004D5EB6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				48F65C6026AC71F6009B15BE /* NSLayoutConstraint+Extension.swift */,
+				484DB8AD26C9AF71004D5EB6 /* Error+Extension.swift */,
+				482A6FC426AD71F9001BF0BD /* NSObject+Extension.swift */,
+				48E3D2AE26C41C23007D08ED /* OSLog+Extension.swift */,
+				48F65C6126AC71F6009B15BE /* UIColor+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		484DB8B326CA0F10004D5EB6 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				48E3D28426C3FF21007D08ED /* UserService.swift */,
+				48E3D28626C3FF2A007D08ED /* KeychainService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		4869D02826C806410076C570 /* SignUpScene */ = {
@@ -347,15 +368,10 @@
 		48F65C6426AC71FA009B15BE /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				48F65C6026AC71F6009B15BE /* NSLayoutConstraint+Extension.swift */,
-				484DB8AD26C9AF71004D5EB6 /* Error+Extension.swift */,
-				48E3D28426C3FF21007D08ED /* UserManager.swift */,
-				48E3D28626C3FF2A007D08ED /* KeychainManager.swift */,
+				484DB8B226CA0F07004D5EB6 /* Extensions */,
+				484DB8B326CA0F10004D5EB6 /* Services */,
 				48E3D2B226C440CD007D08ED /* API.swift */,
 				48E3D2B026C43F6F007D08ED /* Network.swift */,
-				482A6FC426AD71F9001BF0BD /* NSObject+Extension.swift */,
-				48E3D2AE26C41C23007D08ED /* OSLog+Extension.swift */,
-				48F65C6126AC71F6009B15BE /* UIColor+Extension.swift */,
 				4869D02426C8017E0076C570 /* Constraints.swift */,
 			);
 			path = Utils;
@@ -562,7 +578,7 @@
 				489FB9D226AC397A00641F21 /* MapFlow.swift in Sources */,
 				489FB9E326AC3D0000641F21 /* UserInfoViewController.swift in Sources */,
 				484DB8AE26C9AF71004D5EB6 /* Error+Extension.swift in Sources */,
-				48E3D28526C3FF21007D08ED /* UserManager.swift in Sources */,
+				48E3D28526C3FF21007D08ED /* UserService.swift in Sources */,
 				48E3D2B126C43F6F007D08ED /* Network.swift in Sources */,
 				48F65C6826AC783D009B15BE /* ReviewPostCell.swift in Sources */,
 				489FB9EB26AC428000641F21 /* LoginViewController.swift in Sources */,
@@ -570,7 +586,7 @@
 				4869D02E26C8064D0076C570 /* SignUpViewModel.swift in Sources */,
 				489FB9DE26AC3C0200641F21 /* TimelineViewController.swift in Sources */,
 				489FB9EF26AC42B000641F21 /* LoginView.swift in Sources */,
-				48E3D28726C3FF2A007D08ED /* KeychainManager.swift in Sources */,
+				48E3D28726C3FF2A007D08ED /* KeychainService.swift in Sources */,
 				4898971F26AC353F000499AC /* AppSteps.swift in Sources */,
 				48F65C6A26AC8D5A009B15BE /* ImageScrollView.swift in Sources */,
 				48F65C5D26AC719C009B15BE /* AppleLoginButton.swift in Sources */,
