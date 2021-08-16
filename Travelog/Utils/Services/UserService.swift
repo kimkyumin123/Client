@@ -200,6 +200,11 @@ final class UserService {
 
       return Disposables.create()
     }
+    /// 키체인에 토큰 저장
+    .do(onNext: { (access, refresh) in
+      try? KeychainService.write(key: .accessToken, value: access.value)
+      try? KeychainService.write(key: .accessToken, value: refresh.value)
+    })
   }
 
   static func oAuthLogin() { }
