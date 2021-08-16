@@ -15,51 +15,31 @@ final class SignUpViewModel: Reactor {
     case email(String)
   }
 
-  enum ValidType {
-    case valid
-    case invalid
-    case alreadyExists
-    case tooShort
-    case needSpecialCharNumber
-    case passwordNotSame
-  }
-
   enum Action {
     case validCheck(ValidCheck)
-    case submit(SignUpFields)
+    case submit(UserAccount.SignUpFields)
   }
 
   enum Mutation {
-    case updatePasswordValid(ValidType)
-    case updateNicknameValid(ValidType)
-    case updateEmailValid(ValidType)
+    case updatePasswordValid(UserManager.ValidType)
+    case updateNicknameValid(UserManager.ValidType)
+    case updateEmailValid(UserManager.ValidType)
 
     case signUpSuccess(Bool)
     case updateLoading(Bool)
 
-    case setError(SignUpError)
+    case setError(UserManagerError)
   }
 
   struct State {
-    var isValidPassword: ValidType? = nil
-    var isValidNickname: ValidType? = nil
-    var isValidEmail: ValidType? = nil
+    var isValidPassword: UserManager.ValidType? = nil
+    var isValidNickname: UserManager.ValidType? = nil
+    var isValidEmail: UserManager.ValidType? = nil
 
     var isLoading: Bool = false
     var isSignUpSucceed: Bool = false
 
-    var error: SignUpError?
-  }
-
-  struct SignUpFields {
-    let userName: String
-    let bio: String?
-    let gender: String?
-    let ageRange: String?
-    let email: String
-    let nickName: String
-    let avatar: String?
-    let password: String
+    var error: UserManagerError?
   }
 
   var initialState = State()
@@ -69,8 +49,8 @@ final class SignUpViewModel: Reactor {
   func reduce(state: State, mutation: Mutation) -> State {
     var newState = state
     switch mutation {
-    case .signUpSuccess(let validation):
-      newState.isSignUpSucceed = validation
+    case .signUpSuccess(let bool):
+      newState.isSignUpSucceed = bool
     case .updateEmailValid(let validation):
       newState.isValidEmail = validation
     case .updateNicknameValid(let validation):
@@ -95,7 +75,7 @@ final class SignUpViewModel: Reactor {
         .just(.updateLoading(true)),
         signUp(fields: fields)
           .map { Mutation.signUpSuccess($0) }
-          .catch { .just(Mutation.setError(try $0.cast(to: SignUpError.self))) },
+          .catch { .just(Mutation.setError(try $0.cast(to: UserManagerError.self))) },
         .just(.updateLoading(false)
         ))
     }
@@ -121,152 +101,31 @@ extension SignUpViewModel {
     }
   }
 
-  private func passwordValidCheck(pw: String, pwConfirm: String) -> Observable<ValidType> {
-    .create { subscriber in
-
-      // 패스워드와 패스워드 확인은 동일
-      guard pw == pwConfirm else {
-        subscriber.onNext(.passwordNotSame)
-        return Disposables.create()
-      }
-
-      // 패스워드는 최소 8자 이상
-      guard pw.count >= 8 else {
-        subscriber.onNext(.tooShort)
-        return Disposables.create()
-      }
-
-      // 패스워드는 영문 / 숫자 / 특수문자
-      let regexRule = "(?=.*[A-Za-z])(?=.*[0-9])(?=.*[!@#$&*]).{8,20}"
-      guard let regex = try? NSRegularExpression(pattern: regexRule, options: .useUnicodeWordBoundaries) else {
-        assertionFailure("Regex Failed")
-        subscriber.onNext(.invalid)
-        return Disposables.create()
-      }
-
-      let result = regex.firstMatch(in: pw, options: [], range: NSRange(pw.startIndex..., in: pw))
-      guard result != nil else {
-        subscriber.onNext(.needSpecialCharNumber)
-        return Disposables.create()
-      }
-      subscriber.onNext(.valid)
-
-      return Disposables.create()
-    }
+  private func passwordValidCheck(pw: String, pwConfirm: String) -> Observable<UserManager.ValidType> {
+    UserManager.checkValidate(pw: pw, pwConfirm: pwConfirm)
   }
 
-  private func emailValidCheck(_ mail: String) -> Observable<ValidType> {
-    .create { subscriber in
-
-      guard
-        let mailRegex = try? NSRegularExpression(
-          pattern: "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}", options: .caseInsensitive) else
-      {
-        assertionFailure("Regex Failed")
-        subscriber.onNext(.invalid)
-        return Disposables.create()
-      }
-
-      let result = mailRegex.firstMatch(in: mail, options: [], range: NSRange(mail.startIndex..., in: mail))
-      guard result != nil else {
-        subscriber.onNext(.invalid)
-        return Disposables.create()
-      }
-
-      // TODO: 이메일 중복 확인.
-      Network.shared.apollo.fetch(query: UserCheckQuery(email: mail, nickName: nil)) {
-        guard let _data = try? $0.get().data, let result = _data.userCheck else {
-          subscriber.onNext(.invalid)
-          return
-        }
-
-        if result.ok {
-          subscriber.onNext(.valid)
-        } else if result.error == -100 {
-          subscriber.onNext(.alreadyExists)
-        } else {
-          subscriber.onNext(.invalid)
-        }
-      }
-
-      return Disposables.create()
-    }
+  private func emailValidCheck(_ mail: String) -> Observable<UserManager.ValidType> {
+    UserManager.checkValidate(email: mail)
   }
 
-  private func nickNameValidCheck(_ nick: String) -> Observable<ValidType> {
+  private func nickNameValidCheck(_ nick: String) -> Observable<UserManager.ValidType> {
     guard nick.count >= 2 else {
       return Observable.just(.tooShort)
     }
 
-    return .create { subscriber in
-      Network.shared.apollo.fetch(query: UserCheckQuery(email: nil, nickName: nick)) {
-        guard let _data = try? $0.get().data, let result = _data.userCheck else {
-          subscriber.onNext(.invalid)
-          return
-        }
-
-        if result.ok {
-          subscriber.onNext(.valid)
-        } else if result.error == -102 {
-          subscriber.onNext(.alreadyExists)
-        } else {
-          subscriber.onNext(.invalid)
-        }
-      }
-
-      return Disposables.create()
-    }
+    return UserManager.checkValidate(nickname: nick)
   }
 
-  private func signUp(fields: SignUpFields) -> Observable<Bool> {
+  private func signUp(fields: UserAccount.SignUpFields) -> Observable<Bool> {
     guard
       currentState.isValidEmail == .valid,
       currentState.isValidPassword == .valid,
       currentState.isValidNickname == .valid else
     {
-      return Observable.error(SignUpError.invalidForm)
+      return Observable.error(UserManagerError.invalidForm)
     }
 
-    return .create { subscriber in
-      Network.shared.apollo.perform(mutation: CreateUserMutation(
-        bio: fields.bio,
-        userName: fields.userName,
-        gender: fields.gender,
-        ageRange: fields.ageRange,
-        email: fields.email,
-        nickName: fields.nickName,
-        avatar: fields.avatar,
-        password: fields.password)) {
-          guard let data = try? $0.get().data else {
-            subscriber.onError(SignUpError.signUpFailed)
-            return
-          }
-
-          if data.createUser?.ok == true {
-            subscriber.onNext(true)
-          } else if data.createUser?.error == -100 {
-            subscriber.onError(SignUpError.emailExists)
-          } else if data.createUser?.error == -101 {
-            subscriber.onError(SignUpError.userExists)
-          } else if data.createUser?.error == -102 {
-            subscriber.onError(SignUpError.nicknameExists)
-          } else {
-            subscriber.onError(SignUpError.unknown)
-          }
-      }
-
-      return Disposables.create()
-    }
+    return UserManager.createUser(fields: fields)
   }
-}
-
-// MARK: - SignUpError
-
-enum SignUpError: Error {
-  case invalidForm
-  case signUpFailed
-  case emailExists
-  case userExists
-  case nicknameExists
-  case unknown
 }

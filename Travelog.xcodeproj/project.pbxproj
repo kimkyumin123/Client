@@ -10,6 +10,7 @@
 		482A6FC526AD71F9001BF0BD /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482A6FC426AD71F9001BF0BD /* NSObject+Extension.swift */; };
 		482A6FC726AD7267001BF0BD /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482A6FC626AD7267001BF0BD /* CommentCell.swift */; };
 		484DB8AE26C9AF71004D5EB6 /* Error+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484DB8AD26C9AF71004D5EB6 /* Error+Extension.swift */; };
+		484DB8B026CA097F004D5EB6 /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484DB8AF26CA097F004D5EB6 /* UserAccount.swift */; };
 		4869D02526C8017E0076C570 /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4869D02426C8017E0076C570 /* Constraints.swift */; };
 		4869D02726C803480076C570 /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 4869D02626C803480076C570 /* Debug.xcconfig */; };
 		4869D02C26C8064D0076C570 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4869D02926C8064D0076C570 /* SignUpViewController.swift */; };
@@ -104,6 +105,7 @@
 		483C565E26C2BDC8000B8E8C /* TravelogUnitTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TravelogUnitTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		483C566226C2BDC8000B8E8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		484DB8AD26C9AF71004D5EB6 /* Error+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Extension.swift"; sourceTree = "<group>"; };
+		484DB8AF26CA097F004D5EB6 /* UserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
 		4869D02426C8017E0076C570 /* Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
 		4869D02626C803480076C570 /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = SOURCE_ROOT; };
 		4869D02926C8064D0076C570 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -196,6 +198,14 @@
 				4869D02F26C808330076C570 /* SignUpTests.swift */,
 			);
 			path = TravelogUnitTest;
+			sourceTree = "<group>";
+		};
+		484DB8B126CA0D89004D5EB6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				484DB8AF26CA097F004D5EB6 /* UserAccount.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		4869D02826C806410076C570 /* SignUpScene */ = {
@@ -312,6 +322,7 @@
 				489FB9D826AC3AB600641F21 /* Scenes */,
 				489FB9D026AC394D00641F21 /* Flows */,
 				48F65C6426AC71FA009B15BE /* Utils */,
+				484DB8B126CA0D89004D5EB6 /* Model */,
 				48F65C5B26AC716B009B15BE /* Common */,
 				48F33B2526AC2BBC00A704C7 /* AppDelegate.swift */,
 				48F33B2726AC2BBC00A704C7 /* SceneDelegate.swift */,
@@ -547,6 +558,7 @@
 				482A6FC726AD7267001BF0BD /* CommentCell.swift in Sources */,
 				489FB9DA26AC3BD400641F21 /* TimelineFlow.swift in Sources */,
 				4898971D26AC3527000499AC /* AppStepper.swift in Sources */,
+				484DB8B026CA097F004D5EB6 /* UserAccount.swift in Sources */,
 				489FB9D226AC397A00641F21 /* MapFlow.swift in Sources */,
 				489FB9E326AC3D0000641F21 /* UserInfoViewController.swift in Sources */,
 				484DB8AE26C9AF71004D5EB6 /* Error+Extension.swift in Sources */,
