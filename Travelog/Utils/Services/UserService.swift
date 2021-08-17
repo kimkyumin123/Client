@@ -8,6 +8,7 @@
 import Foundation
 import RxApolloClient
 import RxSwift
+import os.log
 
 // MARK: - UserService
 
@@ -38,7 +39,8 @@ final class UserService {
   }
 
   static func createUser(fields: UserAccount.SignUpFields) -> Observable<Bool> {
-    .create { subscriber in
+    os_log(.debug, log: .user, "createUser(fields:)")
+    return .create { subscriber in
       Network.shared.apollo.perform(mutation: CreateUserMutation(
         bio: fields.bio,
         userName: fields.userName,
@@ -49,19 +51,25 @@ final class UserService {
         avatar: fields.avatar,
         password: fields.password)) {
           guard let data = try? $0.get().data else {
+            os_log(.info, log: .apollo, "Apollo Fetch Failed")
             subscriber.onError(UserServiceError.signUpFailed)
             return
           }
 
           if data.createUser?.ok == true {
+            os_log(.debug, log: .user, "User creation successful")
             subscriber.onNext(true)
           } else if data.createUser?.error == -100 {
+            os_log(.debug, log: .user, "Email Exists")
             subscriber.onError(UserServiceError.emailExists)
           } else if data.createUser?.error == -101 {
+            os_log(.debug, log: .user, "User Exists")
             subscriber.onError(UserServiceError.userExists)
           } else if data.createUser?.error == -102 {
+            os_log(.debug, log: .user, "Nickname Exists")
             subscriber.onError(UserServiceError.nicknameExists)
           } else {
+            os_log(.fault, log: .user, "Unknwon Error")
             subscriber.onError(UserServiceError.unknown)
           }
       }
@@ -73,9 +81,11 @@ final class UserService {
   static func createOAuthUser() { }
 
   static func checkValidate(nickname: String) -> Observable<ValidType> {
-    .create { subscriber in
+    os_log(.debug, log: .user, "checkValidate(nickname:)")
+    return .create { subscriber in
       Network.shared.apollo.fetch(query: UserCheckQuery(email: nil, nickName: nickname)) {
         guard let _data = try? $0.get().data, let result = _data.userCheck else {
+          os_log(.info, log: .apollo, "Apollo Fetch Failed")
           subscriber.onNext(.invalid)
           return
         }
@@ -83,6 +93,7 @@ final class UserService {
         if result.ok {
           subscriber.onNext(.valid)
         } else if result.error == -102 {
+          os_log(.debug, log: .user, "Nickname already exists")
           subscriber.onNext(.alreadyExists)
         } else {
           subscriber.onNext(.invalid)
@@ -94,8 +105,8 @@ final class UserService {
   }
 
   static func checkValidate(email: String) -> Observable<ValidType> {
-    .create { subscriber in
-
+    os_log(.debug, log: .user, "checkValidate(email:)")
+    return .create { subscriber in
       guard
         let mailRegex = try? NSRegularExpression(
           pattern: "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}", options: .caseInsensitive) else
@@ -107,13 +118,15 @@ final class UserService {
 
       let result = mailRegex.firstMatch(in: email, options: [], range: NSRange(email.startIndex..., in: email))
       guard result != nil else {
+        os_log(.debug, log: .user, "Invalid email")
         subscriber.onNext(.invalid)
         return Disposables.create()
       }
 
-      // TODO: 이메일 중복 확인.
+      // 중복확인
       Network.shared.apollo.fetch(query: UserCheckQuery(email: email, nickName: nil)) {
         guard let _data = try? $0.get().data, let result = _data.userCheck else {
+          os_log(.info, log: .apollo, "Apollo Fetch Failed")
           subscriber.onNext(.invalid)
           return
         }
@@ -121,6 +134,7 @@ final class UserService {
         if result.ok {
           subscriber.onNext(.valid)
         } else if result.error == -100 {
+          os_log(.debug, log: .user, "Email already exists")
           subscriber.onNext(.alreadyExists)
         } else {
           subscriber.onNext(.invalid)
@@ -132,7 +146,8 @@ final class UserService {
   }
 
   static func checkValidate(pw: String, pwConfirm: String) -> Observable<ValidType> {
-    .create { subscriber in
+    os_log(.debug, log: .user, "checkValidate(pw:pwConfirm)")
+    return .create { subscriber in
 
       // 패스워드와 패스워드 확인은 동일
       guard pw == pwConfirm else {
@@ -156,6 +171,7 @@ final class UserService {
 
       let result = regex.firstMatch(in: pw, options: [], range: NSRange(pw.startIndex..., in: pw))
       guard result != nil else {
+        os_log(.debug, log: .user, "Password policy violation")
         subscriber.onNext(.needSpecialCharNumber)
         return Disposables.create()
       }
@@ -167,8 +183,10 @@ final class UserService {
 
   static func updateUser() { }
 
+  // TODO: 테스트 예정
   static func deleteUser() -> Observable<Bool> {
-    Network.shared.apollo.rx.perform(mutation: DeleteUserMutation())
+    os_log(.debug, log: .user, "Delete user")
+    return Network.shared.apollo.rx.perform(mutation: DeleteUserMutation())
       .asObservable()
       .map { $0.deleteUser?.ok == true }
       .catchAndReturn(false)
@@ -176,9 +194,11 @@ final class UserService {
 
   /// login 후 토큰 생성
   static func login(id: String, pw: String) -> Observable<(accessToken: JWTToken, refreshToken: JWTToken)> {
-    .create { subscriber in
+    os_log(.debug, log: .user, "login(id:pw:)")
+    return .create { subscriber in
       Network.shared.apollo.perform(mutation: UserLoginMutation(userName: id, password: pw)) {
         guard let _data = try? $0.get().data, let data = _data.userLogin, data.ok == true else {
+          os_log(.info, log: .apollo, "Apollo Fetch Failed")
           subscriber.onError(UserServiceError.signUpFailed)
           return
         }

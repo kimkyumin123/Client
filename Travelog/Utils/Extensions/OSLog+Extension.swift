@@ -14,6 +14,7 @@ extension OSLog {
 
   static let keychain = OSLog(subsystem: subsystem, category: "KeyChain")
   static let apollo = OSLog(subsystem: subsystem, category: "GraphQL")
+  static let user = OSLog(subsystem: subsystem, category: "User")
 
   // MARK: Private
 
