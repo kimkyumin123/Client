@@ -16,6 +16,7 @@ import XCTest
 final class UserServiceTest: XCTestCase {
   var disposeBag: DisposeBag!
 
+  /// 로그인 시도, 토큰 획득 확인
   func testLogin() {
     // given
     let testID = "testName"
@@ -27,6 +28,30 @@ final class UserServiceTest: XCTestCase {
     // then
     let result = try? observable.toBlocking(timeout: 5.0).first()
     XCTAssertNotNil(result)
+  }
+
+  /// 사용자 정보 조회
+  func testSeeProfile() {
+    // given
+    let testName = "testName"
+
+    // when
+    let observable = UserService.seeProfile(userName: testName)
+
+    // then
+    let result = try? observable.toBlocking(timeout: 5.0).first()
+    XCTAssertNotNil(result?.id)
+    XCTAssertEqual(result?.userName, testName)
+  }
+
+  /// 회원 탈퇴
+  func testDeleteUser() {
+    XCTFail()
+  }
+
+  /// 사용자 정보 수정
+  func testEditUserInfo() {
+    XCTFail()
   }
 
   /// 로그인 시 전달받은 토큰이 정상적으로 디코딩 되는지 확인

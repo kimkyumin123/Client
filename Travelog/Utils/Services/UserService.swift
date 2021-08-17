@@ -6,9 +6,9 @@
 //
 
 import Foundation
+import os.log
 import RxApolloClient
 import RxSwift
-import os.log
 
 // MARK: - UserService
 
@@ -52,7 +52,7 @@ final class UserService {
         password: fields.password)) {
           guard let data = try? $0.get().data else {
             os_log(.info, log: .apollo, "Apollo Fetch Failed")
-            subscriber.onError(UserServiceError.signUpFailed)
+            subscriber.onError(UserServiceError.requestFailed)
             return
           }
 
@@ -83,10 +83,10 @@ final class UserService {
   static func checkValidate(nickname: String) -> Observable<ValidType> {
     os_log(.debug, log: .user, "checkValidate(nickname:)")
     return .create { subscriber in
-      Network.shared.apollo.fetch(query: UserCheckQuery(email: nil, nickName: nickname)) {
+      Network.shared.apollo.fetch(query: NickNameCheckQuery(nickName: nickname)) {
         guard let _data = try? $0.get().data, let result = _data.userCheck else {
           os_log(.info, log: .apollo, "Apollo Fetch Failed")
-          subscriber.onNext(.invalid)
+          subscriber.onError(UserServiceError.requestFailed)
           return
         }
 
@@ -124,10 +124,10 @@ final class UserService {
       }
 
       // 중복확인
-      Network.shared.apollo.fetch(query: UserCheckQuery(email: email, nickName: nil)) {
+      Network.shared.apollo.fetch(query: MailCheckQuery(email: email)) {
         guard let _data = try? $0.get().data, let result = _data.userCheck else {
           os_log(.info, log: .apollo, "Apollo Fetch Failed")
-          subscriber.onNext(.invalid)
+          subscriber.onError(UserServiceError.requestFailed)
           return
         }
 
@@ -199,7 +199,7 @@ final class UserService {
       Network.shared.apollo.perform(mutation: UserLoginMutation(userName: id, password: pw)) {
         guard let _data = try? $0.get().data, let data = _data.userLogin, data.ok == true else {
           os_log(.info, log: .apollo, "Apollo Fetch Failed")
-          subscriber.onError(UserServiceError.signUpFailed)
+          subscriber.onError(UserServiceError.requestFailed)
           return
         }
 
@@ -229,9 +229,33 @@ final class UserService {
     // 키체인에 토큰 저장, 로그인 저장
     .do(onNext: { access, refresh in
       UserDefaults.isLoggedIn = true
+      UserDefaults.userID = id
       try? KeychainService.write(key: .accessToken, value: access.value)
       try? KeychainService.write(key: .accessToken, value: refresh.value)
     })
+  }
+
+  // TODO: 요구사항에 따라 쿼리 세분화 작성 필요.
+  static func seeProfile(userName: String = UserDefaults.userID) -> Observable<SeeProfileQuery.Data.SeeProfile> {
+    os_log(.debug, log: .user, "seeProfile(userName:)")
+    return .create { subscriber in
+      Network.shared.apollo.fetch(query: SeeProfileQuery(userName: userName)) {
+        guard let _data = try? $0.get().data else {
+          os_log(.info, log: .apollo, "Apollo Fetch Failed")
+          subscriber.onError(UserServiceError.requestFailed)
+          return
+        }
+
+        guard let data = _data.seeProfile else {
+          os_log(.debug, log: .user, "Can not find user")
+          subscriber.onError(UserServiceError.canNotFindUser)
+          return
+        }
+
+        subscriber.onNext(data)
+      }
+      return Disposables.create()
+    }
   }
 
   static func oAuthLogin() { }
@@ -245,6 +269,7 @@ enum UserServiceError: Error {
   case invalidForm
   case unknown
   case noUserLoggedIn
+  case requestFailed
 
   case emailExists
   case userExists

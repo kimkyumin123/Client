@@ -1064,14 +1064,13 @@ public final class SeeProfileQuery: GraphQLQuery {
 
 }
 
-// MARK: - UserCheckQuery
+// MARK: - NickNameCheckQuery
 
-public final class UserCheckQuery: GraphQLQuery {
+public final class NickNameCheckQuery: GraphQLQuery {
 
   // MARK: Lifecycle
 
-  public init(email: String? = nil, nickName: String? = nil) {
-    self.email = email
+  public init(nickName: String? = nil) {
     self.nickName = nickName
   }
 
@@ -1149,7 +1148,7 @@ public final class UserCheckQuery: GraphQLQuery {
 
     public static var selections: [GraphQLSelection] {
       [
-        GraphQLField("userCheck", arguments: ["email": GraphQLVariable("email"), "nickName": GraphQLVariable("nickName")], type: .object(UserCheck.selections)),
+        GraphQLField("userCheck", arguments: ["nickName": GraphQLVariable("nickName")], type: .object(UserCheck.selections)),
       ]
     }
 
@@ -1169,8 +1168,8 @@ public final class UserCheckQuery: GraphQLQuery {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition: String =
     """
-    query userCheck($email: String, $nickName: String) {
-      userCheck(email: $email, nickName: $nickName) {
+    query nickNameCheck($nickName: String) {
+      userCheck(nickName: $nickName) {
         __typename
         ok
         error
@@ -1178,15 +1177,139 @@ public final class UserCheckQuery: GraphQLQuery {
     }
     """
 
-  public let operationName: String = "userCheck"
+  public let operationName: String = "nickNameCheck"
 
-  public let operationIdentifier: String? = "b27e056a4ce53bb787da13139db8b4089d969aa657efc5a7858be277d676e1c3"
+  public let operationIdentifier: String? = "7a99b809642a314c8a518db954ad5603526efdad8ca91641ace0a29253feee75"
 
-  public var email: String?
   public var nickName: String?
 
   public var variables: GraphQLMap? {
-    ["email": email, "nickName": nickName]
+    ["nickName": nickName]
+  }
+
+}
+
+// MARK: - MailCheckQuery
+
+public final class MailCheckQuery: GraphQLQuery {
+
+  // MARK: Lifecycle
+
+  public init(email: String? = nil) {
+    self.email = email
+  }
+
+  // MARK: Public
+
+  public struct Data: GraphQLSelectionSet {
+
+    // MARK: Lifecycle
+
+    public init(unsafeResultMap: ResultMap) {
+      resultMap = unsafeResultMap
+    }
+
+    public init(userCheck: UserCheck? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Query", "userCheck": userCheck.flatMap { (value: UserCheck) -> ResultMap in value.resultMap }])
+    }
+
+    // MARK: Public
+
+    public struct UserCheck: GraphQLSelectionSet {
+
+      // MARK: Lifecycle
+
+      public init(unsafeResultMap: ResultMap) {
+        resultMap = unsafeResultMap
+      }
+
+      public init(ok: Bool, error: Int? = nil) {
+        self.init(unsafeResultMap: ["__typename": "QueryResponse", "ok": ok, "error": error])
+      }
+
+      // MARK: Public
+
+      public static let possibleTypes: [String] = ["QueryResponse"]
+
+      public static var selections: [GraphQLSelection] {
+        [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("ok", type: .nonNull(.scalar(Bool.self))),
+          GraphQLField("error", type: .scalar(Int.self)),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public var __typename: String {
+        get {
+          resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var ok: Bool {
+        get {
+          resultMap["ok"]! as! Bool
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "ok")
+        }
+      }
+
+      public var error: Int? {
+        get {
+          resultMap["error"] as? Int
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "error")
+        }
+      }
+    }
+
+    public static let possibleTypes: [String] = ["Query"]
+
+    public static var selections: [GraphQLSelection] {
+      [
+        GraphQLField("userCheck", arguments: ["email": GraphQLVariable("email")], type: .object(UserCheck.selections)),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    public var userCheck: UserCheck? {
+      get {
+        (resultMap["userCheck"] as? ResultMap).flatMap { UserCheck(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "userCheck")
+      }
+    }
+
+  }
+
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    query mailCheck($email: String) {
+      userCheck(email: $email) {
+        __typename
+        ok
+        error
+      }
+    }
+    """
+
+  public let operationName: String = "mailCheck"
+
+  public let operationIdentifier: String? = "f9a5d3d6a28cd2a0ee68d020bce42ce1b6638f39b5e6dff4c058917f473ae05e"
+
+  public var email: String?
+
+  public var variables: GraphQLMap? {
+    ["email": email]
   }
 
 }

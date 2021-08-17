@@ -12,6 +12,10 @@ extension UserDefaults {
   /// 사용자 로그인 정보
   @UserDefault(key: "IsLoggedIn", defaultValue: false)
   static var isLoggedIn: Bool
+
+  /// 사용자 아이디
+  @UserDefault(key: "UserID", defaultValue: "")
+  static var userID: String
 }
 
 // MARK: - UserDefault

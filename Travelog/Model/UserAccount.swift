@@ -8,6 +8,8 @@
 import Foundation
 
 struct UserAccount {
+  private init() { }
+
   struct SignUpFields {
     let userName: String
     let bio: String?

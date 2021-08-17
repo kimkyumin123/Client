@@ -27,9 +27,13 @@
     "name": "seeProfile",
     "source": "query seeProfile($userName: String!) {\n  seeProfile(userName: $userName) {\n    __typename\n    id\n    userName\n    nickName\n    email\n    avatar\n    bio\n    gender\n    ageRanger\n    createdAt\n    updatedAt\n    platformType\n  }\n}"
   },
-  "b27e056a4ce53bb787da13139db8b4089d969aa657efc5a7858be277d676e1c3": {
-    "name": "userCheck",
-    "source": "query userCheck($email: String, $nickName: String) {\n  userCheck(email: $email, nickName: $nickName) {\n    __typename\n    ok\n    error\n  }\n}"
+  "7a99b809642a314c8a518db954ad5603526efdad8ca91641ace0a29253feee75": {
+    "name": "nickNameCheck",
+    "source": "query nickNameCheck($nickName: String) {\n  userCheck(nickName: $nickName) {\n    __typename\n    ok\n    error\n  }\n}"
+  },
+  "f9a5d3d6a28cd2a0ee68d020bce42ce1b6638f39b5e6dff4c058917f473ae05e": {
+    "name": "mailCheck",
+    "source": "query mailCheck($email: String) {\n  userCheck(email: $email) {\n    __typename\n    ok\n    error\n  }\n}"
   },
   "1fa4022c4e9f33fe32bf6dc4a31977de56dd8e00c50136d25162e29d1e1aa2ec": {
     "name": "userLogin",
