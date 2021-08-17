@@ -14,6 +14,8 @@ import RxSwift
 
 final class UserService {
 
+  // MARK: Internal
+
   enum ValidType {
     case valid
     case invalid
@@ -183,18 +185,20 @@ final class UserService {
 
   static func updateUser() { }
 
-  // TODO: 테스트 예정
   static func deleteUser() -> Observable<Bool> {
     os_log(.debug, log: .user, "Delete user")
     return Network.shared.apollo.rx.perform(mutation: DeleteUserMutation())
       .asObservable()
       .map { $0.deleteUser?.ok == true }
       .catchAndReturn(false)
+      // 로그인 상태 변경, 토큰 제거
+      .do(onNext: { if $0 { deleteLoginInfo() } })
   }
 
   /// login 후 토큰 생성
   static func login(id: String, pw: String) -> Observable<(accessToken: JWTToken, refreshToken: JWTToken)> {
     os_log(.debug, log: .user, "login(id:pw:)")
+    deleteLoginInfo()
     return .create { subscriber in
       Network.shared.apollo.perform(mutation: UserLoginMutation(userName: id, password: pw)) {
         guard let _data = try? $0.get().data, let data = _data.userLogin, data.ok == true else {
@@ -228,10 +232,7 @@ final class UserService {
     }
     // 키체인에 토큰 저장, 로그인 저장
     .do(onNext: { access, refresh in
-      UserDefaults.isLoggedIn = true
-      UserDefaults.userID = id
-      try? KeychainService.write(key: .accessToken, value: access.value)
-      try? KeychainService.write(key: .accessToken, value: refresh.value)
+      writeLoginInfo(id: id, accessToken: access.value, refreshToken: refresh.value)
     })
   }
 
@@ -261,6 +262,25 @@ final class UserService {
   static func oAuthLogin() { }
 
   static func logout() {}
+
+  // MARK: Private
+
+  /// 로그인 정보 기록
+  private static func writeLoginInfo(id: String, accessToken: String, refreshToken: String) {
+    UserDefaults.isLoggedIn = true
+    UserDefaults.userID = id
+    try? KeychainService.write(key: .accessToken, value: accessToken)
+    try? KeychainService.write(key: .refreshToken, value: refreshToken)
+  }
+
+  /// 로그인 정보 제거
+  private static func deleteLoginInfo() {
+    os_log(.debug, log: .user, "Delete Login Info")
+    UserDefaults.userID = ""
+    UserDefaults.isLoggedIn = false
+    try? KeychainService.delete(key: .accessToken)
+    try? KeychainService.delete(key: .refreshToken)
+  }
 }
 
 // MARK: - UserServiceError

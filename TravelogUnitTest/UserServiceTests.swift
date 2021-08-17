@@ -14,19 +14,21 @@ import XCTest
 // MARK: - UserServiceTest
 
 final class UserServiceTest: XCTestCase {
-  var disposeBag: DisposeBag!
 
   /// 로그인 시도, 토큰 획득 확인
-  func testLogin() {
+  func testLogin() throws {
     // given
     let testID = "testName"
     let testPW = "password!1234"
+    signUp(id: testID, pw: testPW)
 
     // when
     let observable = UserService.login(id: testID, pw: testPW)
 
     // then
-    let result = try? observable.toBlocking(timeout: 5.0).first()
+    let result = try observable.toBlocking(timeout: 5.0).first()
+    XCTAssertEqual(result?.accessToken.value, try KeychainService.read(key: .accessToken))
+    XCTAssertEqual(result?.refreshToken.value, try KeychainService.read(key: .refreshToken))
     XCTAssertNotNil(result)
   }
 
@@ -45,8 +47,29 @@ final class UserServiceTest: XCTestCase {
   }
 
   /// 회원 탈퇴
-  func testDeleteUser() {
-    XCTFail()
+  func testDeleteUser() throws {
+    // given
+
+    let testName = "testName"
+    let testPW = "password!1234"
+    signUp(id: testName, pw: testPW)
+
+    // login
+    let accessToken = try UserService.login(id: testName, pw: testPW).toBlocking(timeout: 3.0).first()?.accessToken
+    XCTAssertEqual(try KeychainService.read(key: .accessToken), accessToken?.value)
+    XCTAssertEqual(UserDefaults.isLoggedIn, true)
+    XCTAssertNotEqual(UserDefaults.userID, "")
+
+    // when
+    let observable = UserService.deleteUser()
+
+    // then
+    let result = try observable.toBlocking(timeout: 5.0).first()
+    XCTAssertEqual(result, true)
+    XCTAssertEqual(UserDefaults.isLoggedIn, false)
+    XCTAssertEqual(UserDefaults.userID, "")
+    XCTAssertNil(try? KeychainService.read(key: .accessToken))
+    XCTAssertNil(try? KeychainService.read(key: .refreshToken))
   }
 
   /// 사용자 정보 수정
@@ -95,4 +118,25 @@ final class UserServiceTest: XCTestCase {
      print(refreshToken?.payload ?? "")
    }
     */
+  // MARK: Private
+
+  private func signUp(id: String, pw: String) {
+    let testMail = "foo@bar.org"
+    let testNick = "testNickname"
+    let testName = id
+    let testPW = pw
+
+    let textForm = UserAccount.SignUpFields(
+      userName: testName,
+      bio: nil,
+      gender: nil,
+      ageRange: nil,
+      email: testMail,
+      nickName: testNick,
+      avatar: nil,
+      password: testPW)
+
+    _ = try? UserService.createUser(fields: textForm).toBlocking(timeout: 3.0).first()
+  }
+
 }
