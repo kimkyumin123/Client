@@ -27,13 +27,13 @@
     "name": "seeProfile",
     "source": "query seeProfile($userName: String!) {\n  seeProfile(userName: $userName) {\n    __typename\n    id\n    userName\n    nickName\n    email\n    avatar\n    bio\n    gender\n    ageRanger\n    createdAt\n    updatedAt\n    platformType\n  }\n}"
   },
-  "7a99b809642a314c8a518db954ad5603526efdad8ca91641ace0a29253feee75": {
-    "name": "nickNameCheck",
-    "source": "query nickNameCheck($nickName: String) {\n  userCheck(nickName: $nickName) {\n    __typename\n    ok\n    error\n  }\n}"
+  "068bb42b56080aeb5a1898d8ecaac4867233cfe60e9febef4f77345525f59dac": {
+    "name": "nickNameValidation",
+    "source": "query nickNameValidation($nickName: String) {\n  userCheck(nickName: $nickName) {\n    __typename\n    ok\n    error\n  }\n}"
   },
-  "f9a5d3d6a28cd2a0ee68d020bce42ce1b6638f39b5e6dff4c058917f473ae05e": {
-    "name": "mailCheck",
-    "source": "query mailCheck($email: String) {\n  userCheck(email: $email) {\n    __typename\n    ok\n    error\n  }\n}"
+  "16e14e7118f4f58c2c2f976594d854bc3d8f6ec569b3aa806860a6f30bbcf02f": {
+    "name": "emailValidation",
+    "source": "query emailValidation($email: String) {\n  userCheck(email: $email) {\n    __typename\n    ok\n    error\n  }\n}"
   },
   "1fa4022c4e9f33fe32bf6dc4a31977de56dd8e00c50136d25162e29d1e1aa2ec": {
     "name": "userLogin",
