@@ -183,7 +183,20 @@ final class UserService {
     }
   }
 
-  static func updateUser() { }
+  static func updateUser(fields: UserAccount.UpdateFields) -> Observable<Bool> {
+    os_log(.debug, log: .user, "Update User")
+
+    return Network.shared.apollo.rx.perform(mutation: EditUserMutation(
+      nickName: fields.nickName,
+      bio: fields.bio,
+      avatar: fields.avatar,
+      password: fields.password,
+      gender: fields.gender,
+      ageRange: fields.ageRange))
+      .asObservable()
+      .map { ($0.editUser?.ok ?? false) == true }
+      .catchAndReturn(false)
+  }
 
   static func deleteUser() -> Observable<Bool> {
     os_log(.debug, log: .user, "Delete user")
@@ -232,7 +245,7 @@ final class UserService {
     }
     // 키체인에 토큰 저장, 로그인 저장
     .do(onNext: { access, refresh in
-      writeLoginInfo(id: id, accessToken: access.value, refreshToken: refresh.value)
+      updateLoginInfo(id: id, accessToken: access.value, refreshToken: refresh.value)
     })
   }
 
@@ -266,7 +279,8 @@ final class UserService {
   // MARK: Private
 
   /// 로그인 정보 기록
-  private static func writeLoginInfo(id: String, accessToken: String, refreshToken: String) {
+  private static func updateLoginInfo(id: String, accessToken: String, refreshToken: String) {
+    os_log(.debug, log: .user, "Update Login Info")
     UserDefaults.isLoggedIn = true
     UserDefaults.userID = id
     try? KeychainService.write(key: .accessToken, value: accessToken)
