@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RxApolloClient
 import RxSwift
 
 // MARK: - UserService
@@ -166,7 +167,12 @@ final class UserService {
 
   static func updateUser() { }
 
-  static func deleteUser() { }
+  static func deleteUser() -> Observable<Bool> {
+    Network.shared.apollo.rx.perform(mutation: DeleteUserMutation())
+      .asObservable()
+      .map { $0.deleteUser?.ok == true }
+      .catchAndReturn(false)
+  }
 
   /// login 후 토큰 생성
   static func login(id: String, pw: String) -> Observable<(accessToken: JWTToken, refreshToken: JWTToken)> {
@@ -200,8 +206,9 @@ final class UserService {
 
       return Disposables.create()
     }
-    /// 키체인에 토큰 저장
-    .do(onNext: { (access, refresh) in
+    // 키체인에 토큰 저장, 로그인 저장
+    .do(onNext: { access, refresh in
+      UserDefaults.isLoggedIn = true
       try? KeychainService.write(key: .accessToken, value: access.value)
       try? KeychainService.write(key: .accessToken, value: refresh.value)
     })

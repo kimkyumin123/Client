@@ -49,6 +49,11 @@ struct JWTToken {
   let value: String
   let payload: Payload
 
+  /// 토큰 만료 확인
+  var isExpired: Bool {
+    payload.expiredAt < Date()
+  }
+
   // MARK: Private
 
   private static func createPayload(token: String) -> Payload? {

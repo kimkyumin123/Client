@@ -14,6 +14,7 @@ import XCTest
 // MARK: - UserServiceTest
 
 final class UserServiceTest: XCTestCase {
+  var disposeBag: DisposeBag!
 
   func testLogin() {
     // given
@@ -21,10 +22,10 @@ final class UserServiceTest: XCTestCase {
     let testPW = "password!1234"
 
     // when
-    let action = UserService.login(id: testID, pw: testPW)
+    let observable = UserService.login(id: testID, pw: testPW)
 
     // then
-    let result = try? action.take(1).toBlocking(timeout: 3.0).first()
+    let result = try? observable.toBlocking(timeout: 5.0).first()
     XCTAssertNotNil(result)
   }
 

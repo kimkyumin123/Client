@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4825FEF026CA4D1A00BD1402 /* UserServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4825FEEF26CA4D1A00BD1402 /* UserServiceTests.swift */; };
+		4825FEF226CA58BC00BD1402 /* UserManagementInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4825FEF126CA58BC00BD1402 /* UserManagementInterceptor.swift */; };
+		4825FEF426CA594F00BD1402 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4825FEF326CA594F00BD1402 /* UserDefaults+Extension.swift */; };
 		482A6FC526AD71F9001BF0BD /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482A6FC426AD71F9001BF0BD /* NSObject+Extension.swift */; };
 		482A6FC726AD7267001BF0BD /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482A6FC626AD7267001BF0BD /* CommentCell.swift */; };
 		484DB8AE26C9AF71004D5EB6 /* Error+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484DB8AD26C9AF71004D5EB6 /* Error+Extension.swift */; };
@@ -104,6 +106,8 @@
 
 /* Begin PBXFileReference section */
 		4825FEEF26CA4D1A00BD1402 /* UserServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceTests.swift; sourceTree = "<group>"; };
+		4825FEF126CA58BC00BD1402 /* UserManagementInterceptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManagementInterceptor.swift; sourceTree = "<group>"; };
+		4825FEF326CA594F00BD1402 /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
 		482A6FC426AD71F9001BF0BD /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
 		482A6FC626AD7267001BF0BD /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		483C565E26C2BDC8000B8E8C /* TravelogUnitTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TravelogUnitTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -225,6 +229,7 @@
 				48E3D2AE26C41C23007D08ED /* OSLog+Extension.swift */,
 				48F65C6126AC71F6009B15BE /* UIColor+Extension.swift */,
 				484DB8BC26CA3D7A004D5EB6 /* String+Extension.swift */,
+				4825FEF326CA594F00BD1402 /* UserDefaults+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -381,6 +386,7 @@
 				484DB8B326CA0F10004D5EB6 /* Services */,
 				48E3D2B226C440CD007D08ED /* API.swift */,
 				48E3D2B026C43F6F007D08ED /* Network.swift */,
+				4825FEF126CA58BC00BD1402 /* UserManagementInterceptor.swift */,
 				4869D02426C8017E0076C570 /* Constraints.swift */,
 			);
 			path = Utils;
@@ -566,6 +572,7 @@
 			files = (
 				4869D02C26C8064D0076C570 /* SignUpViewController.swift in Sources */,
 				48F65C6326AC71F6009B15BE /* UIColor+Extension.swift in Sources */,
+				4825FEF426CA594F00BD1402 /* UserDefaults+Extension.swift in Sources */,
 				489FB9E826AC3DA500641F21 /* UserInfoFlow.swift in Sources */,
 				48F65C6226AC71F6009B15BE /* NSLayoutConstraint+Extension.swift in Sources */,
 				489FB9D626AC3A4B00641F21 /* MapViewModel.swift in Sources */,
@@ -585,6 +592,7 @@
 				489FB9DA26AC3BD400641F21 /* TimelineFlow.swift in Sources */,
 				4898971D26AC3527000499AC /* AppStepper.swift in Sources */,
 				484DB8B026CA097F004D5EB6 /* UserAccount.swift in Sources */,
+				4825FEF226CA58BC00BD1402 /* UserManagementInterceptor.swift in Sources */,
 				489FB9D226AC397A00641F21 /* MapFlow.swift in Sources */,
 				489FB9E326AC3D0000641F21 /* UserInfoViewController.swift in Sources */,
 				484DB8AE26C9AF71004D5EB6 /* Error+Extension.swift in Sources */,
