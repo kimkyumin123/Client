@@ -29,6 +29,16 @@ final class LoginViewController: UIViewController {
         NaverThirdPartyLoginConnection.getSharedInstance().requestThirdPartyLogin()
       })
       .disposed(by: disposeBag)
+
+    contentView.kakaoLogin
+      .rx.tap
+      .flatMap {
+        ThirdPartyLoginService.kakaoLogin()
+      }
+      .subscribe(onNext: {
+        print($0.accessToken)
+      })
+      .disposed(by: disposeBag)
   }
 
   // MARK: Private

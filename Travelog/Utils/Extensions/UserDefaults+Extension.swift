@@ -16,6 +16,9 @@ extension UserDefaults {
   /// 사용자 아이디
   @UserDefault(key: "UserID", defaultValue: "")
   static var userID: String
+
+  @UserDefault(key: "AccountPlatform", defaultValue: nil)
+  static var loginPlatform: UserAccount.Platform?
 }
 
 // MARK: - UserDefault

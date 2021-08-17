@@ -15,6 +15,10 @@ struct UserAccount {
 
   // MARK: Internal
 
+  enum Platform: String {
+    case naver, kakao, apple, service
+  }
+
   struct SignUpFields {
 
     // MARK: Lifecycle

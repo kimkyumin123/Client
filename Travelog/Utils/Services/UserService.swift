@@ -85,7 +85,7 @@ final class UserService {
   static func checkValidate(nickname: String) -> Observable<ValidType> {
     os_log(.debug, log: .user, "checkValidate(nickname:)")
     return .create { subscriber in
-      Network.shared.apollo.fetch(query: NickNameCheckQuery(nickName: nickname)) {
+      Network.shared.apollo.fetch(query: NickNameValidationQuery(nickName: nickname)) {
         guard let _data = try? $0.get().data, let result = _data.userCheck else {
           os_log(.info, log: .apollo, "Apollo Fetch Failed")
           subscriber.onError(UserServiceError.requestFailed)
@@ -126,7 +126,7 @@ final class UserService {
       }
 
       // 중복확인
-      Network.shared.apollo.fetch(query: MailCheckQuery(email: email)) {
+      Network.shared.apollo.fetch(query: EmailValidationQuery(email: email)) {
         guard let _data = try? $0.get().data, let result = _data.userCheck else {
           os_log(.info, log: .apollo, "Apollo Fetch Failed")
           subscriber.onError(UserServiceError.requestFailed)
@@ -279,10 +279,11 @@ final class UserService {
   // MARK: Private
 
   /// 로그인 정보 기록
-  private static func updateLoginInfo(id: String, accessToken: String, refreshToken: String) {
+  private static func updateLoginInfo(id: String, platform: UserAccount.Platform = .service, accessToken: String, refreshToken: String) {
     os_log(.debug, log: .user, "Update Login Info")
     UserDefaults.isLoggedIn = true
     UserDefaults.userID = id
+    UserDefaults.loginPlatform = platform
     try? KeychainService.write(key: .accessToken, value: accessToken)
     try? KeychainService.write(key: .refreshToken, value: refreshToken)
   }
@@ -292,6 +293,7 @@ final class UserService {
     os_log(.debug, log: .user, "Delete Login Info")
     UserDefaults.userID = ""
     UserDefaults.isLoggedIn = false
+    UserDefaults.loginPlatform = nil
     try? KeychainService.delete(key: .accessToken)
     try? KeychainService.delete(key: .refreshToken)
   }

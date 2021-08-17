@@ -5,11 +5,16 @@
 //  Created by JK on 2021/07/24.
 //
 
+import KakaoSDKAuth
 import NaverThirdPartyLogin
+import os.log
 import RxFlow
+import RxKakaoSDKAuth
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+
+  // MARK: Internal
 
   var window: UIWindow?
   let coordinator = FlowCoordinator()
@@ -23,12 +28,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   }
 
   func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
-    /**
-     naver id 로 로그인 처리
-     NaverThirdPartyLoginConnection
-     .getSharedInstance()
-     .receiveAccessToken(URLContexts.first?.url)
-     */
+    loginRedirect(url: URLContexts.first?.url)
+
   }
 
   func sceneDidDisconnect(_: UIScene) {
@@ -57,5 +58,37 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // Called as the scene transitions from the foreground to the background.
     // Use this method to save data, release shared resources, and store enough scene-specific state information
     // to restore the scene back to its current state.
+  }
+
+  // MARK: Private
+
+  private func loginRedirect(url: URL?) {
+    if let url = url {
+      // naver login
+      if
+        NaverThirdPartyLoginConnection
+          .getSharedInstance()
+          .isNaverThirdPartyLoginAppschemeURL(url)
+      {
+        os_log(.debug, log: .user, "Naver handleOpenUrl")
+        NaverThirdPartyLoginConnection
+          .getSharedInstance()
+          .receiveAccessToken(url)
+
+        // kakao login
+      } else if AuthApi.isKakaoTalkLoginUrl(url) {
+        os_log(.debug, log: .user, "Kakao handleOpenUrl")
+        _ = AuthController.rx.handleOpenUrl(url: url)
+      }
+    }
+  }
+
+  private func kakaoLoginUrl(url: URL?) {
+    if
+      let url = url,
+      AuthApi.isKakaoTalkLoginUrl(url)
+    {
+      _ = AuthController.rx.handleOpenUrl(url: url)
+    }
   }
 }

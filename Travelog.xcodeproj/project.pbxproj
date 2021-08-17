@@ -10,6 +10,8 @@
 		4825FEF026CA4D1A00BD1402 /* UserServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4825FEEF26CA4D1A00BD1402 /* UserServiceTests.swift */; };
 		4825FEF226CA58BC00BD1402 /* UserManagementInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4825FEF126CA58BC00BD1402 /* UserManagementInterceptor.swift */; };
 		4825FEF426CA594F00BD1402 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4825FEF326CA594F00BD1402 /* UserDefaults+Extension.swift */; };
+		4825FEF626CBB79700BD1402 /* ThirdPartyLoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4825FEF526CBB79700BD1402 /* ThirdPartyLoginService.swift */; };
+		4825FEF826CBB7F700BD1402 /* ThirdPartyLoginServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4825FEF726CBB7F700BD1402 /* ThirdPartyLoginServiceTests.swift */; };
 		482A6FC526AD71F9001BF0BD /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482A6FC426AD71F9001BF0BD /* NSObject+Extension.swift */; };
 		482A6FC726AD7267001BF0BD /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482A6FC626AD7267001BF0BD /* CommentCell.swift */; };
 		484DB8AE26C9AF71004D5EB6 /* Error+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484DB8AD26C9AF71004D5EB6 /* Error+Extension.swift */; };
@@ -108,6 +110,8 @@
 		4825FEEF26CA4D1A00BD1402 /* UserServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceTests.swift; sourceTree = "<group>"; };
 		4825FEF126CA58BC00BD1402 /* UserManagementInterceptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManagementInterceptor.swift; sourceTree = "<group>"; };
 		4825FEF326CA594F00BD1402 /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
+		4825FEF526CBB79700BD1402 /* ThirdPartyLoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPartyLoginService.swift; sourceTree = "<group>"; };
+		4825FEF726CBB7F700BD1402 /* ThirdPartyLoginServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPartyLoginServiceTests.swift; sourceTree = "<group>"; };
 		482A6FC426AD71F9001BF0BD /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
 		482A6FC626AD7267001BF0BD /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		483C565E26C2BDC8000B8E8C /* TravelogUnitTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TravelogUnitTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -207,6 +211,7 @@
 				483C566226C2BDC8000B8E8C /* Info.plist */,
 				4869D02F26C808330076C570 /* SignUpTests.swift */,
 				4825FEEF26CA4D1A00BD1402 /* UserServiceTests.swift */,
+				4825FEF726CBB7F700BD1402 /* ThirdPartyLoginServiceTests.swift */,
 			);
 			path = TravelogUnitTest;
 			sourceTree = "<group>";
@@ -239,6 +244,7 @@
 			children = (
 				48E3D28426C3FF21007D08ED /* UserService.swift */,
 				48E3D28626C3FF2A007D08ED /* KeychainService.swift */,
+				4825FEF526CBB79700BD1402 /* ThirdPartyLoginService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -562,6 +568,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4825FEF026CA4D1A00BD1402 /* UserServiceTests.swift in Sources */,
+				4825FEF826CBB7F700BD1402 /* ThirdPartyLoginServiceTests.swift in Sources */,
 				4869D03026C808330076C570 /* SignUpTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -596,6 +603,7 @@
 				489FB9D226AC397A00641F21 /* MapFlow.swift in Sources */,
 				489FB9E326AC3D0000641F21 /* UserInfoViewController.swift in Sources */,
 				484DB8AE26C9AF71004D5EB6 /* Error+Extension.swift in Sources */,
+				4825FEF626CBB79700BD1402 /* ThirdPartyLoginService.swift in Sources */,
 				484DB8B926CA14DB004D5EB6 /* JWTToken.swift in Sources */,
 				48E3D28526C3FF21007D08ED /* UserService.swift in Sources */,
 				48E3D2B126C43F6F007D08ED /* Network.swift in Sources */,
@@ -688,6 +696,7 @@
 		};
 		48F33B3426AC2BBD00A704C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4869D02626C803480076C570 /* Debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
