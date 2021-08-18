@@ -5,10 +5,12 @@
 
 import Foundation
 import ReactorKit
+import RxFlow
+import RxRelay
 
 // MARK: - SignUpViewModel
 
-final class SignUpViewModel: Reactor {
+final class SignUpViewModel: Reactor, Stepper {
   enum ValidCheck {
     case nickname(String)
     case password(String, String)
@@ -43,6 +45,7 @@ final class SignUpViewModel: Reactor {
   }
 
   var initialState = State()
+  var steps = PublishRelay<Step>()
 
   var scheduler: Scheduler = SerialDispatchQueueScheduler(qos: .default)
 

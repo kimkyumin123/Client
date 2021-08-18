@@ -12,6 +12,7 @@ enum AppSteps: Step {
   // Auth
   case loginIsRequierd
   case signUp
+  case oAuthSignUp
   case findAccount
   case userIsLoggedIn
 

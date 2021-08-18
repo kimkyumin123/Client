@@ -33,9 +33,7 @@ final class ThirdPartyLoginServiceTests: XCTestCase {
 
     // when
     ThirdPartyLoginService.kakaoLogin()
-      .subscribe(onNext: {
-        print("🚀🚀🚀 \($0.accessToken)")
-        print("🚀🚀🚀 \($0.email)")
+      .subscribe(onNext: { _ in
         getAccessToken.fulfill()
       })
       .disposed(by: disposeBag)

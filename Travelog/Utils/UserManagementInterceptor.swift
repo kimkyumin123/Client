@@ -58,7 +58,7 @@ final class UserManagementInterceptor: ApolloInterceptor {
     completion: @escaping (Result<GraphQLResult<Operation.Data>, Error>) -> Void) where Operation: GraphQLOperation
   {
 
-    guard UserDefaults.isLoggedIn == true, let token = UserService.token else {
+    guard UserDefaults.loginPlatform != .notLoggedIn, let token = UserService.token else {
       chain.proceedAsync(request: request, response: response, completion: completion)
       return
     }

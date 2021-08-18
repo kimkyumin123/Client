@@ -30,19 +30,15 @@ final class ThirdPartyLoginService {
 
   // MARK: Internal
 
-  enum Platform: String {
-    case kakao, naver, apple
-  }
-
   typealias KakaoAccountReturn = (accessToken: String, email: String)
 
-  static func oAuthSignUp(type: Platform, token: String, fields: UserAccount.SignUpFields) -> Observable<Bool> {
+  static func oAuthSignUp(type: UserAccount.Platform, token: String, fields: UserAccount.OAuthSignUpFields) -> Observable<Bool> {
 
     let mutation = CreateAuthUserMutation(
       nickName: fields.nickName,
       avatar: fields.avatar,
       bio: fields.bio,
-      platformType: type.rawValue,
+      platformType: type.value,
       email: fields.email)
 
     return Network.shared.apollo.rx.perform(mutation: mutation)
@@ -52,26 +48,20 @@ final class ThirdPartyLoginService {
   }
 
   /// 카카오 로그인
+  static func kakaoLogin() -> Observable<String> {
+    _kakaoLogin()
+      .map(\.accessToken)
+      // 이메일 획득 시도
+      .flatMap { token -> Observable<String> in
+        Observable.combineLatest(Observable.just(token), ThirdPartyLoginService.getKakaoEmail()) { token, _ in token }
+      }
+      .debug()
+  }
+
   /// 사용자가 거부시, `UserServiceError.denied` 전파
-  static func kakaoLogin() -> Observable<KakaoAccountReturn> {
-    kakaoGetToken()
-      .flatMap {
-        Observable.combineLatest( Observable.just($0.accessToken), getKakaoEmail()) {
-          (accessToken: $0, email: $1)
-        }
-      }
-      // 에러 확인.
-      .catch {
-        guard let err = $0 as? SdkError else { return .error(UserServiceError.unknown) }
-        if
-          err.isAuthFailed,
-          err.getAuthError().reason == .AccessDenied
-        {
-          return .error(UserServiceError.denied)
-        } else {
-          return .error(UserServiceError.unknown)
-        }
-      }
+  static func kakaoSignUp() -> Observable<String> {
+    getKakaoEmail()
+
   }
 
 //  static func naverLogin() -> Observable {
@@ -81,12 +71,16 @@ final class ThirdPartyLoginService {
   /**
    OAuth 사용자 로그인 시도.
 
-   존재하지 않는 회원 일 시, `UserServiceError.canNotFindUser` 호출
+   존재하지 않는 회원 일 시, `UserServiceError.canNotFindUser` 전달
+   이메일 동의하지 않았을 시, Token Invalid 오류 발생., `UserServiceError.denied` 전달
+
+   - parameter type: 로그인할 타입.
+   - parameter token: 사용할 토큰 문자열
    */
-  static func oAuthLogin(type: Platform, token: String) -> Observable<Void> {
+  static func oAuthLogin(type: UserAccount.Platform, token: String) -> Observable<Void> {
     os_log(.debug, log: .user, "oAuthLogin(type:token:)")
     return .create { subscriber in
-      Network.shared.apollo.perform(mutation: AuthUserLoginMutation(platform_type: type.rawValue, accesstoken: token)) {
+      Network.shared.apollo.perform(mutation: AuthUserLoginMutation(platform_type: type.value, accesstoken: token)) {
         guard let _data = try? $0.get().data else {
           os_log(.info, log: .apollo, "Apollo Fetch Failed")
           subscriber.onError(UserServiceError.requestFailed)
@@ -95,9 +89,22 @@ final class ThirdPartyLoginService {
 
         guard _data.authUserLogin?.ok == true else {
           // 미가입 유저
-          if _data.authUserLogin?.error == -303 {
+          guard let errCode = _data.authUserLogin?.error else {
+            subscriber.onError(UserServiceError.unknown)
+            return
+          }
+
+          switch errCode {
+          case -303:
+            os_log(.debug, log: .user, "Can not Find User")
             subscriber.onError(UserServiceError.canNotFindUser)
-          } else {
+          // 이메일이 존재하지 않는 경우 발생
+          case -503:
+            os_log(.debug, log: .user, "Email Denied")
+            subscriber.onError(UserServiceError.denied)
+
+          default:
+            os_log(.fault, log: .user, "ErrorCode: %d", errCode)
             subscriber.onError(UserServiceError.unknown)
           }
           return
@@ -113,38 +120,50 @@ final class ThirdPartyLoginService {
   /// 사용자가 동의를 거절했을 때,  `err.getAuthError().reason == .AccessDenied` 발생.
   ///
 
-  // 선택항목에서 메일을 제외할 시에 추가 요청을 위해 분리함.
+  // 이메일을 요청
+  ///
+  /// 이메일을 자동으로 받아오지 못할 시에 재요청
   /// 메일 수집을 위해 설정
   static func getKakaoEmail() -> Observable<String> {
-    UserApi.shared.rx.me()
-      .compactMap { user -> String? in
+    os_log(.debug, log: .user, "getKakaoEmail()")
+
+    return UserApi.shared.rx.me()
+      .map { user -> String in
         var scopes = [String]()
 
         if user.kakaoAccount?.emailNeedsAgreement == true { scopes.append("account_email") }
         if scopes.count > 0 {
+          os_log(.debug, log: .default, "getKakaoEmail: Thorw")
           throw SdkError(scopes: scopes)
+        } else if let mail = user.kakaoAccount?.email {
+          os_log(.debug, log: .default, "getKakaoEmail: return Mail")
+          return mail
         } else {
-          return user.kakaoAccount?.email
+          throw SdkError(scopes: scopes)
         }
       }
       .retry(when: Auth.shared.rx.incrementalAuthorizationRequired())
       .asObservable()
+      // 에러 확인
+      .catch {
+        os_log(.debug, log: .default, "getKakaoEmail: Catch")
+        guard let err = $0 as? SdkError else { return .error(UserServiceError.unknown) }
+        if
+          err.isAuthFailed,
+          err.getAuthError().reason == .AccessDenied
+        {
+          return .error(UserServiceError.denied)
+        } else {
+          return .error(UserServiceError.unknown)
+        }
+      }
   }
 
   // MARK: Private
 
   // 카카오 로그인 및 토큰 획득.
-  private static func kakaoGetToken() -> Observable<OAuthToken> {
+  private static func _kakaoLogin() -> Observable<OAuthToken> {
     os_log(.debug, log: .user, "kakaoGetToken()")
-    // 토큰이 이미 존재 시 반환.
-    if
-      let token = TokenManager.manager.getToken(),
-      token.expiresIn > 0
-    {
-      os_log(.debug, log: .user, "Token exists, return stored token")
-      return .just(token)
-    }
-
     // kakaotalk 설치 여부 확인
     if UserApi.isKakaoTalkLoginAvailable() {
       os_log(.debug, log: .user, "Login with KakaoTalk")

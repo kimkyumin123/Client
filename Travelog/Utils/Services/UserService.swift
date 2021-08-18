@@ -276,27 +276,26 @@ final class UserService {
 
   static func logout() {}
 
+  /// 로그인 정보 제거
+  static func deleteLoginInfo() {
+    os_log(.debug, log: .user, "Delete Login Info")
+    UserDefaults.userID = ""
+    UserDefaults.loginPlatform = .notLoggedIn
+    try? KeychainService.delete(key: .accessToken)
+    try? KeychainService.delete(key: .refreshToken)
+  }
+
   // MARK: Private
 
   /// 로그인 정보 기록
   private static func updateLoginInfo(id: String, platform: UserAccount.Platform = .service, accessToken: String, refreshToken: String) {
     os_log(.debug, log: .user, "Update Login Info")
-    UserDefaults.isLoggedIn = true
     UserDefaults.userID = id
     UserDefaults.loginPlatform = platform
     try? KeychainService.write(key: .accessToken, value: accessToken)
     try? KeychainService.write(key: .refreshToken, value: refreshToken)
   }
 
-  /// 로그인 정보 제거
-  private static func deleteLoginInfo() {
-    os_log(.debug, log: .user, "Delete Login Info")
-    UserDefaults.userID = ""
-    UserDefaults.isLoggedIn = false
-    UserDefaults.loginPlatform = nil
-    try? KeychainService.delete(key: .accessToken)
-    try? KeychainService.delete(key: .refreshToken)
-  }
 }
 
 // MARK: - UserServiceError

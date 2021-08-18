@@ -15,8 +15,24 @@ struct UserAccount {
 
   // MARK: Internal
 
-  enum Platform: String {
+  enum Platform: Int {
     case naver, kakao, apple, service
+    case notLoggedIn
+
+    var value: String {
+      switch self {
+      case .naver:
+        return "naver"
+      case .kakao:
+        return "kakao"
+      case .apple:
+        return "apple"
+      case .service:
+        return "service"
+      case .notLoggedIn:
+        return "nil"
+      }
+    }
   }
 
   struct SignUpFields {
@@ -58,6 +74,7 @@ struct UserAccount {
 
   struct OAuthSignUpFields {
     let nickName: String
+    let email: String
     let avatar: String?
     let bio: String?
   }

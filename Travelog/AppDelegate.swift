@@ -44,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       initNaver()
     case .kakao:
       initKakao()
-    case .none:
+    case .notLoggedIn:
       initNaver()
       initKakao()
     default:

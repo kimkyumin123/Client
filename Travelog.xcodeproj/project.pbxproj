@@ -29,6 +29,9 @@
 		4869D03726C828B40076C570 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 4869D03626C828B40076C570 /* RxRelay */; };
 		4869D03926C828B40076C570 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 4869D03826C828B40076C570 /* RxCocoa */; };
 		4869D03B26C828B40076C570 /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = 4869D03A26C828B40076C570 /* RxBlocking */; };
+		4891A82426CCFF3D00C3B780 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4891A82126CCFF3D00C3B780 /* LoginViewController.swift */; };
+		4891A82526CCFF3D00C3B780 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4891A82226CCFF3D00C3B780 /* LoginView.swift */; };
+		4891A82626CCFF3D00C3B780 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4891A82326CCFF3D00C3B780 /* LoginViewModel.swift */; };
 		4898971D26AC3527000499AC /* AppStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4898971C26AC3527000499AC /* AppStepper.swift */; };
 		4898971F26AC353F000499AC /* AppSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4898971E26AC353F000499AC /* AppSteps.swift */; };
 		4898972126AC356F000499AC /* AppFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4898972026AC356F000499AC /* AppFlow.swift */; };
@@ -42,9 +45,6 @@
 		489FB9E326AC3D0000641F21 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489FB9E226AC3D0000641F21 /* UserInfoViewController.swift */; };
 		489FB9E526AC3D0600641F21 /* UserInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489FB9E426AC3D0600641F21 /* UserInfoViewModel.swift */; };
 		489FB9E826AC3DA500641F21 /* UserInfoFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489FB9E726AC3DA500641F21 /* UserInfoFlow.swift */; };
-		489FB9EB26AC428000641F21 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489FB9EA26AC427F00641F21 /* LoginViewController.swift */; };
-		489FB9ED26AC42AC00641F21 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489FB9EC26AC42AC00641F21 /* LoginViewModel.swift */; };
-		489FB9EF26AC42B000641F21 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489FB9EE26AC42B000641F21 /* LoginView.swift */; };
 		48C2DB1226BD8A9600877AB5 /* NaverThirdPartyLogin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48C2DB0E26BD8A7400877AB5 /* NaverThirdPartyLogin.framework */; };
 		48C2DB1326BD8A9600877AB5 /* NaverThirdPartyLogin.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48C2DB0E26BD8A7400877AB5 /* NaverThirdPartyLogin.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		48E3D28526C3FF21007D08ED /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E3D28426C3FF21007D08ED /* UserService.swift */; };
@@ -126,6 +126,9 @@
 		4869D02A26C8064D0076C570 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		4869D02B26C8064D0076C570 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		4869D02F26C808330076C570 /* SignUpTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTests.swift; sourceTree = "<group>"; };
+		4891A82126CCFF3D00C3B780 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		4891A82226CCFF3D00C3B780 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		4891A82326CCFF3D00C3B780 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		4898971C26AC3527000499AC /* AppStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStepper.swift; sourceTree = "<group>"; };
 		4898971E26AC353F000499AC /* AppSteps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSteps.swift; sourceTree = "<group>"; };
 		4898972026AC356F000499AC /* AppFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlow.swift; sourceTree = "<group>"; };
@@ -139,9 +142,6 @@
 		489FB9E226AC3D0000641F21 /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 		489FB9E426AC3D0600641F21 /* UserInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewModel.swift; sourceTree = "<group>"; };
 		489FB9E726AC3DA500641F21 /* UserInfoFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoFlow.swift; sourceTree = "<group>"; };
-		489FB9EA26AC427F00641F21 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		489FB9EC26AC42AC00641F21 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
-		489FB9EE26AC42B000641F21 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		48C2DB0E26BD8A7400877AB5 /* NaverThirdPartyLogin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NaverThirdPartyLogin.framework; path = frameworks/NaverThirdPartyLogin.framework; sourceTree = "<group>"; };
 		48D9106A26BABC1B00F6601C /* Travelog.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Travelog.xcodeproj; sourceTree = "<group>"; };
 		48E3D28426C3FF21007D08ED /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
@@ -317,9 +317,9 @@
 		489FB9F026AC42EB00641F21 /* LoginScene */ = {
 			isa = PBXGroup;
 			children = (
-				489FB9EA26AC427F00641F21 /* LoginViewController.swift */,
-				489FB9EC26AC42AC00641F21 /* LoginViewModel.swift */,
-				489FB9EE26AC42B000641F21 /* LoginView.swift */,
+				4891A82126CCFF3D00C3B780 /* LoginViewController.swift */,
+				4891A82226CCFF3D00C3B780 /* LoginView.swift */,
+				4891A82326CCFF3D00C3B780 /* LoginViewModel.swift */,
 			);
 			path = LoginScene;
 			sourceTree = "<group>";
@@ -593,11 +593,11 @@
 				4869D02D26C8064D0076C570 /* SignUpView.swift in Sources */,
 				482A6FC526AD71F9001BF0BD /* NSObject+Extension.swift in Sources */,
 				48E3D2AF26C41C23007D08ED /* OSLog+Extension.swift in Sources */,
-				489FB9ED26AC42AC00641F21 /* LoginViewModel.swift in Sources */,
 				48F33B2826AC2BBC00A704C7 /* SceneDelegate.swift in Sources */,
 				482A6FC726AD7267001BF0BD /* CommentCell.swift in Sources */,
 				489FB9DA26AC3BD400641F21 /* TimelineFlow.swift in Sources */,
 				4898971D26AC3527000499AC /* AppStepper.swift in Sources */,
+				4891A82626CCFF3D00C3B780 /* LoginViewModel.swift in Sources */,
 				484DB8B026CA097F004D5EB6 /* UserAccount.swift in Sources */,
 				4825FEF226CA58BC00BD1402 /* UserManagementInterceptor.swift in Sources */,
 				489FB9D226AC397A00641F21 /* MapFlow.swift in Sources */,
@@ -606,18 +606,18 @@
 				4825FEF626CBB79700BD1402 /* ThirdPartyLoginService.swift in Sources */,
 				484DB8B926CA14DB004D5EB6 /* JWTToken.swift in Sources */,
 				48E3D28526C3FF21007D08ED /* UserService.swift in Sources */,
+				4891A82426CCFF3D00C3B780 /* LoginViewController.swift in Sources */,
 				48E3D2B126C43F6F007D08ED /* Network.swift in Sources */,
 				48F65C6826AC783D009B15BE /* ReviewPostCell.swift in Sources */,
-				489FB9EB26AC428000641F21 /* LoginViewController.swift in Sources */,
 				48E3D2B326C440CD007D08ED /* API.swift in Sources */,
 				4869D02E26C8064D0076C570 /* SignUpViewModel.swift in Sources */,
 				489FB9DE26AC3C0200641F21 /* TimelineViewController.swift in Sources */,
-				489FB9EF26AC42B000641F21 /* LoginView.swift in Sources */,
 				48E3D28726C3FF2A007D08ED /* KeychainService.swift in Sources */,
 				4898971F26AC353F000499AC /* AppSteps.swift in Sources */,
 				48F65C6A26AC8D5A009B15BE /* ImageScrollView.swift in Sources */,
 				48F65C5D26AC719C009B15BE /* AppleLoginButton.swift in Sources */,
 				489FB9E026AC3C1500641F21 /* TimelineViewModel.swift in Sources */,
+				4891A82526CCFF3D00C3B780 /* LoginView.swift in Sources */,
 				484DB8BD26CA3D7A004D5EB6 /* String+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
