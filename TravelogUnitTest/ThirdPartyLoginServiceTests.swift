@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import KakaoSDKAuth
+import RxKakaoSDKAuth
 import RxSwift
 import XCTest
 @testable import Travelog
@@ -26,21 +28,23 @@ final class ThirdPartyLoginServiceTests: XCTestCase {
 
   func testKakaoLoginTest() {
     // given
-    let expect = expectation(description: "kakao login")
+    let getAccessToken = expectation(description: "kakao login")
+//    let fields = UserAccount.SignUpFields
 
     // when
     ThirdPartyLoginService.kakaoLogin()
-      .subscribe(onNext: { oAuthToken in
-        print(oAuthToken.accessToken)
-        expect.fulfill()
+      .subscribe(onNext: {
+        print("🚀🚀🚀 \($0.accessToken)")
+        print("🚀🚀🚀 \($0.email)")
+        getAccessToken.fulfill()
       })
       .disposed(by: disposeBag)
 
     // then
-    wait(for: [expect], timeout: 300.0)
+    wait(for: [getAccessToken], timeout: 300.0)
   }
 
   func testKakaoSignUpTest() { }
-  func testCreationOAuth() {
-  }
+  func testCreationOAuth() { }
+
 }

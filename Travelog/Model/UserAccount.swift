@@ -56,6 +56,12 @@ struct UserAccount {
 
   }
 
+  struct OAuthSignUpFields {
+    let nickName: String
+    let avatar: String?
+    let bio: String?
+  }
+
   struct UpdateFields {
 
     // MARK: Lifecycle

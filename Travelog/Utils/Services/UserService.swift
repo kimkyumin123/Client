@@ -306,6 +306,7 @@ enum UserServiceError: Error {
   case unknown
   case noUserLoggedIn
   case requestFailed
+  case denied
 
   case emailExists
   case userExists
