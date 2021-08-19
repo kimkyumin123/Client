@@ -59,7 +59,7 @@ final class UserServiceTest: XCTestCase {
     // login
     let accessToken = try UserService.login(id: testName, pw: testPW).toBlocking(timeout: 3.0).first()?.accessToken
     XCTAssertEqual(try KeychainService.read(key: .accessToken), accessToken?.value)
-    XCTAssertEqual(UserDefaults.isLoggedIn, true)
+    XCTAssertEqual(UserDefaults.loginPlatform, .service)
     XCTAssertNotEqual(UserDefaults.userID, "")
 
     // when
@@ -68,7 +68,7 @@ final class UserServiceTest: XCTestCase {
     // then
     let result = try observable.toBlocking(timeout: 5.0).first()
     XCTAssertEqual(result, true)
-    XCTAssertEqual(UserDefaults.isLoggedIn, false)
+    XCTAssertEqual(UserDefaults.loginPlatform, .notLoggedIn)
     XCTAssertEqual(UserDefaults.userID, "")
     XCTAssertNil(try? KeychainService.read(key: .accessToken))
     XCTAssertNil(try? KeychainService.read(key: .refreshToken))

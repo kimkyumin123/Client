@@ -32,6 +32,7 @@
 		4891A82426CCFF3D00C3B780 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4891A82126CCFF3D00C3B780 /* LoginViewController.swift */; };
 		4891A82526CCFF3D00C3B780 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4891A82226CCFF3D00C3B780 /* LoginView.swift */; };
 		4891A82626CCFF3D00C3B780 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4891A82326CCFF3D00C3B780 /* LoginViewModel.swift */; };
+		4891A82826CD68F500C3B780 /* NaverLogin+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4891A82726CD68F500C3B780 /* NaverLogin+Rx.swift */; };
 		4898971D26AC3527000499AC /* AppStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4898971C26AC3527000499AC /* AppStepper.swift */; };
 		4898971F26AC353F000499AC /* AppSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4898971E26AC353F000499AC /* AppSteps.swift */; };
 		4898972126AC356F000499AC /* AppFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4898972026AC356F000499AC /* AppFlow.swift */; };
@@ -129,6 +130,7 @@
 		4891A82126CCFF3D00C3B780 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4891A82226CCFF3D00C3B780 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		4891A82326CCFF3D00C3B780 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		4891A82726CD68F500C3B780 /* NaverLogin+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NaverLogin+Rx.swift"; sourceTree = "<group>"; };
 		4898971C26AC3527000499AC /* AppStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStepper.swift; sourceTree = "<group>"; };
 		4898971E26AC353F000499AC /* AppSteps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSteps.swift; sourceTree = "<group>"; };
 		4898972026AC356F000499AC /* AppFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlow.swift; sourceTree = "<group>"; };
@@ -392,6 +394,7 @@
 				484DB8B326CA0F10004D5EB6 /* Services */,
 				48E3D2B226C440CD007D08ED /* API.swift */,
 				48E3D2B026C43F6F007D08ED /* Network.swift */,
+				4891A82726CD68F500C3B780 /* NaverLogin+Rx.swift */,
 				4825FEF126CA58BC00BD1402 /* UserManagementInterceptor.swift */,
 				4869D02426C8017E0076C570 /* Constraints.swift */,
 			);
@@ -605,6 +608,7 @@
 				484DB8AE26C9AF71004D5EB6 /* Error+Extension.swift in Sources */,
 				4825FEF626CBB79700BD1402 /* ThirdPartyLoginService.swift in Sources */,
 				484DB8B926CA14DB004D5EB6 /* JWTToken.swift in Sources */,
+				4891A82826CD68F500C3B780 /* NaverLogin+Rx.swift in Sources */,
 				48E3D28526C3FF21007D08ED /* UserService.swift in Sources */,
 				4891A82426CCFF3D00C3B780 /* LoginViewController.swift in Sources */,
 				48E3D2B126C43F6F007D08ED /* Network.swift in Sources */,

@@ -10,6 +10,7 @@ import Foundation
 import KakaoSDKAuth
 import KakaoSDKCommon
 import KakaoSDKUser
+import NaverThirdPartyLogin
 import os.log
 import RxApolloClient
 import RxKakaoSDKAuth
@@ -64,9 +65,22 @@ final class ThirdPartyLoginService {
 
   }
 
-//  static func naverLogin() -> Observable {
-//    NaverThirdPartyLoginConnectionDelegate
-//  }
+  /**
+   네이버 로그인을 시도합니다.
+   성공 시 토큰 반환.
+   */
+  static func naverLogin() -> Observable<String> {
+    NaverThirdPartyLoginConnection.getSharedInstance()!
+      .rx.login
+      .map { _ in
+        NaverThirdPartyLoginConnection.getSharedInstance().accessToken
+      }
+      // error logging
+      .catch { err in
+        os_log(.debug, log: .user, "Naver Login Error: %s", String(describing: err))
+        return .error(err)
+      }
+  }
 
   /**
    OAuth 사용자 로그인 시도.
