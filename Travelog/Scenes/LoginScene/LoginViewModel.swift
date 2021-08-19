@@ -62,6 +62,15 @@ final class LoginViewModel: Stepper, Reactor {
           .catch { .just(Mutation.setError(try $0.cast(to: UserServiceError.self))) },
         .just(.setLoading(false)))
 
+    case .naverLogin:
+      return Observable.concat([
+        .just(.setLoading(true)),
+        naverLogin()
+          .map { _ in Mutation.ignore }
+          .catch { .just(Mutation.setError(try $0.cast(to: UserServiceError.self))) },
+        .just(.setLoading(false)),
+      ])
+
     default:
       return .just(.ignore)
     }
@@ -95,10 +104,29 @@ extension LoginViewModel {
       .flatMap {
         // 로그인 성공시, main screen 이동
         ThirdPartyLoginService.oAuthLogin(type: .kakao, token: $0)
-          .map { AppSteps.mapScreenIsRequired }
+          .map { .mapScreenIsRequired }
       }
       .catch {
+        let err = try $0.cast(to: UserServiceError.self)
+        // signup 화면으로 전환
+        if err == .canNotFindUser {
+          return .just(.oAuthSignUp)
+        } else {
+          return .error(err)
+        }
+      }
+      .do(onNext: { [weak self] in
+        self?.steps.accept($0)
+      })
+  }
 
+  private func naverLogin() -> Observable<AppSteps> {
+    ThirdPartyLoginService.naverLogin()
+      .flatMap {
+        ThirdPartyLoginService.oAuthLogin(type: .naver, token: $0)
+          .map { .mapScreenIsRequired }
+      }
+      .catch {
         let err = try $0.cast(to: UserServiceError.self)
         // signup 화면으로 전환
         if err == .canNotFindUser {

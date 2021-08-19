@@ -48,6 +48,12 @@ extension LoginViewController {
       .bind(to: reactor.action)
       .disposed(by: disposeBag)
 
+    contentView.naverLogin
+      .rx.tap
+      .map { Reactor.Action.naverLogin }
+      .bind(to: reactor.action)
+      .disposed(by: disposeBag)
+
   }
 
   private func bindState(reactor: LoginViewModel) {
