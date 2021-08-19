@@ -6,6 +6,7 @@
 //
 
 import Lottie
+import os.log
 import RxSwift
 import UIKit
 
@@ -13,15 +14,27 @@ import UIKit
 
 final class LoadingAlert {
 
+  // MARK: Lifecycle
+
+  private init(window: UIView) {
+    os_log("🎲 LoadingAlert init")
+    self.window = window
+  }
+
+  deinit { os_log("🎲 LoadingAlert deinit") }
+
   // MARK: Internal
 
-  static let shared = LoadingAlert()
+  static let front = LoadingAlert.attach(at: UIApplication.shared.windows.last!)
 
   var isLoading = false
+  var window: UIView
 
-  class func start() {
-    guard let window = UIApplication.shared.windows.last else { return }
+  static func attach(at view: UIView) -> LoadingAlert {
+    LoadingAlert(window: view)
+  }
 
+  func start() {
     let background = UIView().with {
       $0.backgroundColor = .init(white: 0, alpha: 0.2)
       $0.frame = window.bounds
@@ -38,15 +51,15 @@ final class LoadingAlert {
 
     animation.play(toProgress: 1, loopMode: .loop)
 
-    shared.background = background
-    shared.animation = animation
+    self.background = background
+    self.animation = animation
   }
 
-  class func stop() {
-    shared.animation?.stop()
+  func stop() {
+    animation?.stop()
 
-    shared.background?.removeFromSuperview()
-    shared.animation?.removeFromSuperview()
+    background?.removeFromSuperview()
+    animation?.removeFromSuperview()
   }
 
   // MARK: Private
@@ -65,11 +78,10 @@ extension Reactive where Base: LoadingAlert {
       alert.isLoading = isLoading
 
       if isLoading {
-        Base.start()
+        base.start()
       } else {
-        Base.stop()
+        base.stop()
       }
-
     }
   }
 }

@@ -56,7 +56,6 @@ final class ThirdPartyLoginService {
       .flatMap { token -> Observable<String> in
         Observable.combineLatest(Observable.just(token), ThirdPartyLoginService.getKakaoEmail()) { token, _ in token }
       }
-      .debug()
   }
 
   /// 사용자가 거부시, `UserServiceError.denied` 전파

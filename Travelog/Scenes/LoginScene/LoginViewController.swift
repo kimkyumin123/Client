@@ -61,9 +61,7 @@ extension LoginViewController {
       .observe(on: MainScheduler.instance)
       .map(\.isLoading)
       .distinctUntilChanged()
-      .subscribe(onNext: {
-        print("🚀Loading State: \($0)")
-      })
+      .bind(to: LoadingAlert.attach(at: view).rx.isLoading)
       .disposed(by: disposeBag)
 
     reactor.state
@@ -78,7 +76,6 @@ extension LoginViewController {
 extension LoginViewController {
   private func errorHandle(err: Error) {
     os_log(.debug, log: .default, "errorHandle")
-    print(err)
 
     guard let err = err as? UserServiceError else { return }
     switch err {
