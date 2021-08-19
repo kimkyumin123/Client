@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		48123D7B26B1A8EE0058CEDF /* SwiftUIPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48123D7A26B1A8EE0058CEDF /* SwiftUIPreview.swift */; };
+		48123D7D26B1A9070058CEDF /* PlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48123D7C26B1A9070058CEDF /* PlaceCell.swift */; };
 		482A6FC526AD71F9001BF0BD /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482A6FC426AD71F9001BF0BD /* NSObject+Extension.swift */; };
 		482A6FC726AD7267001BF0BD /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482A6FC626AD7267001BF0BD /* CommentCell.swift */; };
 		4898971026AC31EA000499AC /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 4898970F26AC31EA000499AC /* KakaoSDKUser */; };
@@ -60,6 +62,9 @@
 		48F65C6626AC747D009B15BE /* LoginFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F65C6526AC747D009B15BE /* LoginFlow.swift */; };
 		48F65C6826AC783D009B15BE /* ReviewPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F65C6726AC783D009B15BE /* ReviewPostCell.swift */; };
 		48F65C6A26AC8D5A009B15BE /* ImageScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F65C6926AC8D5A009B15BE /* ImageScrollView.swift */; };
+		48FB5FC326AD90E6008A33DE /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 48FB5FC226AD90E6008A33DE /* Lottie */; };
+		48FB5FC526AD90EA008A33DE /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 48FB5FC426AD90EA008A33DE /* loading.json */; };
+		48FB5FC726AD90FD008A33DE /* LoadingAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FB5FC626AD90FD008A33DE /* LoadingAlert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -77,6 +82,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		48123D7A26B1A8EE0058CEDF /* SwiftUIPreview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftUIPreview.swift; sourceTree = "<group>"; };
+		48123D7C26B1A9070058CEDF /* PlaceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceCell.swift; sourceTree = "<group>"; };
 		482A6FC426AD71F9001BF0BD /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
 		482A6FC626AD7267001BF0BD /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		4898971C26AC3527000499AC /* AppStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStepper.swift; sourceTree = "<group>"; };
@@ -109,6 +116,8 @@
 		48F65C6526AC747D009B15BE /* LoginFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFlow.swift; sourceTree = "<group>"; };
 		48F65C6726AC783D009B15BE /* ReviewPostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPostCell.swift; sourceTree = "<group>"; };
 		48F65C6926AC8D5A009B15BE /* ImageScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageScrollView.swift; sourceTree = "<group>"; };
+		48FB5FC426AD90EA008A33DE /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
+		48FB5FC626AD90FD008A33DE /* LoadingAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAlert.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +149,7 @@
 				48F33B6226AC2F5300A704C7 /* Apollo in Frameworks */,
 				48F33B5C26AC2F5300A704C7 /* ApolloCodegenLib in Frameworks */,
 				48F33B4226AC2DE200A704C7 /* RxGesture in Frameworks */,
+				48FB5FC326AD90E6008A33DE /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,6 +263,7 @@
 				48F33B2E26AC2BBD00A704C7 /* Assets.xcassets */,
 				48F33B3026AC2BBD00A704C7 /* LaunchScreen.storyboard */,
 				48F33B3326AC2BBD00A704C7 /* Info.plist */,
+				48FB5FC426AD90EA008A33DE /* loading.json */,
 			);
 			path = Travelog;
 			sourceTree = "<group>";
@@ -262,6 +273,8 @@
 			children = (
 				48F65C5C26AC719C009B15BE /* AppleLoginButton.swift */,
 				48F65C6926AC8D5A009B15BE /* ImageScrollView.swift */,
+				48123D7C26B1A9070058CEDF /* PlaceCell.swift */,
+				48FB5FC626AD90FD008A33DE /* LoadingAlert.swift */,
 				482A6FC626AD7267001BF0BD /* CommentCell.swift */,
 			);
 			path = Common;
@@ -271,6 +284,7 @@
 			isa = PBXGroup;
 			children = (
 				48F65C6026AC71F6009B15BE /* NSLayoutConstraint+Extension.swift */,
+				48123D7A26B1A8EE0058CEDF /* SwiftUIPreview.swift */,
 				482A6FC426AD71F9001BF0BD /* NSObject+Extension.swift */,
 				48F65C6126AC71F6009B15BE /* UIColor+Extension.swift */,
 			);
@@ -319,6 +333,7 @@
 				4898971626AC3495000499AC /* RxKakaoSDKUser */,
 				4898971826AC3495000499AC /* RxKakaoSDKCommon */,
 				4898971A26AC3495000499AC /* RxKakaoSDKAuth */,
+				48FB5FC226AD90E6008A33DE /* Lottie */,
 			);
 			productName = Travelog;
 			productReference = 48F33B2226AC2BBC00A704C7 /* Travelog.app */;
@@ -358,6 +373,7 @@
 				48F33B7826AC30A300A704C7 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				4898970E26AC31EA000499AC /* XCRemoteSwiftPackageReference "KakaoSDK" */,
 				4898971526AC3495000499AC /* XCRemoteSwiftPackageReference "RxKakaoSDK" */,
+				48FB5FC126AD90E6008A33DE /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 48F33B2326AC2BBC00A704C7 /* Products */;
 			projectDirPath = "";
@@ -381,6 +397,7 @@
 			files = (
 				48F33B3226AC2BBD00A704C7 /* LaunchScreen.storyboard in Resources */,
 				48F33B2F26AC2BBD00A704C7 /* Assets.xcassets in Resources */,
+				48FB5FC526AD90EA008A33DE /* loading.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,7 +429,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48123D7B26B1A8EE0058CEDF /* SwiftUIPreview.swift in Sources */,
 				48F65C6326AC71F6009B15BE /* UIColor+Extension.swift in Sources */,
+				48123D7D26B1A9070058CEDF /* PlaceCell.swift in Sources */,
 				489FB9E826AC3DA500641F21 /* UserInfoFlow.swift in Sources */,
 				48F65C6226AC71F6009B15BE /* NSLayoutConstraint+Extension.swift in Sources */,
 				489FB9D626AC3A4B00641F21 /* MapViewModel.swift in Sources */,
@@ -426,6 +445,7 @@
 				489FB9ED26AC42AC00641F21 /* LoginViewModel.swift in Sources */,
 				48F33B2826AC2BBC00A704C7 /* SceneDelegate.swift in Sources */,
 				482A6FC726AD7267001BF0BD /* CommentCell.swift in Sources */,
+				48FB5FC726AD90FD008A33DE /* LoadingAlert.swift in Sources */,
 				489FB9DA26AC3BD400641F21 /* TimelineFlow.swift in Sources */,
 				4898971D26AC3527000499AC /* AppStepper.swift in Sources */,
 				489FB9D226AC397A00641F21 /* MapFlow.swift in Sources */,
@@ -733,6 +753,14 @@
 				minimumVersion = 6.2.0;
 			};
 		};
+		48FB5FC126AD90E6008A33DE /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.2.3;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -850,6 +878,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 48F33B7826AC30A300A704C7 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxRelay;
+		};
+		48FB5FC226AD90E6008A33DE /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48FB5FC126AD90E6008A33DE /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
