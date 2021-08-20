@@ -18,7 +18,7 @@ final class LoginViewModel: Stepper, Reactor {
   enum Action {
     case kakaoLogin
     case naverLogin
-    case serviceLogin
+    case serviceLogin(id: String, pw: String)
     case appleLogin
   }
 
@@ -88,6 +88,7 @@ extension LoginViewModel {
       .flatMap { _ -> Observable<Void> in
         if let token = TokenManager.manager.getToken()?.accessToken {
           return ThirdPartyLoginService.oAuthLogin(type: .kakao, token: token)
+            .map { _ in () }
         } else {
           return .error(UserServiceError.denied)
         }
@@ -104,7 +105,7 @@ extension LoginViewModel {
       .flatMap {
         // 로그인 성공시, main screen 이동
         ThirdPartyLoginService.oAuthLogin(type: .kakao, token: $0)
-          .map { .mapScreenIsRequired }
+          .map { _ in .mapScreenIsRequired }
       }
       .catch {
         let err = try $0.cast(to: UserServiceError.self)
@@ -124,7 +125,7 @@ extension LoginViewModel {
     ThirdPartyLoginService.naverLogin()
       .flatMap {
         ThirdPartyLoginService.oAuthLogin(type: .naver, token: $0)
-          .map { .mapScreenIsRequired }
+          .map { _ in .mapScreenIsRequired }
       }
       .catch {
         let err = try $0.cast(to: UserServiceError.self)

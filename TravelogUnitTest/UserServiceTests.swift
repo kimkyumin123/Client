@@ -15,8 +15,6 @@ import XCTest
 
 final class UserServiceTest: XCTestCase {
 
-  // MARK: Internal
-
   /// 로그인 시도, 토큰 획득 확인
   func testLogin() throws {
     // given
@@ -96,9 +94,7 @@ final class UserServiceTest: XCTestCase {
     XCTAssertNotEqual(curretName, changedName)
   }
 
-  // MARK: Private
-
-  private func signUp(id: String, pw: String) {
+  func signUp(id: String, pw: String) {
     let testMail = "foo@bar.org"
     let testNick = "testNickname"
     let testName = id

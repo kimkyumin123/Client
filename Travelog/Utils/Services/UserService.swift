@@ -14,8 +14,6 @@ import RxSwift
 
 final class UserService {
 
-  // MARK: Internal
-
   enum ValidType {
     case valid
     case invalid
@@ -79,8 +77,6 @@ final class UserService {
       return Disposables.create()
     }
   }
-
-  static func createOAuthUser() { }
 
   static func checkValidate(nickname: String) -> Observable<ValidType> {
     os_log(.debug, log: .user, "checkValidate(nickname:)")
@@ -202,7 +198,29 @@ final class UserService {
     os_log(.debug, log: .user, "Delete user")
     return Network.shared.apollo.rx.perform(mutation: DeleteUserMutation())
       .asObservable()
-      .map { $0.deleteUser?.ok == true }
+      .flatMap({ result -> Observable<Bool> in
+        guard result.deleteUser?.ok == true else {
+          return .just(false)
+        }
+
+        switch UserDefaults.loginPlatform {
+        case .naver:
+          return ThirdPartyLoginService
+            .naverDisconnect()
+            .map { _ in true }
+            .asObservable()
+            .catchAndReturn(false)
+
+        case .kakao:
+          return ThirdPartyLoginService
+            .kakaoDisconnect()
+            .andThen(Observable.just(true))
+            .catchAndReturn(false)
+
+        default:
+          return .just(true)
+        }
+      })
       .catchAndReturn(false)
       // 로그인 상태 변경, 토큰 제거
       .do(onNext: { if $0 { deleteLoginInfo() } })
@@ -234,7 +252,7 @@ final class UserService {
           let accessToken = JWTToken(value: accessTokenString),
           let refreshToken = JWTToken(value: refreshTokenString) else
         {
-          subscriber.onError(UserServiceError.signUpFailed)
+          subscriber.onError(UserServiceError.invalidToken)
           return
         }
 
@@ -272,9 +290,27 @@ final class UserService {
     }
   }
 
-  static func oAuthLogin() { }
+  static func logout() -> Completable {
+    defer { deleteLoginInfo() }
+    switch UserDefaults.loginPlatform {
+    case .naver:
+      ThirdPartyLoginService.naverLogout()
+      return Single.just(0).asCompletable()
+    case .kakao:
+      return ThirdPartyLoginService.kakaoLogout()
+    default:
+      return Single.just(0).asCompletable()
+    }
+  }
 
-  static func logout() {}
+  /// 로그인 정보 기록
+  static func updateLoginInfo(id: String, platform: UserAccount.Platform = .service, accessToken: String, refreshToken: String) {
+    os_log(.debug, log: .user, "Update Login Info")
+    UserDefaults.userID = id
+    UserDefaults.loginPlatform = platform
+    try? KeychainService.write(key: .accessToken, value: accessToken)
+    try? KeychainService.write(key: .refreshToken, value: refreshToken)
+  }
 
   /// 로그인 정보 제거
   static func deleteLoginInfo() {
@@ -284,18 +320,6 @@ final class UserService {
     try? KeychainService.delete(key: .accessToken)
     try? KeychainService.delete(key: .refreshToken)
   }
-
-  // MARK: Private
-
-  /// 로그인 정보 기록
-  private static func updateLoginInfo(id: String, platform: UserAccount.Platform = .service, accessToken: String, refreshToken: String) {
-    os_log(.debug, log: .user, "Update Login Info")
-    UserDefaults.userID = id
-    UserDefaults.loginPlatform = platform
-    try? KeychainService.write(key: .accessToken, value: accessToken)
-    try? KeychainService.write(key: .refreshToken, value: refreshToken)
-  }
-
 }
 
 // MARK: - UserServiceError
@@ -306,6 +330,7 @@ enum UserServiceError: Error {
   case noUserLoggedIn
   case requestFailed
   case denied
+  case invalidToken
 
   case emailExists
   case userExists

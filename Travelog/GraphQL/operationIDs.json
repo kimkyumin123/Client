@@ -1,8 +1,4 @@
 {
-  "3e566c168b6046e8c4acd2094397d627bd93212f4180898d55c52fc9d4d69faf": {
-    "name": "authUserLogin",
-    "source": "mutation authUserLogin($platform_type: String!, $accesstoken: String!) {\n  authUserLogin(platform_type: $platform_type, accesstoken: $accesstoken) {\n    __typename\n    ok\n    error\n  }\n}"
-  },
   "614a2148de949726d32d46e5af1a452ae182c71ddc44163f99c8d03b4429286c": {
     "name": "authVaildation",
     "source": "mutation authVaildation {\n  authVaildation {\n    __typename\n    ok\n    error\n    profile_image_url\n    nickname\n    gender\n    age_range\n  }\n}"
@@ -23,6 +19,10 @@
     "name": "editUser",
     "source": "mutation editUser($nickName: String, $bio: String, $avatar: Upload, $password: String, $gender: String, $ageRange: String) {\n  editUser(\n    nickName: $nickName\n    bio: $bio\n    avatar: $avatar\n    password: $password\n    gender: $gender\n    ageRange: $ageRange\n  ) {\n    __typename\n    ok\n    error\n  }\n}"
   },
+  "3d6c5a545d9bc2a40d5cd8802da1297f334236a5c9c6c5519286b0d95c7d1b58": {
+    "name": "OAuthUserLogin",
+    "source": "mutation OAuthUserLogin($platform_type: String!, $accesstoken: String!) {\n  authUserLogin(platform_type: $platform_type, accesstoken: $accesstoken) {\n    __typename\n    ok\n    error\n    token {\n      __typename\n      accessToken\n      refreshToken\n    }\n  }\n}"
+  },
   "82fedfbfbf51c5b207939d62c9cc80766e7d08d6ab52521b7f2c975166424550": {
     "name": "seeProfile",
     "source": "query seeProfile($userName: String!) {\n  seeProfile(userName: $userName) {\n    __typename\n    id\n    userName\n    nickName\n    email\n    avatar\n    bio\n    gender\n    ageRanger\n    createdAt\n    updatedAt\n    platformType\n  }\n}"
@@ -35,8 +35,8 @@
     "name": "emailValidation",
     "source": "query emailValidation($email: String) {\n  userCheck(email: $email) {\n    __typename\n    ok\n    error\n  }\n}"
   },
-  "1fa4022c4e9f33fe32bf6dc4a31977de56dd8e00c50136d25162e29d1e1aa2ec": {
-    "name": "userLogin",
-    "source": "mutation userLogin($userName: String!, $password: String!) {\n  userLogin(userName: $userName, password: $password) {\n    __typename\n    ok\n    error\n    token {\n      __typename\n      accessToken\n      refreshToken\n    }\n  }\n}"
+  "9bc6227993cccf73b5f29c2b35a38394a44b255d203744fd6f498d2bed3031db": {
+    "name": "UserLogin",
+    "source": "mutation UserLogin($userName: String!, $password: String!) {\n  userLogin(userName: $userName, password: $password) {\n    __typename\n    ok\n    error\n    token {\n      __typename\n      accessToken\n      refreshToken\n    }\n  }\n}"
   }
 }

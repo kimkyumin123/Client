@@ -29,17 +29,40 @@ extension Reactive where Base: NaverThirdPartyLoginConnection {
   }
 
   /**
-   Access Token 갱신을 시도합니다.
+   Access Token 을 반환합니다.
+   만료된 토큰일 시에는 토큰 갱신 시도 후, 반환합니다.
 
    갱신 성공시 `.complete` 실패 시, `.error(Error)` 를 반환합니다.
+
+   `refreshToken` 부재 시, 미 로그인으로 판단해 `NaverLoginError.notLoggedIn`
+   토큰 갱신 요청 실패 시, `NaverLoginError.failedToRequest`,
+   `accessToken` 값이 없는 경우 `NaverLoginError.invalidToken` 에러가 발생합니다.
    */
-  public var refreshToken: Observable<Void> {
-    os_log(.debug, log: .naverLogin, "RefreshToken: Completable")
+  public var token: Observable<String> {
+    os_log(.debug, log: .naverLogin, "Token")
 
     let proxy = RxNaverThirdPartyLoginConnectionProxy.proxy(for: base)
-    base.requestAccessTokenWithRefreshToken()
 
-    return proxy.refresh
+    guard base.refreshToken != nil else {
+      return .error(NaverLoginError.notLoggedIn)
+    }
+
+    guard base.isValidAccessTokenExpireTimeNow() else {
+      os_log(.debug, log: .naverLogin, "Request renew token")
+      base.requestAccessTokenWithRefreshToken()
+
+      return proxy.token
+        .compactMap { _ in
+          base.accessToken
+        }
+        .catch { _ in .error(NaverLoginError.failedToRequest) }
+    }
+
+    guard let token = base.accessToken else {
+      return .error(NaverLoginError.invalidToken)
+    }
+
+    return .just(token)
   }
 
   /**
@@ -49,7 +72,7 @@ extension Reactive where Base: NaverThirdPartyLoginConnection {
 
    */
   public var disconnect: Observable<Void> {
-    os_log(.debug, log: .naverLogin, "RefreshToken: Completable")
+    os_log(.debug, log: .naverLogin, "Try disconnect")
 
     let proxy = RxNaverThirdPartyLoginConnectionProxy.proxy(for: base)
     base.requestDeleteToken()
@@ -90,8 +113,8 @@ final class RxNaverThirdPartyLoginConnectionProxy: DelegateProxy<NaverThirdParty
     _loginSubject.asObservable()
   }
 
-  public var refresh: Observable<Void> {
-    _refresh.asObservable()
+  public var token: Observable<Void> {
+    _token.asObservable()
   }
 
   public var disconnect: Observable<Void> {
@@ -123,7 +146,7 @@ final class RxNaverThirdPartyLoginConnectionProxy: DelegateProxy<NaverThirdParty
   func oauth20ConnectionDidFinishRequestACTokenWithRefreshToken() {
     os_log(.debug, log: .naverLogin, "oauth20ConnectionDidFinishRequestACTokenWithRefreshToken()")
     _loginSubject.onNext(())
-    _refresh.onNext(())
+    _token.onNext(())
   }
 
   func oauth20ConnectionDidFinishDeleteToken() {
@@ -135,18 +158,26 @@ final class RxNaverThirdPartyLoginConnectionProxy: DelegateProxy<NaverThirdParty
     guard let err = error else { return }
     os_log(.debug, log: .naverLogin, "oauth20Connection(_:didFailWithError:)")
     _loginSubject.onError(err)
-    _refresh.onError(err)
+    _token.onError(err)
     _disconnect.onError(err)
   }
 
   // MARK: Private
 
   private lazy var _loginSubject = PublishSubject<Void>()
-  private lazy var _refresh = PublishSubject<Void>()
+  private lazy var _token = PublishSubject<Void>()
   private lazy var _disconnect = PublishSubject<Void>()
 
 }
 
 extension OSLog {
   fileprivate static let naverLogin = OSLog(subsystem: Bundle.main.bundleIdentifier!, category: "NaverLogin")
+}
+
+// MARK: - NaverLoginError
+
+enum NaverLoginError: Error {
+  case invalidToken
+  case notLoggedIn
+  case failedToRequest
 }

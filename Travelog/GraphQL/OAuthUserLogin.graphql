@@ -1,0 +1,10 @@
+mutation OAuthUserLogin($platform_type: String!, $accesstoken: String!) {
+  authUserLogin(platform_type: $platform_type, accesstoken: $accesstoken) {
+    ok
+    error
+    token {
+      accessToken
+      refreshToken
+    }
+  }
+}

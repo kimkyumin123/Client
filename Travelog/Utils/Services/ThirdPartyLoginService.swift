@@ -5,6 +5,7 @@
 //  Created by JK on 2021/08/17.
 //
 
+import Alamofire
 import Apollo
 import Foundation
 import KakaoSDKAuth
@@ -12,6 +13,7 @@ import KakaoSDKCommon
 import KakaoSDKUser
 import NaverThirdPartyLogin
 import os.log
+import RxAlamofire
 import RxApolloClient
 import RxKakaoSDKAuth
 import RxKakaoSDKUser
@@ -34,6 +36,7 @@ final class ThirdPartyLoginService {
   typealias KakaoAccountReturn = (accessToken: String, email: String)
 
   static func oAuthSignUp(type: UserAccount.Platform, token: String, fields: UserAccount.OAuthSignUpFields) -> Observable<Bool> {
+    os_log(.debug, log: .user, "oAuthSignUp(type:token:fields:)")
 
     let mutation = CreateAuthUserMutation(
       nickName: fields.nickName,
@@ -48,20 +51,35 @@ final class ThirdPartyLoginService {
       .catchAndReturn(false)
   }
 
-  /// 카카오 로그인
+  /**
+   카카오 토큰 획득을 시도합니다. 토큰이 비정상적이라면, 로그인을 시도합니다.
+   */
   static func kakaoLogin() -> Observable<String> {
-    _kakaoLogin()
+    os_log(.debug, log: .user, "kakaoLogin()")
+    if AuthApi.hasToken() {
+      return UserApi.shared.rx.accessTokenInfo()
+        .compactMap { _ -> String? in
+          TokenManager.manager.getToken()?.accessToken
+        }
+        .asObservable()
+        .catch { _ in kakaoLoginAndAccessMail() }
+    } else {
+      return kakaoLoginAndAccessMail()
+    }
+  }
+
+  /**
+   카카오 로그인 + 메일 권한 요청
+   */
+  static func kakaoLoginAndAccessMail() -> Observable<String> {
+    os_log(.debug, log: .user, "kakaoLoginAndAccessMail()")
+    return _kakaoLogin()
       .map(\.accessToken)
       // 이메일 획득 시도
       .flatMap { token -> Observable<String> in
-        Observable.combineLatest(Observable.just(token), ThirdPartyLoginService.getKakaoEmail()) { token, _ in token }
+        getKakaoEmail()
+          .map { _ in token }
       }
-  }
-
-  /// 사용자가 거부시, `UserServiceError.denied` 전파
-  static func kakaoSignUp() -> Observable<String> {
-    getKakaoEmail()
-
   }
 
   /**
@@ -69,7 +87,8 @@ final class ThirdPartyLoginService {
    성공 시 토큰 반환.
    */
   static func naverLogin() -> Observable<String> {
-    NaverThirdPartyLoginConnection.getSharedInstance()!
+    os_log(.debug, log: .user, "naverLogin()")
+    return NaverThirdPartyLoginConnection.getSharedInstance()!
       .rx.login
       .map { _ in
         NaverThirdPartyLoginConnection.getSharedInstance().accessToken
@@ -90,23 +109,27 @@ final class ThirdPartyLoginService {
    - parameter type: 로그인할 타입.
    - parameter token: 사용할 토큰 문자열
    */
-  static func oAuthLogin(type: UserAccount.Platform, token: String) -> Observable<Void> {
+  static func oAuthLogin(type: UserAccount.Platform, token: String) -> Observable<(accessToken: JWTToken, refreshToken: JWTToken)> {
     os_log(.debug, log: .user, "oAuthLogin(type:token:)")
     return .create { subscriber in
-      Network.shared.apollo.perform(mutation: AuthUserLoginMutation(platform_type: type.value, accesstoken: token)) {
+      Network.shared.apollo.perform(mutation: OAuthUserLoginMutation(platform_type: type.value, accesstoken: token)) {
         guard let _data = try? $0.get().data else {
           os_log(.info, log: .apollo, "Apollo Fetch Failed")
           subscriber.onError(UserServiceError.requestFailed)
           return
         }
 
-        guard _data.authUserLogin?.ok == true else {
+        guard
+          _data.authUserLogin?.ok == true,
+          let token = _data.authUserLogin?.token else
+        {
           // 미가입 유저
           guard let errCode = _data.authUserLogin?.error else {
             subscriber.onError(UserServiceError.unknown)
             return
           }
 
+          // 존재하지 않는 사용자
           switch errCode {
           case -303:
             os_log(.debug, log: .user, "Can not Find User")
@@ -123,11 +146,24 @@ final class ThirdPartyLoginService {
           return
         }
 
-        subscriber.onNext(())
+        // 토큰 생성
+        guard
+          let accessToken = JWTToken(value: token.accessToken),
+          let refreshToken = JWTToken(value: token.refreshToken) else
+        {
+          os_log(.fault, log: .user, "Token Creation Error")
+          subscriber.onError(UserServiceError.invalidToken)
+          return
+        }
+
+        subscriber.onNext((accessToken, refreshToken))
       }
 
       return Disposables.create()
     }
+    .do(onNext: { access, refresh in
+      UserService.updateLoginInfo(id: "", platform: type, accessToken: access.value, refreshToken: refresh.value)
+    })
   }
 
   /// 사용자가 동의를 거절했을 때,  `err.getAuthError().reason == .AccessDenied` 발생.
@@ -171,6 +207,69 @@ final class ThirdPartyLoginService {
         }
       }
   }
+  /**
+   "https://openapi.naver.com/v1/nid/me" 경로로 요청 후의 응답을 전달받습니다.
+   */
+  static func getNaverInfo() -> Observable<UserAccount.NaverInfoResponse> {
+    os_log(.debug, log: .user, "getNaverInfo()")
+    let url = "https://openapi.naver.com/v1/nid/me"
+    return NaverThirdPartyLoginConnection.getSharedInstance()!
+      .rx.token
+      .flatMap { token -> Observable<UserAccount.NaverInfoResponse> in
+        RxAlamofire
+          .requestData(.get, url, parameters: nil, headers: [.authorization(bearerToken: token)], interceptor: nil)
+          .flatMap({ response, data -> Observable<UserAccount.NaverInfoResponse> in
+            guard
+              (200..<300).contains(response.statusCode),
+              let info = try? JSONDecoder().decode(UserAccount.NaverInfoResponse.self, from: data) else
+            {
+              return .error(UserServiceError.canNotFindUser)
+            }
+
+            guard info.resultcode == "00" else {
+              return .error(UserServiceError.canNotFindUser)
+            }
+
+            return .just(info)
+          })
+      }
+
+  }
+
+  /**
+   네이버 인증 토큰을 전달받습니다.
+
+   토큰이 존재하지 않을 시, 갱신합니다.
+   */
+  static func getNaverToken() -> Observable<String> {
+    os_log(.debug, log: .user, "getNaverToken()")
+    return NaverThirdPartyLoginConnection.getSharedInstance()!
+      .rx.token
+  }
+
+  static func kakaoLogout() -> Completable {
+    os_log(.debug, log: .user, "kakaoLogout()")
+    return UserApi.shared
+      .rx.logout()
+  }
+
+  static func kakaoDisconnect() -> Completable {
+    os_log(.debug, log: .user, "kakaoDisconnect()")
+    return UserApi.shared
+      .rx.unlink()
+  }
+
+  static func naverLogout() {
+    os_log(.debug, log: .user, "naverLogout()")
+    return NaverThirdPartyLoginConnection.getSharedInstance()!
+      .resetToken()
+  }
+
+  static func naverDisconnect() -> Observable<Void> {
+    os_log(.debug, log: .user, "naverDisconnect()")
+    return NaverThirdPartyLoginConnection.getSharedInstance()!
+      .rx.disconnect
+  }
 
   // MARK: Private
 
@@ -186,4 +285,5 @@ final class ThirdPartyLoginService {
       return UserApi.shared.rx.loginWithKakaoAccount()
     }
   }
+
 }

@@ -109,4 +109,32 @@ struct UserAccount {
     let ageRange: String?
 
   }
+
+  // MARK: - NaverInfoResponse
+  /**
+   Naver 에서 "https://openapi.naver.com/v1/nid/me" 경로로 요청 시에
+   응답으로 오는 구조체입니다.
+   */
+
+  struct NaverInfoResponse: Codable {
+    let resultcode, message: String
+    let response: Response?
+  }
+
+  // MARK: - Response
+
+  struct Response: Codable {
+    let email, nickname: String?
+    let profileImage: String?
+    let id: String
+    let age, gender, name: String?
+    let birthday: String?
+
+    enum CodingKeys: String, CodingKey {
+      case email, nickname
+      case profileImage = "profile_image"
+      case age, gender, id, name, birthday
+    }
+  }
+
 }
