@@ -21,7 +21,7 @@
 --extensionacl on-declarations # extensionAccessControl
 --patternlet inline # hoistPatternLet
 --swiftversion 5.4
---exclude Pods, iOSCodegenTemplate, frameworks
+--exclude Pods, iOSCodegenTemplate, frameworks, GraphQL
 
 # rules
 --rules anyObjectProtocol,redundantParens,redundantReturn,redundantSelf,sortedImports,strongifiedSelf,trailingCommas,trailingSpace,wrapArguments,wrapMultilineStatementBraces,indent,wrapAttributes,organizeDeclarations,markTypes,extensionAccessControl,duplicateImports,redundantType,hoistPatternLet,consecutiveSpaces,typeSugar

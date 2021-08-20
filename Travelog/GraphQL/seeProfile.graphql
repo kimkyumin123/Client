@@ -1,0 +1,15 @@
+query seeProfile($userName: String!) {
+  seeProfile(userName: $userName) {
+    id
+    userName
+    nickName
+    email
+    avatar
+    bio
+    gender
+    ageRanger
+    createdAt
+    updatedAt
+    platformType
+  }
+}

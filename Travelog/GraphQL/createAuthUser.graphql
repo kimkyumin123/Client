@@ -1,0 +1,18 @@
+mutation createAuthUser(
+  $nickName: String!
+  $avatar: String
+  $bio: String
+  $platformType: String!
+  $email: String!
+) {
+  createAuthUser(
+    nickName: $nickName
+    avatar: $avatar
+    bio: $bio
+    platformType: $platformType
+    email: $email
+  ) {
+    ok
+    error
+  }
+}

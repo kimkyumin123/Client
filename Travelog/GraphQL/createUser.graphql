@@ -1,0 +1,24 @@
+mutation createUser(
+  $bio: String
+  $userName: String!
+  $gender: String
+  $ageRange: String
+  $email: String!
+  $nickName: String!
+  $avatar: String
+  $password: String!
+) {
+  createUser(
+    bio: $bio
+    userName: $userName
+    gender: $gender
+    ageRange: $ageRange
+    email: $email
+    nickName: $nickName
+    avatar: $avatar
+    password: $password
+  ) {
+    ok
+    error
+  }
+}

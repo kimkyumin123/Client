@@ -88,20 +88,20 @@ struct Preview: PreviewProvider {
   static let disposeBag = DisposeBag()
 
   static var previews: some View {
-      UIViewPreview {
-        let cell = PlaceCell()
-        cell.title.text = "This is title"
-        cell.hashtag.text = "#hashtag"
-        cell.reviewCount.text = "3개의 후기가 있습니다."
+    UIViewPreview {
+      let cell = PlaceCell()
+      cell.title.text = "This is title"
+      cell.hashtag.text = "#hashtag"
+      cell.reviewCount.text = "3개의 후기가 있습니다."
 
-        RxAlamofire.requestData(.get, "https://picsum.photos/500/500")
-          .compactMap { UIImage(data: $0.1) }
-          .bind(to: cell.placeImage.rx.image)
-          .disposed(by: disposeBag)
+      RxAlamofire.requestData(.get, "https://picsum.photos/500/500")
+        .compactMap { UIImage(data: $0.1) }
+        .bind(to: cell.placeImage.rx.image)
+        .disposed(by: disposeBag)
 
-        return cell
-      }
-      .previewLayout(.fixed(width: 375, height: 100))
+      return cell
+    }
+    .previewLayout(.fixed(width: 375, height: 100))
   }
 }
 #endif

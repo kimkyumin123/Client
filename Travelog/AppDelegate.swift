@@ -6,23 +6,18 @@
 //
 
 import NaverThirdPartyLogin
+import os.log
+import RxKakaoSDKCommon
 import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
+
+  // MARK: Internal
+
   func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
-
-    // naver id login
-    let instance = NaverThirdPartyLoginConnection.getSharedInstance()
-    instance?.isNaverAppOauthEnable = true
-    instance?.isInAppOauthEnable = true
-    instance?.isOnlyPortraitSupportedInIphone()
-
-    instance?.serviceUrlScheme = kServiceAppUrlScheme
-    instance?.consumerKey = kConsumerKey
-    instance?.consumerSecret = kConsumerSecret
-    instance?.appName = kServiceAppName
+    initializeLogin()
 
     return true
   }
@@ -39,5 +34,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Called when the user discards a scene session.
     // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
     // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+  }
+
+  // MARK: Private
+
+  private func initializeLogin() {
+    switch UserDefaults.loginPlatform {
+    case .naver:
+      initNaver()
+    case .kakao:
+      initKakao()
+    case .notLoggedIn:
+      initNaver()
+      initKakao()
+    default:
+      break
+    }
+  }
+
+  // kakao initialize
+  private func initKakao() {
+    os_log(.debug, log: .user, "Initialize Kakao Login, %s", Constraints.kakaoAppKey)
+    RxKakaoSDKCommon.initSDK(appKey: Constraints.kakaoAppKey)
+  }
+
+  // naver initialize
+  private func initNaver() {
+    os_log(.debug, log: .user, "Initialize Naver Login")
+    let instance = NaverThirdPartyLoginConnection.getSharedInstance()
+    instance?.isNaverAppOauthEnable = true
+    instance?.isInAppOauthEnable = true
+    instance?.isOnlyPortraitSupportedInIphone()
+
+    instance?.serviceUrlScheme = kServiceAppUrlScheme
+    instance?.consumerKey = kConsumerKey
+    instance?.consumerSecret = kConsumerSecret
+    instance?.appName = kServiceAppName
   }
 }

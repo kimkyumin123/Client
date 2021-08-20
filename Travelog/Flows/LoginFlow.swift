@@ -22,6 +22,8 @@ final class LoginFlow: Flow {
     switch step {
     case .loginIsRequierd:
       return navigateToLogin()
+    case .signUp, .oAuthSignUp:
+      return navigateToSignUp()
     default:
       return .none
     }
@@ -34,7 +36,20 @@ extension LoginFlow {
   private func navigateToLogin() -> FlowContributors {
     let vc = LoginViewController()
     let vm = LoginViewModel()
+    vc.reactor = vm
+
     rootViewController.setViewControllers([vc], animated: false)
+    return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: vm))
+  }
+
+  private func navigateToSignUp() -> FlowContributors {
+    let vc = SignUpViewController()
+    let vm = SignUpViewModel()
+    vc.reactor = vm
+
+    rootViewController.navigationBar.isHidden = false
+
+    rootViewController.pushViewController(vc, animated: true)
     return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: vm))
   }
 }

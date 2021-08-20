@@ -1,0 +1,13 @@
+query nickNameValidation($nickName: String) {
+  userCheck(nickName: $nickName) {
+    ok
+    error
+  }
+}
+
+query emailValidation($email: String) {
+  userCheck(email: $email) {
+    ok
+    error
+  }
+}

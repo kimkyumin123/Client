@@ -39,4 +39,7 @@ build/
 ## Naver Login
 NaverThirdPartyKey.h
 
+## Config
+Debug.xcconfig
+
 # End of https://www.toptal.com/developers/gitignore/api/swiftpackagemanager,xcode
