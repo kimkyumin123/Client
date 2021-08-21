@@ -57,11 +57,12 @@ extension LoginViewController {
   }
 
   private func bindState(reactor: LoginViewModel) {
+
     reactor.state
       .observe(on: MainScheduler.instance)
       .map(\.isLoading)
       .distinctUntilChanged()
-      .bind(to: LoadingAlert.attach(at: view).rx.isLoading)
+      .bind(to: LoadingAlert.shared.attach(at: view).rx.isLoading)
       .disposed(by: disposeBag)
 
     reactor.state

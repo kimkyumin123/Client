@@ -12,9 +12,10 @@ extension OSLog {
 
   // MARK: Internal
 
-  static let keychain = OSLog(subsystem: subsystem, category: "KeyChain")
-  static let apollo = OSLog(subsystem: subsystem, category: "GraphQL")
-  static let user = OSLog(subsystem: subsystem, category: "User")
+  static let keychain = OSLog(subsystem: subsystem, category: "📂 KeyChain")
+  static let apollo = OSLog(subsystem: subsystem, category: "👩‍🎤 GraphQL")
+  static let user = OSLog(subsystem: subsystem, category: "👤 User")
+  static let flow = OSLog(subsystem: subsystem, category: "🖥 Flow")
 
   // MARK: Private
 

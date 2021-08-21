@@ -5,6 +5,7 @@
 //  Created by JK on 2021/08/18.
 //
 
+import Combine
 import Foundation
 import KakaoSDKAuth
 import os.log
@@ -55,12 +56,13 @@ final class LoginViewModel: Stepper, Reactor {
   func mutate(action: Action) -> Observable<Mutation> {
     switch action {
     case .kakaoLogin:
-      return Observable.concat(
+      return Observable.concat([
         .just(.setLoading(true)),
         kakaoLogin()
           .map { _ in Mutation.ignore }
           .catch { .just(Mutation.setError(try $0.cast(to: UserServiceError.self))) },
-        .just(.setLoading(false)))
+        .just(.setLoading(false)),
+      ])
 
     case .naverLogin:
       return Observable.concat([
@@ -68,6 +70,14 @@ final class LoginViewModel: Stepper, Reactor {
         naverLogin()
           .map { _ in Mutation.ignore }
           .catch { .just(Mutation.setError(try $0.cast(to: UserServiceError.self))) },
+        .just(.setLoading(false)),
+      ])
+
+    case .serviceLogin(id: let id, pw: let pw):
+      return Observable.concat([
+        .just(.setLoading(true)),
+        serviceLogin(id: id, pw: pw)
+          .map { _ in Mutation.ignore },
         .just(.setLoading(false)),
       ])
 
@@ -98,6 +108,13 @@ extension LoginViewModel {
 
   // MARK: Private
 
+  private func kakao() -> Observable<AppSteps> {
+    .just(.homeIsRequired)
+      .do(onNext: { [weak self] in
+        self?.steps.accept($0)
+      })
+  }
+
   /// 카카오 로그인 후 OAuth Login 시도.
   private func kakaoLogin() -> Observable<AppSteps> {
     ThirdPartyLoginService.kakaoLogin()
@@ -105,7 +122,7 @@ extension LoginViewModel {
       .flatMap {
         // 로그인 성공시, main screen 이동
         ThirdPartyLoginService.oAuthLogin(type: .kakao, token: $0)
-          .map { _ in .mapScreenIsRequired }
+          .map { _ in .homeIsRequired }
       }
       .catch {
         let err = try $0.cast(to: UserServiceError.self)
@@ -125,7 +142,7 @@ extension LoginViewModel {
     ThirdPartyLoginService.naverLogin()
       .flatMap {
         ThirdPartyLoginService.oAuthLogin(type: .naver, token: $0)
-          .map { _ in .mapScreenIsRequired }
+          .map { _ in .homeIsRequired }
       }
       .catch {
         let err = try $0.cast(to: UserServiceError.self)

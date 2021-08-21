@@ -16,22 +16,24 @@ final class LoadingAlert {
 
   // MARK: Lifecycle
 
-  private init(window: UIView) {
-    os_log("🎲 LoadingAlert init")
-    self.window = window
-  }
+//  private init(window: UIView) {
+//    os_log("🎲 LoadingAlert init")
+//    self.window = window
+//  }
 
   deinit { os_log("🎲 LoadingAlert deinit") }
 
   // MARK: Internal
 
-  static let front = LoadingAlert.attach(at: UIApplication.shared.windows.last!)
+  static let shared = LoadingAlert()
 
   var isLoading = false
-  var window: UIView
 
-  static func attach(at view: UIView) -> LoadingAlert {
-    LoadingAlert(window: view)
+  var window: UIView = UIApplication.shared.windows.last!
+
+  func attach(at view: UIView = UIApplication.shared.windows.last!) -> LoadingAlert {
+    window = view
+    return self
   }
 
   func start() {
@@ -78,9 +80,9 @@ extension Reactive where Base: LoadingAlert {
       alert.isLoading = isLoading
 
       if isLoading {
-        base.start()
+        alert.start()
       } else {
-        base.stop()
+        alert.stop()
       }
     }
   }
