@@ -80,7 +80,7 @@ final class UserManagementInterceptor: ApolloInterceptor {
     response: HTTPResponse<Operation>?,
     completion: @escaping(Result<GraphQLResult<Operation.Data>, Error>) -> Void)
   {
-    os_log(.debug, log: .apollo, "🚀 Add Authorization Header: %s", token.value)
+    os_log(.debug, log: .apollo, "Add Authorization Header: %s", token.value)
     request.addHeader(name: "Authorization", value: "Bearer \(token.value)")
     chain.proceedAsync(request: request, response: response, completion: completion)
   }

@@ -5,6 +5,7 @@
 //  Created by JK on 2021/07/24.
 //
 
+import os.log
 import RxFlow
 import UIKit
 
@@ -35,6 +36,7 @@ final class HomeFlow: Flow {
 
 extension HomeFlow {
   private func navigateToHome() -> FlowContributors {
+    os_log(.debug, log: .flow, "[HomeFlow]  navigateToHome")
     let mapFlow = MapFlow()
     let timelineFlow = TimelineFlow()
     let userInfoFlow = UserInfoFlow()

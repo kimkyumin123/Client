@@ -5,6 +5,7 @@
 //  Created by JK on 2021/07/25.
 //
 
+import os.log
 import RxFlow
 import UIKit
 
@@ -24,6 +25,8 @@ final class LoginFlow: Flow {
       return navigateToLogin()
     case .signUp, .oAuthSignUp:
       return navigateToSignUp()
+    case .homeIsRequired:
+      return navigateToHome()
     default:
       return .none
     }
@@ -34,6 +37,7 @@ final class LoginFlow: Flow {
 
 extension LoginFlow {
   private func navigateToLogin() -> FlowContributors {
+    os_log(.debug, log: .flow, "[LoginFlow]  navigateToLogin")
     let vc = LoginViewController()
     let vm = LoginViewModel()
     vc.reactor = vm
@@ -43,6 +47,7 @@ extension LoginFlow {
   }
 
   private func navigateToSignUp() -> FlowContributors {
+    os_log(.debug, log: .flow, "[LoginFlow]  navigateToSignUp")
     let vc = SignUpViewController()
     let vm = SignUpViewModel()
     vc.reactor = vm
@@ -51,5 +56,10 @@ extension LoginFlow {
 
     rootViewController.pushViewController(vc, animated: true)
     return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: vm))
+  }
+
+  private func navigateToHome() -> FlowContributors {
+    os_log(.debug, log: .flow, "[LoginFlow]  navigateToHome")
+    return .end(forwardToParentFlowWithStep: AppSteps.homeIsRequired)
   }
 }

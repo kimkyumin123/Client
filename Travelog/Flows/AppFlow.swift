@@ -5,6 +5,7 @@
 //  Created by JK on 2021/07/24.
 //
 
+import os.log
 import RxFlow
 import UIKit
 
@@ -43,6 +44,7 @@ final class AppFlow: Flow {
 
 extension AppFlow {
   private func navigateToMain() -> FlowContributors {
+    os_log(.debug, log: .flow, "[AppFlow]  navigateToMain")
     let flow = HomeFlow()
     Flows.use(flow, when: .created) { root in
       self.window.rootViewController = root
@@ -55,6 +57,7 @@ extension AppFlow {
   }
 
   private func navigateToLogin() -> FlowContributors {
+    os_log(.debug, log: .flow, "[AppFlow]  navigateToLogin")
     let flow = LoginFlow()
 
     Flows.use(flow, when: .created) { root in

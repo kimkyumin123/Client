@@ -90,8 +90,8 @@ final class ThirdPartyLoginService {
     os_log(.debug, log: .user, "naverLogin()")
     return NaverThirdPartyLoginConnection.getSharedInstance()!
       .rx.login
-      .map { _ in
-        NaverThirdPartyLoginConnection.getSharedInstance().accessToken
+      .flatMap { _ in
+        getNaverToken()
       }
       // error logging
       .catch { err in
