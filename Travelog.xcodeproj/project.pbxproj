@@ -19,6 +19,8 @@
 		484DB8B026CA097F004D5EB6 /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484DB8AF26CA097F004D5EB6 /* UserAccount.swift */; };
 		484DB8B926CA14DB004D5EB6 /* JWTToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484DB8B826CA14DB004D5EB6 /* JWTToken.swift */; };
 		484DB8BD26CA3D7A004D5EB6 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484DB8BC26CA3D7A004D5EB6 /* String+Extension.swift */; };
+		48609AE226D39C300095C5E7 /* PlaceSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48609AE126D39C300095C5E7 /* PlaceSearchService.swift */; };
+		48609AE426D39DB20095C5E7 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48609AE326D39DB20095C5E7 /* Place.swift */; };
 		4869D02526C8017E0076C570 /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4869D02426C8017E0076C570 /* Constraints.swift */; };
 		4869D02726C803480076C570 /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 4869D02626C803480076C570 /* Debug.xcconfig */; };
 		4869D02C26C8064D0076C570 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4869D02926C8064D0076C570 /* SignUpViewController.swift */; };
@@ -127,6 +129,8 @@
 		484DB8AF26CA097F004D5EB6 /* UserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
 		484DB8B826CA14DB004D5EB6 /* JWTToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWTToken.swift; sourceTree = "<group>"; };
 		484DB8BC26CA3D7A004D5EB6 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		48609AE126D39C300095C5E7 /* PlaceSearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceSearchService.swift; sourceTree = "<group>"; };
+		48609AE326D39DB20095C5E7 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		4869D02426C8017E0076C570 /* Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
 		4869D02626C803480076C570 /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = SOURCE_ROOT; };
 		4869D02926C8064D0076C570 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -232,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				484DB8AF26CA097F004D5EB6 /* UserAccount.swift */,
+				48609AE326D39DB20095C5E7 /* Place.swift */,
 				484DB8B826CA14DB004D5EB6 /* JWTToken.swift */,
 			);
 			path = Model;
@@ -257,6 +262,7 @@
 				48E3D28426C3FF21007D08ED /* UserService.swift */,
 				48E3D28626C3FF2A007D08ED /* KeychainService.swift */,
 				4825FEF526CBB79700BD1402 /* ThirdPartyLoginService.swift */,
+				48609AE126D39C300095C5E7 /* PlaceSearchService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -598,6 +604,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4869D02C26C8064D0076C570 /* SignUpViewController.swift in Sources */,
+				48609AE226D39C300095C5E7 /* PlaceSearchService.swift in Sources */,
 				4825FEF426CA594F00BD1402 /* UserDefaults+Extension.swift in Sources */,
 				48123D7B26B1A8EE0058CEDF /* SwiftUIPreview.swift in Sources */,
 				48123D7D26B1A9070058CEDF /* PlaceCell.swift in Sources */,
@@ -623,6 +630,7 @@
 				484DB8B026CA097F004D5EB6 /* UserAccount.swift in Sources */,
 				4825FEF226CA58BC00BD1402 /* UserManagementInterceptor.swift in Sources */,
 				489FB9D226AC397A00641F21 /* MapFlow.swift in Sources */,
+				48609AE426D39DB20095C5E7 /* Place.swift in Sources */,
 				489FB9E326AC3D0000641F21 /* UserInfoViewController.swift in Sources */,
 				487CDCC726CE04820092EC63 /* NSLayoutConstraint+Extension.swift in Sources */,
 				484DB8AE26C9AF71004D5EB6 /* Error+Extension.swift in Sources */,
