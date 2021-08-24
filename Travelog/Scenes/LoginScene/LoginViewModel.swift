@@ -158,4 +158,8 @@ extension LoginViewModel {
       })
   }
 
+  private func serviceLogin(id: String, pw: String) -> Observable<AppSteps> {
+    UserService.login(id: id, pw: pw)
+      .map { _ in .homeIsRequired }
+  }
 }

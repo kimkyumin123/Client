@@ -81,7 +81,7 @@ extension LoginViewController {
     guard let err = err as? UserServiceError else { return }
     switch err {
     case .denied:
-      alert(title: "이메일 수집 안내", msg: "고유 식별정보로 이메일을 사용하고 있어요.\n 이메일을 허용해주세요.", action: { _ in })
+      alert(title: "이메일 수집 안내", msg: "사용자 식별정보로 이메일을 사용하고 있어요.\n 이메일을 허용해주세요.", action: { _ in })
     default:
       break
     }
