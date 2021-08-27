@@ -23,7 +23,7 @@ final class PlaceSearchService {
     var queryItems: [ Parameters] = [.query(keyword)]
     queryItems.append(contentsOf: params)
 
-    guard let item = try? queryBuilder(query: queryItems) else {
+    guard let item = try? queryBuilder(params: queryItems) else {
       return .error(PlaceSearchServiceError.invlaidURL)
     }
 
