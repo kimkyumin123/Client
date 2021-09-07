@@ -1,0 +1,6 @@
+mutation deletePlace($id: Int!) {
+  deletePlace(id: $id) {
+    ok
+    error
+  }
+}

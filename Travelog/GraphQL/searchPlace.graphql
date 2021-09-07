@@ -1,0 +1,13 @@
+query searchPlace($title: String!, $category: String, $lastId: Int) {
+  searchPlace(title: $title, category: $category, lastId: $lastId) {
+    id
+    createdAt
+    updatedAt
+    title
+    address
+    zipCode
+    x
+    y
+    category
+  }
+}

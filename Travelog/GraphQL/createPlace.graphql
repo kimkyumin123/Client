@@ -1,0 +1,6 @@
+mutation createPlace($place: [InputPlace]) {
+  createPlace(place: $place) {
+    ok
+    error
+  }
+}

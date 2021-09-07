@@ -19,6 +19,7 @@
 		484DB8B026CA097F004D5EB6 /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484DB8AF26CA097F004D5EB6 /* UserAccount.swift */; };
 		484DB8B926CA14DB004D5EB6 /* JWTToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484DB8B826CA14DB004D5EB6 /* JWTToken.swift */; };
 		484DB8BD26CA3D7A004D5EB6 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484DB8BC26CA3D7A004D5EB6 /* String+Extension.swift */; };
+		485B800226E73DA00078469C /* Tour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485B800126E73DA00078469C /* Tour.swift */; };
 		48609AE226D39C300095C5E7 /* PlaceSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48609AE126D39C300095C5E7 /* PlaceSearchService.swift */; };
 		48609AE426D39DB20095C5E7 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48609AE326D39DB20095C5E7 /* Place.swift */; };
 		48609AEC26D4FC9D0095C5E7 /* PlaceServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48609AEB26D4FC9D0095C5E7 /* PlaceServiceTests.swift */; };
@@ -53,6 +54,7 @@
 		489FB9E326AC3D0000641F21 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489FB9E226AC3D0000641F21 /* UserInfoViewController.swift */; };
 		489FB9E526AC3D0600641F21 /* UserInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489FB9E426AC3D0600641F21 /* UserInfoViewModel.swift */; };
 		489FB9E826AC3DA500641F21 /* UserInfoFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489FB9E726AC3DA500641F21 /* UserInfoFlow.swift */; };
+		48BC6D0126D90682002AC334 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BC6D0026D90682002AC334 /* Review.swift */; };
 		48C2DB1226BD8A9600877AB5 /* NaverThirdPartyLogin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48C2DB0E26BD8A7400877AB5 /* NaverThirdPartyLogin.framework */; };
 		48C2DB1326BD8A9600877AB5 /* NaverThirdPartyLogin.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48C2DB0E26BD8A7400877AB5 /* NaverThirdPartyLogin.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		48E3D28526C3FF21007D08ED /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E3D28426C3FF21007D08ED /* UserService.swift */; };
@@ -63,6 +65,7 @@
 		48E3D2AF26C41C23007D08ED /* OSLog+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E3D2AE26C41C23007D08ED /* OSLog+Extension.swift */; };
 		48E3D2B126C43F6F007D08ED /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E3D2B026C43F6F007D08ED /* Network.swift */; };
 		48E3D2B326C440CD007D08ED /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E3D2B226C440CD007D08ED /* API.swift */; };
+		48EB95B826E1DCB4001A2F9C /* ReviewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EB95B726E1DCB4001A2F9C /* ReviewService.swift */; };
 		48F33B2626AC2BBC00A704C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F33B2526AC2BBC00A704C7 /* AppDelegate.swift */; };
 		48F33B2826AC2BBC00A704C7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F33B2726AC2BBC00A704C7 /* SceneDelegate.swift */; };
 		48F33B2F26AC2BBD00A704C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48F33B2E26AC2BBD00A704C7 /* Assets.xcassets */; };
@@ -130,6 +133,7 @@
 		484DB8AF26CA097F004D5EB6 /* UserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
 		484DB8B826CA14DB004D5EB6 /* JWTToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWTToken.swift; sourceTree = "<group>"; };
 		484DB8BC26CA3D7A004D5EB6 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		485B800126E73DA00078469C /* Tour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tour.swift; sourceTree = "<group>"; };
 		48609AE126D39C300095C5E7 /* PlaceSearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceSearchService.swift; sourceTree = "<group>"; };
 		48609AE326D39DB20095C5E7 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		48609AEB26D4FC9D0095C5E7 /* PlaceServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceServiceTests.swift; sourceTree = "<group>"; };
@@ -159,6 +163,7 @@
 		489FB9E226AC3D0000641F21 /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 		489FB9E426AC3D0600641F21 /* UserInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewModel.swift; sourceTree = "<group>"; };
 		489FB9E726AC3DA500641F21 /* UserInfoFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoFlow.swift; sourceTree = "<group>"; };
+		48BC6D0026D90682002AC334 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Review.swift; path = Travelog/Review.swift; sourceTree = SOURCE_ROOT; };
 		48C2DB0E26BD8A7400877AB5 /* NaverThirdPartyLogin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NaverThirdPartyLogin.framework; path = frameworks/NaverThirdPartyLogin.framework; sourceTree = "<group>"; };
 		48D9106A26BABC1B00F6601C /* Travelog.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Travelog.xcodeproj; sourceTree = "<group>"; };
 		48E3D28426C3FF21007D08ED /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
@@ -166,6 +171,7 @@
 		48E3D2AE26C41C23007D08ED /* OSLog+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSLog+Extension.swift"; sourceTree = "<group>"; };
 		48E3D2B026C43F6F007D08ED /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		48E3D2B226C440CD007D08ED /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = API.swift; path = Travelog/GraphQL/API.swift; sourceTree = SOURCE_ROOT; };
+		48EB95B726E1DCB4001A2F9C /* ReviewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewService.swift; sourceTree = "<group>"; };
 		48F33B2226AC2BBC00A704C7 /* Travelog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Travelog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48F33B2526AC2BBC00A704C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48F33B2726AC2BBC00A704C7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -240,6 +246,8 @@
 			children = (
 				484DB8AF26CA097F004D5EB6 /* UserAccount.swift */,
 				48609AE326D39DB20095C5E7 /* Place.swift */,
+				48BC6D0026D90682002AC334 /* Review.swift */,
+				485B800126E73DA00078469C /* Tour.swift */,
 				484DB8B826CA14DB004D5EB6 /* JWTToken.swift */,
 			);
 			path = Model;
@@ -266,6 +274,7 @@
 				48E3D28626C3FF2A007D08ED /* KeychainService.swift */,
 				4825FEF526CBB79700BD1402 /* ThirdPartyLoginService.swift */,
 				48609AE126D39C300095C5E7 /* PlaceSearchService.swift */,
+				48EB95B726E1DCB4001A2F9C /* ReviewService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -637,6 +646,7 @@
 				48609AE426D39DB20095C5E7 /* Place.swift in Sources */,
 				489FB9E326AC3D0000641F21 /* UserInfoViewController.swift in Sources */,
 				487CDCC726CE04820092EC63 /* NSLayoutConstraint+Extension.swift in Sources */,
+				485B800226E73DA00078469C /* Tour.swift in Sources */,
 				484DB8AE26C9AF71004D5EB6 /* Error+Extension.swift in Sources */,
 				4825FEF626CBB79700BD1402 /* ThirdPartyLoginService.swift in Sources */,
 				484DB8B926CA14DB004D5EB6 /* JWTToken.swift in Sources */,
@@ -644,6 +654,7 @@
 				48E3D28526C3FF21007D08ED /* UserService.swift in Sources */,
 				4891A82426CCFF3D00C3B780 /* LoginViewController.swift in Sources */,
 				48E3D2B126C43F6F007D08ED /* Network.swift in Sources */,
+				48EB95B826E1DCB4001A2F9C /* ReviewService.swift in Sources */,
 				48F65C6826AC783D009B15BE /* ReviewPostCell.swift in Sources */,
 				48E3D2B326C440CD007D08ED /* API.swift in Sources */,
 				4869D02E26C8064D0076C570 /* SignUpViewModel.swift in Sources */,
@@ -651,6 +662,7 @@
 				48E3D28726C3FF2A007D08ED /* KeychainService.swift in Sources */,
 				4898971F26AC353F000499AC /* AppSteps.swift in Sources */,
 				48F65C6A26AC8D5A009B15BE /* ImageScrollView.swift in Sources */,
+				48BC6D0126D90682002AC334 /* Review.swift in Sources */,
 				48F65C5D26AC719C009B15BE /* AppleLoginButton.swift in Sources */,
 				489FB9E026AC3C1500641F21 /* TimelineViewModel.swift in Sources */,
 				4891A82526CCFF3D00C3B780 /* LoginView.swift in Sources */,
@@ -685,6 +697,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 78X32W2D44;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -713,6 +726,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 78X32W2D44;
 				INFOPLIST_FILE = TravelogUnitTest/Info.plist;

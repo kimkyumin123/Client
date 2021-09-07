@@ -1,0 +1,6 @@
+mutation updatePlace($id: Int!) {
+  updatePlace(id: $id) {
+    ok
+    error
+  }
+}
