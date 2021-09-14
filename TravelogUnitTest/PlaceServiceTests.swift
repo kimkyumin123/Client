@@ -24,6 +24,16 @@ class PlaceServiceTests: XCTestCase {
     print("[📌 Result]", result)
     XCTAssertNotEqual(result, [])
   }
-  
-  
+
+  func test_newtest() throws {
+    let expect = expectation(description: "hi")
+
+    PlaceSearchService.fetchString(keyword: "광화문") { str in
+      print(str)
+      expect.fulfill()
+    }
+
+    wait(for: [expect], timeout: 10.0)
+  }
+
 }

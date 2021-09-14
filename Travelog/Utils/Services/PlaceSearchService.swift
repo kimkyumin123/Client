@@ -5,6 +5,7 @@
 //  Created by JK on 2021/08/23.
 //
 
+import Alamofire
 import Foundation
 import RxAlamofire
 import RxSwift
@@ -37,9 +38,20 @@ final class PlaceSearchService {
         return .just(data)
       }
   }
-  static func request(_ url: URLComponents) -> Observable<Place.APIResponse> {
-    RxAlamofire.requestDecodable(.get, url)
-      .map(\.1)
+
+  static func fetchString(keyword: String, completion: @escaping (String) -> Void) {
+    let queryItems: [ Parameters] = [.query(keyword)]
+
+    guard let item = try? queryBuilder(params: queryItems) else {
+      return
+    }
+
+    AF.request(item, method: .get)
+      .responseString { result in
+        if let value = result.value {
+          completion(value)
+        }
+      }
   }
 
   static func queryBuilder(params: [Parameters]) throws -> URLComponents {

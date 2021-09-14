@@ -10,7 +10,6 @@ import Foundation
 
 struct Place {
   typealias Coords = CLLocationCoordinate2D
-
   // MARK: - APIResponse
   struct APIResponse: Decodable {
 
@@ -82,5 +81,10 @@ struct Place {
   struct Service: Codable {
     let name, version, operation, time: String
   }
+
+  var id: String
+  var category: String
+  var address: String
+  var point: Coords
 
 }
