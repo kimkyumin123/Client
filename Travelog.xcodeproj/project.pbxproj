@@ -15,6 +15,7 @@
 		4825FEF626CBB79700BD1402 /* ThirdPartyLoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4825FEF526CBB79700BD1402 /* ThirdPartyLoginService.swift */; };
 		4825FEF826CBB7F700BD1402 /* ThirdPartyLoginServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4825FEF726CBB7F700BD1402 /* ThirdPartyLoginServiceTests.swift */; };
 		482A6FC726AD7267001BF0BD /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482A6FC626AD7267001BF0BD /* CommentCell.swift */; };
+		484861DF26F1E2C400861155 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484861DD26F1E2C400861155 /* TimelineViewController.swift */; };
 		484DB8AE26C9AF71004D5EB6 /* Error+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484DB8AD26C9AF71004D5EB6 /* Error+Extension.swift */; };
 		484DB8B026CA097F004D5EB6 /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484DB8AF26CA097F004D5EB6 /* UserAccount.swift */; };
 		484DB8B926CA14DB004D5EB6 /* JWTToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484DB8B826CA14DB004D5EB6 /* JWTToken.swift */; };
@@ -49,7 +50,6 @@
 		489FB9D426AC3A4400641F21 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489FB9D326AC3A4400641F21 /* MapViewController.swift */; };
 		489FB9D626AC3A4B00641F21 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489FB9D526AC3A4B00641F21 /* MapViewModel.swift */; };
 		489FB9DA26AC3BD400641F21 /* TimelineFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489FB9D926AC3BD400641F21 /* TimelineFlow.swift */; };
-		489FB9DE26AC3C0200641F21 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489FB9DD26AC3C0200641F21 /* TimelineViewController.swift */; };
 		489FB9E026AC3C1500641F21 /* TimelineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489FB9DF26AC3C1500641F21 /* TimelineViewModel.swift */; };
 		489FB9E326AC3D0000641F21 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489FB9E226AC3D0000641F21 /* UserInfoViewController.swift */; };
 		489FB9E526AC3D0600641F21 /* UserInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489FB9E426AC3D0600641F21 /* UserInfoViewModel.swift */; };
@@ -66,6 +66,7 @@
 		48E3D2B126C43F6F007D08ED /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E3D2B026C43F6F007D08ED /* Network.swift */; };
 		48E3D2B326C440CD007D08ED /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E3D2B226C440CD007D08ED /* API.swift */; };
 		48EB95B826E1DCB4001A2F9C /* ReviewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EB95B726E1DCB4001A2F9C /* ReviewService.swift */; };
+		48EE6ACB26F20084008CD9B2 /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EE6ACA26F20084008CD9B2 /* TimelineView.swift */; };
 		48F33B2626AC2BBC00A704C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F33B2526AC2BBC00A704C7 /* AppDelegate.swift */; };
 		48F33B2826AC2BBC00A704C7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F33B2726AC2BBC00A704C7 /* SceneDelegate.swift */; };
 		48F33B2F26AC2BBD00A704C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48F33B2E26AC2BBD00A704C7 /* Assets.xcassets */; };
@@ -129,6 +130,7 @@
 		482A6FC626AD7267001BF0BD /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		483C565E26C2BDC8000B8E8C /* TravelogUnitTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TravelogUnitTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		483C566226C2BDC8000B8E8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		484861DD26F1E2C400861155 /* TimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		484DB8AD26C9AF71004D5EB6 /* Error+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Extension.swift"; sourceTree = "<group>"; };
 		484DB8AF26CA097F004D5EB6 /* UserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
 		484DB8B826CA14DB004D5EB6 /* JWTToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWTToken.swift; sourceTree = "<group>"; };
@@ -158,7 +160,6 @@
 		489FB9D326AC3A4400641F21 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		489FB9D526AC3A4B00641F21 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		489FB9D926AC3BD400641F21 /* TimelineFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineFlow.swift; sourceTree = "<group>"; };
-		489FB9DD26AC3C0200641F21 /* TimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		489FB9DF26AC3C1500641F21 /* TimelineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewModel.swift; sourceTree = "<group>"; };
 		489FB9E226AC3D0000641F21 /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 		489FB9E426AC3D0600641F21 /* UserInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewModel.swift; sourceTree = "<group>"; };
@@ -172,6 +173,7 @@
 		48E3D2B026C43F6F007D08ED /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		48E3D2B226C440CD007D08ED /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = API.swift; path = Travelog/GraphQL/API.swift; sourceTree = SOURCE_ROOT; };
 		48EB95B726E1DCB4001A2F9C /* ReviewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewService.swift; sourceTree = "<group>"; };
+		48EE6ACA26F20084008CD9B2 /* TimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
 		48F33B2226AC2BBC00A704C7 /* Travelog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Travelog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48F33B2526AC2BBC00A704C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48F33B2726AC2BBC00A704C7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -328,9 +330,10 @@
 		489FB9E126AC3C4E00641F21 /* TimelineScene */ = {
 			isa = PBXGroup;
 			children = (
-				489FB9DD26AC3C0200641F21 /* TimelineViewController.swift */,
 				48F65C6726AC783D009B15BE /* ReviewPostCell.swift */,
 				489FB9DF26AC3C1500641F21 /* TimelineViewModel.swift */,
+				484861DD26F1E2C400861155 /* TimelineViewController.swift */,
+				48EE6ACA26F20084008CD9B2 /* TimelineView.swift */,
 			);
 			path = TimelineScene;
 			sourceTree = "<group>";
@@ -625,6 +628,7 @@
 				489FB9D626AC3A4B00641F21 /* MapViewModel.swift in Sources */,
 				4869D02526C8017E0076C570 /* Constraints.swift in Sources */,
 				4898972126AC356F000499AC /* AppFlow.swift in Sources */,
+				484861DF26F1E2C400861155 /* TimelineViewController.swift in Sources */,
 				48F65C6626AC747D009B15BE /* LoginFlow.swift in Sources */,
 				4898972526AC36DC000499AC /* HomeFlow.swift in Sources */,
 				48F33B2626AC2BBC00A704C7 /* AppDelegate.swift in Sources */,
@@ -658,7 +662,6 @@
 				48F65C6826AC783D009B15BE /* ReviewPostCell.swift in Sources */,
 				48E3D2B326C440CD007D08ED /* API.swift in Sources */,
 				4869D02E26C8064D0076C570 /* SignUpViewModel.swift in Sources */,
-				489FB9DE26AC3C0200641F21 /* TimelineViewController.swift in Sources */,
 				48E3D28726C3FF2A007D08ED /* KeychainService.swift in Sources */,
 				4898971F26AC353F000499AC /* AppSteps.swift in Sources */,
 				48F65C6A26AC8D5A009B15BE /* ImageScrollView.swift in Sources */,
@@ -667,6 +670,7 @@
 				489FB9E026AC3C1500641F21 /* TimelineViewModel.swift in Sources */,
 				4891A82526CCFF3D00C3B780 /* LoginView.swift in Sources */,
 				484DB8BD26CA3D7A004D5EB6 /* String+Extension.swift in Sources */,
+				48EE6ACB26F20084008CD9B2 /* TimelineView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
