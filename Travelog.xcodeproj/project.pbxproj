@@ -67,6 +67,9 @@
 		48E3D2B326C440CD007D08ED /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E3D2B226C440CD007D08ED /* API.swift */; };
 		48EB95B826E1DCB4001A2F9C /* ReviewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EB95B726E1DCB4001A2F9C /* ReviewService.swift */; };
 		48EE6ACB26F20084008CD9B2 /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EE6ACA26F20084008CD9B2 /* TimelineView.swift */; };
+		48EE6AD726F32FC6008CD9B2 /* PostWriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EE6AD426F32FC6008CD9B2 /* PostWriteView.swift */; };
+		48EE6AD826F32FC6008CD9B2 /* PostWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EE6AD526F32FC6008CD9B2 /* PostWriteViewController.swift */; };
+		48EE6AD926F32FC6008CD9B2 /* PostWriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EE6AD626F32FC6008CD9B2 /* PostWriteViewModel.swift */; };
 		48F33B2626AC2BBC00A704C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F33B2526AC2BBC00A704C7 /* AppDelegate.swift */; };
 		48F33B2826AC2BBC00A704C7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F33B2726AC2BBC00A704C7 /* SceneDelegate.swift */; };
 		48F33B2F26AC2BBD00A704C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48F33B2E26AC2BBD00A704C7 /* Assets.xcassets */; };
@@ -174,6 +177,9 @@
 		48E3D2B226C440CD007D08ED /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = API.swift; path = Travelog/GraphQL/API.swift; sourceTree = SOURCE_ROOT; };
 		48EB95B726E1DCB4001A2F9C /* ReviewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewService.swift; sourceTree = "<group>"; };
 		48EE6ACA26F20084008CD9B2 /* TimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
+		48EE6AD426F32FC6008CD9B2 /* PostWriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostWriteView.swift; sourceTree = "<group>"; };
+		48EE6AD526F32FC6008CD9B2 /* PostWriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostWriteViewController.swift; sourceTree = "<group>"; };
+		48EE6AD626F32FC6008CD9B2 /* PostWriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostWriteViewModel.swift; sourceTree = "<group>"; };
 		48F33B2226AC2BBC00A704C7 /* Travelog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Travelog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48F33B2526AC2BBC00A704C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48F33B2726AC2BBC00A704C7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -318,6 +324,7 @@
 		489FB9D826AC3AB600641F21 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				48EE6AD326F32FB5008CD9B2 /* PostWrite */,
 				4869D02826C806410076C570 /* SignUpScene */,
 				489FB9E626AC3D0900641F21 /* UserInfoScene */,
 				489FB9E126AC3C4E00641F21 /* TimelineScene */,
@@ -369,6 +376,16 @@
 		48D9106B26BABC1B00F6601C /* Products */ = {
 			isa = PBXGroup;
 			name = Products;
+			sourceTree = "<group>";
+		};
+		48EE6AD326F32FB5008CD9B2 /* PostWrite */ = {
+			isa = PBXGroup;
+			children = (
+				48EE6AD426F32FC6008CD9B2 /* PostWriteView.swift */,
+				48EE6AD526F32FC6008CD9B2 /* PostWriteViewController.swift */,
+				48EE6AD626F32FC6008CD9B2 /* PostWriteViewModel.swift */,
+			);
+			path = PostWrite;
 			sourceTree = "<group>";
 		};
 		48F33B1926AC2BBC00A704C7 = {
@@ -625,6 +642,7 @@
 				48123D7B26B1A8EE0058CEDF /* SwiftUIPreview.swift in Sources */,
 				48123D7D26B1A9070058CEDF /* PlaceCell.swift in Sources */,
 				489FB9E826AC3DA500641F21 /* UserInfoFlow.swift in Sources */,
+				48EE6AD826F32FC6008CD9B2 /* PostWriteViewController.swift in Sources */,
 				489FB9D626AC3A4B00641F21 /* MapViewModel.swift in Sources */,
 				4869D02526C8017E0076C570 /* Constraints.swift in Sources */,
 				4898972126AC356F000499AC /* AppFlow.swift in Sources */,
@@ -633,6 +651,7 @@
 				4898972526AC36DC000499AC /* HomeFlow.swift in Sources */,
 				48F33B2626AC2BBC00A704C7 /* AppDelegate.swift in Sources */,
 				489FB9E526AC3D0600641F21 /* UserInfoViewModel.swift in Sources */,
+				48EE6AD926F32FC6008CD9B2 /* PostWriteViewModel.swift in Sources */,
 				489FB9D426AC3A4400641F21 /* MapViewController.swift in Sources */,
 				4869D02D26C8064D0076C570 /* SignUpView.swift in Sources */,
 				48E3D2AF26C41C23007D08ED /* OSLog+Extension.swift in Sources */,
@@ -645,6 +664,7 @@
 				487CDCC826CE04820092EC63 /* NSObject+Extension.swift in Sources */,
 				4891A82626CCFF3D00C3B780 /* LoginViewModel.swift in Sources */,
 				484DB8B026CA097F004D5EB6 /* UserAccount.swift in Sources */,
+				48EE6AD726F32FC6008CD9B2 /* PostWriteView.swift in Sources */,
 				4825FEF226CA58BC00BD1402 /* UserManagementInterceptor.swift in Sources */,
 				489FB9D226AC397A00641F21 /* MapFlow.swift in Sources */,
 				48609AE426D39DB20095C5E7 /* Place.swift in Sources */,
@@ -1009,7 +1029,7 @@
 			repositoryURL = "https://github.com/apollographql/apollo-ios";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.45.0;
+				minimumVersion = 0.49.0;
 			};
 		};
 		48F33B6726AC2F7C00A704C7 /* XCRemoteSwiftPackageReference "FlexLayout" */ = {
