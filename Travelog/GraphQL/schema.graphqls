@@ -1,0 +1,169 @@
+directive @cacheControl(maxAge: Int, scope: CacheControlScope) on FIELD_DEFINITION | OBJECT | INTERFACE
+
+type Comment {
+  id: Int!
+  createdAt: String
+  updatedAt: String
+  payload: String
+  reviewId: Int
+}
+
+input InputPlace {
+  title: String!
+  address: String!
+  zipCode: Int
+  x: Float!
+  y: Float!
+  category: String
+  placeId: String!
+}
+
+type Place {
+  id: Int!
+  createdAt: String
+  updatedAt: String
+  title: String!
+  address: String!
+  zipCode: Int
+  x: Float!
+  y: Float!
+  category: String
+  uniqueId: String
+}
+
+type Query {
+  placeAbout(placeId: String!): [Review]
+  userCheck(email: String, nickName: String): QueryResponse
+  searchPlace(title: String!, category: String, lastId: Int): [Place]
+  aboutPlaceReview(placeId: String!, lastId: Int): [Review]
+  searchReview(title: String, category: String, lastId: Int): [Review]
+  seeProfile(userName: String!): User
+}
+
+type Review {
+  id: Int!
+  createdAt: String
+  updatedAt: String
+  title: String
+  content: String
+  upload: Upload
+  userId: Int
+  comments: [Comment]
+  suggestions: Suggestion
+  placeId: Int
+  place: Place
+}
+
+type HashTag {
+  id: Int!
+  hashTag: String
+  createdAt: String
+  updatedAt: String
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
+
+type MutationResponse {
+  ok: Boolean!
+  error: Int
+}
+
+type loginResponse {
+  ok: Boolean
+  error: Int
+  token: Token
+}
+
+type QueryResponse {
+  ok: Boolean!
+  error: Int
+}
+
+type Token {
+  accessToken: String!
+  refreshToken: String!
+}
+
+type Suggestion {
+  id: Int!
+  like: Int
+  unLike: Int
+  reviewId: Int
+  userId: Int
+}
+
+type User {
+  id: Int!
+  userName: String
+  nickName: String!
+  email: String!
+  avatar: String
+  bio: String
+  gender: String
+  ageRanger: String
+  createdAt: String
+  updatedAt: String
+  reviews: [Review]
+  places: [Place]
+  platformType: String
+  suggestions: Suggestion
+}
+
+type Mutation {
+  createPlace(place: [InputPlace]): MutationResponse
+  deletePlace(id: Int!): MutationResponse
+  updatePlace(place: [UpdatePlaceInput]): MutationResponse
+  createReview(review: [ReviewInput]): MutationResponse
+  deleteReview(id: Int!): MutationResponse
+  toggleLike(reviewId: Int!, like: Boolean!): MutationResponse
+  updateReview(review: [UpdateReviewInput]): MutationResponse
+  authUserLogin(platform_type: String!, accesstoken: String!): loginResponse
+  authUserLogout(token: String!): MutationResponse
+  authVaildation: authResponse
+  createAuthUser(nickName: String!, avatar: String, bio: String, platformType: String!, token: String!): MutationResponse
+  createUser(bio: String, userName: String!, gender: String, ageRange: String, email: String!, nickName: String!, avatar: String, password: String!): MutationResponse
+  deleteUser: MutationResponse
+  editUser(nickName: String, bio: String, avatar: Upload, password: String, gender: String, ageRange: String): MutationResponse
+  userLogin(userName: String!, password: String!): loginResponse
+  userLogout: MutationResponse
+}
+
+input UpdatePlaceInput {
+  id: Int!
+  title: String
+  address: String
+  zipCode: Int
+  x: Float
+  y: Float
+  category: String
+  placeId: String
+}
+
+input ReviewInput {
+  title: String!
+  upload: Upload
+  content: String!
+  place: InputPlace
+}
+
+input UpdateReviewInput {
+  title: String!
+  upload: Upload
+  content: String!
+  place: InputPlace
+}
+
+type authResponse {
+  ok: Boolean!
+  error: Int
+  profile_image_url: String
+  nickname: String
+  gender: String
+  age_range: String
+}
+
+enum CacheControlScope {
+  PUBLIC
+  PRIVATE
+}
