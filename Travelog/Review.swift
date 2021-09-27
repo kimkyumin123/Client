@@ -15,6 +15,7 @@ struct Review: Equatable {
   var text: String
   var image: URL
   var placeID: String
+  var comment: [Review.Comment]
 
   struct Upload: Codable, Equatable {
     var text: String
@@ -27,5 +28,15 @@ struct Review: Equatable {
     var image: UIImage?
     var placeID: String?
     var placeName: String?
+  }
+  
+  struct Comment: Codable, Equatable {
+    var id: Int
+    var reviewID: Int
+    var createdAt: String
+    var updatedAt: String
+    var payload: String
+    var likeCount: Int
+    var unLikeCount: Int
   }
 }

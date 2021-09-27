@@ -95,6 +95,9 @@
 		48FB5FC326AD90E6008A33DE /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 48FB5FC226AD90E6008A33DE /* Lottie */; };
 		48FB5FC526AD90EA008A33DE /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 48FB5FC426AD90EA008A33DE /* loading.json */; };
 		48FB5FC726AD90FD008A33DE /* LoadingAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FB5FC626AD90FD008A33DE /* LoadingAlert.swift */; };
+		48FE0DE626FB427E0066F834 /* DetailPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FE0DE326FB427E0066F834 /* DetailPostView.swift */; };
+		48FE0DE726FB427E0066F834 /* DetailPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FE0DE426FB427E0066F834 /* DetailPostViewController.swift */; };
+		48FE0DE826FB427E0066F834 /* DetailPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FE0DE526FB427E0066F834 /* DetailPostViewModel.swift */; };
 		48FF382126C85EB40068B8B3 /* RxApolloClient in Frameworks */ = {isa = PBXBuildFile; productRef = 48FF382026C85EB40068B8B3 /* RxApolloClient */; };
 /* End PBXBuildFile section */
 
@@ -192,6 +195,9 @@
 		48F65C6926AC8D5A009B15BE /* ImageScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageScrollView.swift; sourceTree = "<group>"; };
 		48FB5FC426AD90EA008A33DE /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		48FB5FC626AD90FD008A33DE /* LoadingAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAlert.swift; sourceTree = "<group>"; };
+		48FE0DE326FB427E0066F834 /* DetailPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostView.swift; sourceTree = "<group>"; };
+		48FE0DE426FB427E0066F834 /* DetailPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostViewController.swift; sourceTree = "<group>"; };
+		48FE0DE526FB427E0066F834 /* DetailPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -324,6 +330,7 @@
 		489FB9D826AC3AB600641F21 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				48FE0DE226FB42700066F834 /* DetailPost */,
 				48EE6AD326F32FB5008CD9B2 /* PostWrite */,
 				4869D02826C806410076C570 /* SignUpScene */,
 				489FB9E626AC3D0900641F21 /* UserInfoScene */,
@@ -451,6 +458,16 @@
 				48123D7A26B1A8EE0058CEDF /* SwiftUIPreview.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		48FE0DE226FB42700066F834 /* DetailPost */ = {
+			isa = PBXGroup;
+			children = (
+				48FE0DE326FB427E0066F834 /* DetailPostView.swift */,
+				48FE0DE426FB427E0066F834 /* DetailPostViewController.swift */,
+				48FE0DE526FB427E0066F834 /* DetailPostViewModel.swift */,
+			);
+			path = DetailPost;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -659,11 +676,13 @@
 				482A6FC726AD7267001BF0BD /* CommentCell.swift in Sources */,
 				487CDCC926CE04820092EC63 /* UIColor+Extension.swift in Sources */,
 				48FB5FC726AD90FD008A33DE /* LoadingAlert.swift in Sources */,
+				48FE0DE726FB427E0066F834 /* DetailPostViewController.swift in Sources */,
 				489FB9DA26AC3BD400641F21 /* TimelineFlow.swift in Sources */,
 				4898971D26AC3527000499AC /* AppStepper.swift in Sources */,
 				487CDCC826CE04820092EC63 /* NSObject+Extension.swift in Sources */,
 				4891A82626CCFF3D00C3B780 /* LoginViewModel.swift in Sources */,
 				484DB8B026CA097F004D5EB6 /* UserAccount.swift in Sources */,
+				48FE0DE826FB427E0066F834 /* DetailPostViewModel.swift in Sources */,
 				48EE6AD726F32FC6008CD9B2 /* PostWriteView.swift in Sources */,
 				4825FEF226CA58BC00BD1402 /* UserManagementInterceptor.swift in Sources */,
 				489FB9D226AC397A00641F21 /* MapFlow.swift in Sources */,
@@ -679,6 +698,7 @@
 				4891A82426CCFF3D00C3B780 /* LoginViewController.swift in Sources */,
 				48E3D2B126C43F6F007D08ED /* Network.swift in Sources */,
 				48EB95B826E1DCB4001A2F9C /* ReviewService.swift in Sources */,
+				48FE0DE626FB427E0066F834 /* DetailPostView.swift in Sources */,
 				48F65C6826AC783D009B15BE /* ReviewPostCell.swift in Sources */,
 				48E3D2B326C440CD007D08ED /* API.swift in Sources */,
 				4869D02E26C8064D0076C570 /* SignUpViewModel.swift in Sources */,
