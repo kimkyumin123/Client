@@ -1,4 +1,4 @@
-// 
+//
 //  DetailPostViewController.swift
 //  Travelog
 //
@@ -12,24 +12,24 @@ import UIKit
 // MARK: - DetailPostViewController
 
 final class DetailPostViewController: UIViewController, View {
-  
+
   // MARK: Internal
-  
+
   var disposeBag = DisposeBag()
-  
+
   override func loadView() {
     super.loadView()
     view = contentView
   }
-  
+
   func bind(reactor: DetailPostViewModel) {
     bindView(reactor: reactor)
     bindAction(reactor: reactor)
     bindState(reactor: reactor)
   }
-  
+
   // MARK: Private
-  
+
   private let contentView = DetailPostView()
 }
 

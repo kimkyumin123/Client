@@ -3,9 +3,9 @@
     "name": "authVaildation",
     "source": "mutation authVaildation {\n  authVaildation {\n    __typename\n    ok\n    error\n    profile_image_url\n    nickname\n    gender\n    age_range\n  }\n}"
   },
-  "04a7f83571acba225d94d0537794e6b57132d8f4921c93dcf6aa9c7cfeb958e8": {
+  "e665cbb1fd4516a3603922c1082f859562b495ca3e0681e8794e4639bf966659": {
     "name": "createAuthUser",
-    "source": "mutation createAuthUser($nickName: String!, $avatar: String, $bio: String, $platformType: String!, $email: String!) {\n  createAuthUser(\n    nickName: $nickName\n    avatar: $avatar\n    bio: $bio\n    platformType: $platformType\n    email: $email\n  ) {\n    __typename\n    ok\n    error\n  }\n}"
+    "source": "mutation createAuthUser($nickName: String!, $avatar: String, $bio: String, $platformType: String!, $token: String!) {\n  createAuthUser(\n    nickName: $nickName\n    avatar: $avatar\n    bio: $bio\n    platformType: $platformType\n    token: $token\n  ) {\n    __typename\n    ok\n    error\n  }\n}"
   },
   "3023c4d6eb955626fd2fdec2fbb0b0617b489b8adac1502dd1ad7827b44be243": {
     "name": "createPlace",
@@ -39,9 +39,9 @@
     "name": "seeProfile",
     "source": "query seeProfile($userName: String!) {\n  seeProfile(userName: $userName) {\n    __typename\n    id\n    userName\n    nickName\n    email\n    avatar\n    bio\n    gender\n    ageRanger\n    createdAt\n    updatedAt\n    platformType\n  }\n}"
   },
-  "c635c03777d030e6b7242fbb44a3f62107a68dcedf7966836f88af8de58d0673": {
+  "28dbfd21bb0542524468e3126436406eb9d8ce36b02c488936d7989e18cd4f0f": {
     "name": "updatePlace",
-    "source": "mutation updatePlace($id: Int!) {\n  updatePlace(id: $id) {\n    __typename\n    ok\n    error\n  }\n}"
+    "source": "mutation updatePlace($place: [UpdatePlaceInput]) {\n  updatePlace(place: $place) {\n    __typename\n    ok\n    error\n  }\n}"
   },
   "068bb42b56080aeb5a1898d8ecaac4867233cfe60e9febef4f77345525f59dac": {
     "name": "nickNameValidation",

@@ -11,12 +11,6 @@ import Foundation
 import UIKit.UIImage
 
 struct Review: Equatable {
-  var id: Int
-  var text: String
-  var image: URL
-  var placeID: String
-  var comment: [Review.Comment]
-
   struct Upload: Codable, Equatable {
     var text: String
     var image: Data
@@ -29,7 +23,7 @@ struct Review: Equatable {
     var placeID: String?
     var placeName: String?
   }
-  
+
   struct Comment: Codable, Equatable {
     var id: Int
     var reviewID: Int
@@ -39,4 +33,11 @@ struct Review: Equatable {
     var likeCount: Int
     var unLikeCount: Int
   }
+
+  var id: Int
+  var text: String
+  var image: URL
+  var placeID: String
+  var comment: [Review.Comment]
+
 }

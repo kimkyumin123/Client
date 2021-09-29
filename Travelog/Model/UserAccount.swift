@@ -74,9 +74,9 @@ struct UserAccount {
 
   struct OAuthSignUpFields {
     let nickName: String
-    let email: String
     let avatar: String?
     let bio: String?
+//    let email: String
   }
 
   struct UpdateFields {

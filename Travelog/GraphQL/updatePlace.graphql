@@ -1,5 +1,5 @@
-mutation updatePlace($id: Int!) {
-  updatePlace(id: $id) {
+mutation updatePlace($place: [UpdatePlaceInput]) {
+  updatePlace(place: $place) {
     ok
     error
   }

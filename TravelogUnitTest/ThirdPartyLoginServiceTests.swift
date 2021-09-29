@@ -48,11 +48,7 @@ final class ThirdPartyLoginServiceTests: XCTestCase {
   func testKakaoSignUpTest() throws {
     // given
     let token = try ThirdPartyLoginService.kakaoLogin().toBlocking(timeout: 3.0).first()!
-    guard let email = try UserApi.shared.rx.me().map(\.kakaoAccount?.email).toBlocking(timeout: 3.0).first()! else {
-      XCTFail("이메일 획득 실패")
-      return
-    }
-    let fields = UserAccount.OAuthSignUpFields(nickName: "kakaoNick", email: email, avatar: nil, bio: nil)
+    let fields = UserAccount.OAuthSignUpFields(nickName: "kakaoNick", avatar: nil, bio: nil)
 
     // when
     let result = try ThirdPartyLoginService
@@ -75,7 +71,7 @@ final class ThirdPartyLoginServiceTests: XCTestCase {
     print("🚀\t", email)
     print(token)
 
-    let fields = UserAccount.OAuthSignUpFields(nickName: "OAuthTestNickName", email: email, avatar: nil, bio: nil)
+    let fields = UserAccount.OAuthSignUpFields(nickName: "OAuthTestNickName", avatar: nil, bio: nil)
 
     // when
     let result = try ThirdPartyLoginService.oAuthSignUp(
