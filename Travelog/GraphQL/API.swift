@@ -1348,10 +1348,10 @@ public final class SearchPlaceQuery: GraphQLQuery {
 
   // MARK: Lifecycle
 
-  public init(title: String, category: String? = nil, lastId: Int? = nil) {
+  public init(title: String, category: String? = nil, lastID: Int? = nil) {
     self.title = title
     self.category = category
-    self.lastId = lastId
+    self.lastID = lastID
   }
 
   // MARK: Public
@@ -1498,7 +1498,7 @@ public final class SearchPlaceQuery: GraphQLQuery {
 
     public static var selections: [GraphQLSelection] {
       [
-        GraphQLField("searchPlace", arguments: ["title": GraphQLVariable("title"), "category": GraphQLVariable("category"), "lastId": GraphQLVariable("lastId")], type: .list(.object(SearchPlace.selections))),
+        GraphQLField("searchPlace", arguments: ["title": GraphQLVariable("title"), "category": GraphQLVariable("category"), "lastId": GraphQLVariable("lastID")], type: .list(.object(SearchPlace.selections))),
       ]
     }
 
@@ -1518,8 +1518,8 @@ public final class SearchPlaceQuery: GraphQLQuery {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition: String =
     """
-    query searchPlace($title: String!, $category: String, $lastId: Int) {
-      searchPlace(title: $title, category: $category, lastId: $lastId) {
+    query searchPlace($title: String!, $category: String, $lastID: Int) {
+      searchPlace(title: $title, category: $category, lastId: $lastID) {
         __typename
         id
         createdAt
@@ -1536,14 +1536,312 @@ public final class SearchPlaceQuery: GraphQLQuery {
 
   public let operationName: String = "searchPlace"
 
-  public let operationIdentifier: String? = "0773011563df8f08055d5b1851d1ec9c59a4ee3c8c703945ea3da1c22a99f988"
+  public let operationIdentifier: String? = "a97d11151162da16fc32dccdc23a540a9660d08cccb7d29f93f5b8ce77913e74"
 
   public var title: String
   public var category: String?
-  public var lastId: Int?
+  public var lastID: Int?
 
   public var variables: GraphQLMap? {
-    ["title": title, "category": category, "lastId": lastId]
+    ["title": title, "category": category, "lastID": lastID]
+  }
+
+}
+
+// MARK: - SearchReviewQuery
+
+public final class SearchReviewQuery: GraphQLQuery {
+
+  // MARK: Lifecycle
+
+  public init(title: String? = nil, category: String? = nil, lastID: Int? = nil) {
+    self.title = title
+    self.category = category
+    self.lastID = lastID
+  }
+
+  // MARK: Public
+
+  public struct Data: GraphQLSelectionSet {
+
+    // MARK: Lifecycle
+
+    public init(unsafeResultMap: ResultMap) {
+      resultMap = unsafeResultMap
+    }
+
+    public init(searchReview: [SearchReview?]? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Query", "searchReview": searchReview.flatMap { (value: [SearchReview?]) -> [ResultMap?] in value.map { (value: SearchReview?) -> ResultMap? in value.flatMap { (value: SearchReview) -> ResultMap in value.resultMap } } }])
+    }
+
+    // MARK: Public
+
+    public struct SearchReview: GraphQLSelectionSet {
+
+      // MARK: Lifecycle
+
+      public init(unsafeResultMap: ResultMap) {
+        resultMap = unsafeResultMap
+      }
+
+      public init(id: Int, createdAt: String? = nil, updatedAt: String? = nil, title: String? = nil, content: String? = nil, upload: String? = nil, userId: Int? = nil, placeId: Int? = nil, comments: [Comment?]? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Review", "id": id, "createdAt": createdAt, "updatedAt": updatedAt, "title": title, "content": content, "upload": upload, "userId": userId, "placeId": placeId, "comments": comments.flatMap { (value: [Comment?]) -> [ResultMap?] in value.map { (value: Comment?) -> ResultMap? in value.flatMap { (value: Comment) -> ResultMap in value.resultMap } } }])
+      }
+
+      // MARK: Public
+
+      public struct Comment: GraphQLSelectionSet {
+
+        // MARK: Lifecycle
+
+        public init(unsafeResultMap: ResultMap) {
+          resultMap = unsafeResultMap
+        }
+
+        public init(id: Int, createdAt: String? = nil, updatedAt: String? = nil, payload: String? = nil, reviewId: Int? = nil) {
+          self.init(unsafeResultMap: ["__typename": "Comment", "id": id, "createdAt": createdAt, "updatedAt": updatedAt, "payload": payload, "reviewId": reviewId])
+        }
+
+        // MARK: Public
+
+        public static let possibleTypes: [String] = ["Comment"]
+
+        public static var selections: [GraphQLSelection] {
+          [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("id", type: .nonNull(.scalar(Int.self))),
+            GraphQLField("createdAt", type: .scalar(String.self)),
+            GraphQLField("updatedAt", type: .scalar(String.self)),
+            GraphQLField("payload", type: .scalar(String.self)),
+            GraphQLField("reviewId", type: .scalar(Int.self)),
+          ]
+        }
+
+        public private(set) var resultMap: ResultMap
+
+        public var __typename: String {
+          get {
+            resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var id: Int {
+          get {
+            resultMap["id"]! as! Int
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "id")
+          }
+        }
+
+        public var createdAt: String? {
+          get {
+            resultMap["createdAt"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "createdAt")
+          }
+        }
+
+        public var updatedAt: String? {
+          get {
+            resultMap["updatedAt"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "updatedAt")
+          }
+        }
+
+        public var payload: String? {
+          get {
+            resultMap["payload"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "payload")
+          }
+        }
+
+        public var reviewId: Int? {
+          get {
+            resultMap["reviewId"] as? Int
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "reviewId")
+          }
+        }
+      }
+
+      public static let possibleTypes: [String] = ["Review"]
+
+      public static var selections: [GraphQLSelection] {
+        [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .nonNull(.scalar(Int.self))),
+          GraphQLField("createdAt", type: .scalar(String.self)),
+          GraphQLField("updatedAt", type: .scalar(String.self)),
+          GraphQLField("title", type: .scalar(String.self)),
+          GraphQLField("content", type: .scalar(String.self)),
+          GraphQLField("upload", type: .scalar(String.self)),
+          GraphQLField("userId", type: .scalar(Int.self)),
+          GraphQLField("placeId", type: .scalar(Int.self)),
+          GraphQLField("comments", type: .list(.object(Comment.selections))),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public var __typename: String {
+        get {
+          resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var id: Int {
+        get {
+          resultMap["id"]! as! Int
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "id")
+        }
+      }
+
+      public var createdAt: String? {
+        get {
+          resultMap["createdAt"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "createdAt")
+        }
+      }
+
+      public var updatedAt: String? {
+        get {
+          resultMap["updatedAt"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "updatedAt")
+        }
+      }
+
+      public var title: String? {
+        get {
+          resultMap["title"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "title")
+        }
+      }
+
+      public var content: String? {
+        get {
+          resultMap["content"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "content")
+        }
+      }
+
+      public var upload: String? {
+        get {
+          resultMap["upload"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "upload")
+        }
+      }
+
+      public var userId: Int? {
+        get {
+          resultMap["userId"] as? Int
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "userId")
+        }
+      }
+
+      public var placeId: Int? {
+        get {
+          resultMap["placeId"] as? Int
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "placeId")
+        }
+      }
+
+      public var comments: [Comment?]? {
+        get {
+          (resultMap["comments"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [Comment?] in value.map { (value: ResultMap?) -> Comment? in value.flatMap { (value: ResultMap) -> Comment in Comment(unsafeResultMap: value) } } }
+        }
+        set {
+          resultMap.updateValue(newValue.flatMap { (value: [Comment?]) -> [ResultMap?] in value.map { (value: Comment?) -> ResultMap? in value.flatMap { (value: Comment) -> ResultMap in value.resultMap } } }, forKey: "comments")
+        }
+      }
+
+    }
+
+    public static let possibleTypes: [String] = ["Query"]
+
+    public static var selections: [GraphQLSelection] {
+      [
+        GraphQLField("searchReview", arguments: ["title": GraphQLVariable("title"), "category": GraphQLVariable("category"), "lastId": GraphQLVariable("lastID")], type: .list(.object(SearchReview.selections))),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    public var searchReview: [SearchReview?]? {
+      get {
+        (resultMap["searchReview"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [SearchReview?] in value.map { (value: ResultMap?) -> SearchReview? in value.flatMap { (value: ResultMap) -> SearchReview in SearchReview(unsafeResultMap: value) } } }
+      }
+      set {
+        resultMap.updateValue(newValue.flatMap { (value: [SearchReview?]) -> [ResultMap?] in value.map { (value: SearchReview?) -> ResultMap? in value.flatMap { (value: SearchReview) -> ResultMap in value.resultMap } } }, forKey: "searchReview")
+      }
+    }
+
+  }
+
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    query searchReview($title: String, $category: String, $lastID: Int) {
+      searchReview(title: $title, category: $category, lastId: $lastID) {
+        __typename
+        id
+        createdAt
+        updatedAt
+        title
+        content
+        upload
+        userId
+        placeId
+        comments {
+          __typename
+          id
+          createdAt
+          updatedAt
+          payload
+          reviewId
+        }
+      }
+    }
+    """
+
+  public let operationName: String = "searchReview"
+
+  public let operationIdentifier: String? = "5953e24e4d902cc3bbad8b873596e07e97b80992433859928579360e7b1a1090"
+
+  public var title: String?
+  public var category: String?
+  public var lastID: Int?
+
+  public var variables: GraphQLMap? {
+    ["title": title, "category": category, "lastID": lastID]
   }
 
 }

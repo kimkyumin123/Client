@@ -52,4 +52,21 @@ final class ReviewService {
     }
   }
 
+  // MARK: - area 는 검색 조건에 없음. lastID로 마지막 검색 결과를 표시했다.
+
+  static func search(keyword: String, category: String?, area: String?, lastID: Int?) -> Observable<[Review]> {
+    .create { subscriber in
+      Network.shared.apollo.fetch(query: SearchReviewQuery(title: keyword, category: category, lastID: lastID)) {
+        guard let data = (try? $0.get())?.data?.searchReview else {
+          // TODO: - error code 작성
+          return
+        }
+
+        subscriber.onNext(data.compactMap { $0?.review })
+        subscriber.onCompleted()
+      }
+
+      return Disposables.create()
+    }
+  }
 }

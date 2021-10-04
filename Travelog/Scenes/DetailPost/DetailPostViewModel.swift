@@ -65,7 +65,3 @@ extension DetailPostViewModel {
     }
   }
 }
-
-/**
- comments 데이터 타입을 구성해야함/
- */

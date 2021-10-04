@@ -8,6 +8,8 @@
 import CoreLocation
 import Foundation
 
+// MARK: - Place
+
 struct Place {
   typealias Coords = CLLocationCoordinate2D
   // MARK: - APIResponse
@@ -82,9 +84,16 @@ struct Place {
     let name, version, operation, time: String
   }
 
-  var id: String
-  var category: String
+  var id: Int
+  var category: String?
   var address: String
   var point: Coords
+}
 
+// MARK: - To Place
+
+extension SearchPlaceQuery.Data.SearchPlace {
+  var place: Place {
+    Place(id: id, category: category, address: address, point: Place.Coords(latitude: x, longitude: y))
+  }
 }

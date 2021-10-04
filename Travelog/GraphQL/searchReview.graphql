@@ -1,0 +1,19 @@
+query searchReview($title: String, $category: String, $lastID: Int) {
+  searchReview(title: $title, category: $category, lastId: $lastID) {
+    id
+    createdAt
+    updatedAt
+    title
+    content
+    upload
+    userId
+    placeId
+    comments {
+      id
+      createdAt
+      updatedAt
+      payload
+      reviewId
+    }
+  }
+}

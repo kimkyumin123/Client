@@ -31,9 +31,13 @@
     "name": "OAuthUserLogin",
     "source": "mutation OAuthUserLogin($platform_type: String!, $accesstoken: String!) {\n  authUserLogin(platform_type: $platform_type, accesstoken: $accesstoken) {\n    __typename\n    ok\n    error\n    token {\n      __typename\n      accessToken\n      refreshToken\n    }\n  }\n}"
   },
-  "0773011563df8f08055d5b1851d1ec9c59a4ee3c8c703945ea3da1c22a99f988": {
+  "a97d11151162da16fc32dccdc23a540a9660d08cccb7d29f93f5b8ce77913e74": {
     "name": "searchPlace",
-    "source": "query searchPlace($title: String!, $category: String, $lastId: Int) {\n  searchPlace(title: $title, category: $category, lastId: $lastId) {\n    __typename\n    id\n    createdAt\n    updatedAt\n    title\n    address\n    zipCode\n    x\n    y\n    category\n  }\n}"
+    "source": "query searchPlace($title: String!, $category: String, $lastID: Int) {\n  searchPlace(title: $title, category: $category, lastId: $lastID) {\n    __typename\n    id\n    createdAt\n    updatedAt\n    title\n    address\n    zipCode\n    x\n    y\n    category\n  }\n}"
+  },
+  "5953e24e4d902cc3bbad8b873596e07e97b80992433859928579360e7b1a1090": {
+    "name": "searchReview",
+    "source": "query searchReview($title: String, $category: String, $lastID: Int) {\n  searchReview(title: $title, category: $category, lastId: $lastID) {\n    __typename\n    id\n    createdAt\n    updatedAt\n    title\n    content\n    upload\n    userId\n    placeId\n    comments {\n      __typename\n      id\n      createdAt\n      updatedAt\n      payload\n      reviewId\n    }\n  }\n}"
   },
   "82fedfbfbf51c5b207939d62c9cc80766e7d08d6ab52521b7f2c975166424550": {
     "name": "seeProfile",

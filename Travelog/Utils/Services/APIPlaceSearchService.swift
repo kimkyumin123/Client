@@ -10,9 +10,9 @@ import Foundation
 import RxAlamofire
 import RxSwift
 
-// MARK: - PlaceSearchService
+// MARK: - APIPlaceSearchService
 
-final class PlaceSearchService {
+final class APIPlaceSearchService {
 
   // MARK: Lifecycle
 
@@ -70,7 +70,7 @@ final class PlaceSearchService {
 
 // MARK: - Parameters
 
-extension PlaceSearchService {
+extension APIPlaceSearchService {
   enum Category {
     case touristSpot
 

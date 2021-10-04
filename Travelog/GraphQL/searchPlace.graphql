@@ -1,5 +1,5 @@
-query searchPlace($title: String!, $category: String, $lastId: Int) {
-  searchPlace(title: $title, category: $category, lastId: $lastId) {
+query searchPlace($title: String!, $category: String, $lastID: Int) {
+  searchPlace(title: $title, category: $category, lastId: $lastID) {
     id
     createdAt
     updatedAt
