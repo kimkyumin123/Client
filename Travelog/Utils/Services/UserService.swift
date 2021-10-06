@@ -5,6 +5,7 @@
 //  Created by JK on 2021/08/11.
 //
 
+import Alamofire
 import Foundation
 import os.log
 import RxApolloClient
@@ -288,6 +289,32 @@ final class UserService {
       }
       return Disposables.create()
     }
+  }
+
+  static func renewToken(completion: @escaping (Result<(String, String), UserServiceError>) -> Void) {
+    os_log(.debug, log: .user, "renewToken(completion:)")
+    guard
+      let refreshToken = try? KeychainService.read(key: .refreshToken),
+      let url = URL(string: "\(Constraints.serverAddr):\(Constraints.port)/tokenupdate") else { return }
+    AF.request(
+      url,
+      method: .post,
+      parameters: ["token": refreshToken],
+      headers: [.contentType("application/x-www-form-urlencoded")]).responseJSON { json in
+      guard
+        let json = json.value as? [String: String],
+        let accessToken = json["accessToken"], let refreshToken = json["refreshToken"] else
+      {
+        completion(.failure(.invalidToken))
+        return
+      }
+        completion(.success((accessToken, refreshToken)))
+
+      // save to keychain
+      try? KeychainService.write(key: .accessToken, value: accessToken)
+      try? KeychainService.write(key: .refreshToken, value: refreshToken)
+    }
+    .resume()
   }
 
   static func logout() -> Completable {

@@ -94,6 +94,19 @@ final class UserServiceTest: XCTestCase {
     XCTAssertNotEqual(curretName, changedName)
   }
 
+  /// Access / Refresh Token 토큰 갱신
+  func testRenewToken() throws {
+    let expectation = expectation(description: "Alamofire")
+    _ = try UserService.login(id: "user02", pw: "passwd").toBlocking(timeout: 5.0).first()
+    let prevToken = try KeychainService.read(key: .accessToken)
+    UserService.renewToken { accessToken, _ in
+      expectation.fulfill()
+      XCTAssertTrue(prevToken != accessToken)
+    }
+
+    wait(for: [expectation], timeout: 10.0)
+  }
+
   func signUp(id: String, pw: String) {
     let testMail = "foo@bar.org"
     let testNick = "testNickname"

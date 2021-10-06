@@ -21,10 +21,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
   func scene(_ scene: UIScene, willConnectTo _: UISceneSession, options _: UIScene.ConnectionOptions) {
     guard let windowScene = (scene as? UIWindowScene) else { return }
-    let window = UIWindow(windowScene: windowScene)
-    self.window = window
-    coordinator.coordinate(flow: AppFlow(window: window), with: AppStepper())
-    window.makeKeyAndVisible()
+    let _window = UIWindow(windowScene: windowScene)
+    window = _window
+    coordinator.coordinate(flow: AppFlow(window: _window), with: AppStepper())
+    _window.makeKeyAndVisible()
   }
 
   func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
