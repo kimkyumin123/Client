@@ -30,6 +30,6 @@ enum AppSteps: Step {
   case searchIsRequired
   case searchPlaces
   case searchReviews
-  case selectPlace
-  case selectReview
+  case selectPlace(id: Int)
+  case selectReview(id: Int)
 }

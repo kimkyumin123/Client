@@ -11,13 +11,13 @@ import UIKit
 
 // MARK: - ReviewPostCell
 
-final class ReviewPostCell: UIView {
+final class ReviewPostCell: UITableViewCell {
 
   // MARK: Lifecycle
 
   required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
-  override init(frame: CGRect) {
-    super.init(frame: frame)
+  override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    super.init(style: style, reuseIdentifier: Self.identifier)
     configLayout()
     addSubview(container)
   }
@@ -48,6 +48,8 @@ final class ReviewPostCell: UIView {
   }
 
   private(set) lazy var imageScrollView = ImageScrollView()
+
+  override var reuseIdentifier: String? { Self.identifier }
 
   // MARK: Private
 

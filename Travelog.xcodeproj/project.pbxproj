@@ -9,16 +9,25 @@
 /* Begin PBXBuildFile section */
 		48123D7B26B1A8EE0058CEDF /* SwiftUIPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48123D7A26B1A8EE0058CEDF /* SwiftUIPreview.swift */; };
 		48123D7D26B1A9070058CEDF /* PlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48123D7C26B1A9070058CEDF /* PlaceCell.swift */; };
+		4819AE2527101AA50073A2C4 /* SearchFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4819AE2427101AA50073A2C4 /* SearchFlow.swift */; };
+		4819AE2A2710225E0073A2C4 /* PlaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4819AE272710225E0073A2C4 /* PlaceView.swift */; };
+		4819AE2B2710225E0073A2C4 /* PlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4819AE282710225E0073A2C4 /* PlaceViewController.swift */; };
+		4819AE2C2710225E0073A2C4 /* PlaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4819AE292710225E0073A2C4 /* PlaceViewModel.swift */; };
 		4825FEF026CA4D1A00BD1402 /* UserServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4825FEEF26CA4D1A00BD1402 /* UserServiceTests.swift */; };
 		4825FEF226CA58BC00BD1402 /* UserManagementInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4825FEF126CA58BC00BD1402 /* UserManagementInterceptor.swift */; };
 		4825FEF426CA594F00BD1402 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4825FEF326CA594F00BD1402 /* UserDefaults+Extension.swift */; };
 		4825FEF626CBB79700BD1402 /* ThirdPartyLoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4825FEF526CBB79700BD1402 /* ThirdPartyLoginService.swift */; };
 		4825FEF826CBB7F700BD1402 /* ThirdPartyLoginServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4825FEF726CBB7F700BD1402 /* ThirdPartyLoginServiceTests.swift */; };
 		482A6FC726AD7267001BF0BD /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482A6FC626AD7267001BF0BD /* CommentCell.swift */; };
+		484861DF26F1E2C400861155 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484861DD26F1E2C400861155 /* TimelineViewController.swift */; };
 		484DB8AE26C9AF71004D5EB6 /* Error+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484DB8AD26C9AF71004D5EB6 /* Error+Extension.swift */; };
 		484DB8B026CA097F004D5EB6 /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484DB8AF26CA097F004D5EB6 /* UserAccount.swift */; };
 		484DB8B926CA14DB004D5EB6 /* JWTToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484DB8B826CA14DB004D5EB6 /* JWTToken.swift */; };
 		484DB8BD26CA3D7A004D5EB6 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484DB8BC26CA3D7A004D5EB6 /* String+Extension.swift */; };
+		485B800226E73DA00078469C /* Tour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485B800126E73DA00078469C /* Tour.swift */; };
+		48609AE226D39C300095C5E7 /* APIPlaceSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48609AE126D39C300095C5E7 /* APIPlaceSearchService.swift */; };
+		48609AE426D39DB20095C5E7 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48609AE326D39DB20095C5E7 /* Place.swift */; };
+		48609AEC26D4FC9D0095C5E7 /* PlaceServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48609AEB26D4FC9D0095C5E7 /* PlaceServiceTests.swift */; };
 		4869D02526C8017E0076C570 /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4869D02426C8017E0076C570 /* Constraints.swift */; };
 		4869D02726C803480076C570 /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 4869D02626C803480076C570 /* Debug.xcconfig */; };
 		4869D02C26C8064D0076C570 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4869D02926C8064D0076C570 /* SignUpViewController.swift */; };
@@ -45,11 +54,11 @@
 		489FB9D426AC3A4400641F21 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489FB9D326AC3A4400641F21 /* MapViewController.swift */; };
 		489FB9D626AC3A4B00641F21 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489FB9D526AC3A4B00641F21 /* MapViewModel.swift */; };
 		489FB9DA26AC3BD400641F21 /* TimelineFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489FB9D926AC3BD400641F21 /* TimelineFlow.swift */; };
-		489FB9DE26AC3C0200641F21 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489FB9DD26AC3C0200641F21 /* TimelineViewController.swift */; };
 		489FB9E026AC3C1500641F21 /* TimelineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489FB9DF26AC3C1500641F21 /* TimelineViewModel.swift */; };
 		489FB9E326AC3D0000641F21 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489FB9E226AC3D0000641F21 /* UserInfoViewController.swift */; };
 		489FB9E526AC3D0600641F21 /* UserInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489FB9E426AC3D0600641F21 /* UserInfoViewModel.swift */; };
 		489FB9E826AC3DA500641F21 /* UserInfoFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489FB9E726AC3DA500641F21 /* UserInfoFlow.swift */; };
+		48BC6D0126D90682002AC334 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BC6D0026D90682002AC334 /* Review.swift */; };
 		48C2DB1226BD8A9600877AB5 /* NaverThirdPartyLogin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48C2DB0E26BD8A7400877AB5 /* NaverThirdPartyLogin.framework */; };
 		48C2DB1326BD8A9600877AB5 /* NaverThirdPartyLogin.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48C2DB0E26BD8A7400877AB5 /* NaverThirdPartyLogin.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		48E3D28526C3FF21007D08ED /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E3D28426C3FF21007D08ED /* UserService.swift */; };
@@ -60,6 +69,11 @@
 		48E3D2AF26C41C23007D08ED /* OSLog+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E3D2AE26C41C23007D08ED /* OSLog+Extension.swift */; };
 		48E3D2B126C43F6F007D08ED /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E3D2B026C43F6F007D08ED /* Network.swift */; };
 		48E3D2B326C440CD007D08ED /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E3D2B226C440CD007D08ED /* API.swift */; };
+		48EB95B826E1DCB4001A2F9C /* ReviewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EB95B726E1DCB4001A2F9C /* ReviewService.swift */; };
+		48EE6ACB26F20084008CD9B2 /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EE6ACA26F20084008CD9B2 /* TimelineView.swift */; };
+		48EE6AD726F32FC6008CD9B2 /* PostWriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EE6AD426F32FC6008CD9B2 /* PostWriteView.swift */; };
+		48EE6AD826F32FC6008CD9B2 /* PostWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EE6AD526F32FC6008CD9B2 /* PostWriteViewController.swift */; };
+		48EE6AD926F32FC6008CD9B2 /* PostWriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EE6AD626F32FC6008CD9B2 /* PostWriteViewModel.swift */; };
 		48F33B2626AC2BBC00A704C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F33B2526AC2BBC00A704C7 /* AppDelegate.swift */; };
 		48F33B2826AC2BBC00A704C7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F33B2726AC2BBC00A704C7 /* SceneDelegate.swift */; };
 		48F33B2F26AC2BBD00A704C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48F33B2E26AC2BBD00A704C7 /* Assets.xcassets */; };
@@ -85,6 +99,13 @@
 		48FB5FC326AD90E6008A33DE /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 48FB5FC226AD90E6008A33DE /* Lottie */; };
 		48FB5FC526AD90EA008A33DE /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 48FB5FC426AD90EA008A33DE /* loading.json */; };
 		48FB5FC726AD90FD008A33DE /* LoadingAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FB5FC626AD90FD008A33DE /* LoadingAlert.swift */; };
+		48FE0DE626FB427E0066F834 /* DetailPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FE0DE326FB427E0066F834 /* DetailPostView.swift */; };
+		48FE0DE726FB427E0066F834 /* DetailPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FE0DE426FB427E0066F834 /* DetailPostViewController.swift */; };
+		48FE0DE826FB427E0066F834 /* DetailPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FE0DE526FB427E0066F834 /* DetailPostViewModel.swift */; };
+		48FE0DF0270459320066F834 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FE0DED270459320066F834 /* SearchView.swift */; };
+		48FE0DF1270459320066F834 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FE0DEE270459320066F834 /* SearchViewController.swift */; };
+		48FE0DF2270459320066F834 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FE0DEF270459320066F834 /* SearchViewModel.swift */; };
+		48FE0DF42706B43F0066F834 /* PlaceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FE0DF32706B43F0066F834 /* PlaceService.swift */; };
 		48FF382126C85EB40068B8B3 /* RxApolloClient in Frameworks */ = {isa = PBXBuildFile; productRef = 48FF382026C85EB40068B8B3 /* RxApolloClient */; };
 /* End PBXBuildFile section */
 
@@ -115,6 +136,10 @@
 /* Begin PBXFileReference section */
 		48123D7A26B1A8EE0058CEDF /* SwiftUIPreview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftUIPreview.swift; sourceTree = "<group>"; };
 		48123D7C26B1A9070058CEDF /* PlaceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceCell.swift; sourceTree = "<group>"; };
+		4819AE2427101AA50073A2C4 /* SearchFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFlow.swift; sourceTree = "<group>"; };
+		4819AE272710225E0073A2C4 /* PlaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceView.swift; sourceTree = "<group>"; };
+		4819AE282710225E0073A2C4 /* PlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceViewController.swift; sourceTree = "<group>"; };
+		4819AE292710225E0073A2C4 /* PlaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceViewModel.swift; sourceTree = "<group>"; };
 		4825FEEF26CA4D1A00BD1402 /* UserServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceTests.swift; sourceTree = "<group>"; };
 		4825FEF126CA58BC00BD1402 /* UserManagementInterceptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManagementInterceptor.swift; sourceTree = "<group>"; };
 		4825FEF326CA594F00BD1402 /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
@@ -123,10 +148,15 @@
 		482A6FC626AD7267001BF0BD /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		483C565E26C2BDC8000B8E8C /* TravelogUnitTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TravelogUnitTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		483C566226C2BDC8000B8E8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		484861DD26F1E2C400861155 /* TimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		484DB8AD26C9AF71004D5EB6 /* Error+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Extension.swift"; sourceTree = "<group>"; };
 		484DB8AF26CA097F004D5EB6 /* UserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
 		484DB8B826CA14DB004D5EB6 /* JWTToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWTToken.swift; sourceTree = "<group>"; };
 		484DB8BC26CA3D7A004D5EB6 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		485B800126E73DA00078469C /* Tour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tour.swift; sourceTree = "<group>"; };
+		48609AE126D39C300095C5E7 /* APIPlaceSearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIPlaceSearchService.swift; sourceTree = "<group>"; };
+		48609AE326D39DB20095C5E7 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		48609AEB26D4FC9D0095C5E7 /* PlaceServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceServiceTests.swift; sourceTree = "<group>"; };
 		4869D02426C8017E0076C570 /* Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
 		4869D02626C803480076C570 /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = SOURCE_ROOT; };
 		4869D02926C8064D0076C570 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -148,11 +178,11 @@
 		489FB9D326AC3A4400641F21 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		489FB9D526AC3A4B00641F21 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		489FB9D926AC3BD400641F21 /* TimelineFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineFlow.swift; sourceTree = "<group>"; };
-		489FB9DD26AC3C0200641F21 /* TimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		489FB9DF26AC3C1500641F21 /* TimelineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewModel.swift; sourceTree = "<group>"; };
 		489FB9E226AC3D0000641F21 /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 		489FB9E426AC3D0600641F21 /* UserInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewModel.swift; sourceTree = "<group>"; };
 		489FB9E726AC3DA500641F21 /* UserInfoFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoFlow.swift; sourceTree = "<group>"; };
+		48BC6D0026D90682002AC334 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Review.swift; path = Travelog/Review.swift; sourceTree = SOURCE_ROOT; };
 		48C2DB0E26BD8A7400877AB5 /* NaverThirdPartyLogin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NaverThirdPartyLogin.framework; path = frameworks/NaverThirdPartyLogin.framework; sourceTree = "<group>"; };
 		48D9106A26BABC1B00F6601C /* Travelog.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Travelog.xcodeproj; sourceTree = "<group>"; };
 		48E3D28426C3FF21007D08ED /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
@@ -160,6 +190,11 @@
 		48E3D2AE26C41C23007D08ED /* OSLog+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSLog+Extension.swift"; sourceTree = "<group>"; };
 		48E3D2B026C43F6F007D08ED /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		48E3D2B226C440CD007D08ED /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = API.swift; path = Travelog/GraphQL/API.swift; sourceTree = SOURCE_ROOT; };
+		48EB95B726E1DCB4001A2F9C /* ReviewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewService.swift; sourceTree = "<group>"; };
+		48EE6ACA26F20084008CD9B2 /* TimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
+		48EE6AD426F32FC6008CD9B2 /* PostWriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostWriteView.swift; sourceTree = "<group>"; };
+		48EE6AD526F32FC6008CD9B2 /* PostWriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostWriteViewController.swift; sourceTree = "<group>"; };
+		48EE6AD626F32FC6008CD9B2 /* PostWriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostWriteViewModel.swift; sourceTree = "<group>"; };
 		48F33B2226AC2BBC00A704C7 /* Travelog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Travelog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48F33B2526AC2BBC00A704C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48F33B2726AC2BBC00A704C7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -172,6 +207,13 @@
 		48F65C6926AC8D5A009B15BE /* ImageScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageScrollView.swift; sourceTree = "<group>"; };
 		48FB5FC426AD90EA008A33DE /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		48FB5FC626AD90FD008A33DE /* LoadingAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAlert.swift; sourceTree = "<group>"; };
+		48FE0DE326FB427E0066F834 /* DetailPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostView.swift; sourceTree = "<group>"; };
+		48FE0DE426FB427E0066F834 /* DetailPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostViewController.swift; sourceTree = "<group>"; };
+		48FE0DE526FB427E0066F834 /* DetailPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostViewModel.swift; sourceTree = "<group>"; };
+		48FE0DED270459320066F834 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		48FE0DEE270459320066F834 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		48FE0DEF270459320066F834 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		48FE0DF32706B43F0066F834 /* PlaceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +259,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4819AE262710224C0073A2C4 /* PlaceScene */ = {
+			isa = PBXGroup;
+			children = (
+				4819AE272710225E0073A2C4 /* PlaceView.swift */,
+				4819AE282710225E0073A2C4 /* PlaceViewController.swift */,
+				4819AE292710225E0073A2C4 /* PlaceViewModel.swift */,
+			);
+			path = PlaceScene;
+			sourceTree = "<group>";
+		};
 		483C565F26C2BDC8000B8E8C /* TravelogUnitTest */ = {
 			isa = PBXGroup;
 			children = (
@@ -224,6 +276,7 @@
 				4869D02F26C808330076C570 /* SignUpTests.swift */,
 				4825FEEF26CA4D1A00BD1402 /* UserServiceTests.swift */,
 				4825FEF726CBB7F700BD1402 /* ThirdPartyLoginServiceTests.swift */,
+				48609AEB26D4FC9D0095C5E7 /* PlaceServiceTests.swift */,
 			);
 			path = TravelogUnitTest;
 			sourceTree = "<group>";
@@ -232,6 +285,9 @@
 			isa = PBXGroup;
 			children = (
 				484DB8AF26CA097F004D5EB6 /* UserAccount.swift */,
+				48609AE326D39DB20095C5E7 /* Place.swift */,
+				48BC6D0026D90682002AC334 /* Review.swift */,
+				485B800126E73DA00078469C /* Tour.swift */,
 				484DB8B826CA14DB004D5EB6 /* JWTToken.swift */,
 			);
 			path = Model;
@@ -257,6 +313,9 @@
 				48E3D28426C3FF21007D08ED /* UserService.swift */,
 				48E3D28626C3FF2A007D08ED /* KeychainService.swift */,
 				4825FEF526CBB79700BD1402 /* ThirdPartyLoginService.swift */,
+				48609AE126D39C300095C5E7 /* APIPlaceSearchService.swift */,
+				48EB95B726E1DCB4001A2F9C /* ReviewService.swift */,
+				48FE0DF32706B43F0066F834 /* PlaceService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -282,6 +341,7 @@
 				489FB9D926AC3BD400641F21 /* TimelineFlow.swift */,
 				489FB9D126AC397A00641F21 /* MapFlow.swift */,
 				489FB9E726AC3DA500641F21 /* UserInfoFlow.swift */,
+				4819AE2427101AA50073A2C4 /* SearchFlow.swift */,
 			);
 			path = Flows;
 			sourceTree = "<group>";
@@ -298,6 +358,10 @@
 		489FB9D826AC3AB600641F21 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				4819AE262710224C0073A2C4 /* PlaceScene */,
+				48FE0DEC270459250066F834 /* SearchScene */,
+				48FE0DE226FB42700066F834 /* DetailPost */,
+				48EE6AD326F32FB5008CD9B2 /* PostWrite */,
 				4869D02826C806410076C570 /* SignUpScene */,
 				489FB9E626AC3D0900641F21 /* UserInfoScene */,
 				489FB9E126AC3C4E00641F21 /* TimelineScene */,
@@ -310,9 +374,10 @@
 		489FB9E126AC3C4E00641F21 /* TimelineScene */ = {
 			isa = PBXGroup;
 			children = (
-				489FB9DD26AC3C0200641F21 /* TimelineViewController.swift */,
 				48F65C6726AC783D009B15BE /* ReviewPostCell.swift */,
 				489FB9DF26AC3C1500641F21 /* TimelineViewModel.swift */,
+				484861DD26F1E2C400861155 /* TimelineViewController.swift */,
+				48EE6ACA26F20084008CD9B2 /* TimelineView.swift */,
 			);
 			path = TimelineScene;
 			sourceTree = "<group>";
@@ -348,6 +413,16 @@
 		48D9106B26BABC1B00F6601C /* Products */ = {
 			isa = PBXGroup;
 			name = Products;
+			sourceTree = "<group>";
+		};
+		48EE6AD326F32FB5008CD9B2 /* PostWrite */ = {
+			isa = PBXGroup;
+			children = (
+				48EE6AD426F32FC6008CD9B2 /* PostWriteView.swift */,
+				48EE6AD526F32FC6008CD9B2 /* PostWriteViewController.swift */,
+				48EE6AD626F32FC6008CD9B2 /* PostWriteViewModel.swift */,
+			);
+			path = PostWrite;
 			sourceTree = "<group>";
 		};
 		48F33B1926AC2BBC00A704C7 = {
@@ -413,6 +488,26 @@
 				48123D7A26B1A8EE0058CEDF /* SwiftUIPreview.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		48FE0DE226FB42700066F834 /* DetailPost */ = {
+			isa = PBXGroup;
+			children = (
+				48FE0DE326FB427E0066F834 /* DetailPostView.swift */,
+				48FE0DE426FB427E0066F834 /* DetailPostViewController.swift */,
+				48FE0DE526FB427E0066F834 /* DetailPostViewModel.swift */,
+			);
+			path = DetailPost;
+			sourceTree = "<group>";
+		};
+		48FE0DEC270459250066F834 /* SearchScene */ = {
+			isa = PBXGroup;
+			children = (
+				48FE0DED270459320066F834 /* SearchView.swift */,
+				48FE0DEE270459320066F834 /* SearchViewController.swift */,
+				48FE0DEF270459320066F834 /* SearchViewModel.swift */,
+			);
+			path = SearchScene;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -578,7 +673,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftformat >/dev/null; then\n   swiftformat --swiftversion 5.4 .\nelse\n  echo \"warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\"\nfi\n\nif which swiftlint >/dev/null; then\n  swiftlint --fix\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n\n";
+			shellScript = "if which swiftformat >/dev/null; then\n   swiftformat .\nelse\n  echo \"warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\"\nfi\n\nif which swiftlint >/dev/null; then\n  swiftlint --fix\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -590,6 +685,7 @@
 				4825FEF026CA4D1A00BD1402 /* UserServiceTests.swift in Sources */,
 				4825FEF826CBB7F700BD1402 /* ThirdPartyLoginServiceTests.swift in Sources */,
 				4869D03026C808330076C570 /* SignUpTests.swift in Sources */,
+				48609AEC26D4FC9D0095C5E7 /* PlaceServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -597,52 +693,72 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4819AE2527101AA50073A2C4 /* SearchFlow.swift in Sources */,
 				4869D02C26C8064D0076C570 /* SignUpViewController.swift in Sources */,
+				48609AE226D39C300095C5E7 /* APIPlaceSearchService.swift in Sources */,
 				4825FEF426CA594F00BD1402 /* UserDefaults+Extension.swift in Sources */,
 				48123D7B26B1A8EE0058CEDF /* SwiftUIPreview.swift in Sources */,
 				48123D7D26B1A9070058CEDF /* PlaceCell.swift in Sources */,
 				489FB9E826AC3DA500641F21 /* UserInfoFlow.swift in Sources */,
+				48EE6AD826F32FC6008CD9B2 /* PostWriteViewController.swift in Sources */,
+				4819AE2B2710225E0073A2C4 /* PlaceViewController.swift in Sources */,
 				489FB9D626AC3A4B00641F21 /* MapViewModel.swift in Sources */,
 				4869D02526C8017E0076C570 /* Constraints.swift in Sources */,
 				4898972126AC356F000499AC /* AppFlow.swift in Sources */,
+				484861DF26F1E2C400861155 /* TimelineViewController.swift in Sources */,
 				48F65C6626AC747D009B15BE /* LoginFlow.swift in Sources */,
 				4898972526AC36DC000499AC /* HomeFlow.swift in Sources */,
 				48F33B2626AC2BBC00A704C7 /* AppDelegate.swift in Sources */,
 				489FB9E526AC3D0600641F21 /* UserInfoViewModel.swift in Sources */,
+				48EE6AD926F32FC6008CD9B2 /* PostWriteViewModel.swift in Sources */,
 				489FB9D426AC3A4400641F21 /* MapViewController.swift in Sources */,
+				48FE0DF2270459320066F834 /* SearchViewModel.swift in Sources */,
 				4869D02D26C8064D0076C570 /* SignUpView.swift in Sources */,
 				48E3D2AF26C41C23007D08ED /* OSLog+Extension.swift in Sources */,
 				48F33B2826AC2BBC00A704C7 /* SceneDelegate.swift in Sources */,
 				482A6FC726AD7267001BF0BD /* CommentCell.swift in Sources */,
 				487CDCC926CE04820092EC63 /* UIColor+Extension.swift in Sources */,
 				48FB5FC726AD90FD008A33DE /* LoadingAlert.swift in Sources */,
+				48FE0DE726FB427E0066F834 /* DetailPostViewController.swift in Sources */,
 				489FB9DA26AC3BD400641F21 /* TimelineFlow.swift in Sources */,
 				4898971D26AC3527000499AC /* AppStepper.swift in Sources */,
 				487CDCC826CE04820092EC63 /* NSObject+Extension.swift in Sources */,
 				4891A82626CCFF3D00C3B780 /* LoginViewModel.swift in Sources */,
 				484DB8B026CA097F004D5EB6 /* UserAccount.swift in Sources */,
+				48FE0DE826FB427E0066F834 /* DetailPostViewModel.swift in Sources */,
+				48FE0DF1270459320066F834 /* SearchViewController.swift in Sources */,
+				48EE6AD726F32FC6008CD9B2 /* PostWriteView.swift in Sources */,
 				4825FEF226CA58BC00BD1402 /* UserManagementInterceptor.swift in Sources */,
 				489FB9D226AC397A00641F21 /* MapFlow.swift in Sources */,
+				48609AE426D39DB20095C5E7 /* Place.swift in Sources */,
 				489FB9E326AC3D0000641F21 /* UserInfoViewController.swift in Sources */,
+				48FE0DF0270459320066F834 /* SearchView.swift in Sources */,
 				487CDCC726CE04820092EC63 /* NSLayoutConstraint+Extension.swift in Sources */,
+				485B800226E73DA00078469C /* Tour.swift in Sources */,
 				484DB8AE26C9AF71004D5EB6 /* Error+Extension.swift in Sources */,
+				4819AE2A2710225E0073A2C4 /* PlaceView.swift in Sources */,
 				4825FEF626CBB79700BD1402 /* ThirdPartyLoginService.swift in Sources */,
 				484DB8B926CA14DB004D5EB6 /* JWTToken.swift in Sources */,
 				4891A82826CD68F500C3B780 /* NaverLogin+Rx.swift in Sources */,
 				48E3D28526C3FF21007D08ED /* UserService.swift in Sources */,
 				4891A82426CCFF3D00C3B780 /* LoginViewController.swift in Sources */,
 				48E3D2B126C43F6F007D08ED /* Network.swift in Sources */,
+				48EB95B826E1DCB4001A2F9C /* ReviewService.swift in Sources */,
+				48FE0DE626FB427E0066F834 /* DetailPostView.swift in Sources */,
 				48F65C6826AC783D009B15BE /* ReviewPostCell.swift in Sources */,
 				48E3D2B326C440CD007D08ED /* API.swift in Sources */,
 				4869D02E26C8064D0076C570 /* SignUpViewModel.swift in Sources */,
-				489FB9DE26AC3C0200641F21 /* TimelineViewController.swift in Sources */,
 				48E3D28726C3FF2A007D08ED /* KeychainService.swift in Sources */,
 				4898971F26AC353F000499AC /* AppSteps.swift in Sources */,
 				48F65C6A26AC8D5A009B15BE /* ImageScrollView.swift in Sources */,
+				4819AE2C2710225E0073A2C4 /* PlaceViewModel.swift in Sources */,
+				48BC6D0126D90682002AC334 /* Review.swift in Sources */,
 				48F65C5D26AC719C009B15BE /* AppleLoginButton.swift in Sources */,
 				489FB9E026AC3C1500641F21 /* TimelineViewModel.swift in Sources */,
 				4891A82526CCFF3D00C3B780 /* LoginView.swift in Sources */,
+				48FE0DF42706B43F0066F834 /* PlaceService.swift in Sources */,
 				484DB8BD26CA3D7A004D5EB6 /* String+Extension.swift in Sources */,
+				48EE6ACB26F20084008CD9B2 /* TimelineView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -673,6 +789,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 78X32W2D44;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -701,6 +818,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 78X32W2D44;
 				INFOPLIST_FILE = TravelogUnitTest/Info.plist;
@@ -979,7 +1097,7 @@
 			repositoryURL = "https://github.com/apollographql/apollo-ios";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.45.0;
+				minimumVersion = 0.49.0;
 			};
 		};
 		48F33B6726AC2F7C00A704C7 /* XCRemoteSwiftPackageReference "FlexLayout" */ = {

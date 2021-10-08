@@ -1,0 +1,255 @@
+directive @cacheControl(maxAge: Int, scope: CacheControlScope) on FIELD_DEFINITION | OBJECT | INTERFACE
+
+type Comment {
+  id: Int!
+  createdAt: String
+  updatedAt: String
+  payload: String
+  reviewId: Int
+}
+
+input InputPlace {
+  title: String!
+  address: String!
+  zipCode: Int
+  x: Float!
+  y: Float!
+  category: String
+  placeId: String!
+}
+
+type Place {
+  """PK"""
+  id: Int!
+
+  """생성날짜"""
+  createdAt: String
+
+  """수정날짜"""
+  updatedAt: String
+
+  """제목"""
+  title: String!
+
+  """주소"""
+  address: String!
+
+  """우편번호"""
+  zipCode: Int
+
+  """x 좌표"""
+  x: Float!
+
+  """y 좌표"""
+  y: Float!
+
+  """카테고리"""
+  category: String
+
+  """VWorld Unique ID"""
+  uniqueId: String
+}
+
+type Query {
+  placeAbout(placeId: String!): [Review]
+  userCheck(email: String, nickName: String): QueryResponse
+
+  """
+  ---검색된 장소들을 보여줌---
+  
+  title : 검색 할 장소이름(StartWith)
+  
+  category : 검색할 카테고리 분류
+  
+  lastId : 페이징처리를 위한 변수이며, 마지막으로 조회했던 Place의 ID
+  """
+  searchPlace(title: String!, category: String, lastId: Int): [Place]
+
+  """
+  해당장소에 대한 리뷰출력을 위한 뮤테이션
+  
+  placeId - VWorld_UniqueID
+  
+  lastId - Pagination처리를 위함(해당Id 이후 항목 전달)
+  """
+  aboutPlaceReview(placeId: String!, lastId: Int): [Review]
+
+  """
+  title - 리뷰명(Startwith)
+  
+  category - 카테고리
+  
+  lastId - Pagination처리 변수
+  """
+  searchReview(title: String, category: String, lastId: Int): [Review]
+  seeProfile(userName: String!): User
+}
+
+type Review {
+  """PK"""
+  id: Int!
+
+  """생성날짜"""
+  createdAt: String
+
+  """수정날짜"""
+  updatedAt: String
+
+  """제목"""
+  title: String
+
+  """내용"""
+  content: String
+
+  """사진"""
+  upload: Upload
+
+  """생성유저ID"""
+  userId: Int
+
+  """구현예정"""
+  comments: [Comment]
+
+  """추천"""
+  suggestions: Suggestion
+
+  """장소 PK"""
+  placeId: Int
+
+  """장소"""
+  place: Place
+
+  """좋아요 수"""
+  likes: Int
+
+  """싫어요 수 """
+  unLikes: Int
+}
+
+type HashTag {
+  id: Int!
+  hashTag: String
+  createdAt: String
+  updatedAt: String
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
+
+type MutationResponse {
+  ok: Boolean!
+  error: Int
+}
+
+type loginResponse {
+  ok: Boolean
+  error: Int
+  token: Token
+}
+
+type QueryResponse {
+  ok: Boolean!
+  error: Int
+}
+
+type Token {
+  accessToken: String!
+  refreshToken: String!
+}
+
+type Suggestion {
+  id: Int!
+  like: Int
+  unLike: Int
+  reviewId: Int
+  userId: Int
+}
+
+type User {
+  id: Int!
+  userName: String
+  nickName: String!
+  email: String!
+  avatar: String
+  bio: String
+  gender: String
+  ageRanger: String
+  createdAt: String
+  updatedAt: String
+  reviews: [Review]
+  places: [Place]
+  platformType: String
+  suggestions: Suggestion
+}
+
+type Mutation {
+  """실제 사용하지 않는 뮤테이션이며 임의로 추가할 장소가 있을시 호출합니다."""
+  createPlace(place: [InputPlace]): MutationResponse
+
+  """장소삭제 : 장소 PK(ID)로 삭제"""
+  deletePlace(id: Int!): MutationResponse
+
+  """UpdatePlaceInput - Place JSON DATA"""
+  updatePlace(place: [UpdatePlaceInput]): MutationResponse
+  createReview(review: [ReviewInput]): MutationResponse
+  deleteReview(id: Int!): MutationResponse
+
+  """
+  --- 추천기능 구현 ---
+  
+  like Then TRUE - 해당 게시글 추천
+  
+  like Then False - 해당 게시글 비추천
+  """
+  toggleLike(reviewId: Int!, like: Boolean!): MutationResponse
+  updateReview(review: [UpdateReviewInput]): MutationResponse
+  authUserLogin(platform_type: String!, accesstoken: String!): loginResponse
+  authUserLogout(token: String!): MutationResponse
+  authVaildation: authResponse
+  createAuthUser(nickName: String!, avatar: String, bio: String, platformType: String!, token: String!): MutationResponse
+  createUser(bio: String, userName: String!, gender: String, ageRange: String, email: String!, nickName: String!, avatar: String, password: String!): MutationResponse
+  deleteUser: MutationResponse
+  editUser(nickName: String, bio: String, avatar: Upload, password: String, gender: String, ageRange: String): MutationResponse
+  userLogin(userName: String!, password: String!): loginResponse
+  userLogout: MutationResponse
+}
+
+input UpdatePlaceInput {
+  id: Int!
+  title: String
+  address: String
+  zipCode: Int
+  x: Float
+  y: Float
+  category: String
+  placeId: String
+}
+
+input ReviewInput {
+  title: String!
+  upload: Upload
+  content: String!
+  place: InputPlace
+}
+
+input UpdateReviewInput {
+  id: Int!
+  title: String
+  upload: Upload
+  content: String
+  place: InputPlace
+}
+
+type authResponse {
+  ok: Boolean!
+  error: Int
+  profile_image_url: String
+  nickname: String
+  gender: String
+  age_range: String
+}
+
+enum CacheControlScope {
+  PUBLIC
+  PRIVATE
+}

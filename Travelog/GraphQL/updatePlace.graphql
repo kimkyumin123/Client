@@ -1,0 +1,6 @@
+mutation updatePlace($place: [UpdatePlaceInput]) {
+  updatePlace(place: $place) {
+    ok
+    error
+  }
+}

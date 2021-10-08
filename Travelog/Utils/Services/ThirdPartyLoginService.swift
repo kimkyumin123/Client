@@ -43,7 +43,7 @@ final class ThirdPartyLoginService {
       avatar: fields.avatar,
       bio: fields.bio,
       platformType: type.value,
-      email: fields.email)
+      token: token)
 
     return Network.shared.apollo.rx.perform(mutation: mutation)
       .asObservable()

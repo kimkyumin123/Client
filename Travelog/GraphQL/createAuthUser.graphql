@@ -3,14 +3,14 @@ mutation createAuthUser(
   $avatar: String
   $bio: String
   $platformType: String!
-  $email: String!
+  $token: String!
 ) {
   createAuthUser(
     nickName: $nickName
     avatar: $avatar
     bio: $bio
     platformType: $platformType
-    email: $email
+    token: $token
   ) {
     ok
     error

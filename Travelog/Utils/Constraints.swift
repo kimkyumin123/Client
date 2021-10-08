@@ -14,5 +14,8 @@ enum Constraints {
   static let port = (Bundle.main.infoDictionary?["PORT"] as? String) ?? "5000"
   static let gqlAddr = serverAddr + ":\(port)/graphql"
 
+  static let locationAPI = "https://api.vworld.kr/req/search?"
+  static let locationAPIKey = (Bundle.main.infoDictionary?["VWORLD_APIKEY"] as? String) ?? ""
+
   static let kakaoAppKey = (Bundle.main.infoDictionary?["KAKAO_APPKEY"] as? String ?? "nil")
 }
