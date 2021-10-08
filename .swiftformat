@@ -20,7 +20,7 @@
 --organizetypes class,struct,enum,extension # organizeDeclarations
 --extensionacl on-declarations # extensionAccessControl
 --patternlet inline # hoistPatternLet
---swiftversion 5.4
+--swiftversion 5.5
 --exclude Pods, iOSCodegenTemplate, frameworks, GraphQL
 
 # rules

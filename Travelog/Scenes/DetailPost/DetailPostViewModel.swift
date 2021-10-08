@@ -7,6 +7,8 @@
 
 import Foundation
 import ReactorKit
+import RxFlow
+import RxRelay
 
 // MARK: - DetailPostViewModel
 
@@ -22,7 +24,7 @@ import ReactorKit
   - 댓글 좋아요 업다운.
  */
 
-final class DetailPostViewModel: Reactor {
+final class DetailPostViewModel: Reactor, Stepper {
   enum Action {
 //    case likeToggle
 //    case unlikeToggle
@@ -43,6 +45,7 @@ final class DetailPostViewModel: Reactor {
     var comments: [Review.Comment] = []
   }
 
+  var steps = PublishRelay<Step>()
   var initialState = State()
 
   func mutate(action: Action) -> Observable<Mutation> {

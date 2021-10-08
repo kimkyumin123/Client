@@ -7,10 +7,13 @@
 
 import Foundation
 import ReactorKit
+import RxFlow
+import RxRelay
 
 // MARK: - SearchViewModel
 
-final class SearchViewModel: Reactor {
+final class SearchViewModel: Reactor, Stepper {
+
   enum Action {
     case searchPlace(keyword: String, category: String?, area: String?, lastID: Int?)
     case searchReview(keyword: String, category: String?, area: String?, lastID: Int?)
@@ -30,6 +33,7 @@ final class SearchViewModel: Reactor {
     case reviews([Review])
   }
 
+  var steps = PublishRelay<Step>()
   var initialState = State()
 
   func mutate(action: Action) -> Observable<Mutation> {

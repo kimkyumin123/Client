@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		48123D7B26B1A8EE0058CEDF /* SwiftUIPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48123D7A26B1A8EE0058CEDF /* SwiftUIPreview.swift */; };
 		48123D7D26B1A9070058CEDF /* PlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48123D7C26B1A9070058CEDF /* PlaceCell.swift */; };
+		4819AE2527101AA50073A2C4 /* SearchFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4819AE2427101AA50073A2C4 /* SearchFlow.swift */; };
+		4819AE2A2710225E0073A2C4 /* PlaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4819AE272710225E0073A2C4 /* PlaceView.swift */; };
+		4819AE2B2710225E0073A2C4 /* PlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4819AE282710225E0073A2C4 /* PlaceViewController.swift */; };
+		4819AE2C2710225E0073A2C4 /* PlaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4819AE292710225E0073A2C4 /* PlaceViewModel.swift */; };
 		4825FEF026CA4D1A00BD1402 /* UserServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4825FEEF26CA4D1A00BD1402 /* UserServiceTests.swift */; };
 		4825FEF226CA58BC00BD1402 /* UserManagementInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4825FEF126CA58BC00BD1402 /* UserManagementInterceptor.swift */; };
 		4825FEF426CA594F00BD1402 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4825FEF326CA594F00BD1402 /* UserDefaults+Extension.swift */; };
@@ -132,6 +136,10 @@
 /* Begin PBXFileReference section */
 		48123D7A26B1A8EE0058CEDF /* SwiftUIPreview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftUIPreview.swift; sourceTree = "<group>"; };
 		48123D7C26B1A9070058CEDF /* PlaceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceCell.swift; sourceTree = "<group>"; };
+		4819AE2427101AA50073A2C4 /* SearchFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFlow.swift; sourceTree = "<group>"; };
+		4819AE272710225E0073A2C4 /* PlaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceView.swift; sourceTree = "<group>"; };
+		4819AE282710225E0073A2C4 /* PlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceViewController.swift; sourceTree = "<group>"; };
+		4819AE292710225E0073A2C4 /* PlaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceViewModel.swift; sourceTree = "<group>"; };
 		4825FEEF26CA4D1A00BD1402 /* UserServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceTests.swift; sourceTree = "<group>"; };
 		4825FEF126CA58BC00BD1402 /* UserManagementInterceptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManagementInterceptor.swift; sourceTree = "<group>"; };
 		4825FEF326CA594F00BD1402 /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
@@ -251,6 +259,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4819AE262710224C0073A2C4 /* PlaceScene */ = {
+			isa = PBXGroup;
+			children = (
+				4819AE272710225E0073A2C4 /* PlaceView.swift */,
+				4819AE282710225E0073A2C4 /* PlaceViewController.swift */,
+				4819AE292710225E0073A2C4 /* PlaceViewModel.swift */,
+			);
+			path = PlaceScene;
+			sourceTree = "<group>";
+		};
 		483C565F26C2BDC8000B8E8C /* TravelogUnitTest */ = {
 			isa = PBXGroup;
 			children = (
@@ -323,6 +341,7 @@
 				489FB9D926AC3BD400641F21 /* TimelineFlow.swift */,
 				489FB9D126AC397A00641F21 /* MapFlow.swift */,
 				489FB9E726AC3DA500641F21 /* UserInfoFlow.swift */,
+				4819AE2427101AA50073A2C4 /* SearchFlow.swift */,
 			);
 			path = Flows;
 			sourceTree = "<group>";
@@ -339,7 +358,8 @@
 		489FB9D826AC3AB600641F21 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				48FE0DEC270459250066F834 /* Search */,
+				4819AE262710224C0073A2C4 /* PlaceScene */,
+				48FE0DEC270459250066F834 /* SearchScene */,
 				48FE0DE226FB42700066F834 /* DetailPost */,
 				48EE6AD326F32FB5008CD9B2 /* PostWrite */,
 				4869D02826C806410076C570 /* SignUpScene */,
@@ -480,14 +500,14 @@
 			path = DetailPost;
 			sourceTree = "<group>";
 		};
-		48FE0DEC270459250066F834 /* Search */ = {
+		48FE0DEC270459250066F834 /* SearchScene */ = {
 			isa = PBXGroup;
 			children = (
 				48FE0DED270459320066F834 /* SearchView.swift */,
 				48FE0DEE270459320066F834 /* SearchViewController.swift */,
 				48FE0DEF270459320066F834 /* SearchViewModel.swift */,
 			);
-			path = Search;
+			path = SearchScene;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -653,7 +673,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftformat >/dev/null; then\n   swiftformat --swiftversion 5.4 .\nelse\n  echo \"warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\"\nfi\n\nif which swiftlint >/dev/null; then\n  swiftlint --fix\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n\n";
+			shellScript = "if which swiftformat >/dev/null; then\n   swiftformat .\nelse\n  echo \"warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\"\nfi\n\nif which swiftlint >/dev/null; then\n  swiftlint --fix\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -673,6 +693,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4819AE2527101AA50073A2C4 /* SearchFlow.swift in Sources */,
 				4869D02C26C8064D0076C570 /* SignUpViewController.swift in Sources */,
 				48609AE226D39C300095C5E7 /* APIPlaceSearchService.swift in Sources */,
 				4825FEF426CA594F00BD1402 /* UserDefaults+Extension.swift in Sources */,
@@ -680,6 +701,7 @@
 				48123D7D26B1A9070058CEDF /* PlaceCell.swift in Sources */,
 				489FB9E826AC3DA500641F21 /* UserInfoFlow.swift in Sources */,
 				48EE6AD826F32FC6008CD9B2 /* PostWriteViewController.swift in Sources */,
+				4819AE2B2710225E0073A2C4 /* PlaceViewController.swift in Sources */,
 				489FB9D626AC3A4B00641F21 /* MapViewModel.swift in Sources */,
 				4869D02526C8017E0076C570 /* Constraints.swift in Sources */,
 				4898972126AC356F000499AC /* AppFlow.swift in Sources */,
@@ -714,6 +736,7 @@
 				487CDCC726CE04820092EC63 /* NSLayoutConstraint+Extension.swift in Sources */,
 				485B800226E73DA00078469C /* Tour.swift in Sources */,
 				484DB8AE26C9AF71004D5EB6 /* Error+Extension.swift in Sources */,
+				4819AE2A2710225E0073A2C4 /* PlaceView.swift in Sources */,
 				4825FEF626CBB79700BD1402 /* ThirdPartyLoginService.swift in Sources */,
 				484DB8B926CA14DB004D5EB6 /* JWTToken.swift in Sources */,
 				4891A82826CD68F500C3B780 /* NaverLogin+Rx.swift in Sources */,
@@ -728,6 +751,7 @@
 				48E3D28726C3FF2A007D08ED /* KeychainService.swift in Sources */,
 				4898971F26AC353F000499AC /* AppSteps.swift in Sources */,
 				48F65C6A26AC8D5A009B15BE /* ImageScrollView.swift in Sources */,
+				4819AE2C2710225E0073A2C4 /* PlaceViewModel.swift in Sources */,
 				48BC6D0126D90682002AC334 /* Review.swift in Sources */,
 				48F65C5D26AC719C009B15BE /* AppleLoginButton.swift in Sources */,
 				489FB9E026AC3C1500641F21 /* TimelineViewModel.swift in Sources */,
