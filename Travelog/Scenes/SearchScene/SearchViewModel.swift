@@ -15,59 +15,109 @@ import RxRelay
 final class SearchViewModel: Reactor, Stepper {
 
   enum Action {
-    case searchPlace(keyword: String, category: String?, area: String?, lastID: Int?)
-    case searchReview(keyword: String, category: String?, area: String?, lastID: Int?)
+    case setSegment(CurrentSegment)
+    case setKeyword(String)
+    case setCategory(String)
+    case setArea(String)
+    case loadNextPage
+
+    case searchPlace
+    case searchReview
   }
 
   enum Mutation {
-    case appendReviews([Review])
-    case appendPlaces([Place])
+    case updateSegment(CurrentSegment)
+    case updateCategory(String)
+    case updateArea(String)
+    case updateKeyword(String)
+
+    case updateReviews(value: [Review], isAppended: Bool)
+    case updatePlaces(value: [Place], isAppended: Bool)
   }
 
   struct State {
-    var results: SearchResult = .places([])
+    var keyword: String = ""
+    var category: String? = nil
+    var area: String? = nil
+
+    var places: [Place] = []
+    var reviews: [Review] = []
+    var segment: CurrentSegment = .place
   }
 
-  enum SearchResult {
+  enum SearchResult: Equatable {
     case places([Place])
     case reviews([Review])
   }
 
+  enum CurrentSegment: String {
+    case place = "Place"
+    case review = "Review"
+  }
+
   var steps = PublishRelay<Step>()
   var initialState = State()
+  var lastID: Int? = nil
 
   func mutate(action: Action) -> Observable<Mutation> {
     switch action {
+    case .setSegment(let segment):
+      return .concat([
+        .just(.updateSegment(segment)),
+        search(isLoadNextPage: false),
+      ])
 
-    case .searchPlace(keyword: let keyword, category: let category, area: let area, lastID: let id):
-      return search(place: keyword, category: category, area: area, lastID: id)
-        .map { Mutation.appendPlaces($0) }
+    case .setCategory(let category):
+      return .concat([
+        .just(.updateCategory(category)),
+        search(isLoadNextPage: false),
+      ])
 
-    case .searchReview(keyword: let keyword, category: let category, area: let area, lastID: let id):
-      return search(review: keyword, category: category, area: area, lastID: id)
-        .map { Mutation.appendReviews($0) }
+    case .setArea(let area):
+      return .concat([
+        .just(.updateArea(area)),
+        search(isLoadNextPage: false),
+      ])
 
+    case .setKeyword(let keyword):
+      return .concat([
+        .just(.updateKeyword(keyword)),
+        search(isLoadNextPage: false),
+      ])
+
+    case .searchPlace:
+      return .concat([
+        .just(.updateSegment(.place)),
+        search(isLoadNextPage: false),
+      ])
+
+    case .searchReview:
+      return .concat([
+        .just(.updateSegment(.review)),
+        search(isLoadNextPage: false),
+      ])
+
+    case .loadNextPage:
+      return search(isLoadNextPage: true)
     }
   }
 
   func reduce(state: State, mutation: Mutation) -> State {
     var newState = state
     switch mutation {
-    case .appendReviews(let reviews):
-      switch newState.results {
-      case .places:
-        newState.results = .reviews(reviews)
-      case .reviews(let prevReviews):
-        newState.results = .reviews(prevReviews + reviews)
-      }
+    case .updateSegment(let segment):
+      newState.segment = segment
+    case .updateArea(let area):
+      newState.area = area
+    case .updateCategory(let cateogry):
+      newState.category = cateogry
+    case .updateKeyword(let keyword):
+      newState.keyword = keyword
 
-    case .appendPlaces(let places):
-      switch newState.results {
-      case .places(let prevPlaces):
-        newState.results = .places(prevPlaces + places)
-      case .reviews:
-        newState.results = .places(places)
-      }
+    case .updatePlaces(value: let places, isAppended: let boolean):
+      newState.places = boolean ? state.places + places : places
+    case .updateReviews(value: let reviews, isAppended: let boolean):
+      newState.reviews = boolean ? state.reviews + reviews : reviews
     }
 
     return newState
@@ -77,6 +127,26 @@ final class SearchViewModel: Reactor, Stepper {
 // MARK: - Logic
 
 extension SearchViewModel {
+  private func search(isLoadNextPage: Bool) -> Observable<Mutation> {
+    switch currentState.segment {
+    case .place:
+      return search(place: currentState.keyword, category: currentState.category, area: currentState.area, lastID: lastID)
+        .map {
+          self.lastID = $0.last?.id
+          return $0
+        }
+        .map { Mutation.updatePlaces(value: $0, isAppended: isLoadNextPage) }
+
+    case .review:
+      return search(review: currentState.keyword, category: currentState.category, area: currentState.area, lastID: lastID)
+        .map {
+          self.lastID = $0.last?.id
+          return $0
+        }
+        .map { Mutation.updateReviews(value: $0, isAppended: isLoadNextPage) }
+    }
+  }
+
   private func search(place: String, category: String?, area: String?, lastID: Int?) -> Observable<[Place]> {
     PlaceService.search(keyword: place, category: category, lastID: lastID)
   }

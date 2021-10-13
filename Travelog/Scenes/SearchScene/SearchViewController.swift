@@ -37,6 +37,22 @@ final class SearchViewController: UIViewController, View {
 
 extension SearchViewController {
   private func bindView(reactor: SearchViewModel) {}
-  private func bindAction(reactor: SearchViewModel) {}
-  private func bindState(reactor: SearchViewModel) {}
+  private func bindAction(reactor: SearchViewModel) {
+    // TODO: - searchController 텍스트 search 연결
+  }
+  private func bindState(reactor: SearchViewModel) {
+
+    // places 지정
+    // TODO: - tableView 바인딩
+    _ = reactor.state.map(\.places)
+      .distinctUntilChanged()
+      .filter { [weak self] _ in self?.reactor?.currentState.segment == .place }
+
+    // reviews 지정
+    // TODO: - tableView 바인딩
+    _ = reactor.state.map(\.reviews)
+      .distinctUntilChanged()
+      .filter { [weak self] _ in self?.reactor?.currentState.segment == .review }
+
+  }
 }

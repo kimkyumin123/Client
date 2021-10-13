@@ -97,3 +97,11 @@ extension SearchPlaceQuery.Data.SearchPlace {
     Place(id: id, category: category, address: address, point: Place.Coords(latitude: x, longitude: y))
   }
 }
+
+// MARK: - Place + Equatable
+
+extension Place: Equatable {
+  static func == (lhs: Place, rhs: Place) -> Bool {
+    lhs.id == rhs.id
+  }
+}
