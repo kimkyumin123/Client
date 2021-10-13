@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4807046327171B5D008E20CC /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 4807046227171B5D008E20CC /* KakaoSDKAuth */; };
+		4807046527171B5D008E20CC /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 4807046427171B5D008E20CC /* KakaoSDKCommon */; };
+		4807046727171B5D008E20CC /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 4807046627171B5D008E20CC /* KakaoSDKUser */; };
+		4807046A27171CF9008E20CC /* RxKakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 4807046927171CF9008E20CC /* RxKakaoSDKAuth */; };
+		4807046C27171CF9008E20CC /* RxKakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 4807046B27171CF9008E20CC /* RxKakaoSDKCommon */; };
+		4807046E27171CF9008E20CC /* RxKakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 4807046D27171CF9008E20CC /* RxKakaoSDKUser */; };
 		48123D7B26B1A8EE0058CEDF /* SwiftUIPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48123D7A26B1A8EE0058CEDF /* SwiftUIPreview.swift */; };
 		48123D7D26B1A9070058CEDF /* PlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48123D7C26B1A9070058CEDF /* PlaceCell.swift */; };
 		4819AE2527101AA50073A2C4 /* SearchFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4819AE2427101AA50073A2C4 /* SearchFlow.swift */; };
@@ -63,9 +69,6 @@
 		48C2DB1326BD8A9600877AB5 /* NaverThirdPartyLogin.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48C2DB0E26BD8A7400877AB5 /* NaverThirdPartyLogin.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		48E3D28526C3FF21007D08ED /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E3D28426C3FF21007D08ED /* UserService.swift */; };
 		48E3D28726C3FF2A007D08ED /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E3D28626C3FF2A007D08ED /* KeychainService.swift */; };
-		48E3D2A926C418E3007D08ED /* RxKakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 48E3D2A826C418E3007D08ED /* RxKakaoSDKUser */; };
-		48E3D2AB26C418E3007D08ED /* RxKakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 48E3D2AA26C418E3007D08ED /* RxKakaoSDKCommon */; };
-		48E3D2AD26C418E3007D08ED /* RxKakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 48E3D2AC26C418E3007D08ED /* RxKakaoSDKAuth */; };
 		48E3D2AF26C41C23007D08ED /* OSLog+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E3D2AE26C41C23007D08ED /* OSLog+Extension.swift */; };
 		48E3D2B126C43F6F007D08ED /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E3D2B026C43F6F007D08ED /* Network.swift */; };
 		48E3D2B326C440CD007D08ED /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E3D2B226C440CD007D08ED /* API.swift */; };
@@ -134,6 +137,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4807044B27171A26008E20CC /* KakaoSDK */ = {isa = PBXFileReference; lastKnownFileType = folder; name = KakaoSDK; path = ../../KakaoSDK; sourceTree = "<group>"; };
 		48123D7A26B1A8EE0058CEDF /* SwiftUIPreview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftUIPreview.swift; sourceTree = "<group>"; };
 		48123D7C26B1A9070058CEDF /* PlaceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceCell.swift; sourceTree = "<group>"; };
 		4819AE2427101AA50073A2C4 /* SearchFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFlow.swift; sourceTree = "<group>"; };
@@ -230,11 +234,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				48E3D2A926C418E3007D08ED /* RxKakaoSDKUser in Frameworks */,
+				4807046E27171CF9008E20CC /* RxKakaoSDKUser in Frameworks */,
 				48F33B5626AC2E2B00A704C7 /* RxFlow in Frameworks */,
+				4807046C27171CF9008E20CC /* RxKakaoSDKCommon in Frameworks */,
 				48F33B5E26AC2F5300A704C7 /* ApolloSQLite in Frameworks */,
 				4869D03926C828B40076C570 /* RxCocoa in Frameworks */,
+				4807046A27171CF9008E20CC /* RxKakaoSDKAuth in Frameworks */,
 				4869D03326C828B40076C570 /* RxSwift in Frameworks */,
+				4807046727171B5D008E20CC /* KakaoSDKUser in Frameworks */,
 				48F33B6626AC2F5300A704C7 /* ApolloAPI in Frameworks */,
 				48F33B7026AC2F8A00A704C7 /* PinLayout in Frameworks */,
 				48F33B6026AC2F5300A704C7 /* ApolloUtils in Frameworks */,
@@ -243,13 +250,13 @@
 				48FF382126C85EB40068B8B3 /* RxApolloClient in Frameworks */,
 				48F33B6B26AC2F7C00A704C7 /* FlexLayoutYoga in Frameworks */,
 				4869D03726C828B40076C570 /* RxRelay in Frameworks */,
-				48E3D2AB26C418E3007D08ED /* RxKakaoSDKCommon in Frameworks */,
+				4807046527171B5D008E20CC /* KakaoSDKCommon in Frameworks */,
 				48F33B6D26AC2F7C00A704C7 /* FlexLayout in Frameworks */,
 				48C2DB1226BD8A9600877AB5 /* NaverThirdPartyLogin.framework in Frameworks */,
+				4807046327171B5D008E20CC /* KakaoSDKAuth in Frameworks */,
 				48F33B6426AC2F5300A704C7 /* ApolloWebSocket in Frameworks */,
 				48F33B5926AC2E3D00A704C7 /* ReactorKit in Frameworks */,
 				48F33B6226AC2F5300A704C7 /* Apollo in Frameworks */,
-				48E3D2AD26C418E3007D08ED /* RxKakaoSDKAuth in Frameworks */,
 				48F33B5C26AC2F5300A704C7 /* ApolloCodegenLib in Frameworks */,
 				48F33B4226AC2DE200A704C7 /* RxGesture in Frameworks */,
 				48FB5FC326AD90E6008A33DE /* Lottie in Frameworks */,
@@ -259,6 +266,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4807044A27171A26008E20CC /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				4807044B27171A26008E20CC /* KakaoSDK */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
 		4819AE262710224C0073A2C4 /* PlaceScene */ = {
 			isa = PBXGroup;
 			children = (
@@ -428,6 +443,7 @@
 		48F33B1926AC2BBC00A704C7 = {
 			isa = PBXGroup;
 			children = (
+				4807044A27171A26008E20CC /* Packages */,
 				48F33B2426AC2BBC00A704C7 /* Travelog */,
 				483C565F26C2BDC8000B8E8C /* TravelogUnitTest */,
 				48F33B2326AC2BBC00A704C7 /* Products */,
@@ -565,14 +581,17 @@
 				48F33B6A26AC2F7C00A704C7 /* FlexLayoutYoga */,
 				48F33B6C26AC2F7C00A704C7 /* FlexLayout */,
 				48F33B6F26AC2F8A00A704C7 /* PinLayout */,
-				48E3D2A826C418E3007D08ED /* RxKakaoSDKUser */,
-				48E3D2AA26C418E3007D08ED /* RxKakaoSDKCommon */,
-				48E3D2AC26C418E3007D08ED /* RxKakaoSDKAuth */,
 				4869D03226C828B40076C570 /* RxSwift */,
 				4869D03626C828B40076C570 /* RxRelay */,
 				4869D03826C828B40076C570 /* RxCocoa */,
 				48FF382026C85EB40068B8B3 /* RxApolloClient */,
 				48FB5FC226AD90E6008A33DE /* Lottie */,
+				4807046227171B5D008E20CC /* KakaoSDKAuth */,
+				4807046427171B5D008E20CC /* KakaoSDKCommon */,
+				4807046627171B5D008E20CC /* KakaoSDKUser */,
+				4807046927171CF9008E20CC /* RxKakaoSDKAuth */,
+				4807046B27171CF9008E20CC /* RxKakaoSDKCommon */,
+				4807046D27171CF9008E20CC /* RxKakaoSDKUser */,
 			);
 			productName = Travelog;
 			productReference = 48F33B2226AC2BBC00A704C7 /* Travelog.app */;
@@ -614,10 +633,11 @@
 				48F33B5A26AC2F5300A704C7 /* XCRemoteSwiftPackageReference "apollo-ios" */,
 				48F33B6726AC2F7C00A704C7 /* XCRemoteSwiftPackageReference "FlexLayout" */,
 				48F33B6E26AC2F8900A704C7 /* XCRemoteSwiftPackageReference "PinLayout" */,
-				48E3D2A726C418E3007D08ED /* XCRemoteSwiftPackageReference "RxKakaoSDK" */,
 				4869D03126C828B40076C570 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				48FF381F26C85EB30068B8B3 /* XCRemoteSwiftPackageReference "RxApolloClient" */,
 				48FB5FC126AD90E6008A33DE /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				4807046127171B5D008E20CC /* XCRemoteSwiftPackageReference "KakaoSDK" */,
+				4807046827171CF9008E20CC /* XCRemoteSwiftPackageReference "RxKakaoSDK" */,
 			);
 			productRefGroup = 48F33B2326AC2BBC00A704C7 /* Products */;
 			projectDirPath = "";
@@ -1044,20 +1064,28 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		4807046127171B5D008E20CC /* XCRemoteSwiftPackageReference "KakaoSDK" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/elppaaa/KakaoSDK";
+			requirement = {
+				kind = exactVersion;
+				version = 2.8.1;
+			};
+		};
+		4807046827171CF9008E20CC /* XCRemoteSwiftPackageReference "RxKakaoSDK" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/elppaaa/RxKakaoSDK.git";
+			requirement = {
+				kind = exactVersion;
+				version = 2.8.1;
+			};
+		};
 		4869D03126C828B40076C570 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 6.2.0;
-			};
-		};
-		48E3D2A726C418E3007D08ED /* XCRemoteSwiftPackageReference "RxKakaoSDK" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/elppaaa/RxKakaoSDK.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.6.0;
 			};
 		};
 		48F33B4026AC2DE200A704C7 /* XCRemoteSwiftPackageReference "RxGesture" */ = {
@@ -1135,6 +1163,36 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		4807046227171B5D008E20CC /* KakaoSDKAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4807046127171B5D008E20CC /* XCRemoteSwiftPackageReference "KakaoSDK" */;
+			productName = KakaoSDKAuth;
+		};
+		4807046427171B5D008E20CC /* KakaoSDKCommon */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4807046127171B5D008E20CC /* XCRemoteSwiftPackageReference "KakaoSDK" */;
+			productName = KakaoSDKCommon;
+		};
+		4807046627171B5D008E20CC /* KakaoSDKUser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4807046127171B5D008E20CC /* XCRemoteSwiftPackageReference "KakaoSDK" */;
+			productName = KakaoSDKUser;
+		};
+		4807046927171CF9008E20CC /* RxKakaoSDKAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4807046827171CF9008E20CC /* XCRemoteSwiftPackageReference "RxKakaoSDK" */;
+			productName = RxKakaoSDKAuth;
+		};
+		4807046B27171CF9008E20CC /* RxKakaoSDKCommon */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4807046827171CF9008E20CC /* XCRemoteSwiftPackageReference "RxKakaoSDK" */;
+			productName = RxKakaoSDKCommon;
+		};
+		4807046D27171CF9008E20CC /* RxKakaoSDKUser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4807046827171CF9008E20CC /* XCRemoteSwiftPackageReference "RxKakaoSDK" */;
+			productName = RxKakaoSDKUser;
+		};
 		4869D03226C828B40076C570 /* RxSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 4869D03126C828B40076C570 /* XCRemoteSwiftPackageReference "RxSwift" */;
@@ -1159,21 +1217,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4869D03126C828B40076C570 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxBlocking;
-		};
-		48E3D2A826C418E3007D08ED /* RxKakaoSDKUser */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 48E3D2A726C418E3007D08ED /* XCRemoteSwiftPackageReference "RxKakaoSDK" */;
-			productName = RxKakaoSDKUser;
-		};
-		48E3D2AA26C418E3007D08ED /* RxKakaoSDKCommon */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 48E3D2A726C418E3007D08ED /* XCRemoteSwiftPackageReference "RxKakaoSDK" */;
-			productName = RxKakaoSDKCommon;
-		};
-		48E3D2AC26C418E3007D08ED /* RxKakaoSDKAuth */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 48E3D2A726C418E3007D08ED /* XCRemoteSwiftPackageReference "RxKakaoSDK" */;
-			productName = RxKakaoSDKAuth;
 		};
 		48F33B4126AC2DE200A704C7 /* RxGesture */ = {
 			isa = XCSwiftPackageProductDependency;
