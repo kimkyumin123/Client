@@ -64,10 +64,10 @@ final class UserManagementInterceptor: ApolloInterceptor {
     }
 
     // 토큰 만료시, 사용자 토큰 갱신
-      if token.isExpired {
-        // TODO: - 토큰 에러 처리 필요
-        UserService.renewToken { _ in }
-      }
+    if token.isExpired {
+      // TODO: - 토큰 에러 처리 필요
+      UserService.renewToken { _ in }
+    }
 
     addTokenAndProceed(token, to: request, chain: chain, response: response, completion: completion)
   }

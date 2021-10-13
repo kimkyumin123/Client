@@ -1,11 +1,55 @@
 directive @cacheControl(maxAge: Int, scope: CacheControlScope) on FIELD_DEFINITION | OBJECT | INTERFACE
 
 type Comment {
+  """PK"""
   id: Int!
+
+  """작성유저"""
+  user: User!
+
+  """작성유저ID"""
+  userId: Int!
+
+  """생성날짜"""
   createdAt: String
+
+  """수정날짜"""
   updatedAt: String
+
+  """댓글내용"""
   payload: String
-  reviewId: Int
+
+  """해당리뷰"""
+  review: Review!
+
+  """해당리뷰ID"""
+  reviewId: Int!
+
+  """해시태그"""
+  hashtags: [HashTag]
+
+  """작성자 본인확인"""
+  isMe: Boolean!
+}
+
+type HashTag {
+  """PK"""
+  id: Int!
+
+  """Content"""
+  hashTag: String
+
+  """생성날짜"""
+  createdAt: String
+
+  """수정날짜"""
+  updatedAt: String
+
+  """관련리뷰"""
+  review: [Review]
+
+  """관련댓글"""
+  comments: [Comment]
 }
 
 input InputPlace {
@@ -53,6 +97,7 @@ type Place {
 type Query {
   placeAbout(placeId: String!): [Review]
   userCheck(email: String, nickName: String): QueryResponse
+  searchComment(id: Int, payload: String): [Comment]
 
   """
   ---검색된 장소들을 보여줌---
@@ -82,6 +127,7 @@ type Query {
   lastId - Pagination처리 변수
   """
   searchReview(title: String, category: String, lastId: Int): [Review]
+  searchReviewRoom(roomId: Int!): reviewRoom
   seeProfile(userName: String!): User
 }
 
@@ -107,6 +153,9 @@ type Review {
   """생성유저ID"""
   userId: Int
 
+  """해당 유저정보"""
+  user: User
+
   """구현예정"""
   comments: [Comment]
 
@@ -120,17 +169,36 @@ type Review {
   place: Place
 
   """좋아요 수"""
-  likes: Int
+  getLikes: Int
 
   """싫어요 수 """
-  unLikes: Int
+  getUnLikes: Int
+
+  """좋아요 상태"""
+  isLike: Boolean
+
+  """싫어요 상태"""
+  isUnLike: Boolean
+
+  """해시태그 """
+  hashtags: [HashTag]
+
+  """에러코드"""
+  errorCode: Int
 }
 
-type HashTag {
+type reviewRoom {
+  """PK"""
   id: Int!
-  hashTag: String
+
+  """생성날짜"""
   createdAt: String
+
+  """수정날짜"""
   updatedAt: String
+
+  """해당리뷰"""
+  review: [Review]
 }
 
 """The `Upload` scalar type represents a file upload."""
@@ -179,10 +247,15 @@ type User {
   reviews: [Review]
   places: [Place]
   platformType: String
-  suggestions: Suggestion
+  suggestions: [Suggestion]
+  comments: [Comment]
 }
 
 type Mutation {
+  createComment(payload: String!, reviewId: Int!): MutationResponse
+  deleteComment(id: Int!): MutationResponse
+  updateComment(id: Int!, payload: String!): MutationResponse
+
   """실제 사용하지 않는 뮤테이션이며 임의로 추가할 장소가 있을시 호출합니다."""
   createPlace(place: [InputPlace]): MutationResponse
 
@@ -201,10 +274,10 @@ type Mutation {
   
   like Then False - 해당 게시글 비추천
   """
-  toggleLike(reviewId: Int!, like: Boolean!): MutationResponse
+  recommendEvent(reviewId: Int!, like: Boolean!): MutationResponse
   updateReview(review: [UpdateReviewInput]): MutationResponse
   authUserLogin(platform_type: String!, accesstoken: String!): loginResponse
-  authUserLogout(token: String!): MutationResponse
+  authUserLogout: MutationResponse
   authVaildation: authResponse
   createAuthUser(nickName: String!, avatar: String, bio: String, platformType: String!, token: String!): MutationResponse
   createUser(bio: String, userName: String!, gender: String, ageRange: String, email: String!, nickName: String!, avatar: String, password: String!): MutationResponse
@@ -230,6 +303,7 @@ input ReviewInput {
   upload: Upload
   content: String!
   place: InputPlace
+  hashtags: String
 }
 
 input UpdateReviewInput {

@@ -73,9 +73,9 @@ final class UserService {
             os_log(.fault, log: .user, "Unknwon Error")
             subscriber.onError(UserServiceError.unknown)
           }
-      }
+        }
 
-      return Disposables.create()
+        return Disposables.create()
     }
   }
 
@@ -308,7 +308,7 @@ final class UserService {
         completion(.failure(.invalidToken))
         return
       }
-        completion(.success((accessToken, refreshToken)))
+      completion(.success((accessToken, refreshToken)))
 
       // save to keychain
       try? KeychainService.write(key: .accessToken, value: accessToken)
@@ -319,15 +319,25 @@ final class UserService {
 
   static func logout() -> Completable {
     defer { deleteLoginInfo() }
-    switch UserDefaults.loginPlatform {
-    case .naver:
-      ThirdPartyLoginService.naverLogout()
-      return Single.just(0).asCompletable()
-    case .kakao:
-      return ThirdPartyLoginService.kakaoLogout()
-    default:
-      return Single.just(0).asCompletable()
-    }
+
+    return Network.shared.apollo.rx.perform(mutation: LogoutMutation())
+      .asObservable()
+      .flatMap { data -> Observable<Never> in
+        guard data.userLogout?.ok == true else {
+          return Observable.error(UserServiceError.denied)
+        }
+
+        switch UserDefaults.loginPlatform {
+        case .naver:
+          ThirdPartyLoginService.naverLogout()
+          return .never()
+        case .kakao:
+          return ThirdPartyLoginService.kakaoLogout().asObservable()
+        default:
+          return .never()
+        }
+      }
+      .asCompletable()
   }
 
   /// 로그인 정보 기록

@@ -1145,6 +1145,124 @@ public final class EditUserMutation: GraphQLMutation {
 
 }
 
+// MARK: - LogoutMutation
+
+public final class LogoutMutation: GraphQLMutation {
+
+  // MARK: Lifecycle
+
+  public init() {
+  }
+
+  // MARK: Public
+
+  public struct Data: GraphQLSelectionSet {
+
+    // MARK: Lifecycle
+
+    public init(unsafeResultMap: ResultMap) {
+      resultMap = unsafeResultMap
+    }
+
+    public init(userLogout: UserLogout? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Mutation", "userLogout": userLogout.flatMap { (value: UserLogout) -> ResultMap in value.resultMap }])
+    }
+
+    // MARK: Public
+
+    public struct UserLogout: GraphQLSelectionSet {
+
+      // MARK: Lifecycle
+
+      public init(unsafeResultMap: ResultMap) {
+        resultMap = unsafeResultMap
+      }
+
+      public init(ok: Bool, error: Int? = nil) {
+        self.init(unsafeResultMap: ["__typename": "MutationResponse", "ok": ok, "error": error])
+      }
+
+      // MARK: Public
+
+      public static let possibleTypes: [String] = ["MutationResponse"]
+
+      public static var selections: [GraphQLSelection] {
+        [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("ok", type: .nonNull(.scalar(Bool.self))),
+          GraphQLField("error", type: .scalar(Int.self)),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public var __typename: String {
+        get {
+          resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var ok: Bool {
+        get {
+          resultMap["ok"]! as! Bool
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "ok")
+        }
+      }
+
+      public var error: Int? {
+        get {
+          resultMap["error"] as? Int
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "error")
+        }
+      }
+    }
+
+    public static let possibleTypes: [String] = ["Mutation"]
+
+    public static var selections: [GraphQLSelection] {
+      [
+        GraphQLField("userLogout", type: .object(UserLogout.selections)),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    public var userLogout: UserLogout? {
+      get {
+        (resultMap["userLogout"] as? ResultMap).flatMap { UserLogout(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "userLogout")
+      }
+    }
+
+  }
+
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    mutation logout {
+      userLogout {
+        __typename
+        ok
+        error
+      }
+    }
+    """
+
+  public let operationName: String = "logout"
+
+  public let operationIdentifier: String? = "98e63f027ac2e21f125b27e27449d7b5241558d3a09e6876117aa32b0d869391"
+
+}
+
 // MARK: - OAuthUserLoginMutation
 
 public final class OAuthUserLoginMutation: GraphQLMutation {

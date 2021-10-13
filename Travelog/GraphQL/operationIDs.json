@@ -27,6 +27,10 @@
     "name": "editUser",
     "source": "mutation editUser($nickName: String, $bio: String, $avatar: Upload, $password: String, $gender: String, $ageRange: String) {\n  editUser(\n    nickName: $nickName\n    bio: $bio\n    avatar: $avatar\n    password: $password\n    gender: $gender\n    ageRange: $ageRange\n  ) {\n    __typename\n    ok\n    error\n  }\n}"
   },
+  "98e63f027ac2e21f125b27e27449d7b5241558d3a09e6876117aa32b0d869391": {
+    "name": "logout",
+    "source": "mutation logout {\n  userLogout {\n    __typename\n    ok\n    error\n  }\n}"
+  },
   "3d6c5a545d9bc2a40d5cd8802da1297f334236a5c9c6c5519286b0d95c7d1b58": {
     "name": "OAuthUserLogin",
     "source": "mutation OAuthUserLogin($platform_type: String!, $accesstoken: String!) {\n  authUserLogin(platform_type: $platform_type, accesstoken: $accesstoken) {\n    __typename\n    ok\n    error\n    token {\n      __typename\n      accessToken\n      refreshToken\n    }\n  }\n}"
