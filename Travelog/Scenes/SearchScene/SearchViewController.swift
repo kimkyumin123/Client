@@ -30,6 +30,9 @@ final class SearchViewController: UIViewController, View {
 
   // MARK: Private
 
+  private let categorySubject = PublishSubject<String>()
+  private let areaSubject = PublishSubject<String>()
+
   private let contentView = SearchView()
 }
 
@@ -39,6 +42,18 @@ extension SearchViewController {
   private func bindView(reactor: SearchViewModel) {}
   private func bindAction(reactor: SearchViewModel) {
     // TODO: - searchController 텍스트 search 연결
+
+    //subject 로 부터 category, area 받아와 reactor 로 전달
+    categorySubject
+      .map { Reactor.Action.setCategory($0) }
+      .bind(to: reactor.action)
+      .disposed(by: disposeBag)
+
+    areaSubject
+      .map { Reactor.Action.setArea($0) }
+      .bind(to: reactor.action)
+      .disposed(by: disposeBag)
+
   }
   private func bindState(reactor: SearchViewModel) {
 
@@ -54,5 +69,21 @@ extension SearchViewController {
       .distinctUntilChanged()
       .filter { [weak self] _ in self?.reactor?.currentState.segment == .review }
 
+  }
+}
+
+// MARK: CategorySelectDelegate
+
+extension SearchViewController: CategorySelectDelegate {
+  func set(category: String) {
+    categorySubject.onNext(category)
+  }
+}
+
+// MARK: AreaSelectDelegate
+
+extension SearchViewController: AreaSelectDelegate {
+  func set(area: String) {
+    areaSubject.onNext(area)
   }
 }

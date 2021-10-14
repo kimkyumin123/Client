@@ -30,6 +30,10 @@
 		484DB8B026CA097F004D5EB6 /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484DB8AF26CA097F004D5EB6 /* UserAccount.swift */; };
 		484DB8B926CA14DB004D5EB6 /* JWTToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484DB8B826CA14DB004D5EB6 /* JWTToken.swift */; };
 		484DB8BD26CA3D7A004D5EB6 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484DB8BC26CA3D7A004D5EB6 /* String+Extension.swift */; };
+		485060C627180915002645AE /* CategorySelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485060C527180915002645AE /* CategorySelectViewController.swift */; };
+		485060C827180942002645AE /* CategorySelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485060C727180942002645AE /* CategorySelectView.swift */; };
+		485060CA27181A8D002645AE /* AreaSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485060C927181A8D002645AE /* AreaSelectViewController.swift */; };
+		485060CC27181A92002645AE /* AreaSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485060CB27181A92002645AE /* AreaSelectView.swift */; };
 		485B800226E73DA00078469C /* Tour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485B800126E73DA00078469C /* Tour.swift */; };
 		48609AE226D39C300095C5E7 /* APIPlaceSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48609AE126D39C300095C5E7 /* APIPlaceSearchService.swift */; };
 		48609AE426D39DB20095C5E7 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48609AE326D39DB20095C5E7 /* Place.swift */; };
@@ -157,6 +161,10 @@
 		484DB8AF26CA097F004D5EB6 /* UserAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
 		484DB8B826CA14DB004D5EB6 /* JWTToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWTToken.swift; sourceTree = "<group>"; };
 		484DB8BC26CA3D7A004D5EB6 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		485060C527180915002645AE /* CategorySelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySelectViewController.swift; sourceTree = "<group>"; };
+		485060C727180942002645AE /* CategorySelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySelectView.swift; sourceTree = "<group>"; };
+		485060C927181A8D002645AE /* AreaSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaSelectViewController.swift; sourceTree = "<group>"; };
+		485060CB27181A92002645AE /* AreaSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaSelectView.swift; sourceTree = "<group>"; };
 		485B800126E73DA00078469C /* Tour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tour.swift; sourceTree = "<group>"; };
 		48609AE126D39C300095C5E7 /* APIPlaceSearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIPlaceSearchService.swift; sourceTree = "<group>"; };
 		48609AE326D39DB20095C5E7 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
@@ -382,6 +390,10 @@
 				489FB9E126AC3C4E00641F21 /* TimelineScene */,
 				489FB9D726AC3AB100641F21 /* MapScene */,
 				489FB9F026AC42EB00641F21 /* LoginScene */,
+				485060C527180915002645AE /* CategorySelectViewController.swift */,
+				485060C727180942002645AE /* CategorySelectView.swift */,
+				485060C927181A8D002645AE /* AreaSelectViewController.swift */,
+				485060CB27181A92002645AE /* AreaSelectView.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -725,10 +737,12 @@
 				489FB9D626AC3A4B00641F21 /* MapViewModel.swift in Sources */,
 				4869D02526C8017E0076C570 /* Constraints.swift in Sources */,
 				4898972126AC356F000499AC /* AppFlow.swift in Sources */,
+				485060CA27181A8D002645AE /* AreaSelectViewController.swift in Sources */,
 				484861DF26F1E2C400861155 /* TimelineViewController.swift in Sources */,
 				48F65C6626AC747D009B15BE /* LoginFlow.swift in Sources */,
 				4898972526AC36DC000499AC /* HomeFlow.swift in Sources */,
 				48F33B2626AC2BBC00A704C7 /* AppDelegate.swift in Sources */,
+				485060C827180942002645AE /* CategorySelectView.swift in Sources */,
 				489FB9E526AC3D0600641F21 /* UserInfoViewModel.swift in Sources */,
 				48EE6AD926F32FC6008CD9B2 /* PostWriteViewModel.swift in Sources */,
 				489FB9D426AC3A4400641F21 /* MapViewController.swift in Sources */,
@@ -762,12 +776,14 @@
 				4891A82826CD68F500C3B780 /* NaverLogin+Rx.swift in Sources */,
 				48E3D28526C3FF21007D08ED /* UserService.swift in Sources */,
 				4891A82426CCFF3D00C3B780 /* LoginViewController.swift in Sources */,
+				485060CC27181A92002645AE /* AreaSelectView.swift in Sources */,
 				48E3D2B126C43F6F007D08ED /* Network.swift in Sources */,
 				48EB95B826E1DCB4001A2F9C /* ReviewService.swift in Sources */,
 				48FE0DE626FB427E0066F834 /* DetailPostView.swift in Sources */,
 				48F65C6826AC783D009B15BE /* ReviewPostCell.swift in Sources */,
 				48E3D2B326C440CD007D08ED /* API.swift in Sources */,
 				4869D02E26C8064D0076C570 /* SignUpViewModel.swift in Sources */,
+				485060C627180915002645AE /* CategorySelectViewController.swift in Sources */,
 				48E3D28726C3FF2A007D08ED /* KeychainService.swift in Sources */,
 				4898971F26AC353F000499AC /* AppSteps.swift in Sources */,
 				48F65C6A26AC8D5A009B15BE /* ImageScrollView.swift in Sources */,
