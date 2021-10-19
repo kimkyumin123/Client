@@ -22,6 +22,10 @@ final class SearchView: UIView {
     configLayout()
   }
 
+  // MARK: Internal
+
+  let categroy = UIView()
+
   // MARK: Private
 
   private let container = UIView()
@@ -45,5 +49,7 @@ extension SearchView {
   private func configLayout() {
     backgroundColor = .systemBackground
     addSubview(container)
+
+    container.flex.addItem(categroy).alignItems(.center).size(100)
   }
 }

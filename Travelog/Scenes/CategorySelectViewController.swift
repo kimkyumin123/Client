@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import RxFlow
+import RxRelay
 import UIKit
 
 // MARK: - CategorySelectDelegate
@@ -16,9 +18,12 @@ protocol CategorySelectDelegate {
 
 // MARK: - CategorySelectViewController
 
-final class CategorySelectViewController: UIViewController {
+final class CategorySelectViewController: UIViewController, Stepper {
 
   // MARK: Internal
+
+  var steps = PublishRelay<Step>()
+  var category: String?
 
   var delegate: CategorySelectDelegate?
 

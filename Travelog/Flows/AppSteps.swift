@@ -27,6 +27,12 @@ enum AppSteps: Step {
   case filterOptionRequired
   case filterSelected
 
+  // Filter option
+  case categoryIsRequired
+  case areaIsRequired
+  case setCategory(String)
+  case setArea(String)
+
   case searchIsRequired
   case searchPlaces
   case searchReviews

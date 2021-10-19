@@ -99,9 +99,11 @@ final class UserServiceTest: XCTestCase {
     let expectation = expectation(description: "Alamofire")
     _ = try UserService.login(id: "user02", pw: "passwd").toBlocking(timeout: 5.0).first()
     let prevToken = try KeychainService.read(key: .accessToken)
-    UserService.renewToken { accessToken, _ in
-      expectation.fulfill()
-      XCTAssertTrue(prevToken != accessToken)
+    UserService.renewToken { result in
+      if case .success(let token) = result {
+        XCTAssertTrue(prevToken != token.0)
+        expectation.fulfill()
+      }
     }
 
     wait(for: [expectation], timeout: 10.0)

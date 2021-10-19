@@ -68,10 +68,12 @@ final class SearchViewModel: Reactor, Stepper {
       ])
 
     case .setCategory(let category):
-      return .concat([
-        .just(.updateCategory(category)),
-        search(isLoadNextPage: false),
-      ])
+      steps.accept(AppSteps.categoryIsRequired)
+      return .empty()
+//      return .concat([
+//        .just(.updateCategory(category)),
+//        search(isLoadNextPage: false),
+//      ])
 
     case .setArea(let area):
       return .concat([
@@ -128,6 +130,7 @@ final class SearchViewModel: Reactor, Stepper {
 
 extension SearchViewModel {
   private func search(isLoadNextPage: Bool) -> Observable<Mutation> {
+    if currentState.keyword == "" { return .empty() }
     switch currentState.segment {
     case .place:
       return search(place: currentState.keyword, category: currentState.category, area: currentState.area, lastID: lastID)
