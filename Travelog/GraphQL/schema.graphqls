@@ -96,7 +96,7 @@ type Place {
 
 type Query {
   placeAbout(placeId: String!): [Review]
-  userCheck(email: String, nickName: String): QueryResponse
+  userCheck(email: String, nickName: String, userName: String): QueryResponse
   searchComment(id: Int, payload: String): [Comment]
 
   """
@@ -277,7 +277,6 @@ type Mutation {
   recommendEvent(reviewId: Int!, like: Boolean!): MutationResponse
   updateReview(review: [UpdateReviewInput]): MutationResponse
   authUserLogin(platform_type: String!, accesstoken: String!): loginResponse
-  authUserLogout: MutationResponse
   authVaildation: authResponse
   createAuthUser(nickName: String!, avatar: String, bio: String, platformType: String!, token: String!): MutationResponse
   createUser(bio: String, userName: String!, gender: String, ageRange: String, email: String!, nickName: String!, avatar: String, password: String!): MutationResponse

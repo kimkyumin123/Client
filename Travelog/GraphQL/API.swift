@@ -186,9 +186,9 @@ public struct UpdatePlaceInput: GraphQLMapConvertible {
   }
 }
 
-// MARK: - AuthVaildationMutation
+// MARK: - AuthValidationMutation
 
-public final class AuthVaildationMutation: GraphQLMutation {
+public final class AuthValidationMutation: GraphQLMutation {
 
   // MARK: Lifecycle
 
@@ -329,7 +329,7 @@ public final class AuthVaildationMutation: GraphQLMutation {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition: String =
     """
-    mutation authVaildation {
+    mutation authValidation {
       authVaildation {
         __typename
         ok
@@ -342,9 +342,9 @@ public final class AuthVaildationMutation: GraphQLMutation {
     }
     """
 
-  public let operationName: String = "authVaildation"
+  public let operationName: String = "authValidation"
 
-  public let operationIdentifier: String? = "614a2148de949726d32d46e5af1a452ae182c71ddc44163f99c8d03b4429286c"
+  public let operationIdentifier: String? = "b8c064245df2c0e897527edec5c66ae6b8cae5593cc14226440b6be5e4367d8a"
 
 }
 
@@ -577,6 +577,7 @@ public final class CreatePlaceMutation: GraphQLMutation {
 
     public private(set) var resultMap: ResultMap
 
+    /// 실제 사용하지 않는 뮤테이션이며 임의로 추가할 장소가 있을시 호출합니다.
     public var createPlace: CreatePlace? {
       get {
         (resultMap["createPlace"] as? ResultMap).flatMap { CreatePlace(unsafeResultMap: $0) }
@@ -850,6 +851,7 @@ public final class DeletePlaceMutation: GraphQLMutation {
 
     public private(set) var resultMap: ResultMap
 
+    /// 장소삭제 : 장소 PK(ID)로 삭제
     public var deletePlace: DeletePlace? {
       get {
         (resultMap["deletePlace"] as? ResultMap).flatMap { DeletePlace(unsafeResultMap: $0) }
@@ -1530,6 +1532,7 @@ public final class SearchPlaceQuery: GraphQLQuery {
         }
       }
 
+      /// PK
       public var id: Int {
         get {
           resultMap["id"]! as! Int
@@ -1539,6 +1542,7 @@ public final class SearchPlaceQuery: GraphQLQuery {
         }
       }
 
+      /// 생성날짜
       public var createdAt: String? {
         get {
           resultMap["createdAt"] as? String
@@ -1548,6 +1552,7 @@ public final class SearchPlaceQuery: GraphQLQuery {
         }
       }
 
+      /// 수정날짜
       public var updatedAt: String? {
         get {
           resultMap["updatedAt"] as? String
@@ -1557,6 +1562,7 @@ public final class SearchPlaceQuery: GraphQLQuery {
         }
       }
 
+      /// 제목
       public var title: String {
         get {
           resultMap["title"]! as! String
@@ -1566,6 +1572,7 @@ public final class SearchPlaceQuery: GraphQLQuery {
         }
       }
 
+      /// 주소
       public var address: String {
         get {
           resultMap["address"]! as! String
@@ -1575,6 +1582,7 @@ public final class SearchPlaceQuery: GraphQLQuery {
         }
       }
 
+      /// 우편번호
       public var zipCode: Int? {
         get {
           resultMap["zipCode"] as? Int
@@ -1584,6 +1592,7 @@ public final class SearchPlaceQuery: GraphQLQuery {
         }
       }
 
+      /// x 좌표
       public var x: Double {
         get {
           resultMap["x"]! as! Double
@@ -1593,6 +1602,7 @@ public final class SearchPlaceQuery: GraphQLQuery {
         }
       }
 
+      /// y 좌표
       public var y: Double {
         get {
           resultMap["y"]! as! Double
@@ -1602,6 +1612,7 @@ public final class SearchPlaceQuery: GraphQLQuery {
         }
       }
 
+      /// 카테고리
       public var category: String? {
         get {
           resultMap["category"] as? String
@@ -1622,6 +1633,13 @@ public final class SearchPlaceQuery: GraphQLQuery {
 
     public private(set) var resultMap: ResultMap
 
+    /// ---검색된 장소들을 보여줌---
+    ///
+    /// title : 검색 할 장소이름(StartWith)
+    ///
+    /// category : 검색할 카테고리 분류
+    ///
+    /// lastId : 페이징처리를 위한 변수이며, 마지막으로 조회했던 Place의 ID
     public var searchPlace: [SearchPlace?]? {
       get {
         (resultMap["searchPlace"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [SearchPlace?] in value.map { (value: ResultMap?) -> SearchPlace? in value.flatMap { (value: ResultMap) -> SearchPlace in SearchPlace(unsafeResultMap: value) } } }
@@ -1716,7 +1734,7 @@ public final class SearchReviewQuery: GraphQLQuery {
           resultMap = unsafeResultMap
         }
 
-        public init(id: Int, createdAt: String? = nil, updatedAt: String? = nil, payload: String? = nil, reviewId: Int? = nil) {
+        public init(id: Int, createdAt: String? = nil, updatedAt: String? = nil, payload: String? = nil, reviewId: Int) {
           self.init(unsafeResultMap: ["__typename": "Comment", "id": id, "createdAt": createdAt, "updatedAt": updatedAt, "payload": payload, "reviewId": reviewId])
         }
 
@@ -1731,7 +1749,7 @@ public final class SearchReviewQuery: GraphQLQuery {
             GraphQLField("createdAt", type: .scalar(String.self)),
             GraphQLField("updatedAt", type: .scalar(String.self)),
             GraphQLField("payload", type: .scalar(String.self)),
-            GraphQLField("reviewId", type: .scalar(Int.self)),
+            GraphQLField("reviewId", type: .nonNull(.scalar(Int.self))),
           ]
         }
 
@@ -1746,6 +1764,7 @@ public final class SearchReviewQuery: GraphQLQuery {
           }
         }
 
+        /// PK
         public var id: Int {
           get {
             resultMap["id"]! as! Int
@@ -1755,6 +1774,7 @@ public final class SearchReviewQuery: GraphQLQuery {
           }
         }
 
+        /// 생성날짜
         public var createdAt: String? {
           get {
             resultMap["createdAt"] as? String
@@ -1764,6 +1784,7 @@ public final class SearchReviewQuery: GraphQLQuery {
           }
         }
 
+        /// 수정날짜
         public var updatedAt: String? {
           get {
             resultMap["updatedAt"] as? String
@@ -1773,6 +1794,7 @@ public final class SearchReviewQuery: GraphQLQuery {
           }
         }
 
+        /// 댓글내용
         public var payload: String? {
           get {
             resultMap["payload"] as? String
@@ -1782,9 +1804,10 @@ public final class SearchReviewQuery: GraphQLQuery {
           }
         }
 
-        public var reviewId: Int? {
+        /// 해당리뷰ID
+        public var reviewId: Int {
           get {
-            resultMap["reviewId"] as? Int
+            resultMap["reviewId"]! as! Int
           }
           set {
             resultMap.updateValue(newValue, forKey: "reviewId")
@@ -1820,6 +1843,7 @@ public final class SearchReviewQuery: GraphQLQuery {
         }
       }
 
+      /// PK
       public var id: Int {
         get {
           resultMap["id"]! as! Int
@@ -1829,6 +1853,7 @@ public final class SearchReviewQuery: GraphQLQuery {
         }
       }
 
+      /// 생성날짜
       public var createdAt: String? {
         get {
           resultMap["createdAt"] as? String
@@ -1838,6 +1863,7 @@ public final class SearchReviewQuery: GraphQLQuery {
         }
       }
 
+      /// 수정날짜
       public var updatedAt: String? {
         get {
           resultMap["updatedAt"] as? String
@@ -1847,6 +1873,7 @@ public final class SearchReviewQuery: GraphQLQuery {
         }
       }
 
+      /// 제목
       public var title: String? {
         get {
           resultMap["title"] as? String
@@ -1856,6 +1883,7 @@ public final class SearchReviewQuery: GraphQLQuery {
         }
       }
 
+      /// 내용
       public var content: String? {
         get {
           resultMap["content"] as? String
@@ -1865,6 +1893,7 @@ public final class SearchReviewQuery: GraphQLQuery {
         }
       }
 
+      /// 사진
       public var upload: String? {
         get {
           resultMap["upload"] as? String
@@ -1874,6 +1903,7 @@ public final class SearchReviewQuery: GraphQLQuery {
         }
       }
 
+      /// 생성유저ID
       public var userId: Int? {
         get {
           resultMap["userId"] as? Int
@@ -1883,6 +1913,7 @@ public final class SearchReviewQuery: GraphQLQuery {
         }
       }
 
+      /// 장소 PK
       public var placeId: Int? {
         get {
           resultMap["placeId"] as? Int
@@ -1892,6 +1923,7 @@ public final class SearchReviewQuery: GraphQLQuery {
         }
       }
 
+      /// 구현예정
       public var comments: [Comment?]? {
         get {
           (resultMap["comments"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [Comment?] in value.map { (value: ResultMap?) -> Comment? in value.flatMap { (value: ResultMap) -> Comment in Comment(unsafeResultMap: value) } } }
@@ -1913,6 +1945,11 @@ public final class SearchReviewQuery: GraphQLQuery {
 
     public private(set) var resultMap: ResultMap
 
+    /// title - 리뷰명(Startwith)
+    ///
+    /// category - 카테고리
+    ///
+    /// lastId - Pagination처리 변수
     public var searchReview: [SearchReview?]? {
       get {
         (resultMap["searchReview"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [SearchReview?] in value.map { (value: ResultMap?) -> SearchReview? in value.flatMap { (value: ResultMap) -> SearchReview in SearchReview(unsafeResultMap: value) } } }
@@ -2278,6 +2315,7 @@ public final class UpdatePlaceMutation: GraphQLMutation {
 
     public private(set) var resultMap: ResultMap
 
+    /// UpdatePlaceInput - Place JSON DATA
     public var updatePlace: UpdatePlace? {
       get {
         (resultMap["updatePlace"] as? ResultMap).flatMap { UpdatePlace(unsafeResultMap: $0) }
@@ -2559,6 +2597,131 @@ public final class EmailValidationQuery: GraphQLQuery {
 
   public var variables: GraphQLMap? {
     ["email": email]
+  }
+
+}
+
+// MARK: - UserNameValidationQuery
+
+public final class UserNameValidationQuery: GraphQLQuery {
+
+  // MARK: Lifecycle
+
+  public init(userName: String? = nil) {
+    self.userName = userName
+  }
+
+  // MARK: Public
+
+  public struct Data: GraphQLSelectionSet {
+
+    // MARK: Lifecycle
+
+    public init(unsafeResultMap: ResultMap) {
+      resultMap = unsafeResultMap
+    }
+
+    public init(userCheck: UserCheck? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Query", "userCheck": userCheck.flatMap { (value: UserCheck) -> ResultMap in value.resultMap }])
+    }
+
+    // MARK: Public
+
+    public struct UserCheck: GraphQLSelectionSet {
+
+      // MARK: Lifecycle
+
+      public init(unsafeResultMap: ResultMap) {
+        resultMap = unsafeResultMap
+      }
+
+      public init(ok: Bool, error: Int? = nil) {
+        self.init(unsafeResultMap: ["__typename": "QueryResponse", "ok": ok, "error": error])
+      }
+
+      // MARK: Public
+
+      public static let possibleTypes: [String] = ["QueryResponse"]
+
+      public static var selections: [GraphQLSelection] {
+        [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("ok", type: .nonNull(.scalar(Bool.self))),
+          GraphQLField("error", type: .scalar(Int.self)),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public var __typename: String {
+        get {
+          resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var ok: Bool {
+        get {
+          resultMap["ok"]! as! Bool
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "ok")
+        }
+      }
+
+      public var error: Int? {
+        get {
+          resultMap["error"] as? Int
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "error")
+        }
+      }
+    }
+
+    public static let possibleTypes: [String] = ["Query"]
+
+    public static var selections: [GraphQLSelection] {
+      [
+        GraphQLField("userCheck", arguments: ["userName": GraphQLVariable("userName")], type: .object(UserCheck.selections)),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    public var userCheck: UserCheck? {
+      get {
+        (resultMap["userCheck"] as? ResultMap).flatMap { UserCheck(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "userCheck")
+      }
+    }
+
+  }
+
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    query userNameValidation($userName: String) {
+      userCheck(userName: $userName) {
+        __typename
+        ok
+        error
+      }
+    }
+    """
+
+  public let operationName: String = "userNameValidation"
+
+  public let operationIdentifier: String? = "eab2376bb0f5027aa258a26586fe7f61f811ccedc2a1423575ccc9e9d3130a59"
+
+  public var userName: String?
+
+  public var variables: GraphQLMap? {
+    ["userName": userName]
   }
 
 }

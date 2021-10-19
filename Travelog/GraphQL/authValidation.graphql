@@ -1,4 +1,4 @@
-mutation authVaildation {
+mutation authValidation {
   authVaildation {
     ok
     error

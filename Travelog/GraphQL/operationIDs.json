@@ -1,7 +1,7 @@
 {
-  "614a2148de949726d32d46e5af1a452ae182c71ddc44163f99c8d03b4429286c": {
-    "name": "authVaildation",
-    "source": "mutation authVaildation {\n  authVaildation {\n    __typename\n    ok\n    error\n    profile_image_url\n    nickname\n    gender\n    age_range\n  }\n}"
+  "b8c064245df2c0e897527edec5c66ae6b8cae5593cc14226440b6be5e4367d8a": {
+    "name": "authValidation",
+    "source": "mutation authValidation {\n  authVaildation {\n    __typename\n    ok\n    error\n    profile_image_url\n    nickname\n    gender\n    age_range\n  }\n}"
   },
   "e665cbb1fd4516a3603922c1082f859562b495ca3e0681e8794e4639bf966659": {
     "name": "createAuthUser",
@@ -58,6 +58,10 @@
   "16e14e7118f4f58c2c2f976594d854bc3d8f6ec569b3aa806860a6f30bbcf02f": {
     "name": "emailValidation",
     "source": "query emailValidation($email: String) {\n  userCheck(email: $email) {\n    __typename\n    ok\n    error\n  }\n}"
+  },
+  "eab2376bb0f5027aa258a26586fe7f61f811ccedc2a1423575ccc9e9d3130a59": {
+    "name": "userNameValidation",
+    "source": "query userNameValidation($userName: String) {\n  userCheck(userName: $userName) {\n    __typename\n    ok\n    error\n  }\n}"
   },
   "9bc6227993cccf73b5f29c2b35a38394a44b255d203744fd6f498d2bed3031db": {
     "name": "UserLogin",
