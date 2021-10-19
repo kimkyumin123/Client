@@ -11,3 +11,10 @@ query emailValidation($email: String) {
     error
   }
 }
+
+query userNameValidation($userName: String) {
+  userCheck(userName: $userName) {
+    ok
+    error
+  }
+}

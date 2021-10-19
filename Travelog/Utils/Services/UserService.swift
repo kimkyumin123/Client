@@ -75,7 +75,31 @@ final class UserService {
           }
         }
 
-        return Disposables.create()
+      return Disposables.create()
+    }
+  }
+
+  static func checkValidation(userName: String) -> Observable<ValidType> {
+    os_log(.debug, log: .user, "checkValidate(userName:)")
+    return .create { subscriber in
+      Network.shared.apollo.fetch(query: UserNameValidationQuery(userName: userName)) {
+        guard let _data = try? $0.get().data, let result = _data.userCheck else {
+          os_log(.info, log: .apollo, "Apollo Fetch Failed")
+          subscriber.onError(UserServiceError.requestFailed)
+          return
+        }
+
+        if result.ok {
+          subscriber.onNext(.valid)
+        } else if result.error == -101 {
+          subscriber.onNext(.alreadyExists)
+        } else {
+          subscriber.onNext(.invalid)
+        }
+        subscriber.onCompleted()
+      }
+
+      return Disposables.create()
     }
   }
 
@@ -97,6 +121,7 @@ final class UserService {
         } else {
           subscriber.onNext(.invalid)
         }
+        subscriber.onCompleted()
       }
 
       return Disposables.create()
@@ -138,6 +163,7 @@ final class UserService {
         } else {
           subscriber.onNext(.invalid)
         }
+        subscriber.onCompleted()
       }
 
       return Disposables.create()
@@ -175,6 +201,7 @@ final class UserService {
         return Disposables.create()
       }
       subscriber.onNext(.valid)
+      subscriber.onCompleted()
 
       return Disposables.create()
     }
