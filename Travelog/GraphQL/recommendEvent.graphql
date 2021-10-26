@@ -1,0 +1,6 @@
+mutation like($reviewID: Int!, $like: Boolean!) {
+  recommendEvent(reviewId: $reviewID, like: $like) {
+    ok
+    error
+  }
+}

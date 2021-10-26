@@ -60,11 +60,10 @@ final class DetailPostViewModel: Reactor, Stepper {
 // MARK: - Logic
 
 extension DetailPostViewModel {
-  private func likeToggle() -> Observable<Bool> {
-    .create { _ in
-      // TODO: - 카운트 업데이트 이후에 수 추가
+  private func likeToggle(reviewID: Int) -> Observable<Void> {
+    guard let _review = currentState.reviews.filter({ $0.id == reviewID }).first else { return .empty() }
+    let isLike = _review.isLike
 
-      Disposables.create()
-    }
+    return ReviewService.likeReview(id: reviewID, like: !isLike)
   }
 }

@@ -35,13 +35,17 @@
     "name": "OAuthUserLogin",
     "source": "mutation OAuthUserLogin($platform_type: String!, $accesstoken: String!) {\n  authUserLogin(platform_type: $platform_type, accesstoken: $accesstoken) {\n    __typename\n    ok\n    error\n    token {\n      __typename\n      accessToken\n      refreshToken\n    }\n  }\n}"
   },
+  "7c8f2aded68cab30d310af9d2371f92a25e7c2ffe8be4e84f3a68786e871f198": {
+    "name": "like",
+    "source": "mutation like($reviewID: Int!, $like: Boolean!) {\n  recommendEvent(reviewId: $reviewID, like: $like) {\n    __typename\n    ok\n    error\n  }\n}"
+  },
   "a97d11151162da16fc32dccdc23a540a9660d08cccb7d29f93f5b8ce77913e74": {
     "name": "searchPlace",
     "source": "query searchPlace($title: String!, $category: String, $lastID: Int) {\n  searchPlace(title: $title, category: $category, lastId: $lastID) {\n    __typename\n    id\n    createdAt\n    updatedAt\n    title\n    address\n    zipCode\n    x\n    y\n    category\n  }\n}"
   },
-  "5953e24e4d902cc3bbad8b873596e07e97b80992433859928579360e7b1a1090": {
+  "863d54afe03a509a7507a65632f9ba036e8cdda6f2b61e4a0aee32a2cf11333d": {
     "name": "searchReview",
-    "source": "query searchReview($title: String, $category: String, $lastID: Int) {\n  searchReview(title: $title, category: $category, lastId: $lastID) {\n    __typename\n    id\n    createdAt\n    updatedAt\n    title\n    content\n    upload\n    userId\n    placeId\n    comments {\n      __typename\n      id\n      createdAt\n      updatedAt\n      payload\n      reviewId\n    }\n  }\n}"
+    "source": "query searchReview($title: String, $category: String, $lastID: Int) {\n  searchReview(title: $title, category: $category, lastId: $lastID) {\n    __typename\n    id\n    createdAt\n    updatedAt\n    title\n    content\n    upload\n    userId\n    placeId\n    getLikes\n    getUnLikes\n    isLike\n    isUnLike\n    user {\n      __typename\n      id\n    }\n    comments {\n      __typename\n      id\n      createdAt\n      updatedAt\n      payload\n      reviewId\n    }\n    errorCode\n  }\n}"
   },
   "82fedfbfbf51c5b207939d62c9cc80766e7d08d6ab52521b7f2c975166424550": {
     "name": "seeProfile",

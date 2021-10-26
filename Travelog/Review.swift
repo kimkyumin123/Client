@@ -41,6 +41,10 @@ struct Review: Equatable {
   var text: String?
   var image: String?
   var placeID: Int?
+  var likesCount: Int
+  var unlikeCount: Int
+  var isLike: Bool
+  var isUnlike: Bool
   var comments: [Review.Comment]
 }
 
@@ -52,6 +56,10 @@ extension SearchReviewQuery.Data.SearchReview {
       text: content,
       image: upload,
       placeID: placeId,
+      likesCount: getLikes ?? 0,
+      unlikeCount: getUnLikes ?? 0,
+      isLike: isLike ?? false,
+      isUnlike: isUnLike ?? false,
       comments: comments?.compactMap({ $0?.comment }) ?? [])
   }
 }

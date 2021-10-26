@@ -9,6 +9,8 @@ import Apollo
 import Foundation
 import RxSwift
 
+// MARK: - ReviewService
+
 final class ReviewService {
 
   // MARK: Lifecycle
@@ -69,4 +71,31 @@ final class ReviewService {
       return Disposables.create()
     }
   }
+
+  static func likeReview(id: Int, like: Bool) -> Observable<Void> {
+    .create { subscriber in
+      let query = Network.shared.apollo.perform(mutation: LikeMutation(reviewID: id, like: like), publishResultToStore: false) {
+        guard let _data = try? $0.get().data?.recommendEvent else {
+          subscriber.onError(ReviewServiceError.requestFailed)
+          return
+        }
+
+        if _data.ok {
+          subscriber.onNext(())
+        }
+
+        // TODO: - 추가적인 에러처리
+
+        subscriber.onCompleted()
+      }
+
+      return Disposables.create { query.cancel() }
+    }
+  }
+}
+
+// MARK: - ReviewServiceError
+
+enum ReviewServiceError: Error {
+  case requestFailed
 }
