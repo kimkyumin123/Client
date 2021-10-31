@@ -8,6 +8,16 @@ query searchReview($title: String, $category: String, $lastID: Int) {
     upload
     userId
     placeId
+
+    getLikes
+    getUnLikes
+    isLike
+    isUnLike
+
+    user {
+      id
+    }
+
     comments {
       id
       createdAt
@@ -15,5 +25,7 @@ query searchReview($title: String, $category: String, $lastID: Int) {
       payload
       reviewId
     }
+
+    errorCode
   }
 }

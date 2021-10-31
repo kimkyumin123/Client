@@ -1,0 +1,8 @@
+query reviewLikeStatus($id: Int) {
+  searchReview(id: $id) {
+    getLikes
+    getUnLikes
+    isLike
+    isUnLike
+  }
+}

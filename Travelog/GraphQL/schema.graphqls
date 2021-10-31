@@ -120,13 +120,15 @@ type Query {
   aboutPlaceReview(placeId: String!, lastId: Int): [Review]
 
   """
+  id -  PK
+  
   title - 리뷰명(Startwith)
   
   category - 카테고리
   
   lastId - Pagination처리 변수
   """
-  searchReview(title: String, category: String, lastId: Int): [Review]
+  searchReview(id: Int, title: String, category: String, lastId: Int): [Review]
   searchReviewRoom(roomId: Int!): reviewRoom
   seeProfile(userName: String!): User
 }
@@ -136,10 +138,10 @@ type Review {
   id: Int!
 
   """생성날짜"""
-  createdAt: String
+  createdAt: String!
 
   """수정날짜"""
-  updatedAt: String
+  updatedAt: String!
 
   """제목"""
   title: String
@@ -169,16 +171,16 @@ type Review {
   place: Place
 
   """좋아요 수"""
-  getLikes: Int
+  getLikes: Int!
 
   """싫어요 수 """
-  getUnLikes: Int
+  getUnLikes: Int!
 
   """좋아요 상태"""
-  isLike: Boolean
+  isLike: Boolean!
 
   """싫어요 상태"""
-  isUnLike: Boolean
+  isUnLike: Boolean!
 
   """해시태그 """
   hashtags: [HashTag]
@@ -192,13 +194,13 @@ type reviewRoom {
   id: Int!
 
   """생성날짜"""
-  createdAt: String
+  createdAt: String!
 
   """수정날짜"""
-  updatedAt: String
+  updatedAt: String!
 
   """해당리뷰"""
-  review: [Review]
+  review: [Review]!
 }
 
 """The `Upload` scalar type represents a file upload."""

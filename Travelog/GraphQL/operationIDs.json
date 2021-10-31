@@ -3,6 +3,10 @@
     "name": "authValidation",
     "source": "mutation authValidation {\n  authVaildation {\n    __typename\n    ok\n    error\n    profile_image_url\n    nickname\n    gender\n    age_range\n  }\n}"
   },
+  "378b30b4cf4db374ea186740b0b93de3a10d1cf511b5ff882e5f32c5e82a8421": {
+    "name": "comments",
+    "source": "query comments($reviewID: Int) {\n  searchReview(id: $reviewID) {\n    __typename\n    comments {\n      __typename\n      id\n      userId\n      createdAt\n      updatedAt\n      payload\n    }\n  }\n}"
+  },
   "e665cbb1fd4516a3603922c1082f859562b495ca3e0681e8794e4639bf966659": {
     "name": "createAuthUser",
     "source": "mutation createAuthUser($nickName: String!, $avatar: String, $bio: String, $platformType: String!, $token: String!) {\n  createAuthUser(\n    nickName: $nickName\n    avatar: $avatar\n    bio: $bio\n    platformType: $platformType\n    token: $token\n  ) {\n    __typename\n    ok\n    error\n  }\n}"
@@ -35,9 +39,25 @@
     "name": "OAuthUserLogin",
     "source": "mutation OAuthUserLogin($platform_type: String!, $accesstoken: String!) {\n  authUserLogin(platform_type: $platform_type, accesstoken: $accesstoken) {\n    __typename\n    ok\n    error\n    token {\n      __typename\n      accessToken\n      refreshToken\n    }\n  }\n}"
   },
-  "7c8f2aded68cab30d310af9d2371f92a25e7c2ffe8be4e84f3a68786e871f198": {
-    "name": "like",
-    "source": "mutation like($reviewID: Int!, $like: Boolean!) {\n  recommendEvent(reviewId: $reviewID, like: $like) {\n    __typename\n    ok\n    error\n  }\n}"
+  "8ad30a9409203f2359a740e9da345e76b5fa29e0b27032b1cd89e56d6a1451a5": {
+    "name": "post",
+    "source": "query post($id: Int!) {\n  searchReviewRoom(roomId: $id) {\n    __typename\n    id\n    createdAt\n    updatedAt\n    review {\n      __typename\n      id\n      createdAt\n      updatedAt\n      title\n      content\n      upload\n      userId\n      placeId\n      getLikes\n      getUnLikes\n      isLike\n      isUnLike\n    }\n  }\n}"
+  },
+  "c3ca8434c93a6be062a9eaf80411a7b4518b11b99a3d43777a0efcde640d60ee": {
+    "name": "comment",
+    "source": "query comment($id: Int) {\n  searchReview(id: $id) {\n    __typename\n    comments {\n      __typename\n      id\n      userId\n      createdAt\n      updatedAt\n      payload\n    }\n  }\n}"
+  },
+  "018684cb8e48f4447c07a6b74079e987f56f5716050055dd552741945b769fc8": {
+    "name": "likeReviewToggle",
+    "source": "mutation likeReviewToggle($id: Int!) {\n  recommendEvent(reviewId: $id, like: true) {\n    __typename\n    ok\n    error\n  }\n}"
+  },
+  "12b468a2e85613a416cb3a325662de65635261bcea06aa9aa8b248116f9d25a8": {
+    "name": "unlikeReviewToggle",
+    "source": "mutation unlikeReviewToggle($id: Int!) {\n  recommendEvent(reviewId: $id, like: false) {\n    __typename\n    ok\n    error\n  }\n}"
+  },
+  "413c3bf8392d04df96b92a4c889a8db0120e25df3f979b36017974ae07d6ff16": {
+    "name": "reviewLikeStatus",
+    "source": "query reviewLikeStatus($id: Int) {\n  searchReview(id: $id) {\n    __typename\n    getLikes\n    getUnLikes\n    isLike\n    isUnLike\n  }\n}"
   },
   "a97d11151162da16fc32dccdc23a540a9660d08cccb7d29f93f5b8ce77913e74": {
     "name": "searchPlace",

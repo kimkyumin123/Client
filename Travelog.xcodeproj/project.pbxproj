@@ -34,7 +34,7 @@
 		485060C827180942002645AE /* CategorySelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485060C727180942002645AE /* CategorySelectView.swift */; };
 		485060CA27181A8D002645AE /* AreaSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485060C927181A8D002645AE /* AreaSelectViewController.swift */; };
 		485060CC27181A92002645AE /* AreaSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485060CB27181A92002645AE /* AreaSelectView.swift */; };
-		485B800226E73DA00078469C /* Tour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485B800126E73DA00078469C /* Tour.swift */; };
+		485B800226E73DA00078469C /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485B800126E73DA00078469C /* Post.swift */; };
 		48609AE226D39C300095C5E7 /* APIPlaceSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48609AE126D39C300095C5E7 /* APIPlaceSearchService.swift */; };
 		48609AE426D39DB20095C5E7 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48609AE326D39DB20095C5E7 /* Place.swift */; };
 		48609AEC26D4FC9D0095C5E7 /* PlaceServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48609AEB26D4FC9D0095C5E7 /* PlaceServiceTests.swift */; };
@@ -165,7 +165,7 @@
 		485060C727180942002645AE /* CategorySelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySelectView.swift; sourceTree = "<group>"; };
 		485060C927181A8D002645AE /* AreaSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaSelectViewController.swift; sourceTree = "<group>"; };
 		485060CB27181A92002645AE /* AreaSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaSelectView.swift; sourceTree = "<group>"; };
-		485B800126E73DA00078469C /* Tour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tour.swift; sourceTree = "<group>"; };
+		485B800126E73DA00078469C /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		48609AE126D39C300095C5E7 /* APIPlaceSearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIPlaceSearchService.swift; sourceTree = "<group>"; };
 		48609AE326D39DB20095C5E7 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		48609AEB26D4FC9D0095C5E7 /* PlaceServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceServiceTests.swift; sourceTree = "<group>"; };
@@ -310,7 +310,7 @@
 				484DB8AF26CA097F004D5EB6 /* UserAccount.swift */,
 				48609AE326D39DB20095C5E7 /* Place.swift */,
 				48BC6D0026D90682002AC334 /* Review.swift */,
-				485B800126E73DA00078469C /* Tour.swift */,
+				485B800126E73DA00078469C /* Post.swift */,
 				484DB8B826CA14DB004D5EB6 /* JWTToken.swift */,
 			);
 			path = Model;
@@ -768,7 +768,7 @@
 				489FB9E326AC3D0000641F21 /* UserInfoViewController.swift in Sources */,
 				48FE0DF0270459320066F834 /* SearchView.swift in Sources */,
 				487CDCC726CE04820092EC63 /* NSLayoutConstraint+Extension.swift in Sources */,
-				485B800226E73DA00078469C /* Tour.swift in Sources */,
+				485B800226E73DA00078469C /* Post.swift in Sources */,
 				484DB8AE26C9AF71004D5EB6 /* Error+Extension.swift in Sources */,
 				4819AE2A2710225E0073A2C4 /* PlaceView.swift in Sources */,
 				4825FEF626CBB79700BD1402 /* ThirdPartyLoginService.swift in Sources */,

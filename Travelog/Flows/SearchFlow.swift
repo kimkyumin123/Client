@@ -66,7 +66,7 @@ extension SearchFlow {
     os_log(.debug, log: .flow, "Navigate to Review")
     let vc = DetailPostViewController()
     // TODO: - vm 에 post id 필요
-    let vm = DetailPostViewModel()
+    let vm = DetailPostViewModel(postID: id)
     vc.reactor = vm
 
     rootViewController.pushViewController(vc, animated: true)
@@ -98,7 +98,7 @@ extension SearchFlow {
 
     return .none
   }
-  
+
   private func navigateToAreaSelect() -> FlowContributors {
     os_log(.debug, log: .flow, "Navigate to Category selecting")
 
@@ -109,7 +109,7 @@ extension SearchFlow {
         rootViewController.pushViewController(vc, animated: true)
       }
     }
-    
+
     return .none
   }
 }

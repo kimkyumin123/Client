@@ -67,13 +67,9 @@ final class SearchViewModel: Reactor, Stepper {
         search(isLoadNextPage: false),
       ])
 
-    case .setCategory(let category):
+    case .setCategory:
       steps.accept(AppSteps.categoryIsRequired)
       return .empty()
-//      return .concat([
-//        .just(.updateCategory(category)),
-//        search(isLoadNextPage: false),
-//      ])
 
     case .setArea(let area):
       return .concat([

@@ -348,6 +348,225 @@ public final class AuthValidationMutation: GraphQLMutation {
 
 }
 
+// MARK: - CommentsQuery
+
+public final class CommentsQuery: GraphQLQuery {
+
+  // MARK: Lifecycle
+
+  public init(reviewID: Int? = nil) {
+    self.reviewID = reviewID
+  }
+
+  // MARK: Public
+
+  public struct Data: GraphQLSelectionSet {
+
+    // MARK: Lifecycle
+
+    public init(unsafeResultMap: ResultMap) {
+      resultMap = unsafeResultMap
+    }
+
+    public init(searchReview: [SearchReview?]? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Query", "searchReview": searchReview.flatMap { (value: [SearchReview?]) -> [ResultMap?] in value.map { (value: SearchReview?) -> ResultMap? in value.flatMap { (value: SearchReview) -> ResultMap in value.resultMap } } }])
+    }
+
+    // MARK: Public
+
+    public struct SearchReview: GraphQLSelectionSet {
+
+      // MARK: Lifecycle
+
+      public init(unsafeResultMap: ResultMap) {
+        resultMap = unsafeResultMap
+      }
+
+      public init(comments: [Comment?]? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Review", "comments": comments.flatMap { (value: [Comment?]) -> [ResultMap?] in value.map { (value: Comment?) -> ResultMap? in value.flatMap { (value: Comment) -> ResultMap in value.resultMap } } }])
+      }
+
+      // MARK: Public
+
+      public struct Comment: GraphQLSelectionSet {
+
+        // MARK: Lifecycle
+
+        public init(unsafeResultMap: ResultMap) {
+          resultMap = unsafeResultMap
+        }
+
+        public init(id: Int, userId: Int, createdAt: String? = nil, updatedAt: String? = nil, payload: String? = nil) {
+          self.init(unsafeResultMap: ["__typename": "Comment", "id": id, "userId": userId, "createdAt": createdAt, "updatedAt": updatedAt, "payload": payload])
+        }
+
+        // MARK: Public
+
+        public static let possibleTypes: [String] = ["Comment"]
+
+        public static var selections: [GraphQLSelection] {
+          [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("id", type: .nonNull(.scalar(Int.self))),
+            GraphQLField("userId", type: .nonNull(.scalar(Int.self))),
+            GraphQLField("createdAt", type: .scalar(String.self)),
+            GraphQLField("updatedAt", type: .scalar(String.self)),
+            GraphQLField("payload", type: .scalar(String.self)),
+          ]
+        }
+
+        public private(set) var resultMap: ResultMap
+
+        public var __typename: String {
+          get {
+            resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        /// PK
+        public var id: Int {
+          get {
+            resultMap["id"]! as! Int
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "id")
+          }
+        }
+
+        /// 작성유저ID
+        public var userId: Int {
+          get {
+            resultMap["userId"]! as! Int
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "userId")
+          }
+        }
+
+        /// 생성날짜
+        public var createdAt: String? {
+          get {
+            resultMap["createdAt"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "createdAt")
+          }
+        }
+
+        /// 수정날짜
+        public var updatedAt: String? {
+          get {
+            resultMap["updatedAt"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "updatedAt")
+          }
+        }
+
+        /// 댓글내용
+        public var payload: String? {
+          get {
+            resultMap["payload"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "payload")
+          }
+        }
+      }
+
+      public static let possibleTypes: [String] = ["Review"]
+
+      public static var selections: [GraphQLSelection] {
+        [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("comments", type: .list(.object(Comment.selections))),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public var __typename: String {
+        get {
+          resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      /// 구현예정
+      public var comments: [Comment?]? {
+        get {
+          (resultMap["comments"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [Comment?] in value.map { (value: ResultMap?) -> Comment? in value.flatMap { (value: ResultMap) -> Comment in Comment(unsafeResultMap: value) } } }
+        }
+        set {
+          resultMap.updateValue(newValue.flatMap { (value: [Comment?]) -> [ResultMap?] in value.map { (value: Comment?) -> ResultMap? in value.flatMap { (value: Comment) -> ResultMap in value.resultMap } } }, forKey: "comments")
+        }
+      }
+
+    }
+
+    public static let possibleTypes: [String] = ["Query"]
+
+    public static var selections: [GraphQLSelection] {
+      [
+        GraphQLField("searchReview", arguments: ["id": GraphQLVariable("reviewID")], type: .list(.object(SearchReview.selections))),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    /// id -  PK
+    ///
+    /// title - 리뷰명(Startwith)
+    ///
+    /// category - 카테고리
+    ///
+    /// lastId - Pagination처리 변수
+    public var searchReview: [SearchReview?]? {
+      get {
+        (resultMap["searchReview"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [SearchReview?] in value.map { (value: ResultMap?) -> SearchReview? in value.flatMap { (value: ResultMap) -> SearchReview in SearchReview(unsafeResultMap: value) } } }
+      }
+      set {
+        resultMap.updateValue(newValue.flatMap { (value: [SearchReview?]) -> [ResultMap?] in value.map { (value: SearchReview?) -> ResultMap? in value.flatMap { (value: SearchReview) -> ResultMap in value.resultMap } } }, forKey: "searchReview")
+      }
+    }
+
+  }
+
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    query comments($reviewID: Int) {
+      searchReview(id: $reviewID) {
+        __typename
+        comments {
+          __typename
+          id
+          userId
+          createdAt
+          updatedAt
+          payload
+        }
+      }
+    }
+    """
+
+  public let operationName: String = "comments"
+
+  public let operationIdentifier: String? = "378b30b4cf4db374ea186740b0b93de3a10d1cf511b5ff882e5f32c5e82a8421"
+
+  public var reviewID: Int?
+
+  public var variables: GraphQLMap? {
+    ["reviewID": reviewID]
+  }
+
+}
+
 // MARK: - CreateAuthUserMutation
 
 public final class CreateAuthUserMutation: GraphQLMutation {
@@ -1462,15 +1681,565 @@ public final class OAuthUserLoginMutation: GraphQLMutation {
 
 }
 
-// MARK: - LikeMutation
+// MARK: - PostQuery
 
-public final class LikeMutation: GraphQLMutation {
+public final class PostQuery: GraphQLQuery {
 
   // MARK: Lifecycle
 
-  public init(reviewID: Int, like: Bool) {
-    self.reviewID = reviewID
-    self.like = like
+  public init(id: Int) {
+    self.id = id
+  }
+
+  // MARK: Public
+
+  public struct Data: GraphQLSelectionSet {
+
+    // MARK: Lifecycle
+
+    public init(unsafeResultMap: ResultMap) {
+      resultMap = unsafeResultMap
+    }
+
+    public init(searchReviewRoom: SearchReviewRoom? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Query", "searchReviewRoom": searchReviewRoom.flatMap { (value: SearchReviewRoom) -> ResultMap in value.resultMap }])
+    }
+
+    // MARK: Public
+
+    public struct SearchReviewRoom: GraphQLSelectionSet {
+
+      // MARK: Lifecycle
+
+      public init(unsafeResultMap: ResultMap) {
+        resultMap = unsafeResultMap
+      }
+
+      public init(id: Int, createdAt: String, updatedAt: String, review: [Review?]) {
+        self.init(unsafeResultMap: ["__typename": "reviewRoom", "id": id, "createdAt": createdAt, "updatedAt": updatedAt, "review": review.map { (value: Review?) -> ResultMap? in value.flatMap { (value: Review) -> ResultMap in value.resultMap } }])
+      }
+
+      // MARK: Public
+
+      public struct Review: GraphQLSelectionSet {
+
+        // MARK: Lifecycle
+
+        public init(unsafeResultMap: ResultMap) {
+          resultMap = unsafeResultMap
+        }
+
+        public init(id: Int, createdAt: String, updatedAt: String, title: String? = nil, content: String? = nil, upload: String? = nil, userId: Int? = nil, placeId: Int? = nil, getLikes: Int, getUnLikes: Int, isLike: Bool, isUnLike: Bool) {
+          self.init(unsafeResultMap: ["__typename": "Review", "id": id, "createdAt": createdAt, "updatedAt": updatedAt, "title": title, "content": content, "upload": upload, "userId": userId, "placeId": placeId, "getLikes": getLikes, "getUnLikes": getUnLikes, "isLike": isLike, "isUnLike": isUnLike])
+        }
+
+        // MARK: Public
+
+        public static let possibleTypes: [String] = ["Review"]
+
+        public static var selections: [GraphQLSelection] {
+          [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("id", type: .nonNull(.scalar(Int.self))),
+            GraphQLField("createdAt", type: .nonNull(.scalar(String.self))),
+            GraphQLField("updatedAt", type: .nonNull(.scalar(String.self))),
+            GraphQLField("title", type: .scalar(String.self)),
+            GraphQLField("content", type: .scalar(String.self)),
+            GraphQLField("upload", type: .scalar(String.self)),
+            GraphQLField("userId", type: .scalar(Int.self)),
+            GraphQLField("placeId", type: .scalar(Int.self)),
+            GraphQLField("getLikes", type: .nonNull(.scalar(Int.self))),
+            GraphQLField("getUnLikes", type: .nonNull(.scalar(Int.self))),
+            GraphQLField("isLike", type: .nonNull(.scalar(Bool.self))),
+            GraphQLField("isUnLike", type: .nonNull(.scalar(Bool.self))),
+          ]
+        }
+
+        public private(set) var resultMap: ResultMap
+
+        public var __typename: String {
+          get {
+            resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        /// PK
+        public var id: Int {
+          get {
+            resultMap["id"]! as! Int
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "id")
+          }
+        }
+
+        /// 생성날짜
+        public var createdAt: String {
+          get {
+            resultMap["createdAt"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "createdAt")
+          }
+        }
+
+        /// 수정날짜
+        public var updatedAt: String {
+          get {
+            resultMap["updatedAt"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "updatedAt")
+          }
+        }
+
+        /// 제목
+        public var title: String? {
+          get {
+            resultMap["title"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "title")
+          }
+        }
+
+        /// 내용
+        public var content: String? {
+          get {
+            resultMap["content"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "content")
+          }
+        }
+
+        /// 사진
+        public var upload: String? {
+          get {
+            resultMap["upload"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "upload")
+          }
+        }
+
+        /// 생성유저ID
+        public var userId: Int? {
+          get {
+            resultMap["userId"] as? Int
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "userId")
+          }
+        }
+
+        /// 장소 PK
+        public var placeId: Int? {
+          get {
+            resultMap["placeId"] as? Int
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "placeId")
+          }
+        }
+
+        /// 좋아요 수
+        public var getLikes: Int {
+          get {
+            resultMap["getLikes"]! as! Int
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "getLikes")
+          }
+        }
+
+        /// 싫어요 수
+        public var getUnLikes: Int {
+          get {
+            resultMap["getUnLikes"]! as! Int
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "getUnLikes")
+          }
+        }
+
+        /// 좋아요 상태
+        public var isLike: Bool {
+          get {
+            resultMap["isLike"]! as! Bool
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "isLike")
+          }
+        }
+
+        /// 싫어요 상태
+        public var isUnLike: Bool {
+          get {
+            resultMap["isUnLike"]! as! Bool
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "isUnLike")
+          }
+        }
+      }
+
+      public static let possibleTypes: [String] = ["reviewRoom"]
+
+      public static var selections: [GraphQLSelection] {
+        [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .nonNull(.scalar(Int.self))),
+          GraphQLField("createdAt", type: .nonNull(.scalar(String.self))),
+          GraphQLField("updatedAt", type: .nonNull(.scalar(String.self))),
+          GraphQLField("review", type: .nonNull(.list(.object(Review.selections)))),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public var __typename: String {
+        get {
+          resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      /// PK
+      public var id: Int {
+        get {
+          resultMap["id"]! as! Int
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "id")
+        }
+      }
+
+      /// 생성날짜
+      public var createdAt: String {
+        get {
+          resultMap["createdAt"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "createdAt")
+        }
+      }
+
+      /// 수정날짜
+      public var updatedAt: String {
+        get {
+          resultMap["updatedAt"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "updatedAt")
+        }
+      }
+
+      /// 해당리뷰
+      public var review: [Review?] {
+        get {
+          (resultMap["review"] as! [ResultMap?]).map { (value: ResultMap?) -> Review? in value.flatMap { (value: ResultMap) -> Review in Review(unsafeResultMap: value) } }
+        }
+        set {
+          resultMap.updateValue(newValue.map { (value: Review?) -> ResultMap? in value.flatMap { (value: Review) -> ResultMap in value.resultMap } }, forKey: "review")
+        }
+      }
+
+    }
+
+    public static let possibleTypes: [String] = ["Query"]
+
+    public static var selections: [GraphQLSelection] {
+      [
+        GraphQLField("searchReviewRoom", arguments: ["roomId": GraphQLVariable("id")], type: .object(SearchReviewRoom.selections)),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    public var searchReviewRoom: SearchReviewRoom? {
+      get {
+        (resultMap["searchReviewRoom"] as? ResultMap).flatMap { SearchReviewRoom(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "searchReviewRoom")
+      }
+    }
+
+  }
+
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    query post($id: Int!) {
+      searchReviewRoom(roomId: $id) {
+        __typename
+        id
+        createdAt
+        updatedAt
+        review {
+          __typename
+          id
+          createdAt
+          updatedAt
+          title
+          content
+          upload
+          userId
+          placeId
+          getLikes
+          getUnLikes
+          isLike
+          isUnLike
+        }
+      }
+    }
+    """
+
+  public let operationName: String = "post"
+
+  public let operationIdentifier: String? = "8ad30a9409203f2359a740e9da345e76b5fa29e0b27032b1cd89e56d6a1451a5"
+
+  public var id: Int
+
+  public var variables: GraphQLMap? {
+    ["id": id]
+  }
+
+}
+
+// MARK: - CommentQuery
+
+public final class CommentQuery: GraphQLQuery {
+
+  // MARK: Lifecycle
+
+  public init(id: Int? = nil) {
+    self.id = id
+  }
+
+  // MARK: Public
+
+  public struct Data: GraphQLSelectionSet {
+
+    // MARK: Lifecycle
+
+    public init(unsafeResultMap: ResultMap) {
+      resultMap = unsafeResultMap
+    }
+
+    public init(searchReview: [SearchReview?]? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Query", "searchReview": searchReview.flatMap { (value: [SearchReview?]) -> [ResultMap?] in value.map { (value: SearchReview?) -> ResultMap? in value.flatMap { (value: SearchReview) -> ResultMap in value.resultMap } } }])
+    }
+
+    // MARK: Public
+
+    public struct SearchReview: GraphQLSelectionSet {
+
+      // MARK: Lifecycle
+
+      public init(unsafeResultMap: ResultMap) {
+        resultMap = unsafeResultMap
+      }
+
+      public init(comments: [Comment?]? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Review", "comments": comments.flatMap { (value: [Comment?]) -> [ResultMap?] in value.map { (value: Comment?) -> ResultMap? in value.flatMap { (value: Comment) -> ResultMap in value.resultMap } } }])
+      }
+
+      // MARK: Public
+
+      public struct Comment: GraphQLSelectionSet {
+
+        // MARK: Lifecycle
+
+        public init(unsafeResultMap: ResultMap) {
+          resultMap = unsafeResultMap
+        }
+
+        public init(id: Int, userId: Int, createdAt: String? = nil, updatedAt: String? = nil, payload: String? = nil) {
+          self.init(unsafeResultMap: ["__typename": "Comment", "id": id, "userId": userId, "createdAt": createdAt, "updatedAt": updatedAt, "payload": payload])
+        }
+
+        // MARK: Public
+
+        public static let possibleTypes: [String] = ["Comment"]
+
+        public static var selections: [GraphQLSelection] {
+          [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("id", type: .nonNull(.scalar(Int.self))),
+            GraphQLField("userId", type: .nonNull(.scalar(Int.self))),
+            GraphQLField("createdAt", type: .scalar(String.self)),
+            GraphQLField("updatedAt", type: .scalar(String.self)),
+            GraphQLField("payload", type: .scalar(String.self)),
+          ]
+        }
+
+        public private(set) var resultMap: ResultMap
+
+        public var __typename: String {
+          get {
+            resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        /// PK
+        public var id: Int {
+          get {
+            resultMap["id"]! as! Int
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "id")
+          }
+        }
+
+        /// 작성유저ID
+        public var userId: Int {
+          get {
+            resultMap["userId"]! as! Int
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "userId")
+          }
+        }
+
+        /// 생성날짜
+        public var createdAt: String? {
+          get {
+            resultMap["createdAt"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "createdAt")
+          }
+        }
+
+        /// 수정날짜
+        public var updatedAt: String? {
+          get {
+            resultMap["updatedAt"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "updatedAt")
+          }
+        }
+
+        /// 댓글내용
+        public var payload: String? {
+          get {
+            resultMap["payload"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "payload")
+          }
+        }
+      }
+
+      public static let possibleTypes: [String] = ["Review"]
+
+      public static var selections: [GraphQLSelection] {
+        [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("comments", type: .list(.object(Comment.selections))),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public var __typename: String {
+        get {
+          resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      /// 구현예정
+      public var comments: [Comment?]? {
+        get {
+          (resultMap["comments"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [Comment?] in value.map { (value: ResultMap?) -> Comment? in value.flatMap { (value: ResultMap) -> Comment in Comment(unsafeResultMap: value) } } }
+        }
+        set {
+          resultMap.updateValue(newValue.flatMap { (value: [Comment?]) -> [ResultMap?] in value.map { (value: Comment?) -> ResultMap? in value.flatMap { (value: Comment) -> ResultMap in value.resultMap } } }, forKey: "comments")
+        }
+      }
+
+    }
+
+    public static let possibleTypes: [String] = ["Query"]
+
+    public static var selections: [GraphQLSelection] {
+      [
+        GraphQLField("searchReview", arguments: ["id": GraphQLVariable("id")], type: .list(.object(SearchReview.selections))),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    /// id -  PK
+    ///
+    /// title - 리뷰명(Startwith)
+    ///
+    /// category - 카테고리
+    ///
+    /// lastId - Pagination처리 변수
+    public var searchReview: [SearchReview?]? {
+      get {
+        (resultMap["searchReview"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [SearchReview?] in value.map { (value: ResultMap?) -> SearchReview? in value.flatMap { (value: ResultMap) -> SearchReview in SearchReview(unsafeResultMap: value) } } }
+      }
+      set {
+        resultMap.updateValue(newValue.flatMap { (value: [SearchReview?]) -> [ResultMap?] in value.map { (value: SearchReview?) -> ResultMap? in value.flatMap { (value: SearchReview) -> ResultMap in value.resultMap } } }, forKey: "searchReview")
+      }
+    }
+
+  }
+
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    query comment($id: Int) {
+      searchReview(id: $id) {
+        __typename
+        comments {
+          __typename
+          id
+          userId
+          createdAt
+          updatedAt
+          payload
+        }
+      }
+    }
+    """
+
+  public let operationName: String = "comment"
+
+  public let operationIdentifier: String? = "c3ca8434c93a6be062a9eaf80411a7b4518b11b99a3d43777a0efcde640d60ee"
+
+  public var id: Int?
+
+  public var variables: GraphQLMap? {
+    ["id": id]
+  }
+
+}
+
+// MARK: - LikeReviewToggleMutation
+
+public final class LikeReviewToggleMutation: GraphQLMutation {
+
+  // MARK: Lifecycle
+
+  public init(id: Int) {
+    self.id = id
   }
 
   // MARK: Public
@@ -1547,7 +2316,7 @@ public final class LikeMutation: GraphQLMutation {
 
     public static var selections: [GraphQLSelection] {
       [
-        GraphQLField("recommendEvent", arguments: ["reviewId": GraphQLVariable("reviewID"), "like": GraphQLVariable("like")], type: .object(RecommendEvent.selections)),
+        GraphQLField("recommendEvent", arguments: ["reviewId": GraphQLVariable("id"), "like": true], type: .object(RecommendEvent.selections)),
       ]
     }
 
@@ -1572,8 +2341,8 @@ public final class LikeMutation: GraphQLMutation {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition: String =
     """
-    mutation like($reviewID: Int!, $like: Boolean!) {
-      recommendEvent(reviewId: $reviewID, like: $like) {
+    mutation likeReviewToggle($id: Int!) {
+      recommendEvent(reviewId: $id, like: true) {
         __typename
         ok
         error
@@ -1581,15 +2350,302 @@ public final class LikeMutation: GraphQLMutation {
     }
     """
 
-  public let operationName: String = "like"
+  public let operationName: String = "likeReviewToggle"
 
-  public let operationIdentifier: String? = "7c8f2aded68cab30d310af9d2371f92a25e7c2ffe8be4e84f3a68786e871f198"
+  public let operationIdentifier: String? = "018684cb8e48f4447c07a6b74079e987f56f5716050055dd552741945b769fc8"
 
-  public var reviewID: Int
-  public var like: Bool
+  public var id: Int
 
   public var variables: GraphQLMap? {
-    ["reviewID": reviewID, "like": like]
+    ["id": id]
+  }
+
+}
+
+// MARK: - UnlikeReviewToggleMutation
+
+public final class UnlikeReviewToggleMutation: GraphQLMutation {
+
+  // MARK: Lifecycle
+
+  public init(id: Int) {
+    self.id = id
+  }
+
+  // MARK: Public
+
+  public struct Data: GraphQLSelectionSet {
+
+    // MARK: Lifecycle
+
+    public init(unsafeResultMap: ResultMap) {
+      resultMap = unsafeResultMap
+    }
+
+    public init(recommendEvent: RecommendEvent? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Mutation", "recommendEvent": recommendEvent.flatMap { (value: RecommendEvent) -> ResultMap in value.resultMap }])
+    }
+
+    // MARK: Public
+
+    public struct RecommendEvent: GraphQLSelectionSet {
+
+      // MARK: Lifecycle
+
+      public init(unsafeResultMap: ResultMap) {
+        resultMap = unsafeResultMap
+      }
+
+      public init(ok: Bool, error: Int? = nil) {
+        self.init(unsafeResultMap: ["__typename": "MutationResponse", "ok": ok, "error": error])
+      }
+
+      // MARK: Public
+
+      public static let possibleTypes: [String] = ["MutationResponse"]
+
+      public static var selections: [GraphQLSelection] {
+        [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("ok", type: .nonNull(.scalar(Bool.self))),
+          GraphQLField("error", type: .scalar(Int.self)),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public var __typename: String {
+        get {
+          resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var ok: Bool {
+        get {
+          resultMap["ok"]! as! Bool
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "ok")
+        }
+      }
+
+      public var error: Int? {
+        get {
+          resultMap["error"] as? Int
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "error")
+        }
+      }
+    }
+
+    public static let possibleTypes: [String] = ["Mutation"]
+
+    public static var selections: [GraphQLSelection] {
+      [
+        GraphQLField("recommendEvent", arguments: ["reviewId": GraphQLVariable("id"), "like": false], type: .object(RecommendEvent.selections)),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    /// --- 추천기능 구현 ---
+    ///
+    /// like Then TRUE - 해당 게시글 추천
+    ///
+    /// like Then False - 해당 게시글 비추천
+    public var recommendEvent: RecommendEvent? {
+      get {
+        (resultMap["recommendEvent"] as? ResultMap).flatMap { RecommendEvent(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "recommendEvent")
+      }
+    }
+
+  }
+
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    mutation unlikeReviewToggle($id: Int!) {
+      recommendEvent(reviewId: $id, like: false) {
+        __typename
+        ok
+        error
+      }
+    }
+    """
+
+  public let operationName: String = "unlikeReviewToggle"
+
+  public let operationIdentifier: String? = "12b468a2e85613a416cb3a325662de65635261bcea06aa9aa8b248116f9d25a8"
+
+  public var id: Int
+
+  public var variables: GraphQLMap? {
+    ["id": id]
+  }
+
+}
+
+// MARK: - ReviewLikeStatusQuery
+
+public final class ReviewLikeStatusQuery: GraphQLQuery {
+
+  // MARK: Lifecycle
+
+  public init(id: Int? = nil) {
+    self.id = id
+  }
+
+  // MARK: Public
+
+  public struct Data: GraphQLSelectionSet {
+
+    // MARK: Lifecycle
+
+    public init(unsafeResultMap: ResultMap) {
+      resultMap = unsafeResultMap
+    }
+
+    public init(searchReview: [SearchReview?]? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Query", "searchReview": searchReview.flatMap { (value: [SearchReview?]) -> [ResultMap?] in value.map { (value: SearchReview?) -> ResultMap? in value.flatMap { (value: SearchReview) -> ResultMap in value.resultMap } } }])
+    }
+
+    // MARK: Public
+
+    public struct SearchReview: GraphQLSelectionSet {
+
+      // MARK: Lifecycle
+
+      public init(unsafeResultMap: ResultMap) {
+        resultMap = unsafeResultMap
+      }
+
+      public init(getLikes: Int, getUnLikes: Int, isLike: Bool, isUnLike: Bool) {
+        self.init(unsafeResultMap: ["__typename": "Review", "getLikes": getLikes, "getUnLikes": getUnLikes, "isLike": isLike, "isUnLike": isUnLike])
+      }
+
+      // MARK: Public
+
+      public static let possibleTypes: [String] = ["Review"]
+
+      public static var selections: [GraphQLSelection] {
+        [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("getLikes", type: .nonNull(.scalar(Int.self))),
+          GraphQLField("getUnLikes", type: .nonNull(.scalar(Int.self))),
+          GraphQLField("isLike", type: .nonNull(.scalar(Bool.self))),
+          GraphQLField("isUnLike", type: .nonNull(.scalar(Bool.self))),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public var __typename: String {
+        get {
+          resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      /// 좋아요 수
+      public var getLikes: Int {
+        get {
+          resultMap["getLikes"]! as! Int
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "getLikes")
+        }
+      }
+
+      /// 싫어요 수
+      public var getUnLikes: Int {
+        get {
+          resultMap["getUnLikes"]! as! Int
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "getUnLikes")
+        }
+      }
+
+      /// 좋아요 상태
+      public var isLike: Bool {
+        get {
+          resultMap["isLike"]! as! Bool
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "isLike")
+        }
+      }
+
+      /// 싫어요 상태
+      public var isUnLike: Bool {
+        get {
+          resultMap["isUnLike"]! as! Bool
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "isUnLike")
+        }
+      }
+    }
+
+    public static let possibleTypes: [String] = ["Query"]
+
+    public static var selections: [GraphQLSelection] {
+      [
+        GraphQLField("searchReview", arguments: ["id": GraphQLVariable("id")], type: .list(.object(SearchReview.selections))),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    /// id -  PK
+    ///
+    /// title - 리뷰명(Startwith)
+    ///
+    /// category - 카테고리
+    ///
+    /// lastId - Pagination처리 변수
+    public var searchReview: [SearchReview?]? {
+      get {
+        (resultMap["searchReview"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [SearchReview?] in value.map { (value: ResultMap?) -> SearchReview? in value.flatMap { (value: ResultMap) -> SearchReview in SearchReview(unsafeResultMap: value) } } }
+      }
+      set {
+        resultMap.updateValue(newValue.flatMap { (value: [SearchReview?]) -> [ResultMap?] in value.map { (value: SearchReview?) -> ResultMap? in value.flatMap { (value: SearchReview) -> ResultMap in value.resultMap } } }, forKey: "searchReview")
+      }
+    }
+
+  }
+
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    query reviewLikeStatus($id: Int) {
+      searchReview(id: $id) {
+        __typename
+        getLikes
+        getUnLikes
+        isLike
+        isUnLike
+      }
+    }
+    """
+
+  public let operationName: String = "reviewLikeStatus"
+
+  public let operationIdentifier: String? = "413c3bf8392d04df96b92a4c889a8db0120e25df3f979b36017974ae07d6ff16"
+
+  public var id: Int?
+
+  public var variables: GraphQLMap? {
+    ["id": id]
   }
 
 }
@@ -1852,7 +2908,7 @@ public final class SearchReviewQuery: GraphQLQuery {
         resultMap = unsafeResultMap
       }
 
-      public init(id: Int, createdAt: String? = nil, updatedAt: String? = nil, title: String? = nil, content: String? = nil, upload: String? = nil, userId: Int? = nil, placeId: Int? = nil, getLikes: Int? = nil, getUnLikes: Int? = nil, isLike: Bool? = nil, isUnLike: Bool? = nil, user: User? = nil, comments: [Comment?]? = nil, errorCode: Int? = nil) {
+      public init(id: Int, createdAt: String, updatedAt: String, title: String? = nil, content: String? = nil, upload: String? = nil, userId: Int? = nil, placeId: Int? = nil, getLikes: Int, getUnLikes: Int, isLike: Bool, isUnLike: Bool, user: User? = nil, comments: [Comment?]? = nil, errorCode: Int? = nil) {
         self.init(unsafeResultMap: ["__typename": "Review", "id": id, "createdAt": createdAt, "updatedAt": updatedAt, "title": title, "content": content, "upload": upload, "userId": userId, "placeId": placeId, "getLikes": getLikes, "getUnLikes": getUnLikes, "isLike": isLike, "isUnLike": isUnLike, "user": user.flatMap { (value: User) -> ResultMap in value.resultMap }, "comments": comments.flatMap { (value: [Comment?]) -> [ResultMap?] in value.map { (value: Comment?) -> ResultMap? in value.flatMap { (value: Comment) -> ResultMap in value.resultMap } } }, "errorCode": errorCode])
       }
 
@@ -1997,17 +3053,17 @@ public final class SearchReviewQuery: GraphQLQuery {
         [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("id", type: .nonNull(.scalar(Int.self))),
-          GraphQLField("createdAt", type: .scalar(String.self)),
-          GraphQLField("updatedAt", type: .scalar(String.self)),
+          GraphQLField("createdAt", type: .nonNull(.scalar(String.self))),
+          GraphQLField("updatedAt", type: .nonNull(.scalar(String.self))),
           GraphQLField("title", type: .scalar(String.self)),
           GraphQLField("content", type: .scalar(String.self)),
           GraphQLField("upload", type: .scalar(String.self)),
           GraphQLField("userId", type: .scalar(Int.self)),
           GraphQLField("placeId", type: .scalar(Int.self)),
-          GraphQLField("getLikes", type: .scalar(Int.self)),
-          GraphQLField("getUnLikes", type: .scalar(Int.self)),
-          GraphQLField("isLike", type: .scalar(Bool.self)),
-          GraphQLField("isUnLike", type: .scalar(Bool.self)),
+          GraphQLField("getLikes", type: .nonNull(.scalar(Int.self))),
+          GraphQLField("getUnLikes", type: .nonNull(.scalar(Int.self))),
+          GraphQLField("isLike", type: .nonNull(.scalar(Bool.self))),
+          GraphQLField("isUnLike", type: .nonNull(.scalar(Bool.self))),
           GraphQLField("user", type: .object(User.selections)),
           GraphQLField("comments", type: .list(.object(Comment.selections))),
           GraphQLField("errorCode", type: .scalar(Int.self)),
@@ -2036,9 +3092,9 @@ public final class SearchReviewQuery: GraphQLQuery {
       }
 
       /// 생성날짜
-      public var createdAt: String? {
+      public var createdAt: String {
         get {
-          resultMap["createdAt"] as? String
+          resultMap["createdAt"]! as! String
         }
         set {
           resultMap.updateValue(newValue, forKey: "createdAt")
@@ -2046,9 +3102,9 @@ public final class SearchReviewQuery: GraphQLQuery {
       }
 
       /// 수정날짜
-      public var updatedAt: String? {
+      public var updatedAt: String {
         get {
-          resultMap["updatedAt"] as? String
+          resultMap["updatedAt"]! as! String
         }
         set {
           resultMap.updateValue(newValue, forKey: "updatedAt")
@@ -2106,9 +3162,9 @@ public final class SearchReviewQuery: GraphQLQuery {
       }
 
       /// 좋아요 수
-      public var getLikes: Int? {
+      public var getLikes: Int {
         get {
-          resultMap["getLikes"] as? Int
+          resultMap["getLikes"]! as! Int
         }
         set {
           resultMap.updateValue(newValue, forKey: "getLikes")
@@ -2116,9 +3172,9 @@ public final class SearchReviewQuery: GraphQLQuery {
       }
 
       /// 싫어요 수
-      public var getUnLikes: Int? {
+      public var getUnLikes: Int {
         get {
-          resultMap["getUnLikes"] as? Int
+          resultMap["getUnLikes"]! as! Int
         }
         set {
           resultMap.updateValue(newValue, forKey: "getUnLikes")
@@ -2126,9 +3182,9 @@ public final class SearchReviewQuery: GraphQLQuery {
       }
 
       /// 좋아요 상태
-      public var isLike: Bool? {
+      public var isLike: Bool {
         get {
-          resultMap["isLike"] as? Bool
+          resultMap["isLike"]! as! Bool
         }
         set {
           resultMap.updateValue(newValue, forKey: "isLike")
@@ -2136,9 +3192,9 @@ public final class SearchReviewQuery: GraphQLQuery {
       }
 
       /// 싫어요 상태
-      public var isUnLike: Bool? {
+      public var isUnLike: Bool {
         get {
-          resultMap["isUnLike"] as? Bool
+          resultMap["isUnLike"]! as! Bool
         }
         set {
           resultMap.updateValue(newValue, forKey: "isUnLike")
@@ -2187,6 +3243,8 @@ public final class SearchReviewQuery: GraphQLQuery {
 
     public private(set) var resultMap: ResultMap
 
+    /// id -  PK
+    ///
     /// title - 리뷰명(Startwith)
     ///
     /// category - 카테고리

@@ -1,5 +1,12 @@
-mutation like($reviewID: Int!, $like: Boolean!) {
-  recommendEvent(reviewId: $reviewID, like: $like) {
+mutation likeReviewToggle($id: Int!) {
+  recommendEvent(reviewId: $id, like: true) {
+    ok
+    error
+  }
+}
+
+mutation unlikeReviewToggle($id: Int!) {
+  recommendEvent(reviewId: $id, like: false) {
     ok
     error
   }

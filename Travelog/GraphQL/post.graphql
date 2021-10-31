@@ -1,0 +1,28 @@
+query post($id: Int!) {
+  searchReviewRoom(roomId: $id) {
+    id
+    createdAt
+    updatedAt
+    review {
+      id
+      createdAt
+      updatedAt
+      title
+      content
+      upload
+      userId
+      placeId
+      getLikes
+      getUnLikes
+      isLike
+      isUnLike
+
+      comments { 
+        id
+        userId
+        createdAt
+        updatedAt
+        payload
+    }
+  }
+}

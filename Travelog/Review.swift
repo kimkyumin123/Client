@@ -56,11 +56,18 @@ extension SearchReviewQuery.Data.SearchReview {
       text: content,
       image: upload,
       placeID: placeId,
-      likesCount: getLikes ?? 0,
-      unlikeCount: getUnLikes ?? 0,
-      isLike: isLike ?? false,
-      isUnlike: isUnLike ?? false,
+      likesCount: getLikes,
+      unlikeCount: getUnLikes,
+      isLike: isLike,
+      isUnlike: isUnLike,
       comments: comments?.compactMap({ $0?.comment }) ?? [])
+  }
+}
+
+extension PostQuery.Data.SearchReviewRoom.Review {
+  var review: Review {
+    // TODO: - image 구현 필요
+    Review(id: id, title: title, text: content, image: nil, placeID: placeId, likesCount: getLikes, unlikeCount: getUnLikes, isLike: isLike, isUnlike: isUnLike, comments: [])
   }
 }
 

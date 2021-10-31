@@ -25,19 +25,26 @@ import RxRelay
  */
 
 final class DetailPostViewModel: Reactor, Stepper {
+
+  // MARK: Lifecycle
+
+  init(postID: Int) {
+    self.postID = postID
+  }
+
+  // MARK: Internal
+
   enum Action {
-//    case likeToggle
-//    case unlikeToggle
+    case likeToggle(reviewID: Int)
+    case unlikeToggle(reviewID: Int)
+    case reloadPost
 //    case comment(reviewID: Int, text: String)
 //    case reloadComment
-//    case reloadPost
   }
 
   enum Mutation {
-//      case updatePosts
-//      case updatePostsCount
-//      case updateLikeCount(Int)
-//      case updateUnlikeCount(Int)
+    case updateReviews([Review])
+    case updateLikeStatus(reviewID: Int, likeCount: Int, unlikeCount: Int, isLike: Bool, isUnlike: Bool)
   }
 
   struct State {
@@ -47,23 +54,63 @@ final class DetailPostViewModel: Reactor, Stepper {
 
   var steps = PublishRelay<Step>()
   var initialState = State()
+  let postID: Int
 
   func mutate(action: Action) -> Observable<Mutation> {
+    switch action {
+    case .likeToggle(let id):
+      return likeToggle(reviewID: id)
+        .flatMap { _ in
+          ReviewService.updateLikeStatus(id: id)
+            .map { Mutation.updateLikeStatus(reviewID: id, likeCount: $0.likeCount, unlikeCount: $0.unlikeCount, isLike: $0.isLike, isUnlike: $0.isUnlike) }
+        }
+
+    case .unlikeToggle(let id):
+      return unlikeToggle(reviewID: id)
+        .flatMap { _ in
+          ReviewService.updateLikeStatus(id: id)
+            .map { Mutation.updateLikeStatus(reviewID: id, likeCount: $0.likeCount, unlikeCount: $0.unlikeCount, isLike: $0.isLike, isUnlike: $0.isUnlike) }
+        }
+
+    case .reloadPost:
+      return ReviewService.post(postID: postID)
+        .map { Mutation.updateReviews($0.reviews) }
+    }
 
   }
 
   func reduce(state: State, mutation: Mutation) -> State {
-
+    var newState = state
+    switch mutation {
+    case .updateLikeStatus(let id, let likeCount, let unlikeCount, let isLike, let isUnlike):
+      if let index = newState.reviews.firstIndex(where: { $0.id == id }) {
+        newState.reviews[index].likesCount = likeCount
+        newState.reviews[index].unlikeCount = unlikeCount
+        newState.reviews[index].isLike = isLike
+        newState.reviews[index].isUnlike = isUnlike
+      }
+    case .updateReviews(let reviews):
+      newState.reviews = reviews
+    }
+    return newState
   }
 }
 
 // MARK: - Logic
 
 extension DetailPostViewModel {
-  private func likeToggle(reviewID: Int) -> Observable<Void> {
-    guard let _review = currentState.reviews.filter({ $0.id == reviewID }).first else { return .empty() }
-    let isLike = _review.isLike
-
-    return ReviewService.likeReview(id: reviewID, like: !isLike)
+  private func likeToggle(reviewID: Int) -> Observable<Never> {
+    ReviewService.likeReview(id: reviewID)
+      .asObservable()
   }
+
+  private func unlikeToggle(reviewID: Int) -> Observable<Never> {
+    ReviewService.unlikeReviewToggle(id: reviewID)
+      .asObservable()
+  }
+  
+  private func test() {
+    
+  }
+
 }

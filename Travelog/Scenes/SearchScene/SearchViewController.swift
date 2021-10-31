@@ -61,13 +61,15 @@ extension SearchViewController {
     // TODO: - tableView 바인딩
     _ = reactor.state.map(\.places)
       .distinctUntilChanged()
-      .filter { [weak self] _ in self?.reactor?.currentState.segment == .place }
+      .withUnretained(reactor)
+      .filter { reactor, _ in reactor.currentState.segment == .place }
 
     // reviews 지정
     // TODO: - tableView 바인딩
     _ = reactor.state.map(\.reviews)
       .distinctUntilChanged()
-      .filter { [weak self] _ in self?.reactor?.currentState.segment == .review }
+      .withUnretained(reactor)
+      .filter { reactor, _ in reactor.currentState.segment == .review }
 
   }
 }

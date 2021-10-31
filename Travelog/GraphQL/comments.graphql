@@ -1,0 +1,11 @@
+query comments($reviewID: Int) {
+  searchReview(id: $reviewID) {
+    comments {
+      id
+      userId
+      createdAt
+      updatedAt
+      payload
+    }
+  }
+}
