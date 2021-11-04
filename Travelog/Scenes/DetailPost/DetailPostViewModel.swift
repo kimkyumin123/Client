@@ -15,13 +15,13 @@ import RxRelay
 /** TODO:
  - 지도 정보 표시
  - 게시글 스크롤 뷰로 페이징 처리해서 표시
-   - 이미지 / 텍스트 표시
-   - load comments
-   - 좋아요 카운트
-   - 현재 게시글 좋아요 상태
+ - 이미지 / 텍스트 표시
+ - load comments
+ - 좋아요 카운트
+ - 현재 게시글 좋아요 상태
 
-  - 좋아요 업 다운 액션 / 카운트
-  - 댓글 좋아요 업다운.
+ - 좋아요 업 다운 액션 / 카운트
+ - 댓글 좋아요 업다운.
  */
 
 final class DetailPostViewModel: Reactor, Stepper {
@@ -38,8 +38,8 @@ final class DetailPostViewModel: Reactor, Stepper {
     case likeToggle(reviewID: Int)
     case unlikeToggle(reviewID: Int)
     case reloadPost
-//    case comment(reviewID: Int, text: String)
-//    case reloadComment
+    //    case comment(reviewID: Int, text: String)
+    //    case reloadComment
   }
 
   enum Mutation {
@@ -59,18 +59,30 @@ final class DetailPostViewModel: Reactor, Stepper {
   func mutate(action: Action) -> Observable<Mutation> {
     switch action {
     case .likeToggle(let id):
-      return likeToggle(reviewID: id)
-        .flatMap { _ in
+      return ReviewService.likeReview(id: id)
+        .andThen(
           ReviewService.updateLikeStatus(id: id)
-            .map { Mutation.updateLikeStatus(reviewID: id, likeCount: $0.likeCount, unlikeCount: $0.unlikeCount, isLike: $0.isLike, isUnlike: $0.isUnlike) }
-        }
+            .map { Mutation.updateLikeStatus(
+              reviewID: id,
+              likeCount: $0.likeCount,
+              unlikeCount: $0.unlikeCount,
+              isLike: $0.isLike,
+              isUnlike: $0.isUnlike)
+            }
+        )
 
     case .unlikeToggle(let id):
-      return unlikeToggle(reviewID: id)
-        .flatMap { _ in
+      return ReviewService.unlikeReviewToggle(id: id)
+        .andThen(
           ReviewService.updateLikeStatus(id: id)
-            .map { Mutation.updateLikeStatus(reviewID: id, likeCount: $0.likeCount, unlikeCount: $0.unlikeCount, isLike: $0.isLike, isUnlike: $0.isUnlike) }
-        }
+            .map { Mutation.updateLikeStatus(
+              reviewID: id,
+              likeCount: $0.likeCount,
+              unlikeCount: $0.unlikeCount,
+              isLike: $0.isLike,
+              isUnlike: $0.isUnlike)
+            }
+        )
 
     case .reloadPost:
       return ReviewService.post(postID: postID)
@@ -108,9 +120,4 @@ extension DetailPostViewModel {
     ReviewService.unlikeReviewToggle(id: reviewID)
       .asObservable()
   }
-  
-  private func test() {
-    
-  }
-
 }

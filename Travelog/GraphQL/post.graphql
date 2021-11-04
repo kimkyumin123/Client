@@ -16,13 +16,13 @@ query post($id: Int!) {
       getUnLikes
       isLike
       isUnLike
-
-      comments { 
+      comments {
         id
         userId
         createdAt
         updatedAt
         payload
+      }
     }
   }
 }

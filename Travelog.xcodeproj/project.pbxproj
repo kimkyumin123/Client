@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		48018979272E97FE004A7468 /* ReviewServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48018978272E97FE004A7468 /* ReviewServiceTests.swift */; };
 		4807046327171B5D008E20CC /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 4807046227171B5D008E20CC /* KakaoSDKAuth */; };
 		4807046527171B5D008E20CC /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 4807046427171B5D008E20CC /* KakaoSDKCommon */; };
 		4807046727171B5D008E20CC /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 4807046627171B5D008E20CC /* KakaoSDKUser */; };
@@ -71,6 +72,7 @@
 		48BC6D0126D90682002AC334 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BC6D0026D90682002AC334 /* Review.swift */; };
 		48C2DB1226BD8A9600877AB5 /* NaverThirdPartyLogin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48C2DB0E26BD8A7400877AB5 /* NaverThirdPartyLogin.framework */; };
 		48C2DB1326BD8A9600877AB5 /* NaverThirdPartyLogin.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48C2DB0E26BD8A7400877AB5 /* NaverThirdPartyLogin.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		48DA924F2732E99400FD1381 /* PhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DA924E2732E99400FD1381 /* PhotoService.swift */; };
 		48E3D28526C3FF21007D08ED /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E3D28426C3FF21007D08ED /* UserService.swift */; };
 		48E3D28726C3FF2A007D08ED /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E3D28626C3FF2A007D08ED /* KeychainService.swift */; };
 		48E3D2AF26C41C23007D08ED /* OSLog+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E3D2AE26C41C23007D08ED /* OSLog+Extension.swift */; };
@@ -141,6 +143,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		48018978272E97FE004A7468 /* ReviewServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewServiceTests.swift; sourceTree = "<group>"; };
 		4807044B27171A26008E20CC /* KakaoSDK */ = {isa = PBXFileReference; lastKnownFileType = folder; name = KakaoSDK; path = ../../KakaoSDK; sourceTree = "<group>"; };
 		48123D7A26B1A8EE0058CEDF /* SwiftUIPreview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftUIPreview.swift; sourceTree = "<group>"; };
 		48123D7C26B1A9070058CEDF /* PlaceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceCell.swift; sourceTree = "<group>"; };
@@ -197,6 +200,7 @@
 		48BC6D0026D90682002AC334 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Review.swift; path = Travelog/Review.swift; sourceTree = SOURCE_ROOT; };
 		48C2DB0E26BD8A7400877AB5 /* NaverThirdPartyLogin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NaverThirdPartyLogin.framework; path = frameworks/NaverThirdPartyLogin.framework; sourceTree = "<group>"; };
 		48D9106A26BABC1B00F6601C /* Travelog.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Travelog.xcodeproj; sourceTree = "<group>"; };
+		48DA924E2732E99400FD1381 /* PhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoService.swift; sourceTree = "<group>"; };
 		48E3D28426C3FF21007D08ED /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		48E3D28626C3FF2A007D08ED /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		48E3D2AE26C41C23007D08ED /* OSLog+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSLog+Extension.swift"; sourceTree = "<group>"; };
@@ -299,6 +303,7 @@
 				4869D02F26C808330076C570 /* SignUpTests.swift */,
 				4825FEEF26CA4D1A00BD1402 /* UserServiceTests.swift */,
 				4825FEF726CBB7F700BD1402 /* ThirdPartyLoginServiceTests.swift */,
+				48018978272E97FE004A7468 /* ReviewServiceTests.swift */,
 				48609AEB26D4FC9D0095C5E7 /* PlaceServiceTests.swift */,
 			);
 			path = TravelogUnitTest;
@@ -334,6 +339,7 @@
 			isa = PBXGroup;
 			children = (
 				48E3D28426C3FF21007D08ED /* UserService.swift */,
+				48DA924E2732E99400FD1381 /* PhotoService.swift */,
 				48E3D28626C3FF2A007D08ED /* KeychainService.swift */,
 				4825FEF526CBB79700BD1402 /* ThirdPartyLoginService.swift */,
 				48609AE126D39C300095C5E7 /* APIPlaceSearchService.swift */,
@@ -716,6 +722,7 @@
 			files = (
 				4825FEF026CA4D1A00BD1402 /* UserServiceTests.swift in Sources */,
 				4825FEF826CBB7F700BD1402 /* ThirdPartyLoginServiceTests.swift in Sources */,
+				48018979272E97FE004A7468 /* ReviewServiceTests.swift in Sources */,
 				4869D03026C808330076C570 /* SignUpTests.swift in Sources */,
 				48609AEC26D4FC9D0095C5E7 /* PlaceServiceTests.swift in Sources */,
 			);
@@ -743,6 +750,7 @@
 				4898972526AC36DC000499AC /* HomeFlow.swift in Sources */,
 				48F33B2626AC2BBC00A704C7 /* AppDelegate.swift in Sources */,
 				485060C827180942002645AE /* CategorySelectView.swift in Sources */,
+				48DA924F2732E99400FD1381 /* PhotoService.swift in Sources */,
 				489FB9E526AC3D0600641F21 /* UserInfoViewModel.swift in Sources */,
 				48EE6AD926F32FC6008CD9B2 /* PostWriteViewModel.swift in Sources */,
 				489FB9D426AC3A4400641F21 /* MapViewController.swift in Sources */,

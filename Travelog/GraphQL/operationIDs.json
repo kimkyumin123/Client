@@ -15,6 +15,10 @@
     "name": "createPlace",
     "source": "mutation createPlace($place: [InputPlace]) {\n  createPlace(place: $place) {\n    __typename\n    ok\n    error\n  }\n}"
   },
+  "408528256d8bc29c1a8f3367426abb20570d06504b262d19d33c3e0687fb2c0c": {
+    "name": "createReview",
+    "source": "mutation createReview($reviews: [ReviewInput]) {\n  createReview(review: $reviews) {\n    __typename\n    ok\n    error\n  }\n}"
+  },
   "a00f2b37f66b1ebe864fac757a5194545886228b7e78204128314ba74ca7ab9c": {
     "name": "createUser",
     "source": "mutation createUser($bio: String, $userName: String!, $gender: String, $ageRange: String, $email: String!, $nickName: String!, $avatar: String, $password: String!) {\n  createUser(\n    bio: $bio\n    userName: $userName\n    gender: $gender\n    ageRange: $ageRange\n    email: $email\n    nickName: $nickName\n    avatar: $avatar\n    password: $password\n  ) {\n    __typename\n    ok\n    error\n  }\n}"
@@ -39,13 +43,9 @@
     "name": "OAuthUserLogin",
     "source": "mutation OAuthUserLogin($platform_type: String!, $accesstoken: String!) {\n  authUserLogin(platform_type: $platform_type, accesstoken: $accesstoken) {\n    __typename\n    ok\n    error\n    token {\n      __typename\n      accessToken\n      refreshToken\n    }\n  }\n}"
   },
-  "8ad30a9409203f2359a740e9da345e76b5fa29e0b27032b1cd89e56d6a1451a5": {
+  "e7b6019f627a898ecca592f3a18dcbb5a4ac116eea7feca11af08017deaff7fb": {
     "name": "post",
-    "source": "query post($id: Int!) {\n  searchReviewRoom(roomId: $id) {\n    __typename\n    id\n    createdAt\n    updatedAt\n    review {\n      __typename\n      id\n      createdAt\n      updatedAt\n      title\n      content\n      upload\n      userId\n      placeId\n      getLikes\n      getUnLikes\n      isLike\n      isUnLike\n    }\n  }\n}"
-  },
-  "c3ca8434c93a6be062a9eaf80411a7b4518b11b99a3d43777a0efcde640d60ee": {
-    "name": "comment",
-    "source": "query comment($id: Int) {\n  searchReview(id: $id) {\n    __typename\n    comments {\n      __typename\n      id\n      userId\n      createdAt\n      updatedAt\n      payload\n    }\n  }\n}"
+    "source": "query post($id: Int!) {\n  searchReviewRoom(roomId: $id) {\n    __typename\n    id\n    createdAt\n    updatedAt\n    review {\n      __typename\n      id\n      createdAt\n      updatedAt\n      title\n      content\n      upload\n      userId\n      placeId\n      getLikes\n      getUnLikes\n      isLike\n      isUnLike\n      comments {\n        __typename\n        id\n        userId\n        createdAt\n        updatedAt\n        payload\n      }\n    }\n  }\n}"
   },
   "018684cb8e48f4447c07a6b74079e987f56f5716050055dd552741945b769fc8": {
     "name": "likeReviewToggle",

@@ -16,6 +16,7 @@ extension OSLog {
   static let apollo = OSLog(subsystem: subsystem, category: "👩‍🎤 GraphQL")
   static let user = OSLog(subsystem: subsystem, category: "👤 User")
   static let flow = OSLog(subsystem: subsystem, category: "🖥 Flow")
+  static let review = OSLog(subsystem: subsystem, category: "🖊 Review ")
 
   // MARK: Private
 

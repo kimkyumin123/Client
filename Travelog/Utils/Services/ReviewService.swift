@@ -7,6 +7,8 @@
 
 import Apollo
 import Foundation
+import os.log
+import Photos
 import RxSwift
 
 // MARK: - ReviewService
@@ -134,6 +136,53 @@ final class ReviewService {
       .compactMap { $0.searchReviewRoom?.post }
       .asObservable()
   }
+
+  static func write(post: [ReviewInput], images: [PHAsset]) -> Completable {
+    os_log(.debug, log: .review, "write(post:images)")
+    var post = post
+
+    return Observable.zip(
+      images.map { PhotoService.data(from: $0) }
+    ) { $0.enumerated() }
+      .map { data -> [GraphQLFile] in
+        data.map { idx, data -> GraphQLFile in
+          let name = String(idx)
+          let resource = PHAssetResource.assetResources(for: images[idx])
+          post[idx].upload = "variables.files." + String((resource.first?.originalFilename ?? name).split(separator: ".")[0])
+          return GraphQLFile(fieldName: "upload", originalName: resource.first?.originalFilename ?? name, mimeType: "image/jpeg", data: data)
+        }
+      }
+      .flatMap { files -> Observable<Never> in
+        .create { subscriber in
+          print(post)
+          let request = Network.shared.apollo.upload(operation: CreateReviewMutation(reviews: post), files: files) {
+
+            switch $0 {
+            case .success(let success):
+              print("⭐️", success)
+            case .failure(let error):
+              print("⭐️", error.localizedDescription)
+            }
+
+            guard let data = try? $0.get().data?.createReview else {
+              subscriber.onError(ReviewServiceError.requestFailed)
+              return
+            }
+
+            if data.ok {
+              subscriber.onCompleted()
+            }
+
+          }
+
+          return Disposables.create { request.cancel() }
+        }
+      }
+      .asCompletable()
+      .debug()
+
+  }
+
 }
 
 // MARK: - ReviewServiceError
