@@ -60,7 +60,7 @@ extension SearchReviewQuery.Data.SearchReview {
       unlikeCount: getUnLikes,
       isLike: isLike,
       isUnlike: isUnLike,
-      comments: comments?.compactMap({ $0?.comment }) ?? [])
+      comments: comments.map { $0.comment })
   }
 }
 

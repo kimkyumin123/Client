@@ -46,7 +46,7 @@ struct UserAccount {
       ageRange: String? = nil,
       email: String,
       nickName: String,
-      avatar: String? = nil,
+      avatar: Data? = nil,
       password: String)
     {
       self.userName = userName
@@ -67,15 +67,15 @@ struct UserAccount {
     let ageRange: String?
     let email: String
     let nickName: String
-    let avatar: String?
+    let avatar: Data?
     let password: String
 
   }
 
   struct OAuthSignUpFields {
     let nickName: String
-    let avatar: String?
-    let bio: String?
+    let avatar: Data? = nil
+    let bio: String? = nil
 //    let email: String
   }
 
@@ -86,7 +86,7 @@ struct UserAccount {
     init(
       nickName: String? = nil,
       bio: String? = nil,
-      avatar: String? = nil,
+      avatar: Data? = nil,
       password: String? = nil,
       gender: String? = nil,
       ageRange: String? = nil)
@@ -103,7 +103,7 @@ struct UserAccount {
 
     let nickName: String?
     let bio: String?
-    let avatar: String?
+    let avatar: Data?
     let password: String?
     let gender: String?
     let ageRange: String?

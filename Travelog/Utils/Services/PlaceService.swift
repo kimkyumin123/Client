@@ -26,7 +26,7 @@ final class PlaceService {
           return
         }
 
-        let value = data.compactMap { $0?.place }
+        let value = data.map { $0.place }
 
         subscriber.onNext(value)
         subscriber.onCompleted()

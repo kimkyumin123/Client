@@ -66,7 +66,7 @@ final class ReviewService {
           return
         }
 
-        subscriber.onNext(data.compactMap { $0?.review })
+        subscriber.onNext(data.map { $0.review })
         subscriber.onCompleted()
       }
 
@@ -116,8 +116,7 @@ final class ReviewService {
       let query = Network.shared.apollo.fetch(query: ReviewLikeStatusQuery(id: id)) {
         guard
           let _data = try? $0.get().data?.searchReview,
-          let review = _data.first,
-          let review = review else
+          let review = _data.first else
         {
           subscriber.onError(ReviewServiceError.requestFailed)
           return

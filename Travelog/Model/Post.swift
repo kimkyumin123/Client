@@ -25,7 +25,6 @@ struct Post {
 
 extension PostQuery.Data.SearchReviewRoom {
   var post: Post {
-    Post(id: id, createdAt: createdAt, updatedAt: updatedAt , reviews: review.compactMap { $0?.review } )
+    Post(id: id, createdAt: createdAt, updatedAt: updatedAt , reviews: review.map { $0.review } )
   }
-
 }

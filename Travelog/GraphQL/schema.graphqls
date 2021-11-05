@@ -26,7 +26,7 @@ type Comment {
   reviewId: Int!
 
   """해시태그"""
-  hashtags: [HashTag]
+  hashtags: [HashTag!]
 
   """작성자 본인확인"""
   isMe: Boolean!
@@ -108,7 +108,7 @@ type Query {
   
   lastId : 페이징처리를 위한 변수이며, 마지막으로 조회했던 Place의 ID
   """
-  searchPlace(title: String!, category: String, lastId: Int): [Place]
+  searchPlace(title: String!, category: String, lastId: Int): [Place!]!
 
   """
   해당장소에 대한 리뷰출력을 위한 뮤테이션
@@ -117,7 +117,7 @@ type Query {
   
   lastId - Pagination처리를 위함(해당Id 이후 항목 전달)
   """
-  aboutPlaceReview(placeId: String!, lastId: Int): [Review]
+  aboutPlaceReview(placeId: String!, lastId: Int): [Review!]!
 
   """
   id -  PK
@@ -128,7 +128,7 @@ type Query {
   
   lastId - Pagination처리 변수
   """
-  searchReview(id: Int, title: String, category: String, lastId: Int): [Review]
+  searchReview(id: Int, title: String, category: String, lastId: Int): [Review!]!
   searchReviewRoom(roomId: Int!): reviewRoom
   seeProfile(userName: String!): User
 }
@@ -147,22 +147,22 @@ type Review {
   title: String!
 
   """내용"""
-  content: String
+  content: String!
 
   """사진"""
-  upload: Upload
+  upload: Upload!
 
   """생성유저ID"""
-  userId: Int
+  userId: Int!
 
   """해당 유저정보"""
   user: User!
 
   """구현예정"""
-  comments: [Comment]
+  comments: [Comment!]!
 
   """추천"""
-  suggestions: Suggestion
+  suggestions: Suggestion!
 
   """장소 PK"""
   placeId: Int
@@ -171,19 +171,19 @@ type Review {
   place: Place
 
   """좋아요 수"""
-  getLikes: Int
+  getLikes: Int!
 
   """싫어요 수 """
-  getUnLikes: Int
+  getUnLikes: Int!
 
   """좋아요 상태"""
-  isLike: Boolean
+  isLike: Boolean!
 
   """싫어요 상태"""
-  isUnLike: Boolean
+  isUnLike: Boolean!
 
   """해시태그 """
-  hashtags: [HashTag]
+  hashtags: [HashTag!]!
 
   """에러코드"""
   errorCode: Int
@@ -194,13 +194,13 @@ type reviewRoom {
   id: Int!
 
   """생성날짜"""
-  createdAt: String
+  createdAt: String!
 
   """수정날짜"""
-  updatedAt: String
+  updatedAt: String!
 
   """해당리뷰"""
-  review: [Review]
+  review: [Review!]!
 }
 
 """The `Upload` scalar type represents a file upload."""
@@ -231,26 +231,26 @@ type Suggestion {
   id: Int!
   like: Int
   unLike: Int
-  reviewId: Int
-  userId: Int
+  reviewId: Int!
+  userId: Int!
 }
 
 type User {
   id: Int!
-  userName: String
+  userName: String!
   nickName: String!
   email: String!
   avatar: String
   bio: String
   gender: String
   ageRanger: String
-  createdAt: String
+  createdAt: String!
   updatedAt: String
-  reviews: [Review]
-  places: [Place]
+  reviews: [Review!]!
+  places: [Place!]!
   platformType: String
-  suggestions: [Suggestion]
-  comments: [Comment]
+  suggestions: [Suggestion!]!
+  comments: [Comment!]!
 }
 
 type Mutation {
@@ -277,7 +277,7 @@ type Mutation {
   like Then False - 해당 게시글 비추천
   """
   recommendEvent(reviewId: Int!, like: Boolean!): MutationResponse
-  updateReview(review: [UpdateReviewInput]): MutationResponse
+  updateReview(review: [UpdateReviewInput!]): MutationResponse
   authUserLogin(platform_type: String!, accesstoken: String!): loginResponse
   authVaildation: authResponse
   createAuthUser(nickName: String!, avatar: Upload, bio: String, platformType: String!, token: String!): MutationResponse

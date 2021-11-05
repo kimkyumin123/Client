@@ -7,21 +7,21 @@
     "name": "comments",
     "source": "query comments($reviewID: Int) {\n  searchReview(id: $reviewID) {\n    __typename\n    comments {\n      __typename\n      id\n      userId\n      createdAt\n      updatedAt\n      payload\n    }\n  }\n}"
   },
-  "e665cbb1fd4516a3603922c1082f859562b495ca3e0681e8794e4639bf966659": {
+  "24fbe06876ad34d4fdf0e4c53d63c83ce311abcf2c2dfb5a486011555567cd51": {
     "name": "createAuthUser",
-    "source": "mutation createAuthUser($nickName: String!, $avatar: String, $bio: String, $platformType: String!, $token: String!) {\n  createAuthUser(\n    nickName: $nickName\n    avatar: $avatar\n    bio: $bio\n    platformType: $platformType\n    token: $token\n  ) {\n    __typename\n    ok\n    error\n  }\n}"
+    "source": "mutation createAuthUser($nickName: String!, $avatar: Upload, $bio: String, $platformType: String!, $token: String!) {\n  createAuthUser(\n    nickName: $nickName\n    avatar: $avatar\n    bio: $bio\n    platformType: $platformType\n    token: $token\n  ) {\n    __typename\n    ok\n    error\n  }\n}"
   },
   "3023c4d6eb955626fd2fdec2fbb0b0617b489b8adac1502dd1ad7827b44be243": {
     "name": "createPlace",
     "source": "mutation createPlace($place: [InputPlace]) {\n  createPlace(place: $place) {\n    __typename\n    ok\n    error\n  }\n}"
   },
-  "c846a8d489d17b2583d259117f8fa123ba16b51bd3be6a982bd3d1b8c7f24078": {
+  "408528256d8bc29c1a8f3367426abb20570d06504b262d19d33c3e0687fb2c0c": {
     "name": "createReview",
-    "source": "mutation createReview($reviews: [ReviewInput]) {\n  createReview(reviews: $reviews) {\n    __typename\n    ok\n    error\n  }\n}"
+    "source": "mutation createReview($reviews: [ReviewInput]) {\n  createReview(review: $reviews) {\n    __typename\n    ok\n    error\n  }\n}"
   },
-  "a00f2b37f66b1ebe864fac757a5194545886228b7e78204128314ba74ca7ab9c": {
+  "9afa4f56bb8ecdfa8d50c7283b30b607f3e8450af927977521930f8f52a01d47": {
     "name": "createUser",
-    "source": "mutation createUser($bio: String, $userName: String!, $gender: String, $ageRange: String, $email: String!, $nickName: String!, $avatar: String, $password: String!) {\n  createUser(\n    bio: $bio\n    userName: $userName\n    gender: $gender\n    ageRange: $ageRange\n    email: $email\n    nickName: $nickName\n    avatar: $avatar\n    password: $password\n  ) {\n    __typename\n    ok\n    error\n  }\n}"
+    "source": "mutation createUser($bio: String, $userName: String!, $gender: String, $ageRange: String, $email: String!, $nickName: String!, $avatar: Upload, $password: String!) {\n  createUser(\n    bio: $bio\n    userName: $userName\n    gender: $gender\n    ageRange: $ageRange\n    email: $email\n    nickName: $nickName\n    avatar: $avatar\n    password: $password\n  ) {\n    __typename\n    ok\n    error\n  }\n}"
   },
   "ac033692911a3a35eb3690f6ee14a97b5c6156517480929b1204e1d4b2bf540a": {
     "name": "deletePlace",
