@@ -5,7 +5,7 @@ mutation createUser(
   $ageRange: String
   $email: String!
   $nickName: String!
-  $avatar: String
+  $avatar: Upload
   $password: String!
 ) {
   createUser(

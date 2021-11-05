@@ -1,0 +1,6 @@
+mutation createReview($reviews: [ReviewInput]) {
+  createReview(review: $reviews) {
+    ok
+    error
+  }
+}

@@ -15,9 +15,9 @@
     "name": "createPlace",
     "source": "mutation createPlace($place: [InputPlace]) {\n  createPlace(place: $place) {\n    __typename\n    ok\n    error\n  }\n}"
   },
-  "408528256d8bc29c1a8f3367426abb20570d06504b262d19d33c3e0687fb2c0c": {
+  "c846a8d489d17b2583d259117f8fa123ba16b51bd3be6a982bd3d1b8c7f24078": {
     "name": "createReview",
-    "source": "mutation createReview($reviews: [ReviewInput]) {\n  createReview(review: $reviews) {\n    __typename\n    ok\n    error\n  }\n}"
+    "source": "mutation createReview($reviews: [ReviewInput]) {\n  createReview(reviews: $reviews) {\n    __typename\n    ok\n    error\n  }\n}"
   },
   "a00f2b37f66b1ebe864fac757a5194545886228b7e78204128314ba74ca7ab9c": {
     "name": "createUser",

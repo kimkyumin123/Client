@@ -11,13 +11,13 @@ type Comment {
   userId: Int!
 
   """생성날짜"""
-  createdAt: String
+  createdAt: String!
 
   """수정날짜"""
-  updatedAt: String
+  updatedAt: String!
 
   """댓글내용"""
-  payload: String
+  payload: String!
 
   """해당리뷰"""
   review: Review!
@@ -67,10 +67,10 @@ type Place {
   id: Int!
 
   """생성날짜"""
-  createdAt: String
+  createdAt: String!
 
   """수정날짜"""
-  updatedAt: String
+  updatedAt: String!
 
   """제목"""
   title: String!
@@ -144,7 +144,7 @@ type Review {
   updatedAt: String!
 
   """제목"""
-  title: String
+  title: String!
 
   """내용"""
   content: String
@@ -156,7 +156,7 @@ type Review {
   userId: Int
 
   """해당 유저정보"""
-  user: User
+  user: User!
 
   """구현예정"""
   comments: [Comment]
@@ -171,16 +171,16 @@ type Review {
   place: Place
 
   """좋아요 수"""
-  getLikes: Int!
+  getLikes: Int
 
   """싫어요 수 """
-  getUnLikes: Int!
+  getUnLikes: Int
 
   """좋아요 상태"""
-  isLike: Boolean!
+  isLike: Boolean
 
   """싫어요 상태"""
-  isUnLike: Boolean!
+  isUnLike: Boolean
 
   """해시태그 """
   hashtags: [HashTag]
@@ -194,13 +194,13 @@ type reviewRoom {
   id: Int!
 
   """생성날짜"""
-  createdAt: String!
+  createdAt: String
 
   """수정날짜"""
-  updatedAt: String!
+  updatedAt: String
 
   """해당리뷰"""
-  review: [Review]!
+  review: [Review]
 }
 
 """The `Upload` scalar type represents a file upload."""
@@ -280,8 +280,8 @@ type Mutation {
   updateReview(review: [UpdateReviewInput]): MutationResponse
   authUserLogin(platform_type: String!, accesstoken: String!): loginResponse
   authVaildation: authResponse
-  createAuthUser(nickName: String!, avatar: String, bio: String, platformType: String!, token: String!): MutationResponse
-  createUser(bio: String, userName: String!, gender: String, ageRange: String, email: String!, nickName: String!, avatar: String, password: String!): MutationResponse
+  createAuthUser(nickName: String!, avatar: Upload, bio: String, platformType: String!, token: String!): MutationResponse
+  createUser(bio: String, userName: String!, gender: String, ageRange: String, email: String!, nickName: String!, avatar: Upload, password: String!): MutationResponse
   deleteUser: MutationResponse
   editUser(nickName: String, bio: String, avatar: Upload, password: String, gender: String, ageRange: String): MutationResponse
   userLogin(userName: String!, password: String!): loginResponse

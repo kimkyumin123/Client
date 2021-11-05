@@ -1,6 +1,6 @@
 mutation createAuthUser(
   $nickName: String!
-  $avatar: String
+  $avatar: Upload
   $bio: String
   $platformType: String!
   $token: String!
