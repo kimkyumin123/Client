@@ -21,7 +21,6 @@ class PlaceServiceTests: XCTestCase {
 
     let result = try APIPlaceSearchService.fetch(keyword: "광화문").toBlocking(timeout: 3.0).first()
 
-    print("[📌 Result]", result)
     XCTAssertNotEqual(result, [])
   }
 

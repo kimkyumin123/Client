@@ -6,6 +6,7 @@
 //
 
 import Alamofire
+import Apollo
 import Foundation
 import os.log
 import RxApolloClient
@@ -39,44 +40,52 @@ final class UserService {
     }
   }
 
-  static func createUser(fields: UserAccount.SignUpFields) -> Observable<Bool> {
+  static func createUser(fields: UserAccount.SignUpFields) -> Completable {
     os_log(.debug, log: .user, "createUser(fields:)")
-    return .create { subscriber in
-      Network.shared.apollo.perform(mutation: CreateUserMutation(
-        bio: fields.bio,
-        userName: fields.userName,
-        gender: fields.gender,
-        ageRange: fields.ageRange,
-        email: fields.email,
-        nickName: fields.nickName,
-        avatar: fields.avatar,
-        password: fields.password)) {
-          guard let data = try? $0.get().data else {
-            os_log(.info, log: .apollo, "Apollo Fetch Failed")
-            subscriber.onError(UserServiceError.requestFailed)
-            return
-          }
+    let mutation = CreateUserMutation(
+      bio: fields.bio,
+      userName: fields.userName,
+      gender: fields.gender,
+      ageRange: fields.ageRange,
+      email: fields.email,
+      nickName: fields.nickName,
+      avatar: "file",
+      password: fields.password)
 
-          if data.createUser?.ok == true {
-            os_log(.debug, log: .user, "User creation successful")
-            subscriber.onNext(true)
-          } else if data.createUser?.error == -100 {
-            os_log(.debug, log: .user, "Email Exists")
-            subscriber.onError(UserServiceError.emailExists)
-          } else if data.createUser?.error == -101 {
-            os_log(.debug, log: .user, "User Exists")
-            subscriber.onError(UserServiceError.userExists)
-          } else if data.createUser?.error == -102 {
-            os_log(.debug, log: .user, "Nickname Exists")
-            subscriber.onError(UserServiceError.nicknameExists)
-          } else {
-            os_log(.fault, log: .user, "Unknwon Error")
-            subscriber.onError(UserServiceError.unknown)
-          }
-        }
-
-      return Disposables.create()
+    let query: Maybe<CreateUserMutation.Data>
+    if let data = fields.avatar {
+      let image = GraphQLFile(fieldName: "avatar", originalName: "image", data: data)
+      query = Network.shared.apollo.rx.upload(operation: mutation, files: [image])
+    } else {
+      query = Network.shared.apollo.rx.perform(mutation: mutation)
     }
+
+    return query
+      .catch { _ in
+        os_log(.info, log: .apollo, "Apollo Fetch Failed")
+        return .error(UserServiceError.requestFailed)
+      }
+      .flatMap { data -> Maybe<Void> in
+        if data.createUser?.ok == true {
+          os_log(.debug, log: .user, "User creation successful")
+          return .just(Void())
+        } else if data.createUser?.error == -100 {
+          os_log(.debug, log: .user, "Email Exists")
+          return .error(UserServiceError.emailExists)
+        } else if data.createUser?.error == -101 {
+          os_log(.debug, log: .user, "User Exists")
+          return .error(UserServiceError.userExists)
+        } else if data.createUser?.error == -102 {
+          os_log(.debug, log: .user, "Nickname Exists")
+          return .error(UserServiceError.nicknameExists)
+        } else {
+          os_log(.fault, log: .user, "Unknwon Error")
+          return .error(UserServiceError.unknown)
+        }
+      }
+      .asObservable()
+      .ignoreElements()
+      .asCompletable()
   }
 
   static func checkValidation(userName: String) -> Observable<ValidType> {
@@ -207,51 +216,79 @@ final class UserService {
     }
   }
 
-  static func updateUser(fields: UserAccount.UpdateFields) -> Observable<Bool> {
+  static func updateUser(fields: UserAccount.UpdateFields) -> Completable {
     os_log(.debug, log: .user, "Update User")
-
-    return Network.shared.apollo.rx.perform(mutation: EditUserMutation(
+    let mutation = EditUserMutation(
       nickName: fields.nickName,
       bio: fields.bio,
-      avatar: fields.avatar,
+      avatar: "avatar",
       password: fields.password,
       gender: fields.gender,
-      ageRange: fields.ageRange))
+      ageRange: fields.ageRange)
+
+    let query: Maybe<EditUserMutation.Data>
+    if let data = fields.avatar {
+      let image = GraphQLFile(fieldName: "avatar", originalName: "image", data: data)
+      query = Network.shared.apollo.rx.upload(operation: mutation, files: [image])
+    } else {
+      query = Network.shared.apollo.rx.perform(mutation: mutation)
+    }
+
+    return query
+      .flatMap { _data -> Maybe<Void> in
+        guard let result = _data.editUser else {
+          return .error(UserServiceError.requestFailed)
+        }
+
+        if result.ok {
+          return .empty()
+        } else {
+          switch result.error {
+          case -102:
+            return .error(UserServiceError.nicknameExists)
+          case -999: // transaction
+            return .error(UserServiceError.transaction)
+          default:
+            assertionFailure()
+            return .error(UserServiceError.unknown)
+          }
+        }
+
+        // TODO: - 향후 추가적인 에러 처리 필요
+      }
       .asObservable()
-      .map { ($0.editUser?.ok ?? false) == true }
-      .catchAndReturn(false)
+      .ignoreElements()
+      .asCompletable()
   }
 
-  static func deleteUser() -> Observable<Bool> {
+  static func deleteUser() -> Completable {
     os_log(.debug, log: .user, "Delete user")
     return Network.shared.apollo.rx.perform(mutation: DeleteUserMutation())
-      .asObservable()
-      .flatMap({ result -> Observable<Bool> in
+      .flatMap({ result -> Maybe<Void> in
         guard result.deleteUser?.ok == true else {
-          return .just(false)
+          return .error(UserServiceError.requestFailed)
         }
 
         switch UserDefaults.loginPlatform {
         case .naver:
           return ThirdPartyLoginService
             .naverDisconnect()
-            .map { _ in true }
-            .asObservable()
-            .catchAndReturn(false)
+            .andThen(.empty())
 
         case .kakao:
           return ThirdPartyLoginService
             .kakaoDisconnect()
-            .andThen(Observable.just(true))
-            .catchAndReturn(false)
+            .andThen(.empty())
 
         default:
-          return .just(true)
+          return .empty()
         }
       })
-      .catchAndReturn(false)
+      .asObservable()
+      .ignoreElements()
+      .asCompletable()
       // 로그인 상태 변경, 토큰 제거
-      .do(onNext: { if $0 { deleteLoginInfo() } })
+      .do(onCompleted: { deleteLoginInfo() })
   }
 
   /// login 후 토큰 생성
@@ -395,6 +432,7 @@ enum UserServiceError: Error {
   case requestFailed
   case denied
   case invalidToken
+  case transaction
 
   case emailExists
   case userExists

@@ -35,20 +35,30 @@ final class ThirdPartyLoginService {
 
   typealias KakaoAccountReturn = (accessToken: String, email: String)
 
-  static func oAuthSignUp(type: UserAccount.Platform, token: String, fields: UserAccount.OAuthSignUpFields) -> Observable<Bool> {
+  static func oAuthSignUp(type: UserAccount.Platform, token: String, fields: UserAccount.OAuthSignUpFields) -> Completable {
     os_log(.debug, log: .user, "oAuthSignUp(type:token:fields:)")
 
     let mutation = CreateAuthUserMutation(
       nickName: fields.nickName,
-      avatar: fields.avatar,
+      avatar: "avatar",
       bio: fields.bio,
       platformType: type.value,
       token: token)
 
-    return Network.shared.apollo.rx.perform(mutation: mutation)
-      .asObservable()
+    let query: Maybe<CreateAuthUserMutation.Data>
+    if let data = fields.avatar {
+      let image = GraphQLFile(fieldName: "avatar", originalName: "image", data: data)
+      query = Network.shared.apollo.rx.upload(operation: mutation, files: [image])
+    } else {
+      query = Network.shared.apollo.rx.perform(mutation: mutation)
+    }
+
+    return query
       .map { $0.createAuthUser?.ok == true }
-      .catchAndReturn(false)
+      .catch { _ in .error(UserServiceError.requestFailed) }
+      .asObservable()
+      .ignoreElements()
+      .asCompletable()
   }
 
   /**
@@ -265,10 +275,12 @@ final class ThirdPartyLoginService {
       .resetToken()
   }
 
-  static func naverDisconnect() -> Observable<Void> {
+  static func naverDisconnect() -> Completable {
     os_log(.debug, log: .user, "naverDisconnect()")
     return NaverThirdPartyLoginConnection.getSharedInstance()!
       .rx.disconnect
+      .ignoreElements()
+      .asCompletable()
   }
 
   // MARK: Private

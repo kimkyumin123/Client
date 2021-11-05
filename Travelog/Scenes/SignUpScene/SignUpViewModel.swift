@@ -130,5 +130,7 @@ extension SignUpViewModel {
     }
 
     return UserService.createUser(fields: fields)
+      .andThen( .just(true) )
+      .catchAndReturn(false)
   }
 }
