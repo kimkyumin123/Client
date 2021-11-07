@@ -14,6 +14,9 @@
 		4807046A27171CF9008E20CC /* RxKakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 4807046927171CF9008E20CC /* RxKakaoSDKAuth */; };
 		4807046C27171CF9008E20CC /* RxKakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 4807046B27171CF9008E20CC /* RxKakaoSDKCommon */; };
 		4807046E27171CF9008E20CC /* RxKakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 4807046D27171CF9008E20CC /* RxKakaoSDKUser */; };
+		480EF8BB27367AB6007A2F7E /* FindAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480EF8B827367AB6007A2F7E /* FindAccountView.swift */; };
+		480EF8BC27367AB6007A2F7E /* FindAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480EF8B927367AB6007A2F7E /* FindAccountViewController.swift */; };
+		480EF8BD27367AB6007A2F7E /* FindAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480EF8BA27367AB6007A2F7E /* FindAccountViewModel.swift */; };
 		48123D7B26B1A8EE0058CEDF /* SwiftUIPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48123D7A26B1A8EE0058CEDF /* SwiftUIPreview.swift */; };
 		48123D7D26B1A9070058CEDF /* PlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48123D7C26B1A9070058CEDF /* PlaceCell.swift */; };
 		4819AE2527101AA50073A2C4 /* SearchFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4819AE2427101AA50073A2C4 /* SearchFlow.swift */; };
@@ -145,6 +148,9 @@
 /* Begin PBXFileReference section */
 		48018978272E97FE004A7468 /* ReviewServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewServiceTests.swift; sourceTree = "<group>"; };
 		4807044B27171A26008E20CC /* KakaoSDK */ = {isa = PBXFileReference; lastKnownFileType = folder; name = KakaoSDK; path = ../../KakaoSDK; sourceTree = "<group>"; };
+		480EF8B827367AB6007A2F7E /* FindAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindAccountView.swift; sourceTree = "<group>"; };
+		480EF8B927367AB6007A2F7E /* FindAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindAccountViewController.swift; sourceTree = "<group>"; };
+		480EF8BA27367AB6007A2F7E /* FindAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindAccountViewModel.swift; sourceTree = "<group>"; };
 		48123D7A26B1A8EE0058CEDF /* SwiftUIPreview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftUIPreview.swift; sourceTree = "<group>"; };
 		48123D7C26B1A9070058CEDF /* PlaceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceCell.swift; sourceTree = "<group>"; };
 		4819AE2427101AA50073A2C4 /* SearchFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFlow.swift; sourceTree = "<group>"; };
@@ -286,6 +292,16 @@
 			name = Packages;
 			sourceTree = "<group>";
 		};
+		480EF8B527367A8B007A2F7E /* FindAccountScene */ = {
+			isa = PBXGroup;
+			children = (
+				480EF8B827367AB6007A2F7E /* FindAccountView.swift */,
+				480EF8B927367AB6007A2F7E /* FindAccountViewController.swift */,
+				480EF8BA27367AB6007A2F7E /* FindAccountViewModel.swift */,
+			);
+			path = FindAccountScene;
+			sourceTree = "<group>";
+		};
 		4819AE262710224C0073A2C4 /* PlaceScene */ = {
 			isa = PBXGroup;
 			children = (
@@ -387,6 +403,7 @@
 		489FB9D826AC3AB600641F21 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				480EF8B527367A8B007A2F7E /* FindAccountScene */,
 				4819AE262710224C0073A2C4 /* PlaceScene */,
 				48FE0DEC270459250066F834 /* SearchScene */,
 				48FE0DE226FB42700066F834 /* DetailPost */,
@@ -737,6 +754,7 @@
 				48609AE226D39C300095C5E7 /* APIPlaceSearchService.swift in Sources */,
 				4825FEF426CA594F00BD1402 /* UserDefaults+Extension.swift in Sources */,
 				48123D7B26B1A8EE0058CEDF /* SwiftUIPreview.swift in Sources */,
+				480EF8BC27367AB6007A2F7E /* FindAccountViewController.swift in Sources */,
 				48123D7D26B1A9070058CEDF /* PlaceCell.swift in Sources */,
 				489FB9E826AC3DA500641F21 /* UserInfoFlow.swift in Sources */,
 				48EE6AD826F32FC6008CD9B2 /* PostWriteViewController.swift in Sources */,
@@ -749,6 +767,7 @@
 				48F65C6626AC747D009B15BE /* LoginFlow.swift in Sources */,
 				4898972526AC36DC000499AC /* HomeFlow.swift in Sources */,
 				48F33B2626AC2BBC00A704C7 /* AppDelegate.swift in Sources */,
+				480EF8BB27367AB6007A2F7E /* FindAccountView.swift in Sources */,
 				485060C827180942002645AE /* CategorySelectView.swift in Sources */,
 				48DA924F2732E99400FD1381 /* PhotoService.swift in Sources */,
 				489FB9E526AC3D0600641F21 /* UserInfoViewModel.swift in Sources */,
@@ -789,6 +808,7 @@
 				48EB95B826E1DCB4001A2F9C /* ReviewService.swift in Sources */,
 				48FE0DE626FB427E0066F834 /* DetailPostView.swift in Sources */,
 				48F65C6826AC783D009B15BE /* ReviewPostCell.swift in Sources */,
+				480EF8BD27367AB6007A2F7E /* FindAccountViewModel.swift in Sources */,
 				48E3D2B326C440CD007D08ED /* API.swift in Sources */,
 				4869D02E26C8064D0076C570 /* SignUpViewModel.swift in Sources */,
 				485060C627180915002645AE /* CategorySelectViewController.swift in Sources */,

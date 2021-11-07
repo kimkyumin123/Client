@@ -73,10 +73,32 @@ struct UserAccount {
   }
 
   struct OAuthSignUpFields {
+
+    // MARK: Lifecycle
+
+    //    let email: String
+
+    init(
+      nickName: String,
+      avatar: Data? = nil,
+      bio: String? = nil,
+      gender: String? = nil,
+      ageRange: String? = nil)
+    {
+      self.nickName = nickName
+      self.avatar = avatar
+      self.bio = bio
+      self.gender = gender
+      self.ageRange = ageRange
+    }
+
+    // MARK: Internal
+
     let nickName: String
-    let avatar: Data? = nil
-    let bio: String? = nil
-//    let email: String
+    let avatar: Data?
+    let bio: String?
+    let gender: String?
+    let ageRange: String?
   }
 
   struct UpdateFields {
