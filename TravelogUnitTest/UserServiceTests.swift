@@ -5,7 +5,9 @@
 //  Created by JK on 2021/08/16.
 //
 
+import Apollo
 import Foundation
+import Photos
 import RxBlocking
 import RxSwift
 import XCTest
@@ -64,8 +66,7 @@ final class UserServiceTest: XCTestCase {
     let observable = UserService.deleteUser()
 
     // then
-    let result = try observable.toBlocking(timeout: 5.0).first()
-    XCTAssertEqual(result, true)
+    _ = try observable.toBlocking(timeout: 5.0).first()!
     XCTAssertEqual(UserDefaults.loginPlatform, .notLoggedIn)
     XCTAssertEqual(UserDefaults.userID, "")
     XCTAssertNil(try? KeychainService.read(key: .accessToken))
@@ -128,4 +129,24 @@ final class UserServiceTest: XCTestCase {
     _ = try? UserService.createUser(fields: textForm).toBlocking(timeout: 3.0).first()
   }
 
+  func testSignUpWithAvatar() throws {
+    guard let image = PHAsset.fetchAssets(with: nil).firstObject else {
+      throw NSError(domain: "imageError", code: 0, userInfo: nil)
+    }
+
+    let mail = "test@foo.bar"
+    let nick = "testNickname"
+    let id = "testID"
+    let pw = "xptmxm#!00"
+
+    let data = try PhotoService.data(from: image)
+      .map { UserAccount.SignUpFields(userName: id, email: mail, nickName: nick, avatar: $0, password: pw) }
+      .toBlocking()
+      .first()!
+
+    _ = try UserService.createUser(fields: data)
+      .andThen(Observable.just(()))
+      .toBlocking(timeout: 30.0)
+      .first()
+  }
 }

@@ -48,14 +48,13 @@ final class ThirdPartyLoginServiceTests: XCTestCase {
   func testKakaoSignUpTest() throws {
     // given
     let token = try ThirdPartyLoginService.kakaoLogin().toBlocking(timeout: 3.0).first()!
-    let fields = UserAccount.OAuthSignUpFields(nickName: "kakaoNick", avatar: nil, bio: nil)
+    let fields = UserAccount.OAuthSignUpFields(nickName: "kakaoNick")
 
-    // when
-    let result = try ThirdPartyLoginService
-      .oAuthSignUp(type: .kakao, token: token, fields: fields).toBlocking(timeout: 3.0).first()
-
-    // then
-    XCTAssertEqual(result, true)
+    // when & then
+    _ = try ThirdPartyLoginService
+      .oAuthSignUp(type: .kakao, token: token, fields: fields)
+      .toBlocking(timeout: 3.0)
+      .first()
   }
 
   func testNaverSignup() throws {
@@ -71,17 +70,15 @@ final class ThirdPartyLoginServiceTests: XCTestCase {
     print("🚀\t", email)
     print(token)
 
-    let fields = UserAccount.OAuthSignUpFields(nickName: "OAuthTestNickName", avatar: nil, bio: nil)
+    let fields = UserAccount.OAuthSignUpFields(nickName: "OAuthTestNickName")
 
-    // when
-    let result = try ThirdPartyLoginService.oAuthSignUp(
+    // when & then
+    _ = try ThirdPartyLoginService.oAuthSignUp(
       type: .naver,
       token: token,
       fields: fields)
-      .toBlocking(timeout: 5.0).first()
-
-    // then
-    XCTAssertNotNil(result)
+      .toBlocking(timeout: 5.0)
+      .first()
   }
 
   func testfuncNaverLogin() throws {

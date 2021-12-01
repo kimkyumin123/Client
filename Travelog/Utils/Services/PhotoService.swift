@@ -50,7 +50,10 @@ final class PhotoService {
     requstAuthorization()
       .andThen(Observable.create { subscriber in
         let manager = PHImageManager.default()
-        let id = manager.requestImageDataAndOrientation(for: asset, options: nil) { data, _, _, _ in
+        let options = PHImageRequestOptions()
+        options.resizeMode = .fast
+        options.deliveryMode = .fastFormat
+        let id = manager.requestImageDataAndOrientation(for: asset, options: options) { data, _, _, _ in
           if let data = data {
             subscriber.onNext(data)
           }
@@ -60,7 +63,6 @@ final class PhotoService {
           manager.cancelImageRequest(id)
         }
       })
-      .debug()
       .take(2)
       .debounce(.seconds(2), scheduler: ConcurrentDispatchQueueScheduler(qos: .userInitiated))
   }

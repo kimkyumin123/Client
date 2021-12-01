@@ -61,14 +61,14 @@ struct UserAccount {
 
     // MARK: Internal
 
-    let userName: String
-    let bio: String?
-    let gender: String?
-    let ageRange: String?
-    let email: String
-    let nickName: String
-    let avatar: Data?
-    let password: String
+    var userName: String
+    var bio: String?
+    var gender: String?
+    var ageRange: String?
+    var email: String
+    var nickName: String
+    var avatar: Data?
+    var password: String
 
   }
 
