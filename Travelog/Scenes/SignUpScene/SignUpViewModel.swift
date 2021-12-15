@@ -206,7 +206,7 @@ extension SignUpViewModel {
     guard id.count >= 3 else {
       return .just(.tooShort)
     }
-    
+
     return UserService.checkValidation(userName: id)
   }
 

@@ -136,9 +136,38 @@ final class ReviewService {
       .asObservable()
   }
 
+//  static func write(post: [Review.Upload]) -> Completable {
+//    os_log(.debug, log: .review, "write(post:)")
+
+//    Observable.just(
+//      post.compactMap { $0.image }
+//    )
+//    .flatMap { posts -> Observable<Never> in
+//      .create { subscriber in
+//
+//        let posts = posts.enumerated()
+//        subscriber.onCompleted()
+//
+//        return Disposables.create()
+//      }
+//    }
+//    .asCompletable()
+
+//    let files = post.compactMap { $0.image }
+//      .enumerated()
+//      .map { (key, value) in
+//        let name = String(key)
+//        return GraphQLFile(fieldName: "upload", originalName: name, mimeType: "image/jpeg", data: value)
+//      }
+//
+//    Completable.create { subscriber in
+//      let request = Network.shared.apollo.upload(operation: CreateReviewMutation(reviews: ), files: files)
+//    }
+//  }
+
   static func write(post: [ReviewInput], images: [PHAsset]) -> Completable {
     os_log(.debug, log: .review, "write(post:images)")
-    var post = post
+//    var post = post
 
     return Observable.zip(
       images.map { PhotoService.data(from: $0) }
@@ -147,15 +176,14 @@ final class ReviewService {
         data.map { idx, data -> GraphQLFile in
           let name = String(idx)
           let resource = PHAssetResource.assetResources(for: images[idx])
-          post[idx].upload = "variables.files." + String((resource.first?.originalFilename ?? name).split(separator: ".")[0])
+//          post[idx].upload = "variables.files." + String((resource.first?.originalFilename ?? name).split(separator: ".")[0])
           return GraphQLFile(fieldName: "upload", originalName: resource.first?.originalFilename ?? name, mimeType: "image/jpeg", data: data)
         }
       }
       .flatMap { files -> Observable<Never> in
         .create { subscriber in
           print(post)
-          let request = Network.shared.apollo.upload(operation: CreateReviewMutation(reviews: post), files: files) {
-
+          let request = Network.shared.apollo.upload(operation: CreateReviewMutation(reviews: post, images: Array(repeating: ReviewUpload(upload: "upload"), count: post.count)), files: files) {
             switch $0 {
             case .success(let success):
               print("⭐️", success)

@@ -13,18 +13,23 @@ import UIKit.UIImage
 // MARK: - Review
 
 struct Review: Equatable {
-  struct Upload: Codable, Equatable {
-    var text: String
-    var image: Data
-    var placeID: String
+  struct Upload: Equatable {
+    var text: String?
+    var image: Data?
+    var place: Place?
+    init() {
+      text = nil
+      image = nil
+      place = nil
+    }
   }
 
-  struct Form: Equatable {
-    var text: String?
-    var image: UIImage?
-    var placeID: String?
-    var placeName: String?
-  }
+//  struct Form: Equatable {
+//    var text: String?
+//    var image: UIImage?
+//    var placeID: String?
+//    var placeName: String?
+//  }
 
   struct Comment: Codable, Equatable {
     var id: Int
@@ -60,7 +65,7 @@ extension SearchReviewQuery.Data.SearchReview {
       unlikeCount: getUnLikes,
       isLike: isLike,
       isUnlike: isUnLike,
-      comments: comments.map { $0.comment })
+      comments: comments?.compactMap { $0?.comment } ?? [])
   }
 }
 
@@ -80,3 +85,9 @@ extension SearchReviewQuery.Data.SearchReview.Comment {
     Review.Comment(id: id, reviewID: reviewId, createdAt: createdAt, updatedAt: updatedAt, payload: payload, likeCount: 0, unLikeCount: 0)
   }
 }
+
+//extension Review.Upload {
+//  var form: ReviewInput {
+//    ReviewInput(title: self.text, content: <#T##String#>, place: <#T##InputPlace#>, hashtags: <#T##Optional<String?>#>)
+//  }
+//}

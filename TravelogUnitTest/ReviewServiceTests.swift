@@ -22,7 +22,6 @@ final class ReviewServiceTests: XCTestCase {
     let reviews = [
       ReviewInput(
         title: "title",
-        upload: nil,
         content: "content",
         place: InputPlace(
           title: "title",

@@ -1,4 +1,4 @@
-mutation updatePlace($place: [UpdatePlaceInput]) {
+mutation updatePlace($place: [UpdatePlaceInput!]) {
   updatePlace(place: $place) {
     ok
     error

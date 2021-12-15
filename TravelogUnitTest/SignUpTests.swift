@@ -43,7 +43,7 @@ class SignUpTests: XCTestCase {
     let pw2 = "helo!1243"
 
     // when
-    sut.action.onNext(.validCheck(.password(pw1, pw2)))
+    sut.action.onNext(.update(.password(pw1, pw2)))
 
     // then
     let result = sut.state.map(\.isValidPassword).toBlocking(timeout: 2.0)
@@ -56,7 +56,7 @@ class SignUpTests: XCTestCase {
     let pw2 = "hello!123"
 
     // when
-    sut.action.onNext(.validCheck(.password(pw1, pw2)))
+    sut.action.onNext(.update(.password(pw1, pw2)))
 
     // then
     let result = sut.state.map(\.isValidPassword).toBlocking(timeout: 2.0)
@@ -69,7 +69,7 @@ class SignUpTests: XCTestCase {
     let testPW = "abc!123"
 
     // when
-    sut.action.onNext(.validCheck(.password(testPW, testPW)))
+    sut.action.onNext(.update(.password(testPW, testPW)))
 
     // then
     let result = sut.state.map(\.isValidPassword).toBlocking(timeout: 2.0)
@@ -83,7 +83,7 @@ class SignUpTests: XCTestCase {
     let testPW = "abcabc123123"
 
     // when
-    sut.action.onNext(.validCheck(.password(testPW, testPW)))
+    sut.action.onNext(.update(.password(testPW, testPW)))
 
     // then
     let result = sut.state.map(\.isValidPassword).toBlocking(timeout: 2.0)
@@ -96,7 +96,7 @@ class SignUpTests: XCTestCase {
     let testMail = "foo@bar"
 
     // when
-    sut.action.onNext(.validCheck(.email(testMail)))
+    sut.action.onNext(.update(.email(testMail)))
 
     // then
     let result = sut.state.map(\.isValidEmail).toBlocking(timeout: 2.0)
@@ -108,7 +108,7 @@ class SignUpTests: XCTestCase {
     let testMail = "fooabc@bar.com"
 
     // when
-    sut.action.onNext(.validCheck(.email(testMail)))
+    sut.action.onNext(.update(.email(testMail)))
 
     // then
     let result = sut.state.map(\.isValidEmail).compactMap { $0 }.toBlocking(timeout: 3.0)
@@ -155,7 +155,7 @@ class SignUpTests: XCTestCase {
     }
 
     // when
-    sut.action.onNext(.validCheck(.email(testEmail)))
+    sut.action.onNext(.update(.email(testEmail)))
 
     // then
     let result = sut.state.map(\.isValidEmail).compactMap { $0 }.toBlocking(timeout: 3.0)
@@ -200,7 +200,7 @@ class SignUpTests: XCTestCase {
     }
 
     // when
-    sut.action.onNext(.validCheck(.nickname(testNickname)))
+    sut.action.onNext(.update(.nickname(testNickname)))
 
     // then
     /// 첫번째 닉네임 요청할때 변화는 무시하기 위해 `compactMap` 사용.
@@ -216,27 +216,19 @@ class SignUpTests: XCTestCase {
     let testNick = "testNickname"
     let testPW = "password!1234"
 
-    let textForm = UserAccount.SignUpFields(
-      userName: testName,
-      bio: nil,
-      gender: nil,
-      ageRange: nil,
-      email: testMail,
-      nickName: testNick,
-      avatar: nil,
-      password: testPW)
-
-    sut.action.onNext(.validCheck(.email(testMail)))
-    sut.action.onNext(.validCheck(.nickname(testNick)))
-    sut.action.onNext(.validCheck(.password(testPW, testPW)))
+    sut.action.onNext(.update(.email(testMail)))
+    sut.action.onNext(.update(.nickname(testNick)))
+    sut.action.onNext(.update(.password(testPW, testPW)))
+    sut.action.onNext(.update(.userID(testName)))
 
     let nickValidation = try sut.state.map(\.isValidNickname).compactMap { $0 }.toBlocking().first()
     let mailValidation = try sut.state.map(\.isValidEmail).compactMap { $0 }.toBlocking().first()
     let pwValidation = try sut.state.map(\.isValidPassword).compactMap { $0 }.toBlocking().first()
-    try XCTSkipUnless(nickValidation == .valid && mailValidation == .valid && pwValidation == .valid)
+    let userIDValidation = try sut.state.map(\.isValidUsername).compactMap { $0 }.toBlocking().first()
+    try XCTSkipUnless(nickValidation == .valid && mailValidation == .valid && pwValidation == .valid && userIDValidation == .valid)
 
     // when
-    sut.action.onNext(.submit(textForm))
+    sut.action.onNext(.submit)
 
     // then
     // 첫번째 는 loading 상황이기 때문에 무시함.

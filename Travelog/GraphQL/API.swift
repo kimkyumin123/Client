@@ -98,12 +98,11 @@ public struct ReviewInput: GraphQLMapConvertible {
 
   /// - Parameters:
   ///   - title
-  ///   - upload
   ///   - content
   ///   - place
   ///   - hashtags
-  public init(title: String, upload: String?? = nil, content: String, place: InputPlace?? = nil, hashtags: String?? = nil) {
-    graphQLMap = ["title": title, "upload": upload, "content": content, "place": place, "hashtags": hashtags]
+  public init(title: String, content: String, place: InputPlace, hashtags: String?? = nil) {
+    graphQLMap = ["title": title, "content": content, "place": place, "hashtags": hashtags]
   }
 
   // MARK: Public
@@ -119,15 +118,6 @@ public struct ReviewInput: GraphQLMapConvertible {
     }
   }
 
-  public var upload: String?? {
-    get {
-      graphQLMap["upload"] as? String?? ?? String??.none
-    }
-    set {
-      graphQLMap.updateValue(newValue, forKey: "upload")
-    }
-  }
-
   public var content: String {
     get {
       graphQLMap["content"] as! String
@@ -137,9 +127,9 @@ public struct ReviewInput: GraphQLMapConvertible {
     }
   }
 
-  public var place: InputPlace?? {
+  public var place: InputPlace {
     get {
-      graphQLMap["place"] as? InputPlace?? ?? InputPlace??.none
+      graphQLMap["place"] as! InputPlace
     }
     set {
       graphQLMap.updateValue(newValue, forKey: "place")
@@ -152,6 +142,27 @@ public struct ReviewInput: GraphQLMapConvertible {
     }
     set {
       graphQLMap.updateValue(newValue, forKey: "hashtags")
+    }
+  }
+}
+
+// MARK: - ReviewUpload
+
+public struct ReviewUpload: GraphQLMapConvertible {
+  public var graphQLMap: GraphQLMap
+
+  /// - Parameters:
+  ///   - upload
+  public init(upload: String) {
+    graphQLMap = ["upload": upload]
+  }
+
+  public var upload: String {
+    get {
+      graphQLMap["upload"] as! String
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "upload")
     }
   }
 }
@@ -448,8 +459,8 @@ public final class CommentsQuery: GraphQLQuery {
         resultMap = unsafeResultMap
       }
 
-      public init(comments: [Comment]) {
-        self.init(unsafeResultMap: ["__typename": "Review", "comments": comments.map { (value: Comment) -> ResultMap in value.resultMap }])
+      public init(comments: [Comment?]? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Review", "comments": comments.flatMap { (value: [Comment?]) -> [ResultMap?] in value.map { (value: Comment?) -> ResultMap? in value.flatMap { (value: Comment) -> ResultMap in value.resultMap } } }])
       }
 
       // MARK: Public
@@ -548,7 +559,7 @@ public final class CommentsQuery: GraphQLQuery {
       public static var selections: [GraphQLSelection] {
         [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("comments", type: .nonNull(.list(.nonNull(.object(Comment.selections))))),
+          GraphQLField("comments", type: .list(.object(Comment.selections))),
         ]
       }
 
@@ -563,13 +574,13 @@ public final class CommentsQuery: GraphQLQuery {
         }
       }
 
-      /// 구현예정
-      public var comments: [Comment] {
+      /// 댓글
+      public var comments: [Comment?]? {
         get {
-          (resultMap["comments"] as! [ResultMap]).map { (value: ResultMap) -> Comment in Comment(unsafeResultMap: value) }
+          (resultMap["comments"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [Comment?] in value.map { (value: ResultMap?) -> Comment? in value.flatMap { (value: ResultMap) -> Comment in Comment(unsafeResultMap: value) } } }
         }
         set {
-          resultMap.updateValue(newValue.map { (value: Comment) -> ResultMap in value.resultMap }, forKey: "comments")
+          resultMap.updateValue(newValue.flatMap { (value: [Comment?]) -> [ResultMap?] in value.map { (value: Comment?) -> ResultMap? in value.flatMap { (value: Comment) -> ResultMap in value.resultMap } } }, forKey: "comments")
         }
       }
 
@@ -904,8 +915,9 @@ public final class CreateReviewMutation: GraphQLMutation {
 
   // MARK: Lifecycle
 
-  public init(reviews: [ReviewInput?]? = nil) {
+  public init(reviews: [ReviewInput], images: [ReviewUpload]) {
     self.reviews = reviews
+    self.images = images
   }
 
   // MARK: Public
@@ -982,7 +994,7 @@ public final class CreateReviewMutation: GraphQLMutation {
 
     public static var selections: [GraphQLSelection] {
       [
-        GraphQLField("createReview", arguments: ["review": GraphQLVariable("reviews")], type: .object(CreateReview.selections)),
+        GraphQLField("createReview", arguments: ["review": GraphQLVariable("reviews"), "upload": GraphQLVariable("images")], type: .object(CreateReview.selections)),
       ]
     }
 
@@ -1002,8 +1014,8 @@ public final class CreateReviewMutation: GraphQLMutation {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition: String =
     """
-    mutation createReview($reviews: [ReviewInput]) {
-      createReview(review: $reviews) {
+    mutation createReview($reviews: [ReviewInput!]!, $images: [ReviewUpload!]!) {
+      createReview(review: $reviews, upload: $images) {
         __typename
         ok
         error
@@ -1013,12 +1025,13 @@ public final class CreateReviewMutation: GraphQLMutation {
 
   public let operationName: String = "createReview"
 
-  public let operationIdentifier: String? = "408528256d8bc29c1a8f3367426abb20570d06504b262d19d33c3e0687fb2c0c"
+  public let operationIdentifier: String? = "53d533606091401c2dd7f3bbd34acfae5981bf9f9113160fae5edf72479b23fa"
 
-  public var reviews: [ReviewInput?]?
+  public var reviews: [ReviewInput]
+  public var images: [ReviewUpload]
 
   public var variables: GraphQLMap? {
-    ["reviews": reviews]
+    ["reviews": reviews, "images": images]
   }
 
 }
@@ -1920,8 +1933,8 @@ public final class PostQuery: GraphQLQuery {
           resultMap = unsafeResultMap
         }
 
-        public init(id: Int, createdAt: String, updatedAt: String, title: String, content: String, upload: String, userId: Int, placeId: Int? = nil, getLikes: Int, getUnLikes: Int, isLike: Bool, isUnLike: Bool, comments: [Comment]) {
-          self.init(unsafeResultMap: ["__typename": "Review", "id": id, "createdAt": createdAt, "updatedAt": updatedAt, "title": title, "content": content, "upload": upload, "userId": userId, "placeId": placeId, "getLikes": getLikes, "getUnLikes": getUnLikes, "isLike": isLike, "isUnLike": isUnLike, "comments": comments.map { (value: Comment) -> ResultMap in value.resultMap }])
+        public init(id: Int, createdAt: String, updatedAt: String, title: String, content: String, upload: String, userId: Int, placeId: Int? = nil, getLikes: Int, getUnLikes: Int, isLike: Bool, isUnLike: Bool, comments: [Comment?]? = nil) {
+          self.init(unsafeResultMap: ["__typename": "Review", "id": id, "createdAt": createdAt, "updatedAt": updatedAt, "title": title, "content": content, "upload": upload, "userId": userId, "placeId": placeId, "getLikes": getLikes, "getUnLikes": getUnLikes, "isLike": isLike, "isUnLike": isUnLike, "comments": comments.flatMap { (value: [Comment?]) -> [ResultMap?] in value.map { (value: Comment?) -> ResultMap? in value.flatMap { (value: Comment) -> ResultMap in value.resultMap } } }])
         }
 
         // MARK: Public
@@ -2032,7 +2045,7 @@ public final class PostQuery: GraphQLQuery {
             GraphQLField("getUnLikes", type: .nonNull(.scalar(Int.self))),
             GraphQLField("isLike", type: .nonNull(.scalar(Bool.self))),
             GraphQLField("isUnLike", type: .nonNull(.scalar(Bool.self))),
-            GraphQLField("comments", type: .nonNull(.list(.nonNull(.object(Comment.selections))))),
+            GraphQLField("comments", type: .list(.object(Comment.selections))),
           ]
         }
 
@@ -2167,13 +2180,13 @@ public final class PostQuery: GraphQLQuery {
           }
         }
 
-        /// 구현예정
-        public var comments: [Comment] {
+        /// 댓글
+        public var comments: [Comment?]? {
           get {
-            (resultMap["comments"] as! [ResultMap]).map { (value: ResultMap) -> Comment in Comment(unsafeResultMap: value) }
+            (resultMap["comments"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [Comment?] in value.map { (value: ResultMap?) -> Comment? in value.flatMap { (value: ResultMap) -> Comment in Comment(unsafeResultMap: value) } } }
           }
           set {
-            resultMap.updateValue(newValue.map { (value: Comment) -> ResultMap in value.resultMap }, forKey: "comments")
+            resultMap.updateValue(newValue.flatMap { (value: [Comment?]) -> [ResultMap?] in value.map { (value: Comment?) -> ResultMap? in value.flatMap { (value: Comment) -> ResultMap in value.resultMap } } }, forKey: "comments")
           }
         }
 
@@ -2989,8 +3002,8 @@ public final class SearchReviewQuery: GraphQLQuery {
         resultMap = unsafeResultMap
       }
 
-      public init(id: Int, createdAt: String, updatedAt: String, title: String, content: String, upload: String, userId: Int, placeId: Int? = nil, getLikes: Int, getUnLikes: Int, isLike: Bool, isUnLike: Bool, user: User, comments: [Comment], errorCode: Int? = nil) {
-        self.init(unsafeResultMap: ["__typename": "Review", "id": id, "createdAt": createdAt, "updatedAt": updatedAt, "title": title, "content": content, "upload": upload, "userId": userId, "placeId": placeId, "getLikes": getLikes, "getUnLikes": getUnLikes, "isLike": isLike, "isUnLike": isUnLike, "user": user.resultMap, "comments": comments.map { (value: Comment) -> ResultMap in value.resultMap }, "errorCode": errorCode])
+      public init(id: Int, createdAt: String, updatedAt: String, title: String, content: String, upload: String, userId: Int, placeId: Int? = nil, getLikes: Int, getUnLikes: Int, isLike: Bool, isUnLike: Bool, user: User, comments: [Comment?]? = nil, errorCode: Int? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Review", "id": id, "createdAt": createdAt, "updatedAt": updatedAt, "title": title, "content": content, "upload": upload, "userId": userId, "placeId": placeId, "getLikes": getLikes, "getUnLikes": getUnLikes, "isLike": isLike, "isUnLike": isUnLike, "user": user.resultMap, "comments": comments.flatMap { (value: [Comment?]) -> [ResultMap?] in value.map { (value: Comment?) -> ResultMap? in value.flatMap { (value: Comment) -> ResultMap in value.resultMap } } }, "errorCode": errorCode])
       }
 
       // MARK: Public
@@ -3146,7 +3159,7 @@ public final class SearchReviewQuery: GraphQLQuery {
           GraphQLField("isLike", type: .nonNull(.scalar(Bool.self))),
           GraphQLField("isUnLike", type: .nonNull(.scalar(Bool.self))),
           GraphQLField("user", type: .nonNull(.object(User.selections))),
-          GraphQLField("comments", type: .nonNull(.list(.nonNull(.object(Comment.selections))))),
+          GraphQLField("comments", type: .list(.object(Comment.selections))),
           GraphQLField("errorCode", type: .scalar(Int.self)),
         ]
       }
@@ -3292,13 +3305,13 @@ public final class SearchReviewQuery: GraphQLQuery {
         }
       }
 
-      /// 구현예정
-      public var comments: [Comment] {
+      /// 댓글
+      public var comments: [Comment?]? {
         get {
-          (resultMap["comments"] as! [ResultMap]).map { (value: ResultMap) -> Comment in Comment(unsafeResultMap: value) }
+          (resultMap["comments"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [Comment?] in value.map { (value: ResultMap?) -> Comment? in value.flatMap { (value: ResultMap) -> Comment in Comment(unsafeResultMap: value) } } }
         }
         set {
-          resultMap.updateValue(newValue.map { (value: Comment) -> ResultMap in value.resultMap }, forKey: "comments")
+          resultMap.updateValue(newValue.flatMap { (value: [Comment?]) -> [ResultMap?] in value.map { (value: Comment?) -> ResultMap? in value.flatMap { (value: Comment) -> ResultMap in value.resultMap } } }, forKey: "comments")
         }
       }
 
@@ -3621,7 +3634,7 @@ public final class UpdatePlaceMutation: GraphQLMutation {
 
   // MARK: Lifecycle
 
-  public init(place: [UpdatePlaceInput?]? = nil) {
+  public init(place: [UpdatePlaceInput]?) {
     self.place = place
   }
 
@@ -3720,7 +3733,7 @@ public final class UpdatePlaceMutation: GraphQLMutation {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition: String =
     """
-    mutation updatePlace($place: [UpdatePlaceInput]) {
+    mutation updatePlace($place: [UpdatePlaceInput!]) {
       updatePlace(place: $place) {
         __typename
         ok
@@ -3731,9 +3744,9 @@ public final class UpdatePlaceMutation: GraphQLMutation {
 
   public let operationName: String = "updatePlace"
 
-  public let operationIdentifier: String? = "28dbfd21bb0542524468e3126436406eb9d8ce36b02c488936d7989e18cd4f0f"
+  public let operationIdentifier: String? = "6d2ab91145d89624619d89a98b59e6ea625145286cb437ffc49bdc6dc363fe8c"
 
-  public var place: [UpdatePlaceInput?]?
+  public var place: [UpdatePlaceInput]?
 
   public var variables: GraphQLMap? {
     ["place": place]

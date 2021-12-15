@@ -8,6 +8,7 @@
 import Foundation
 import Photos
 import RxSwift
+import UIKit.UIImage
 
 // MARK: - PhotoService
 
@@ -65,6 +66,29 @@ final class PhotoService {
       })
       .take(2)
       .debounce(.seconds(2), scheduler: ConcurrentDispatchQueueScheduler(qos: .userInitiated))
+  }
+
+  static func image(from asset: PHAsset) -> Observable<UIImage> {
+    requstAuthorization()
+      .andThen(Observable.create { subscriber in
+        let manager = PHImageManager.default()
+        let options = PHImageRequestOptions()
+
+        options.resizeMode = .fast
+        options.deliveryMode = .fastFormat
+        let id = manager.requestImage(for: asset, targetSize: PHImageManagerMaximumSize, contentMode: .default, options: options) { image, _ in
+          if let image = image {
+            subscriber.onNext(image)
+          }
+        }
+
+        return Disposables.create {
+          manager.cancelImageRequest(id)
+        }
+      })
+      .take(2)
+      .debounce(.seconds(2), scheduler: ConcurrentDispatchQueueScheduler(qos: .userInitiated))
+
   }
 }
 

@@ -15,9 +15,9 @@
     "name": "createPlace",
     "source": "mutation createPlace($place: [InputPlace]) {\n  createPlace(place: $place) {\n    __typename\n    ok\n    error\n  }\n}"
   },
-  "408528256d8bc29c1a8f3367426abb20570d06504b262d19d33c3e0687fb2c0c": {
+  "53d533606091401c2dd7f3bbd34acfae5981bf9f9113160fae5edf72479b23fa": {
     "name": "createReview",
-    "source": "mutation createReview($reviews: [ReviewInput]) {\n  createReview(review: $reviews) {\n    __typename\n    ok\n    error\n  }\n}"
+    "source": "mutation createReview($reviews: [ReviewInput!]!, $images: [ReviewUpload!]!) {\n  createReview(review: $reviews, upload: $images) {\n    __typename\n    ok\n    error\n  }\n}"
   },
   "9afa4f56bb8ecdfa8d50c7283b30b607f3e8450af927977521930f8f52a01d47": {
     "name": "createUser",
@@ -71,9 +71,9 @@
     "name": "seeProfile",
     "source": "query seeProfile($userName: String!) {\n  seeProfile(userName: $userName) {\n    __typename\n    id\n    userName\n    nickName\n    email\n    avatar\n    bio\n    gender\n    ageRanger\n    createdAt\n    updatedAt\n    platformType\n  }\n}"
   },
-  "28dbfd21bb0542524468e3126436406eb9d8ce36b02c488936d7989e18cd4f0f": {
+  "6d2ab91145d89624619d89a98b59e6ea625145286cb437ffc49bdc6dc363fe8c": {
     "name": "updatePlace",
-    "source": "mutation updatePlace($place: [UpdatePlaceInput]) {\n  updatePlace(place: $place) {\n    __typename\n    ok\n    error\n  }\n}"
+    "source": "mutation updatePlace($place: [UpdatePlaceInput!]) {\n  updatePlace(place: $place) {\n    __typename\n    ok\n    error\n  }\n}"
   },
   "068bb42b56080aeb5a1898d8ecaac4867233cfe60e9febef4f77345525f59dac": {
     "name": "nickNameValidation",
