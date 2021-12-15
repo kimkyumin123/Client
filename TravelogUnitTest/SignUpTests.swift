@@ -221,10 +221,10 @@ class SignUpTests: XCTestCase {
     sut.action.onNext(.update(.password(testPW, testPW)))
     sut.action.onNext(.update(.userID(testName)))
 
-    let nickValidation = try sut.state.map(\.isValidNickname).compactMap { $0 }.toBlocking().first()
-    let mailValidation = try sut.state.map(\.isValidEmail).compactMap { $0 }.toBlocking().first()
-    let pwValidation = try sut.state.map(\.isValidPassword).compactMap { $0 }.toBlocking().first()
-    let userIDValidation = try sut.state.map(\.isValidUsername).compactMap { $0 }.toBlocking().first()
+    let nickValidation = try sut.state.map(\.isValidNickname).compactMap { $0 }.toBlocking(timeout: 5.0).first()
+    let mailValidation = try sut.state.map(\.isValidEmail).compactMap { $0 }.toBlocking(timeout: 5.0).first()
+    let pwValidation = try sut.state.map(\.isValidPassword).compactMap { $0 }.toBlocking(timeout: 5.0).first()
+    let userIDValidation = try sut.state.map(\.isValidUsername).compactMap { $0 }.toBlocking(timeout: 5.0).first()
     try XCTSkipUnless(nickValidation == .valid && mailValidation == .valid && pwValidation == .valid && userIDValidation == .valid)
 
     // when

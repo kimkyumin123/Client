@@ -152,7 +152,10 @@ extension SignUpViewModel {
           .map { Mutation.updatePasswordValid($0) },
         .just(.updateFields(Mutation.Fields.password(pw1))))
     case .email(let mail):
-      return .just(.updateFields(Mutation.Fields.email(mail)))
+      return .concat(
+        emailValidCheck(mail)
+          .map { Mutation.updateEmailValid($0) },
+        .just(.updateFields(Mutation.Fields.email(mail))))
     case .bio(let bio):
       return .just(.updateFields(Mutation.Fields.bio(bio)))
     case .gender(let gender):

@@ -41,16 +41,17 @@ final class UserService {
   }
 
   static func createUser(fields: UserAccount.SignUpFields) -> Completable {
-    os_log(.debug, log: .user, "createUser(fields:)")
-    let mutation = CreateUserMutation(
-      bio: fields.bio,
-      userName: fields.userName,
-      gender: fields.gender,
-      ageRange: fields.ageRange,
-      email: fields.email,
-      nickName: fields.nickName,
-      avatar: "file",
-      password: fields.password)
+    os_log(.debug, log: .user, #function)
+    let mutation =
+      CreateUserMutation(
+        bio: fields.bio,
+        userName: fields.userName,
+        gender: fields.gender,
+        ageRange: fields.ageRange,
+        email: fields.email,
+        nickName: fields.nickName,
+        avatar: nil,
+        password: fields.password)
 
     let query: Maybe<CreateUserMutation.Data>
     if let data = fields.avatar {
@@ -61,8 +62,8 @@ final class UserService {
     }
 
     return query
-      .catch { _ in
-        os_log(.info, log: .apollo, "Apollo Fetch Failed")
+      .catch { error in
+        debugPrint(error.localizedDescription)
         return .error(UserServiceError.requestFailed)
       }
       .flatMap { data -> Maybe<Void> in
@@ -89,7 +90,7 @@ final class UserService {
   }
 
   static func checkValidation(userName: String) -> Observable<ValidType> {
-    os_log(.debug, log: .user, "checkValidate(userName:)")
+    os_log(.debug, log: .user, #function)
     return .create { subscriber in
       Network.shared.apollo.fetch(query: UserNameValidationQuery(userName: userName)) {
         guard let _data = try? $0.get().data, let result = _data.userCheck else {
