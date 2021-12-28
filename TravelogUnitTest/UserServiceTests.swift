@@ -133,10 +133,9 @@ final class UserServiceTest: XCTestCase {
     guard let image = PHAsset.fetchAssets(with: nil).firstObject else {
       throw NSError(domain: "imageError", code: 0, userInfo: nil)
     }
-
-    let mail = "test@foo.bar"
-    let nick = "testNickname"
-    let id = "testID"
+    let id = String.randomString(length: 8)
+    let nick = String.randomString(length: 10)
+    let mail = "\(id)@foo.bar"
     let pw = "xptmxm#!00"
 
     let data = try PhotoService.data(from: image)
@@ -148,5 +147,12 @@ final class UserServiceTest: XCTestCase {
       .andThen(Observable.just(()))
       .toBlocking(timeout: 30.0)
       .first()
+  }
+}
+
+// for random ID
+extension String {
+  static func randomString(length: Int) -> String {
+    String((0..<length).map { _ in "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".randomElement()! })
   }
 }

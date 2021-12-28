@@ -24,14 +24,15 @@ extension UserDefaults {
 // MARK: - UserDefaultEnum
 
 @propertyWrapper
-struct UserDefaultEnum<Value: RawRepresentable> {
+struct UserDefaultEnum<Value: RawRepresentable> where Value.RawValue == Int {
   let key: String
   let defaultValue: Value
   var container: UserDefaults = .standard
 
   var wrappedValue: Value {
     get {
-      guard let object = container.object(forKey: key) as? Value else {
+      let num = container.integer(forKey: key)
+      guard let object = Value(rawValue: num) else {
         return defaultValue
       }
 

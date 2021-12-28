@@ -265,7 +265,7 @@ type Mutation {
 
   """UpdatePlaceInput - Place JSON DATA"""
   updatePlace(place: [UpdatePlaceInput!]): MutationResponse
-  createReview(review: [ReviewInput!]!, upload: [ReviewUpload!]!): MutationResponse
+  createReview(review: [ReviewInput!]!, upload: [Upload!]!): MutationResponse
   deleteReview(id: Int!): MutationResponse
 
   """
@@ -303,10 +303,6 @@ input ReviewInput {
   content: String!
   place: InputPlace!
   hashtags: String
-}
-
-input ReviewUpload {
-  upload: Upload!
 }
 
 input UpdateReviewInput {

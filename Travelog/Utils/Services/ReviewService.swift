@@ -136,78 +136,38 @@ final class ReviewService {
       .asObservable()
   }
 
-//  static func write(post: [Review.Upload]) -> Completable {
-//    os_log(.debug, log: .review, "write(post:)")
-
-//    Observable.just(
-//      post.compactMap { $0.image }
-//    )
-//    .flatMap { posts -> Observable<Never> in
-//      .create { subscriber in
-//
-//        let posts = posts.enumerated()
-//        subscriber.onCompleted()
-//
-//        return Disposables.create()
-//      }
-//    }
-//    .asCompletable()
-
-//    let files = post.compactMap { $0.image }
-//      .enumerated()
-//      .map { (key, value) in
-//        let name = String(key)
-//        return GraphQLFile(fieldName: "upload", originalName: name, mimeType: "image/jpeg", data: value)
-//      }
-//
-//    Completable.create { subscriber in
-//      let request = Network.shared.apollo.upload(operation: CreateReviewMutation(reviews: ), files: files)
-//    }
-//  }
-
   static func write(post: [ReviewInput], images: [PHAsset]) -> Completable {
-    os_log(.debug, log: .review, "write(post:images)")
-//    var post = post
+    os_log(.debug, log: .review, #function)
 
-    return Observable.zip(
-      images.map { PhotoService.data(from: $0) }
-    ) { $0.enumerated() }
+    return Observable.zip(images.map { PhotoService.data(from: $0) } ) { $0.enumerated() }
       .map { data -> [GraphQLFile] in
         data.map { idx, data -> GraphQLFile in
           let name = String(idx)
           let resource = PHAssetResource.assetResources(for: images[idx])
-//          post[idx].upload = "variables.files." + String((resource.first?.originalFilename ?? name).split(separator: ".")[0])
-          return GraphQLFile(fieldName: "upload", originalName: resource.first?.originalFilename ?? name, mimeType: "image/jpeg", data: data)
+          return GraphQLFile(fieldName: "images", originalName: resource.first?.originalFilename ?? name, mimeType: "image/jpeg", data: data)
         }
       }
-      .flatMap { files -> Observable<Never> in
+      .flatMap { files -> Observable<Void> in
         .create { subscriber in
-          print(post)
-          let request = Network.shared.apollo.upload(operation: CreateReviewMutation(reviews: post, images: Array(repeating: ReviewUpload(upload: "upload"), count: post.count)), files: files) {
-            switch $0 {
-            case .success(let success):
-              print("⭐️", success)
-            case .failure(let error):
-              print("⭐️", error.localizedDescription)
-            }
-
+          let mutation = CreateReviewMutation(reviews: post, images: Array(repeating: "images", count: post.count))
+          let request = Network.shared.apollo.upload(operation: mutation, files: files) {
             guard let data = try? $0.get().data?.createReview else {
               subscriber.onError(ReviewServiceError.requestFailed)
               return
             }
 
             if data.ok {
+              subscriber.onNext(())
               subscriber.onCompleted()
             }
-
           }
 
           return Disposables.create { request.cancel() }
         }
       }
+      .take(1)
+      .ignoreElements()
       .asCompletable()
-      .debug()
-
   }
 
 }

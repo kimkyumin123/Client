@@ -146,27 +146,6 @@ public struct ReviewInput: GraphQLMapConvertible {
   }
 }
 
-// MARK: - ReviewUpload
-
-public struct ReviewUpload: GraphQLMapConvertible {
-  public var graphQLMap: GraphQLMap
-
-  /// - Parameters:
-  ///   - upload
-  public init(upload: String) {
-    graphQLMap = ["upload": upload]
-  }
-
-  public var upload: String {
-    get {
-      graphQLMap["upload"] as! String
-    }
-    set {
-      graphQLMap.updateValue(newValue, forKey: "upload")
-    }
-  }
-}
-
 // MARK: - UpdatePlaceInput
 
 public struct UpdatePlaceInput: GraphQLMapConvertible {
@@ -915,7 +894,7 @@ public final class CreateReviewMutation: GraphQLMutation {
 
   // MARK: Lifecycle
 
-  public init(reviews: [ReviewInput], images: [ReviewUpload]) {
+  public init(reviews: [ReviewInput], images: [String]) {
     self.reviews = reviews
     self.images = images
   }
@@ -1014,7 +993,7 @@ public final class CreateReviewMutation: GraphQLMutation {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition: String =
     """
-    mutation createReview($reviews: [ReviewInput!]!, $images: [ReviewUpload!]!) {
+    mutation createReview($reviews: [ReviewInput!]!, $images: [Upload!]!) {
       createReview(review: $reviews, upload: $images) {
         __typename
         ok
@@ -1025,10 +1004,10 @@ public final class CreateReviewMutation: GraphQLMutation {
 
   public let operationName: String = "createReview"
 
-  public let operationIdentifier: String? = "53d533606091401c2dd7f3bbd34acfae5981bf9f9113160fae5edf72479b23fa"
+  public let operationIdentifier: String? = "65798d58ae3be054255ce5317a86a05e82b6906773bb12c05038e81bdd37b4cf"
 
   public var reviews: [ReviewInput]
-  public var images: [ReviewUpload]
+  public var images: [String]
 
   public var variables: GraphQLMap? {
     ["reviews": reviews, "images": images]

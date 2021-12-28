@@ -1,4 +1,4 @@
-mutation createReview($reviews: [ReviewInput!]!, $images: [ReviewUpload!]!) {
+mutation createReview($reviews: [ReviewInput!]!, $images: [Upload!]!) {
   createReview(review: $reviews, upload: $images) {
     ok
     error

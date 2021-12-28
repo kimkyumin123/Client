@@ -294,7 +294,7 @@ final class UserService {
 
   /// login 후 토큰 생성
   static func login(id: String, pw: String) -> Observable<(accessToken: JWTToken, refreshToken: JWTToken)> {
-    os_log(.debug, log: .user, "login(id:pw:)")
+    os_log(.debug, log: .user, #function)
     deleteLoginInfo()
     return .create { subscriber in
       Network.shared.apollo.perform(mutation: UserLoginMutation(userName: id, password: pw)) {
@@ -329,7 +329,7 @@ final class UserService {
     }
     // 키체인에 토큰 저장, 로그인 저장
     .do(onNext: { access, refresh in
-      updateLoginInfo(id: id, accessToken: access.value, refreshToken: refresh.value)
+      updateLoginInfo(id: id, platform: .service, accessToken: access.value, refreshToken: refresh.value)
     })
   }
 
@@ -407,11 +407,12 @@ final class UserService {
 
   /// 로그인 정보 기록
   static func updateLoginInfo(id: String, platform: UserAccount.Platform = .service, accessToken: String, refreshToken: String) {
-    os_log(.debug, log: .user, "Update Login Info")
+    os_log(.debug, log: .user, #function)
     UserDefaults.userID = id
     UserDefaults.loginPlatform = platform
     try? KeychainService.write(key: .accessToken, value: accessToken)
     try? KeychainService.write(key: .refreshToken, value: refreshToken)
+    os_log(.debug, log: .user, "Login Success: ")
   }
 
   /// 로그인 정보 제거
